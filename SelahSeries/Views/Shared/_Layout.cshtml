@@ -1,74 +1,218 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - SelahSeries</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Demo project">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Oswald:400,700">
+        <link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/bootstrap4/bootstrap.min.css">
+        <link href="~/NewFolder2/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" href="~/NewFolder2/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+        <link rel="stylesheet" type="text/css" href="~/NewFolder2/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+        <link rel="stylesheet" type="text/css" href="~/NewFolder2/plugins/OwlCarousel2-2.2.1/animate.css">
+        <link rel="stylesheet" type="text/css" href="~/NewFolder2/plugins/jquery.mb.YTPlayer-3.1.12/jquery.mb.YTPlayer.css">
+
+        @if (IsSectionDefined("AddToHead"))
+        {
+            @RenderSection("AddToHead", required: false)
+        }
+
+         <link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/aos.css">
+    <link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/style.css">
+        
+        @*<link rel="stylesheet" href="~/NewFolder2/styles/css3/css/magnific-popup.css">
+        <link rel="stylesheet" href="~/NewFolder2/styles/css3/css/jquery-ui.css">
+        <link rel="stylesheet" href="~/NewFolder2/styles/css3/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="~/NewFolder2/styles/css3/css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="~/NewFolder2/styles/css3/css/bootstrap-datepicker.css">
+        <link rel="stylesheet" href="~/NewFolder2/styles/css3/css/mediaelementplayer.css">
+        <link rel="stylesheet" href="~/NewFolder2/styles/css3/css/animate.css">
+        <link rel="stylesheet" href="~/NewFolder2/styles/css3/fonts/flaticon/font/flaticon.css">
+        <link rel="stylesheet" href="~/NewFolder2/styles/css3/css/fl-bigmug-line.css">*@
+
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-href="~/NewFolder2/styles/bootstrap4/bootstrap.min.jsstyles/bootstrap4/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/NewFolder2/styles/main_styles.css" asp-append-version="true" />
     </environment>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">SelahSeries</a>
+
+    
+        <div class="site-wrap">
+            <header class="header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="header_content d-flex flex-row align-items-center justify-content-start">
+
+                                <div class="logo"><a href="#">SELAH</a></div>
+                                <nav class="main_nav">
+                                    <ul>
+                                        <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
+                                        <li>
+                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Blog
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                <a class="dropdown-item" href="/Blog/Category" style="color:darkred">Relationship & Marriage</a>
+                                                <a class="dropdown-item" href="/Blog/Category" style="color:darkred">Politics</a>
+                                                <a class="dropdown-item" href="/Blog/Category" style="color:darkred">Sport</a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Support/Counselling
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                <a class="dropdown-item" href="/Support/Index" style="color:darkred">Support Links</a>
+                                                <a class="dropdown-item" href="/Support/Message_Form" style="color:darkred">Send Message</a>
+                                            </div>
+                                        </li>
+                                        <li>@Html.ActionLink("Books", "Index", "Home")</li>
+                                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                                    </ul>
+                                </nav>
+                                @*<div class="search_container ml-auto">
+                                    <div class="weather">
+                                        <div class="temperature">+10°</div>
+                                        <img class="weather_icon" src="images/cloud.png" alt="">
+                                    </div>
+                                    <form action="#">
+                                        <input type="search" class="header_search_input" required="required" placeholder="Type to Search...">
+                                        <img class="header_search_icon" src="images/search.png" alt="">
+                                    </form>
+
+                                </div>*@
+                                <div class="hamburger ml-auto menu_mm">
+                                    <i class="fa fa-bars trans_200 menu_mm" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            @*<div class="site-mobile-menu">
+                <div class="site-mobile-menu-header">
+                    <div class="site-mobile-menu-close mt-3">
+                        <span class="icon-close2 js-menu-toggle"></span>
+                    </div>
+                </div>
+                <div class="site-mobile-menu-body"></div>
+            </div>*@
+
+
+            @*<partial name="_CookieConsentPartial" />*@
+            <!-- Menu -->
+            <div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
+                <div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
+                <div class="logo menu_mm"><a href="#">Avision</a></div>
+                <nav class="menu_nav">
+                    <ul class="menu_mm">
+                        <li class="menu_mm"><a href="index.html">Home</a></li>
+                        <li class="menu_mm nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Blog
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="#">Relationship & Marriage</a>
+                                <a class="dropdown-item" href="#">Politics</a>
+                                <a class="dropdown-item" href="#">Sport</a>
+                            </div>
+                        </li>
+                        <li class="menu_mm"><a href="#">Support/Counselling</a></li>
+                        <li class="menu_mm"><a href="#">Books</a></li>
+                        <li class="menu_mm"><a href="#">About</a></li>
+                        <li class="menu_mm"><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                </ul>
-            </div>
+
+
+
+            @RenderBody()
+
+
+            <!-- Footer -->
+
+            <footer class="footer">
+                <div class="container">
+                    <div class="row row-lg-eq-height">
+                        <div class="col-lg-12 order-lg-1 order-2">
+                            <div class="footer_content">
+                                <div class="footer_logo"><a href="#">selah</a></div>
+                                <div class="footer_social">
+                                    <ul>
+                                        <li class="footer_social_facebook"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                        <li class="footer_social_twitter"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                        <li class="footer_social_pinterest"><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                                        <li class="footer_social_vimeo"><a href="#"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
+                                        <li class="footer_social_instagram"><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                        <li class="footer_social_google"><a href="#"><i class="fa fa-google" aria-hidden="true"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="copyright">
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                    Copyright &copy;
+                                    <script>document.write(new Date().getFullYear());</script> 
+                                    @*<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>*@
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
         </div>
-    </nav>
+        <environment include="Development">
+            <script src="~/NewFolder2/js/jquery-3.2.1.min.js"></script>
+            <script src="~/NewFolder2/styles/bootstrap4/popper.js"></script>
+            <script src="~/NewFolder2/styles/bootstrap4/bootstrap.min.js"></script>
+            <script src="~/NewFolder2/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+            <script src="~/NewFolder2/plugins/jquery.mb.YTPlayer-3.1.12/jquery.mb.YTPlayer.js"></script>
+            <script src="~/NewFolder2/plugins/easing/easing.js"></script>
+            <script src="~/NewFolder2/plugins/masonry/masonry.js"></script>
+            @*<script src="~/NewFolder2/js/js3/js/jquery-3.3.1.min.js"></script>
+            <script src="~/NewFolder2/js/js3/js/jquery-migrate-3.0.1.min.js"></script>
+            <script src="~/NewFolder2/js/js3/js/jquery-ui.js"></script>
+            <script src="~/NewFolder2/js/js3/js/popper.min.js"></script>
+            <script src="~/NewFolder2/js/js3/js/bootstrap.min.js"></script>
+            <script src="~/NewFolder2/js/js3/js/owl.carousel.min.js"></script>
+            <script src="~/NewFolder2/js/js3/js/mediaelement-and-player.min.js"></script>
+            <script src="~/NewFolder2/js/js3/js/jquery.stellar.min.js"></script>
+            <script src="~/NewFolder2/js/js3/js/jquery.countdown.min.js"></script>
+            <script src="~/NewFolder2/js/js3/js/jquery.magnific-popup.min.js"></script>
+            <script src="~/NewFolder2/js/js3/js/bootstrap-datepicker.min.js"></script>*@
+            <script src="~/NewFolder2/js/js3/js/aos.js"></script>
+            <script src="~/NewFolder2/js/js3/js/main.js"></script>
+            @if (IsSectionDefined("AddToEnd"))
+            {
+                @RenderSection("AddToEnd", required: false)
+            }
+        </environment>
+        <environment exclude="Development">
+            <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                    asp-fallback-src="~/NewFolder2/js/jquery-3.2.1.min.js"
+                    asp-fallback-test="window.jQuery"
+                    crossorigin="anonymous"
+                    integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+            </script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+                    asp-fallback-src="~/NewFolder2/js/styles/bootstrap4/bootstrap.min.js"
+                    asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                    crossorigin="anonymous"
+                    integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd">
+            </script>
+            <script src="~/js/site.min.js" asp-append-version="true"></script>
+        </environment>
 
-    <partial name="_CookieConsentPartial" />
-
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2020 - SelahSeries</p>
-        </footer>
-    </div>
-
-    <environment include="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-    </environment>
-    <environment exclude="Development">
-        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
-                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery"
-                crossorigin="anonymous"
-                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
-        </script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-                crossorigin="anonymous"
-                integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd">
-        </script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
-    </environment>
-
-    @RenderSection("Scripts", required: false)
+        @RenderSection("Scripts", required: false)
 </body>
 </html>

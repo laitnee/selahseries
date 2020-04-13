@@ -5,8 +5,157 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\css\**" />
+    <Compile Remove="wwwroot\images\**" />
+    <Compile Remove="wwwroot\js\**" />
+    <Compile Remove="wwwroot\lib\**" />
+    <Compile Remove="wwwroot\NewFolder1\**" />
+    <Compile Remove="wwwroot\NewFolder2\js\NewFolder\**" />
+    <Compile Remove="wwwroot\NewFolder2\styles\NewFolder\**" />
+    <Compile Remove="wwwroot\NewFolder\**" />
+    <Content Remove="wwwroot\css\**" />
+    <Content Remove="wwwroot\images\**" />
+    <Content Remove="wwwroot\js\**" />
+    <Content Remove="wwwroot\lib\**" />
+    <Content Remove="wwwroot\NewFolder1\**" />
+    <Content Remove="wwwroot\NewFolder2\js\NewFolder\**" />
+    <Content Remove="wwwroot\NewFolder2\styles\NewFolder\**" />
+    <Content Remove="wwwroot\NewFolder\**" />
+    <EmbeddedResource Remove="wwwroot\css\**" />
+    <EmbeddedResource Remove="wwwroot\images\**" />
+    <EmbeddedResource Remove="wwwroot\js\**" />
+    <EmbeddedResource Remove="wwwroot\lib\**" />
+    <EmbeddedResource Remove="wwwroot\NewFolder1\**" />
+    <EmbeddedResource Remove="wwwroot\NewFolder2\js\NewFolder\**" />
+    <EmbeddedResource Remove="wwwroot\NewFolder2\styles\NewFolder\**" />
+    <EmbeddedResource Remove="wwwroot\NewFolder\**" />
+    <None Remove="wwwroot\css\**" />
+    <None Remove="wwwroot\images\**" />
+    <None Remove="wwwroot\js\**" />
+    <None Remove="wwwroot\lib\**" />
+    <None Remove="wwwroot\NewFolder1\**" />
+    <None Remove="wwwroot\NewFolder2\js\NewFolder\**" />
+    <None Remove="wwwroot\NewFolder2\styles\NewFolder\**" />
+    <None Remove="wwwroot\NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Class.cs" />
+    <Content Remove="wwwroot\favicon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\NewFolder2\contact\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\NewFolder2\contact\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\NewFolder2\contact\fonts\font-awesome-4.7.0\less\animated.less" />
+    <None Include="wwwroot\NewFolder2\contact\fonts\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <None Include="wwwroot\NewFolder2\contact\fonts\font-awesome-4.7.0\less\core.less" />
+    <None Include="wwwroot\NewFolder2\contact\fonts\font-awesome-4.7.0\less\fixed-width.less" />
+    <None Include="wwwroot\NewFolder2\contact\fonts\font-awesome-4.7.0\less\font-awesome.less" />
+    <None Include="wwwroot\NewFolder2\contact\fonts\font-awesome-4.7.0\less\icons.less" />
+    <None Include="wwwroot\NewFolder2\contact\fonts\font-awesome-4.7.0\less\larger.less" />
+    <None Include="wwwroot\NewFolder2\contact\fonts\font-awesome-4.7.0\less\list.less" />
+    <None Include="wwwroot\NewFolder2\contact\fonts\font-awesome-4.7.0\less\mixins.less" />
+    <None Include="wwwroot\NewFolder2\contact\fonts\font-awesome-4.7.0\less\path.less" />
+    <None Include="wwwroot\NewFolder2\contact\fonts\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <None Include="wwwroot\NewFolder2\contact\fonts\font-awesome-4.7.0\less\screen-reader.less" />
+    <None Include="wwwroot\NewFolder2\contact\fonts\font-awesome-4.7.0\less\stacked.less" />
+    <None Include="wwwroot\NewFolder2\contact\fonts\font-awesome-4.7.0\less\variables.less" />
+    <None Include="wwwroot\NewFolder2\contact\fonts\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <None Include="wwwroot\NewFolder2\contact\fonts\font-awesome-4.7.0\scss\_animated.scss" />
+    <None Include="wwwroot\NewFolder2\contact\fonts\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <None Include="wwwroot\NewFolder2\contact\fonts\font-awesome-4.7.0\scss\_core.scss" />
+    <None Include="wwwroot\NewFolder2\contact\fonts\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <None Include="wwwroot\NewFolder2\contact\fonts\font-awesome-4.7.0\scss\_icons.scss" />
+    <None Include="wwwroot\NewFolder2\contact\fonts\font-awesome-4.7.0\scss\_larger.scss" />
+    <None Include="wwwroot\NewFolder2\contact\fonts\font-awesome-4.7.0\scss\_list.scss" />
+    <None Include="wwwroot\NewFolder2\contact\fonts\font-awesome-4.7.0\scss\_mixins.scss" />
+    <None Include="wwwroot\NewFolder2\contact\fonts\font-awesome-4.7.0\scss\_path.scss" />
+    <None Include="wwwroot\NewFolder2\contact\fonts\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <None Include="wwwroot\NewFolder2\contact\fonts\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <None Include="wwwroot\NewFolder2\contact\fonts\font-awesome-4.7.0\scss\_stacked.scss" />
+    <None Include="wwwroot\NewFolder2\contact\fonts\font-awesome-4.7.0\scss\_variables.scss" />
+    <None Include="wwwroot\NewFolder2\contact\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.svg" />
+    <None Include="wwwroot\NewFolder2\contact\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.woff2" />
+    <None Include="wwwroot\NewFolder2\contact\js\main.js" />
+    <None Include="wwwroot\NewFolder2\contact\vendor\animsition\js\animsition.js" />
+    <None Include="wwwroot\NewFolder2\contact\vendor\animsition\js\animsition.min.js" />
+    <None Include="wwwroot\NewFolder2\contact\vendor\bootstrap\css\bootstrap-grid.css.map" />
+    <None Include="wwwroot\NewFolder2\contact\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
+    <None Include="wwwroot\NewFolder2\contact\vendor\bootstrap\css\bootstrap-reboot.css.map" />
+    <None Include="wwwroot\NewFolder2\contact\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <None Include="wwwroot\NewFolder2\contact\vendor\bootstrap\css\bootstrap.css.map" />
+    <None Include="wwwroot\NewFolder2\contact\vendor\bootstrap\css\bootstrap.min.css.map" />
+    <None Include="wwwroot\NewFolder2\contact\vendor\bootstrap\js\bootstrap.js" />
+    <None Include="wwwroot\NewFolder2\contact\vendor\bootstrap\js\bootstrap.min.js" />
+    <None Include="wwwroot\NewFolder2\contact\vendor\bootstrap\js\popper.js" />
+    <None Include="wwwroot\NewFolder2\contact\vendor\bootstrap\js\popper.min.js" />
+    <None Include="wwwroot\NewFolder2\contact\vendor\bootstrap\js\tooltip.js" />
+    <None Include="wwwroot\NewFolder2\contact\vendor\countdowntime\countdowntime.js" />
+    <None Include="wwwroot\NewFolder2\contact\vendor\daterangepicker\daterangepicker.js" />
+    <None Include="wwwroot\NewFolder2\contact\vendor\daterangepicker\moment.js" />
+    <None Include="wwwroot\NewFolder2\contact\vendor\daterangepicker\moment.min.js" />
+    <None Include="wwwroot\NewFolder2\contact\vendor\jquery\jquery-3.2.1.min.js" />
+    <None Include="wwwroot\NewFolder2\contact\vendor\perfect-scrollbar\perfect-scrollbar.min.js" />
+    <None Include="wwwroot\NewFolder2\contact\vendor\select2\select2.js" />
+    <None Include="wwwroot\NewFolder2\contact\vendor\select2\select2.min.js" />
+    <None Include="wwwroot\NewFolder2\images\arrow_r.svg" />
+    <None Include="wwwroot\NewFolder2\images\next_arrow.svg" />
+    <None Include="wwwroot\NewFolder2\images\next_arrow_2.svg" />
+    <None Include="wwwroot\NewFolder2\images\prev_arrow.svg" />
+    <None Include="wwwroot\NewFolder2\images\prev_arrow_2.svg" />
+    <None Include="wwwroot\NewFolder2\js\category.js" />
+    <None Include="wwwroot\NewFolder2\js\contact.js" />
+    <None Include="wwwroot\NewFolder2\js\custom.js" />
+    <None Include="wwwroot\NewFolder2\js\jquery-3.2.1.min.js" />
+    <None Include="wwwroot\NewFolder2\js\post.js" />
+    <None Include="wwwroot\NewFolder2\js\post_nosidebar.js" />
+    <None Include="wwwroot\NewFolder2\js\regular.js" />
+    <None Include="wwwroot\NewFolder2\plugins\easing\easing.js" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\less\animated.less" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\less\core.less" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\less\fixed-width.less" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\less\font-awesome.less" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\less\icons.less" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\less\larger.less" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\less\list.less" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\less\mixins.less" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\less\path.less" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\less\screen-reader.less" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\less\stacked.less" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\less\variables.less" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\scss\_animated.scss" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\scss\_core.scss" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\scss\_icons.scss" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\scss\_larger.scss" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\scss\_list.scss" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\scss\_mixins.scss" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\scss\_path.scss" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\scss\_stacked.scss" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\scss\_variables.scss" />
+    <None Include="wwwroot\NewFolder2\plugins\jquery.mb.YTPlayer-3.1.12\jquery.mb.YTPlayer.js" />
+    <None Include="wwwroot\NewFolder2\plugins\masonry\images_loaded.js" />
+    <None Include="wwwroot\NewFolder2\plugins\masonry\masonry.js" />
+    <None Include="wwwroot\NewFolder2\plugins\OwlCarousel2-2.2.1\owl.carousel.js" />
+    <None Include="wwwroot\NewFolder2\plugins\parallax-js-master\parallax.min.js" />
+    <None Include="wwwroot\NewFolder2\styles\bootstrap4\bootstrap.min.js" />
+    <None Include="wwwroot\NewFolder2\styles\bootstrap4\popper.js" />
+    <None Include="wwwroot\NewFolder2\styles\css3\css\bootstrap.min.css.map" />
   </ItemGroup>
 
 </Project>
