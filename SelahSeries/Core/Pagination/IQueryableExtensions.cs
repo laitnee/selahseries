@@ -58,3 +58,10 @@ namespace SelahSeries.Core.Pagination
             return source.Provider.CreateQuery<TEntity>(resultExpression);
         }
     }
+
+
+
+
+
+
+}
