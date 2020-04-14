@@ -10,7 +10,9 @@
     <Compile Remove="wwwroot\js\**" />
     <Compile Remove="wwwroot\lib\**" />
     <Compile Remove="wwwroot\NewFolder1\**" />
+    <Compile Remove="wwwroot\NewFolder2\js\js3\js\**" />
     <Compile Remove="wwwroot\NewFolder2\js\NewFolder\**" />
+    <Compile Remove="wwwroot\NewFolder2\plugins\jquery.mb.YTPlayer-3.1.12\**" />
     <Compile Remove="wwwroot\NewFolder2\styles\NewFolder\**" />
     <Compile Remove="wwwroot\NewFolder\**" />
     <Content Remove="wwwroot\css\**" />
@@ -18,7 +20,9 @@
     <Content Remove="wwwroot\js\**" />
     <Content Remove="wwwroot\lib\**" />
     <Content Remove="wwwroot\NewFolder1\**" />
+    <Content Remove="wwwroot\NewFolder2\js\js3\js\**" />
     <Content Remove="wwwroot\NewFolder2\js\NewFolder\**" />
+    <Content Remove="wwwroot\NewFolder2\plugins\jquery.mb.YTPlayer-3.1.12\**" />
     <Content Remove="wwwroot\NewFolder2\styles\NewFolder\**" />
     <Content Remove="wwwroot\NewFolder\**" />
     <EmbeddedResource Remove="wwwroot\css\**" />
@@ -26,7 +30,9 @@
     <EmbeddedResource Remove="wwwroot\js\**" />
     <EmbeddedResource Remove="wwwroot\lib\**" />
     <EmbeddedResource Remove="wwwroot\NewFolder1\**" />
+    <EmbeddedResource Remove="wwwroot\NewFolder2\js\js3\js\**" />
     <EmbeddedResource Remove="wwwroot\NewFolder2\js\NewFolder\**" />
+    <EmbeddedResource Remove="wwwroot\NewFolder2\plugins\jquery.mb.YTPlayer-3.1.12\**" />
     <EmbeddedResource Remove="wwwroot\NewFolder2\styles\NewFolder\**" />
     <EmbeddedResource Remove="wwwroot\NewFolder\**" />
     <None Remove="wwwroot\css\**" />
@@ -34,7 +40,9 @@
     <None Remove="wwwroot\js\**" />
     <None Remove="wwwroot\lib\**" />
     <None Remove="wwwroot\NewFolder1\**" />
+    <None Remove="wwwroot\NewFolder2\js\js3\js\**" />
     <None Remove="wwwroot\NewFolder2\js\NewFolder\**" />
+    <None Remove="wwwroot\NewFolder2\plugins\jquery.mb.YTPlayer-3.1.12\**" />
     <None Remove="wwwroot\NewFolder2\styles\NewFolder\**" />
     <None Remove="wwwroot\NewFolder\**" />
   </ItemGroup>
@@ -148,14 +156,12 @@
     <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\scss\_screen-reader.scss" />
     <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\scss\_stacked.scss" />
     <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\scss\_variables.scss" />
-    <None Include="wwwroot\NewFolder2\plugins\jquery.mb.YTPlayer-3.1.12\jquery.mb.YTPlayer.js" />
     <None Include="wwwroot\NewFolder2\plugins\masonry\images_loaded.js" />
     <None Include="wwwroot\NewFolder2\plugins\masonry\masonry.js" />
     <None Include="wwwroot\NewFolder2\plugins\OwlCarousel2-2.2.1\owl.carousel.js" />
     <None Include="wwwroot\NewFolder2\plugins\parallax-js-master\parallax.min.js" />
     <None Include="wwwroot\NewFolder2\styles\bootstrap4\bootstrap.min.js" />
     <None Include="wwwroot\NewFolder2\styles\bootstrap4\popper.js" />
-    <None Include="wwwroot\NewFolder2\styles\css3\css\bootstrap.min.css.map" />
   </ItemGroup>
 
 </Project>
