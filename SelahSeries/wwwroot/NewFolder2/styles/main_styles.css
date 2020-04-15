@@ -310,7 +310,7 @@ section {
 .logo a {
     font-family: 'Ubuntu', sans-serif;
     font-size: 20px;
-    color: #FFFFFF;
+    color: rgba(242, 186, 22, 1);
     text-transform: uppercase;
     font-weight: 700;
     letter-spacing: 0.075em;
@@ -319,7 +319,15 @@ section {
 /*********************************
 3.2 Main Navigation
 *********************************/
-
+.dropdown-menu{
+    background:rgba(0,0,0,1);
+    text-align:center;
+    padding:6px;
+}
+.dropdown-menu a {
+    display:block;
+    text-align: center;
+}
 .main_nav {
     margin-left: 46px;
 }
@@ -336,7 +344,7 @@ section {
             font-family: 'Ubuntu', sans-serif;
             font-size: 14px;
             font-weight: 700;
-            color: rgba(255,255,255,0.5);
+            color: rgba(255, 255, 255, 0.5);
             -webkit-transition: all 200ms ease;
             -moz-transition: all 200ms ease;
             -ms-transition: all 200ms ease;
@@ -346,7 +354,7 @@ section {
 
             .main_nav ul li a:hover,
             .main_nav ul li.active a {
-                color: rgba(255,255,255,1);
+                color: rgba(242, 186, 22, 1);
             }
 
 /*********************************
@@ -942,7 +950,8 @@ section {
         display: inline-block;
         width: auto;
         height: 28px;
-        background: #ededed;
+        background: #FFFFFF;
+        color: #007bff;
         border-radius: 14px;
         text-align: center;
         padding-left: 22px;
@@ -959,14 +968,14 @@ section {
             font-family: 'Ubuntu', sans-serif;
             font-size: 12px;
             font-weight: 500;
-            color: #007bff;
             text-transform: uppercase;
             letter-spacing: 0.025em;
         }
 
         .section_tags ul li:hover,
         .section_tags ul li.active {
-            background: #FFFFFF;
+            background: rgba(242, 186, 22, 1);
+            color: #fff;
         }
 
 .section_panel_more {
@@ -1278,7 +1287,9 @@ section {
     .card_large_with_background .post_meta a {
         color: rgba(255,255,255,0.5);
     }
-
+.card {
+    box-shadow: 0 1.5px 3px 0 rgba(0,0,0,0.2);
+}
 /*********************************
 9. Videos
 *********************************/
@@ -1465,20 +1476,22 @@ section {
 .load_more_button {
     width: 118px;
     height: 36px;
-    background: transparent;
-    border: solid 1px #d7d7d7;
+    width: 35%;
+    background: #AD001C;
     border-radius: 18px;
     margin: 0 auto;
     line-height: 32px;
     font-family: 'Ubuntu', sans-serif;
     font-size: 14px;
     font-weight: 500;
-    color: #007bff;
+    color:white;
     cursor: pointer;
 }
 
     .load_more_button:hover {
-        background: #d7d7d7;
+        border: solid 2px darkred;
+        background: white;
+        color: #AD001C;
     }
 
 /*********************************
@@ -1712,6 +1725,7 @@ section {
 .footer {
     width: 100%;
     background: #1f1f1f;
+    color: rgba(242, 186, 22, 1);
 }
 
 .footer_content {
@@ -1724,7 +1738,8 @@ section {
     font-family: 'Ubuntu', sans-serif;
     font-size: 20px;
     font-weight: 700;
-    color: #FFFFFF;
+    color: rgba(242, 186, 22, 1);
+    
     letter-spacing: 0.075em;
     text-transform: uppercase;
     line-height: 0.75;
@@ -1743,7 +1758,7 @@ section {
         }
 
         .footer_social ul li i {
-            color: #8f8f8f;
+            color: rgba(242, 186, 22, 0.5;
         }
 
 .footer_social_facebook:hover i {
