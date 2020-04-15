@@ -80,8 +80,15 @@ a {
     color: #000; }
   .btn.btn-sm {
     font-size: 0.9rem; }
-  .btn.btn-primary {
-    color: #fff; }
+    .btn.btn-primary {
+        border: none;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        /* box-shadow: gold 2px 0 5px; */
+        paddiing:10px;
+        background-color: darkred;
+        color: #fff;
+        border-radius: 17px;
+    }
     .btn.btn-primary:active, .btn.btn-primary:focus {
       color: #fff; }
   .btn.btn-outline-primary:hover {
