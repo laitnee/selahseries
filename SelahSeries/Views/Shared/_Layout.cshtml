@@ -31,6 +31,9 @@
               asp-fallback-href="~/NewFolder2/styles/bootstrap4/bootstrap.min.jsstyles/bootstrap4/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/NewFolder2/styles/main_styles.css" asp-append-version="true" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+              asp-fallback-href="~/NewFolder2/styles/bootstrap4/bootstrap.min.jsstyles/bootstrap4/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
     </environment>
 </head>
 <body>
@@ -43,7 +46,7 @@
                         <div class="col">
                             <div class="header_content d-flex flex-row align-items-center justify-content-start">
 
-                                <div class="logo"><a href="#">SELAH</a></div>
+                                <div class="logo">@Html.ActionLink("SELAH", "Index", "Home")</div>
                                 <nav class="main_nav">
                                     <ul>
                                         <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
@@ -52,9 +55,9 @@
                                                 Blog
                                             </a>
                                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                                <a class="dropdown-item" href="/Blog/Category" style="color:darkred">Relationship & Marriage</a>
-                                                <a class="dropdown-item" href="/Blog/Category" style="color:darkred">Politics</a>
-                                                <a class="dropdown-item" href="/Blog/Category" style="color:darkred">Sport</a>
+                                                @Html.ActionLink("Relationship & Marriage", "Category", "Blog", new { @class = "dropdown-item" })
+                                                @Html.ActionLink("Politics", "Category", "Blog", new { @class = "dropdown-item" })
+                                                @Html.ActionLink("Sports", "Category", "Blog", new { @class = "dropdown-item" })
                                             </div>
                                         </li>
                                         <li>
@@ -62,8 +65,8 @@
                                                 Support/Counselling
                                             </a>
                                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                                <a class="dropdown-item" href="/Support/Index" style="color:darkred">Support Links</a>
-                                                <a class="dropdown-item" href="/Support/Message_Form" style="color:darkred">Send Message</a>
+                                                @Html.ActionLink("Our Suport Links", "Index", "Support", new { @class = "dropdown-item" })
+                                                @Html.ActionLink("Send Message", "Message_Form", "Support", new { @class = "dropdown-item" })
                                             </div>
                                         </li>
                                         <li>@Html.ActionLink("Books", "Index", "Home")</li>
@@ -182,5 +185,16 @@
         </environment>
 
         @RenderSection("Scripts", required: false)
+
+
 </body>
 </html>
+
+<style>
+    .dropdown-menu a{
+        color:black;
+    }
+    .dropdown-menu a:hover{
+        color: cadetblue;
+    }
+</style>
