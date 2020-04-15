@@ -521,13 +521,13 @@ a {
       bottom: 0;
       right: 0;
       top: 0;
-      background: rgba(0, 0, 0, 1); }
+      background: rgba(0, 0, 0, 0.4); }
   .site-blocks-cover, .site-blocks-cover .row {
     min-height: 600px;
     height: calc(100vh); }
   .site-blocks-cover.inner-page-cover, .site-blocks-cover.inner-page-cover .row {
-    min-height: 600px;
-    height: calc(30vh); }
+    min-height: 350px;
+    height: calc(15vh); }
   .site-blocks-cover .sub-text {
     font-size: 1.1rem;
     text-transform: uppercase;
@@ -1588,7 +1588,7 @@ a {
     left: 0;
     bottom: 0;
     height: 2px;
-    background: #e3c4a8; }
+    background: #007bff; }
 
 .site-section-heading.w-border.text-center h2:after {
   left: 50%;
