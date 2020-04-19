@@ -20,7 +20,7 @@ namespace SelahSeries.Models
         public bool Published { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime ModifiedAt { get; set; }
-        public int CatergoryId { get; set; }
+        public int CategoryId { get; set; }
         public Category Category { get; set; }
     }
 }

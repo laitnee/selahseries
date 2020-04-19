@@ -12,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SelahSeries.Data;
 using SelahSeries.Core;
+using Microsoft.Net.Http.Headers;
 
 namespace SelahSeries
 {
@@ -31,7 +32,7 @@ namespace SelahSeries
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                 options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
+                options.MinimumSameSitePolicy = Microsoft.AspNetCore.Http.SameSiteMode.None;
             });
 
             services.AddDbContext<SelahSeriesDataContext>(c =>
@@ -56,6 +57,11 @@ namespace SelahSeries
             }
 
             app.UseHttpsRedirection();
+            app.Use(async (HttpContext, next) =>
+            {
+                HttpContext.Response.Headers[HeaderNames.CacheControl] = "no-cache";
+                await next();
+            });
             app.UseStaticFiles();
             app.UseCookiePolicy();
 

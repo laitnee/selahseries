@@ -1,0 +1,91 @@
+﻿@model SelahSeries.Models.Post
+
+@{
+    ViewData["Title"] = "Details";
+    ViewData["Add Navigation"] = "false";
+}
+@section AddToHead {
+    <link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/post.css">
+    <link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/post_responsive.css">
+}
+
+@section AddToEnd {
+    <script src="~/NewFolder2/plugins/parallax-js-master/parallax.min.js"></script>
+    <script src="~/NewFolder2/js/post.js"></script>>
+}
+<style>
+    .post_content .post_meta span{
+        color: rgba(0,0,0,0.5);
+    }
+</style>
+<div style="color: #ffcc00; background-color:black;" class="jumbotron text-center">
+    <h1>Blog Content Management Page <br />( Post Detail )</h1>
+    <p> Add, Delete, Edit, Archive Blog Posts Here...</p>
+</div>
+
+<div class="container">
+
+    <div class="home">
+        <div class="home_background parallax-window" data-parallax="scroll" style="background-image:url(/NewFolder2/images/post.jpg)" data-speed="0.8"></div>
+        <div class="home_content">
+            <div class="post_category trans_200"><a href="category.html" class="trans_200">Relationship</a></div>
+            <div class="post_title">@Html.DisplayFor(model => model.Title)</div>
+        </div>
+    </div>
+
+    <!-- Page Content -->
+
+    <div class="page_content">
+        <div class="container">
+            <div class="row row-lg-eq-height">
+
+                <!-- Post Content -->
+
+                <div class="col-lg-12">
+                    <div class="post_content">
+
+                        <!-- Top Panel -->
+                        <div class="post_panel post_panel_top d-flex flex-row align-items-center justify-content-start">
+                            <div class="author_image"><div><img src="~/NewFolder2/images/author.jpg" alt=""></div></div>
+                            <div class="post_meta"> @Html.DisplayFor(model => model.Author)</a><span>@Html.DisplayFor(model => model.CreatedAt)</span></div>
+                            <div class="post_meta"> Modified <span>@Html.DisplayFor(model => model.ModifiedAt)</span></div>
+                            <div style="  @(Model.Published? "color:green;" :"color:red;")" class="post_share ml-sm-auto">
+                                 @(Model.Published? "PUBLISHED" : "UNPUBLISHED" )
+                                
+                            </div>
+                        </div>
+                        <div class="btn-group m-2 text-center">
+                            <a class="btn btn-outline-info" class="btn btn-outline-danger" asp-action="Edit" asp-route-id="@Model.PostId">Edit</a>
+                           <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@Model.PostId">Delete</a>
+                            <a class="btn btn-outline-secondary" asp-action="Index">Back to List</a>
+                        </div>
+                        <!-- Post Body -->
+
+                        <div class="post_body">
+                            <p class="post_p">@Html.DisplayFor(model => model.Content)</p>
+                            <figure>
+                                <img src="images/post_image.jpg" alt="">
+                                <figcaption>Lorem Ipsum Dolor Sit Amet</figcaption>
+                            </figure>
+                            <p class="post_p">Maecenas vitae sem varius, imperdiet nisi a, tristique nisi. Sed scelerisque suscipit leo cursus accumsan. Donec vel turpis quam. Mauris non nisl nec nunc gravida ullamcorper id vestibulum magna. Donec non velit finibus, laoreet arcu nec, facilisis augue. Aliquam sed purus id erat accumsan congue. Mauris semper ullamcorper nibh non pellentesque. Aenean euismod purus sit amet quam vehicula ornare.</p>
+                            <div class="post_quote">
+                                <p class="post_p">Aliquam auctor lacus a dapibus pulvinar. Morbi in elit erat. Quisque et augue nec tortor blandit hendrerit eget sit amet sapien. Curabitur at tincidunt metus, quis porta ex. Duis lacinia metus vel eros cursus pretium eget.</p>
+                                <div class="post_quote_source">Robert Morgan</div>
+                            </div>
+                            <p class="post_p">Donec orci dolor, pretium in luctus id, consequat vitae nibh. Quisque hendrerit, lorem sit amet mollis malesuada, urna orci volutpat ex, sed scelerisque nunc velit et massa. Sed maximus id erat vel feugiat. Phasellus bibendum nisi non urna bibendum elementum. Aenean tincidunt nibh vitae ex facilisis ultrices. Integer ornare efficitur ultrices. Integer neque lectus, venenatis at pulvinar quis, aliquet id neque. Mauris ultrices consequat velit, sed dignissim elit posuere in. Cras vitae dictum dui.</p>
+
+
+                        </div>
+
+                    </div>
+
+                    
+                    <div style="color: #ffcc00; background-color:black; margin-bottom:0;" class=" text-center">
+                        <h1>Selah Series</h1>
+                        <p> &copy; 2020</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
