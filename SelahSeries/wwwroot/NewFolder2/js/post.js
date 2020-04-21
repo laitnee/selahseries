@@ -316,6 +316,12 @@ $(document).ready(function()
 			});
 		}, 500);
 			
-	}
+    }
+
+    function showReplyForm() {
+        $("reply_button").click(function () {
+            $("#comment_reply_form").show("1000");
+        });
+    }
 
 });

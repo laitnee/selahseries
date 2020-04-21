@@ -17,5 +17,11 @@ namespace SelahSeries.Controllers
         {
             return View();
         }
+
+
+        public IActionResult Bio()
+        {
+            return View();
+        }
     }
 }

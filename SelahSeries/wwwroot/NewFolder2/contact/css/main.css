@@ -177,34 +177,28 @@ iframe {
 [ Contact ]*/
 
 .container-contact100 {
-  width: 100%;  
-  min-height: 100vh;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  padding: 15px;
-  background: #f2f2f2;
-  
+    width: 100%;
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background: #f2f2f2;
 }
 
 .wrap-contact100 {
-  width: 1120px;
-  background: #fff;
-  overflow: hidden;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: stretch;
-  flex-direction: row-reverse;
-
+    width: 1120px;
+    background: #fff;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    margin: auto;
 }
 
 /*==================================================================
@@ -237,25 +231,26 @@ iframe {
 [ Form ]*/
 
 .contact100-form {
-  width: 50%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  flex-wrap: wrap;
-  padding: 56px 55px 63px 55px;
+    width: 66%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    /* display: flex; */
+    flex-wrap: wrap;
+    padding: 56px 55px 63px 55px;
+    margin: auto;
 }
 
 .contact100-form-title {
-  width: 100%;
-  display: block;
-  font-family: Poppins-Regular;
-  font-size: 30px;
-  color: #333333;
-  line-height: 1.2;
-  text-align: center;
-  padding-bottom: 33px;
+    width: 100%;
+    display: block;
+    font-family: Poppins-Regular;
+    font-size: 22px;
+    color: #0a0a0a;
+    line-height: 1.2;
+    text-align: center;
+    padding-bottom: 33px;
 }
 
 
@@ -279,13 +274,13 @@ iframe {
 }
 
 .label-input100 {
-  font-family: Poppins-Regular;
+  font-family: 'Work-sans', sans-serif;
   font-size: 12px;
-  color: #555555;
+  color: white;
   line-height: 1.5;
   text-transform: uppercase;
   letter-spacing: 1px;
-  
+  background-color: darkred;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -293,11 +288,11 @@ iframe {
   display: flex;
   align-items: center;
   width: 100%;
-  min-height: 55px;
+  min-height: 43px;
   border: 1px solid #e6e6e6;
   border-bottom: none; 
-  padding: 10px 25px;
-  margin-top: 15px;
+  padding: 8px 16px;
+  margin-top: 25px;
   margin-bottom: 0;
 }
 
@@ -305,15 +300,16 @@ iframe {
   display: block;
   width: 100%;
   background: transparent;
-  font-family: Poppins-Regular;
-  font-size: 18px;
-  color: #666666;
+  font-family: Arial;
+  font-size: 1rem;
+  color: #1b1b1b;
   line-height: 1.2;
-  padding: 0 25px;
+  padding: 8px 16px;
+  height: 43px;
 }
 
 input.input100 {
-  height: 55px;
+  height: 43px;
 }
 
 
@@ -333,7 +329,7 @@ textarea.input100 {
   top: -1px;
   left: -1px;
   pointer-events: none;
-  border: 1px solid #00ad5f;
+  border: 1px solid #f2ba16;
 
   visibility: hidden;
   opacity: 0;
@@ -378,34 +374,35 @@ textarea.input100 {
 }
 
 .contact100-form-btn {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 20px;
-  min-width: 200px;
-  height: 50px;
-  border-radius: 2px;
-  background: #00ad5f;
-
-  font-family: Montserrat-Bold;
-  font-size: 12px;
-  color: #fff;
-  line-height: 1.2;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-
-  -webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  -moz-transition: all 0.4s;
-  transition: all 0.4s;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    min-width: 200px;
+    height: 50px;
+    border-radius: 2px;
+    background: #ab8003;
+    font-family: Montserrat-Bold;
+    font-size: 12px;
+    color: #fff;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
 }
 
-.contact100-form-btn:hover {
-  background: #333333;
+    .contact100-form-btn:hover {
+        background: white;
+        color: #ab8003;
+        border: 1px solid #ab8003;
+    }
 }
 
 
@@ -518,5 +515,81 @@ textarea.input100 {
   }
 }
 
+select {
+    display:none;
+}
+
+.custom-select {
+    position: relative;
+    font-family: Arial;
+    display: inline-block;
+    width: 100%;
+    max-width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: 0;
+    line-height: 1.25;
+    color: #495057;
+    vertical-align: middle;
+    background: none;
+    border: 1px solid rgba(0,0,0,.15);
+    -moz-appearance: none;
+    appearance: none;
+}
+}
+
+    .custom-select select {
+        display: none; /*hide original SELECT element:*/
+    }
 
 
+
+    /*style the arrow inside the select element:*/
+    .select-selected:after {
+        position: absolute;
+        content: "";
+        top: 14px;
+        right: 10px;
+        width: 0;
+        height: 0;
+        border: 6px solid #1b1b1b;
+        border-color: #1b1b1b transparent transparent transparent;
+    }
+
+    /*point the arrow upwards when the select box is open (active):*/
+    .select-selected.select-arrow-active:after {
+        border-color: transparent transparent #fff transparent;
+        top: 7px;
+    }
+
+/*style the items (options), including the selected item:*/
+.select-items div, .select-selected {
+    color: #1b1b1b;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+    cursor: pointer;
+    user-select: none;
+}
+
+/*style items (options):*/
+.select-items {
+    position: absolute;
+    background-color: #f9e4a5;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+}
+
+/*hide the items when the select box is closed:*/
+.select-hide {
+    display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.half-width{
+    width: 50%
+}

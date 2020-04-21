@@ -3,7 +3,7 @@
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
 #team {
-    background: #eee !important;
+    background: #d6d6d6 !important;
 }
 
 .btn-primary:hover,
@@ -114,13 +114,21 @@ section {
     }
 
         .backside .card a {
-            font-size: 18px;
-            color: #8b0000 !important;
+            font-size: 15px;
+            background: darkred;
+            color: white;
         }
+
+            .backside .card a:hover {
+             background: white;
+             color: darkred;
+             border: 1px solid darkred;
+            }
 
         .frontside .card .card-title,
         .backside .card .card-title {
-            color: #8b0000 !important;
+            color: darkblue !important;
+            margin-bottom: 21px;
         }
 
         .frontside .card .card-body img {
@@ -128,3 +136,34 @@ section {
             height: 120px;
             border-radius: 50%;
         }
+.support_head {
+    text-transform: capitalize;
+    color: white;
+    font-weight: 500;
+    font-size: 43px;
+}
+
+.read_more_btn {
+    padding: 8px 16px;
+    background: #ad001c;
+    border-radius: 16px;
+    color: white
+}
+
+.backside .card-text {
+    margin-bottom: 36px;
+}
+
+.ministers p {
+    color: black;
+}
+
+.button {
+    margin-top: 16px;
+    border-radius: 0px;
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(242, 186, 22, 0.2);
+    background-color: darkred;
+    color: #fff;
+}
+

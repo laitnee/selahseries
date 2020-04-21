@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 
 /******************************
@@ -73,7 +73,7 @@ p
 	font-size: 14px;
 	line-height: 1.45;
 	font-weight: 500;
-	color: rgba(0,0,0,0.5);
+	color: rgba(0,0,0,0.8);
 	-webkit-font-smoothing: antialiased;
 	-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
 	text-shadow: rgba(0,0,0,.01) 0 0 1px;
@@ -278,14 +278,13 @@ section
 3.1 Logo
 *********************************/
 
-.logo a
-{
-	font-family: 'Ubuntu', sans-serif;
-	font-size: 20px;
-	color: #FFFFFF;
-	text-transform: uppercase;
-	font-weight: 700;
-	letter-spacing: 0.075em;
+.logo a {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 20px;
+    color: rgba(242, 186, 22, 1);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.075em;
 }
 
 /*********************************
@@ -316,11 +315,10 @@ section
 	-o-transition: all 200ms ease;
 	transition: all 200ms ease;
 }
-.main_nav ul li a:hover,
-.main_nav ul li.active a
-{
-	color: rgba(255,255,255,1);
-}
+    .main_nav ul li a:hover,
+    .main_nav ul li.active a {
+        color: rgb(231, 181, 29);
+    }
 
 /*********************************
 3.3 Weather and Search
@@ -618,13 +616,12 @@ section
 {
 	margin: 0 auto;
 }
-.post_category
-{
-	width: 83px;
-	height: 28px;
-	background: rgba(255,255,255,0.2);
-	border-radius: 14px;
-	text-align: center;
+.post_category {
+    width: 83px;
+    height: 28px;
+    background: #ad001c;
+    border-radius: 14px;
+    text-align: center;
 }
 .post_category a
 {
@@ -768,16 +765,14 @@ section
 	margin-left: 20px;
 	margin-top: 0;
 }
-.post_panel .post_meta a,
-.post_panel .post_meta span
-{
-	display: inline-block;
-	position: relative;
-	font-family: 'Ubuntu', sans-serif;
-	color: rgba(0,0,0,0.25);
-	font-size: 14px;
-	font-weight: 500;
-}
+    .post_panel .post_meta a,
+    .post_panel .post_meta span {
+        display: inline-block;
+        position: relative;
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+    }
 .post_panel .post_meta span
 {
 	margin-left: 10px;
@@ -791,15 +786,14 @@ section
 	left: -4px;
 	content: '•';
 }
-.post_share span
-{
-	font-family: 'Ubuntu', sans-serif;
-	font-size: 12px;
-	text-transform: uppercase;
-	color: rgba(0,0,0,0.2);
-	letter-spacing: 0.075em;
-	font-weight: 700;
-	margin-right: 28px;
+.post_share span {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: rgba(242, 186, 22,0.8);
+    letter-spacing: 0.075em;
+    font-weight: 700;
+    margin-right: 28px;
 }
 .post_share_list
 {
@@ -960,7 +954,7 @@ section
 {
 	font-family: 'Ubuntu', sans-serif;
 	font-size: 18px;
-	color: rgba(0,0,0,0.8);
+	color: #ad001c;
 	font-weight: 700;
 }
 .post_comment_form_container
@@ -1097,117 +1091,182 @@ section
 {
 	color: rgba(0,0,0,1);
 }
-.comment_button
-{
-	width: 143px;
-	height: 36px;
-	background: rgba(45,223,128,0.1);
-	color: rgba(45,223,128,1);
-	border: none;
-	outline: none;
-	border-radius: 18px;
-	cursor: pointer;
-	-webkit-transition: all 200ms ease;
-	-moz-transition: all 200ms ease;
-	-ms-transition: all 200ms ease;
-	-o-transition: all 200ms ease;
-	transition: all 200ms ease;
-	margin-top: 24px;
+.comment_button {
+    width: 143px;
+    height: 36px;
+    background: #ffffff;
+    color: #007bff;
+    border: #007bff 1px solid;
+    outline: none;
+    border-radius: 18px;
+    cursor: pointer;
+    -webkit-transition: all 200ms ease;
+    -moz-transition: all 200ms ease;
+    -ms-transition: all 200ms ease;
+    -o-transition: all 200ms ease;
+    transition: all 200ms ease;
+    margin-top: 24px;
 }
-.comment_button:hover
-{
-	background: rgba(45,223,128,1);
-	color: #FFFFFF;
-}
+    .comment_button:hover {
+        background: #007bff;
+        color: #ffffff;
+    }
 
 /*********************************
 6.5 Comments
 *********************************/
 
-.comments
+.replies
 {
-	margin-top: 70px;
+	margin-top: 30px;
 }
-.comments_title
+.replies_title
 {
 	font-family: 'Ubuntu', sans-serif;
-	font-size: 18px;
-	font-weight: 700;
-	color: rgba(0,0,0,0.8);
+	font-size: 14px;
+	font-weight: 500;
+	color: #ad001c;
+    margin-left: 30px;
+    margin-bottom: 10px;
 }
-.comments_container
+.replies_container
 {
-	width: 100%;
-	margin-top: 44px;
+	width: 93%;
+	margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
 }
-.comment_list > li
+.reply_list > li
 {
 	margin-bottom: 15px;
 }
-.comment
+.reply
 {
 	width: 100%;
 	background: #FFFFFF;
 	border-radius: 6px;
 }
-.comment_body
+.reply_body
 {
 	padding-top: 25px;
 	padding-bottom: 25px;
 	padding-left: 30px;
 	padding-right: 30px;
 }
-.comment_author_image
-{
-	width: 34px;
-	height: 34px;
-	border-radius: 50%;
-	overflow: hidden;
-}
-.comment_body .post_meta
+
+.reply_body .post_meta
 {
 	margin-top: 0;
-	margin-left: 18px;
 }
-.reply_button
-{
-	width: 76px;
-	height: 28px;
-	background: rgba(45,223,128,0.1);
-	color: rgba(45,223,128,1);
-	border: none;
-	outline: none;
-	border-radius: 18px;
-	cursor: pointer;
-	-webkit-transition: all 200ms ease;
-	-moz-transition: all 200ms ease;
-	-ms-transition: all 200ms ease;
-	-o-transition: all 200ms ease;
-	transition: all 200ms ease;
-}
-.reply_button:hover
-{
-	background: rgba(45,223,128,1);
-	color: #FFFFFF;
-}
-.comment_content
+
+.reply_content
 {
 	margin-top: 22px;
 }
-.comment ul li
+
+.reply_info
 {
-	border-top: solid 1px #e5e5e5;
+    margin-top: 20px;
 }
+.reply_info a{
+    color: #007bff;
+}
+    .reply_info a:hover {
+        color: #0014ff;
+    }
+.view_button {
+    text-decoration: underline;
+    cursor: pointer;
+    margin-left: 11px;
+    color: #007bff;
+}
+.comment_reply_form_container{
+    margin-left: 30px;
+}
+
+/*replies*/
+.comments {
+    margin-top: 70px;
+}
+
+.comments_title {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #ad001c;
+}
+
+.comments_container {
+    width: 100%;
+    margin-top: 44px;
+}
+
+.comment_list > li {
+    margin-bottom: 15px;
+}
+
+.comment {
+    width: 100%;
+    background: #FFFFFF;
+    border-radius: 6px;
+}
+
+.comment_body {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.comment_author_image {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.comment_body .post_meta {
+    margin-top: 0;
+}
+
+.reply_button {
+    width: 76px;
+    height: 28px;
+    background: #ffffff;
+    color: #007bff;
+    border: #007bff 1px solid;
+    outline: none;
+    border-radius: 18px;
+    cursor: pointer;
+    -webkit-transition: all 200ms ease;
+    -moz-transition: all 200ms ease;
+    -ms-transition: all 200ms ease;
+    -o-transition: all 200ms ease;
+    transition: all 200ms ease;
+}
+
+    .reply_button:hover {
+        background: #007bff;
+        color: #ffffff;
+    }
+
+.comment_content {
+    margin-top: 22px;
+}
+
+.comment ul li {
+    border-top: solid 1px #e5e5e5;
+}
+
+
 
 /*********************************
 7. Cards
 *********************************/
-
-.card
-{
-	border: none;
-	border-radius: 6px;
-	margin-top: 15px;
+.card {
+    border: none;
+    border-radius: 6px;
+    margin-top: 15px;
 }
 .card-body
 {
@@ -1249,7 +1308,6 @@ section
 {
 	display: block;
 	font-family: 'Ubuntu', sans-serif;
-	color: rgba(0,0,0,0.4);
 	font-size: 12px;
 	font-weight: 500;
 	margin-top: 22px;
@@ -1260,7 +1318,6 @@ section
 	display: inline-block;
 	position: relative;
 	font-family: 'Ubuntu', sans-serif;
-	color: rgba(0,0,0,0.4);
 	font-size: 12px;
 	font-weight: 500;
 }
@@ -1268,6 +1325,7 @@ section
 {
 	margin-left: 10px;
 	padding-left: 5px;
+    color: rgba(0,0,0,0.5);
 }
 .post_meta span::before
 {
@@ -1417,21 +1475,20 @@ section
 {
 	width: 118px;
 	height: 36px;
-	background: transparent;
-	border: solid 1px #d7d7d7;
+	background: #ad001c;
 	border-radius: 18px;
 	margin: 0 auto;
 	line-height: 32px;
 	font-family: 'Ubuntu', sans-serif;
 	font-size: 14px;
 	font-weight: 500;
-	color: rgba(0,0,0,0.5);
+	color: #ffffff;
 	cursor: pointer;
 }
-.load_more_button:hover
-{
-	background: #d7d7d7;
-}
+    .load_more_button:hover {
+        background: rgba(0, 123, 255,0.1);
+        color: #ad001c;
+    }
 
 /*********************************
 9. Sidebar
@@ -1454,12 +1511,11 @@ section
 	height: 100%;
 	background: #ededed;
 }
-.sidebar_title
-{
-	font-family: 'Ubuntu', sans-serif;
-	font-size: 18px;
-	font-weight: 700;
-	color: #000000;
+.sidebar_title {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #ad001c;
 }
 .sidebar_section_content
 {
@@ -1678,7 +1734,7 @@ section
 	font-family: 'Ubuntu', sans-serif;
 	font-size: 20px;
 	font-weight: 700;
-	color: #FFFFFF;
+	color: #f2ba16;
 	letter-spacing: 0.075em;
 	text-transform: uppercase;
 	line-height: 0.75;

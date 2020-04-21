@@ -1745,6 +1745,7 @@ section {
     line-height: 0.75;
 }
 
+
 .footer_social {
     margin-top: 34px;
 }
@@ -1758,7 +1759,7 @@ section {
         }
 
         .footer_social ul li i {
-            color: rgba(242, 186, 22, 0.5;
+            color: #8f8f8f;
         }
 
 .footer_social_facebook:hover i {
@@ -1898,4 +1899,10 @@ section {
 .subscribe_content form:hover .sub_input,
 .sub_input:focus {
     border-bottom: solid 1px rgba(255,255,255,1);
+}
+
+.first_top{
+    width: 84%;
+    margin-left: auto;
+    margin-right: auto;
 }

@@ -59,6 +59,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\NewFolder2\contact2\js\global.js" />
+    <None Include="wwwroot\NewFolder2\contact2\vendor\datepicker\daterangepicker.js" />
+    <None Include="wwwroot\NewFolder2\contact2\vendor\datepicker\moment.min.js" />
+    <None Include="wwwroot\NewFolder2\contact2\vendor\font-awesome-4.7\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\NewFolder2\contact2\vendor\font-awesome-4.7\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\NewFolder2\contact2\vendor\jquery\jquery.js" />
+    <None Include="wwwroot\NewFolder2\contact2\vendor\jquery\jquery.min.js" />
+    <None Include="wwwroot\NewFolder2\contact2\vendor\mdi-font\fonts\Material-Design-Iconic-Font.svg" />
+    <None Include="wwwroot\NewFolder2\contact2\vendor\mdi-font\fonts\Material-Design-Iconic-Font.woff2" />
+    <None Include="wwwroot\NewFolder2\contact2\vendor\select2\select2.min.js" />
     <None Include="wwwroot\NewFolder2\contact\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
     <None Include="wwwroot\NewFolder2\contact\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
     <None Include="wwwroot\NewFolder2\contact\fonts\font-awesome-4.7.0\less\animated.less" />

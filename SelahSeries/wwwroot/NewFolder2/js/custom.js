@@ -414,6 +414,10 @@ $(document).ready(function()
 			});
 		}, 500);
 			
-	}
+    }
+
+    $("#myCarousel").carousel({
+        interval: false
+    });
 
 });

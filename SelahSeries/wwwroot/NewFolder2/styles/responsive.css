@@ -273,6 +273,24 @@
 	{
 		display: inline-block !important;
 	}
+
+    .featured-property-half .image {
+        display: none;
+    }
+
+    .container .featured-property-half div {
+        width: 100%;
+    }
+    .featured-property-half .image {
+        display: none;
+    }
+
+    .container .featured-property-half div {
+        width: 100%;
+    }
+
+
+    
 }
 
 /************
@@ -344,57 +362,71 @@
 	{
 		width: 100%;
 	}
+    .featured-property-half .image {
+        display: none;
+    }
+
+    .container .featured-property-half div {
+        width: 100%;
+    }
+
 }
 
 /************
 11. 575px
 ************/
 
-@media only screen and (max-width: 575px)
-{
-	p
-	{
-		font-size: 12px;
-	}
-	.menu
-	{
-		width: 100%;
-		right: -100%;
-		padding-right: 15px;
-		padding-left: 30px;
-		padding-top: 61px;
-	}
-	.menu_close_container
-	{
-		right: 13px;
-		top: 15px;
-	}
-	.menu .logo
-	{
-		margin-bottom: 20px;
-	}
-	.menu .search
-	{
-		margin-bottom: 29px;
-	}
-	.header.scrolled .header_content
-	{
-		height: 60px;
-	}
-	.home_slider_next_container,
-	.home_slider_nav_container
-	{
-		display: none;
-	}
-	.home_slider_content_container
-	{
-		top: 58%;
-	}
-	.home_slider_item_title a
-	{
-		font-size: 20px;
-	}
-	
+@media only screen and (max-width: 575px) {
+    p {
+        font-size: 12px;
+    }
+
+    .menu {
+        width: 100%;
+        right: -100%;
+        padding-right: 15px;
+        padding-left: 30px;
+        padding-top: 61px;
+    }
+
+    .menu_close_container {
+        right: 13px;
+        top: 15px;
+    }
+
+    .menu .logo {
+        margin-bottom: 20px;
+    }
+
+    .menu .search {
+        margin-bottom: 29px;
+    }
+
+    .header.scrolled .header_content {
+        height: 60px;
+    }
+
+    .home_slider_next_container,
+    .home_slider_nav_container {
+        display: none;
+    }
+
+    .home_slider_content_container {
+        top: 58%;
+    }
+
+    .home_slider_item_title a {
+        font-size: 20px;
+    }
+
+    .featured-property-half .image {
+        display: none;
+    }
+
+    .container.featured-property-half div {
+        width: 100%;
+    }
+}
 
 /************
 11. 539px
@@ -431,6 +463,16 @@
         img#first, img#third {
             margin-top: 0px;
         }
+
+        .featured-property-half .image{
+            display: none;
+        }
+
+        .container.featured-property-half div{
+            width: 100%;
+        }
+
+        
     }
 }
 
@@ -451,5 +493,14 @@
     img#first, img#third {
         margin-top: 0px;
     }
+
+    .featured-property-half .image {
+        display: none;
+    }
+
+    .container .featured-property-half div {
+        width: 100%;
+    }
+
 }
 }
