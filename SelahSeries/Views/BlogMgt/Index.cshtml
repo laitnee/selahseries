@@ -4,7 +4,9 @@
     ViewData["Title"] = "Index";
     ViewData["Add Navigation"] = "false";
 }
-
+@section AddToEnd {
+    <script src="~/NewFolder2/js/blogmgt.js"></script>
+}
 <div style="color: #ffcc00; background-color:black;" class="jumbotron text-center">
     <h1>Blog Content Management Page <br /> (List of Posts)</h1>
     <p> Add, Delete, Edit, Archive Blog Posts Here...</p>
@@ -55,8 +57,8 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Content)
+                <td data-StripTag>
+                    @Html.DisplayFor(modelItem => item.Content) <span>...</span>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.TitleImageUrl)

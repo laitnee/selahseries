@@ -1,5 +1,18 @@
-﻿
-function addEventListeners() {
+﻿function StrigHTMLTags() {
+    document.querySelectorAll('[data-StripTag]').forEach((element) => {
+        let stripTagContent = element.textContent.trim().substring(0, 30).replace(/<(?:.|\s)*?>/g, "") + "...";
+        element.textContent = stripTagContent;
+    });
+}
+
+function UseHTMLTags() {
+    let element = document.querySelector('[data-usehtmltag]')
+    if (element) {
+        let useHTMLContent = element.textContent;
+        element.innerHTML = useHTMLContent;
+    }
+}
+function FileUploadMod() {
         document.querySelector('[data-fileSelector]').addEventListener("change", (e) => {
             document.querySelector('[data-fileValue]').textContent =
                 document.querySelector('[data-fileSelector]').files[0].name + " ( " + e.target.files[0].size +"kb )";
@@ -7,7 +20,8 @@ function addEventListeners() {
         document.querySelector('[data-mockFile]').addEventListener("click",
             () => { document.querySelector('[data-fileSelector]').click(); });
 }
-function collapsibles() {
+
+function Collapsibles() {
     var coll = document.getElementsByClassName("collapsible");
     var i;
 
@@ -34,4 +48,4 @@ function collapsibles() {
         });
     }
 }
-document.addEventListener("DOMContentLoaded", () => { addEventListeners(); collapsibles();});
+document.addEventListener("DOMContentLoaded", function () { StrigHTMLTags(); UseHTMLTags(); Collapsibles();  FileUploadMod();  });

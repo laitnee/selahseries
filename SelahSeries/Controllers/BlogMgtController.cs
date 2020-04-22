@@ -74,7 +74,7 @@ namespace SelahSeries.Controllers
         // POST: BlogMgt/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([FromForm] Post post)
+        public ActionResult Create(IFormFile file, [FromForm] Post post)
         {
             try
             {
@@ -109,7 +109,9 @@ namespace SelahSeries.Controllers
             try
             {
                 // TODO: Add update logic here
-                BlogPosts[id+1] = postForm;
+                var post = BlogPosts[id+1];
+                postForm.PostId = post.PostId;
+                post = postForm;
                 return RedirectToAction(nameof(Index));
             }
             catch

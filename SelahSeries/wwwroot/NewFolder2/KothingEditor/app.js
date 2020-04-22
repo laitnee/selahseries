@@ -3,8 +3,6 @@ import './build/keditor.min.js';
 
 const _keditor = KEDITOR.create("contentEditor", {
     showPathLabel: false,
-    charCounter: true,
-    maxCharCount: 1000,
     width: "auto",
     maxWidth: "100%",
     height: "auto",
@@ -46,5 +44,6 @@ const _keditor = KEDITOR.create("contentEditor", {
     callBackSave: function (contents) {
         document.querySelector('#contentEditor').textContent = contents;
     },
-  });
+});
+
 $(document).ready(_keditor);

@@ -12,9 +12,10 @@
 @section AddToEnd {
     <script src="~/NewFolder2/plugins/parallax-js-master/parallax.min.js"></script>
     <script src="~/NewFolder2/js/post.js"></script>>
+    <script src="~/NewFolder2/js/blogmgt.js"></script>
 }
 <style>
-    .post_content .post_meta span{
+    .post_content .post_meta span {
         color: rgba(0,0,0,0.5);
     }
 </style>
@@ -50,19 +51,19 @@
                             <div class="post_meta"> @Html.DisplayFor(model => model.Author)</a><span>@Html.DisplayFor(model => model.CreatedAt)</span></div>
                             <div class="post_meta"> Modified <span>@Html.DisplayFor(model => model.ModifiedAt)</span></div>
                             <div style="  @(Model.Published? "color:green;" :"color:red;")" class="post_share ml-sm-auto">
-                                 @(Model.Published? "PUBLISHED" : "UNPUBLISHED" )
-                                
+                                @(Model.Published ? "PUBLISHED" : "UNPUBLISHED" )
+
                             </div>
                         </div>
                         <div class="btn-group m-2 text-center">
                             <a class="btn btn-outline-info" class="btn btn-outline-danger" asp-action="Edit" asp-route-id="@Model.PostId">Edit</a>
-                           <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@Model.PostId">Delete</a>
+                            <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@Model.PostId">Delete</a>
                             <a class="btn btn-outline-secondary" asp-action="Index">Back to List</a>
                         </div>
                         <!-- Post Body -->
 
                         <div class="post_body">
-                            <p class="post_p">@Html.DisplayFor(model => model.Content)</p>
+                            <p data-usehtmltag class="post_p">@Html.DisplayFor(model => model.Content)</p>
                             <figure>
                                 <img src="images/post_image.jpg" alt="">
                                 <figcaption>Lorem Ipsum Dolor Sit Amet</figcaption>
@@ -79,7 +80,7 @@
 
                     </div>
 
-                    
+
                     <div style="color: #ffcc00; background-color:black; margin-bottom:0;" class=" text-center">
                         <h1>Selah Series</h1>
                         <p> &copy; 2020</p>
