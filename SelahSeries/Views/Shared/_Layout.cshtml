@@ -53,27 +53,41 @@
                                     <ul>
                                         <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
                                         <li>
-                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <a class="nav-link dropdown-toggle" href="~/" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 Blog
                                             </a>
                                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
-                                                <a>@Html.ActionLink("Relationship & Marriage", "Category", "Blog", new { @class = "dropdown-item" })</a>
-                                                <a>  @Html.ActionLink("Politics", "Category", "Blog", new { @class = "dropdown-item" })</a>
+
+                                              
+                                             
                                                 <a>   @Html.ActionLink("Sports", "Category", "Blog", new { @class = "dropdown-item" }) </a>
+
+                                                <a class="dropdown-item" href="~/Blog/Category">Relationship & Marriage</a>
+                                                <a class="dropdown-item" href="~/Blog/Category">Politics</a>
+                                                <a class="dropdown-item" href="~/Blog/Category">Sports</a>
+                                                <a class="dropdown-item" href="~/Blog/Category">Career</a>
+
                                             </div>
                                         </li>
+                                        <li>@Html.ActionLink("About", "About", "Home")</li>
                                         <li>
                                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 Support/Counselling
                                             </a>
                                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                                <a>@Html.ActionLink("Our Suport Links", "Index", "Support", new { @class = "dropdown-item" })</a>
-                                                <a> @Html.ActionLink("Send Message", "Message_Form", "Support", new { @class = "dropdown-item" })</a>
+
+                                              
+                                               
+
+
+                                                <a class="dropdown-item" href="~/Support/Index">Our Support Links</a>
+                                                <a class="dropdown-item" href="~/Support/Message_Form">Send Message</a>
+ 
                                             </div>
                                         </li>
                                         <li>@Html.ActionLink("Books", "Index", "Home")</li>
-                                        <li>@Html.ActionLink("About", "About", "Home")</li>
+
                                         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                                     </ul>
                                 </nav>
@@ -135,7 +149,7 @@
                     <div class="row row-lg-eq-height">
                         <div class="col-lg-12 order-lg-1 order-2">
                             <div class="footer_content">
-                                <div class="footer_logo"><a href="#">selah</a></div>
+                                <div class="footer_logo" style="color: #f2ba16"><a href="#">selah</a></div>
                                 <div class="footer_social">
                                     <ul>
                                         <li class="footer_social_facebook"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>

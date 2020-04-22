@@ -98,7 +98,7 @@ a {
     .btn.btn-primary {
         border: none;
         box-shadow: 0 4px 8px 0 rgba(242, 186, 22, 0.2);
-        background-color: #D91438;
+        background-color: #c31132;
         color: #fff;
         border-radius: 17px;
     }
@@ -533,7 +533,7 @@ a {
 .site-blocks-cover {
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: top; }
+  background-position: center; }
   .site-blocks-cover.overlay {
     position: relative; }
     .site-blocks-cover.overlay:before {
@@ -543,7 +543,7 @@ a {
       bottom: 0;
       right: 0;
       top: 0;
-      background: rgba(0, 0, 0, 0.4); }
+      background: rgba(0, 0, 0, 0.7); }
   .site-blocks-cover, .site-blocks-cover .row {
     min-height: 600px;
     height: calc(100vh); }
@@ -1796,7 +1796,7 @@ figure figcaption {
 .featured-property-half {
   position: relative;
   background: #fff;
-  margin-top: -100px;
+  margin-top: -70px;
   -webkit-box-shadow: 0 0 20px -5px rgba(0, 0, 0, 0.1);
   box-shadow: 0 0 20px -5px rgba(0, 0, 0, 0.1); }
   .featured-property-half div {
@@ -1806,7 +1806,7 @@ figure figcaption {
     background-position: center center;
     background-repeat: no-repeat; }
   .featured-property-half .text {
-    padding: 100px; }
+    padding: 62px; }
     .featured-property-half .text ul {
       padding: 0;
       margin: 0;
@@ -1817,3 +1817,11 @@ figure figcaption {
         font-weight: bold; }
       .featured-property-half .text ul li {
         margin-bottom: 10px; }
+
+
+.support_head{
+    text-transform: capitalize;
+    color: white;
+    font-weight: 500;
+    font-size: 43px;
+}

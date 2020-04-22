@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 
 /******************************
@@ -739,7 +739,6 @@ section
 	font-family: 'Ubuntu', sans-serif;
 	font-size: 12px;
 	font-weight: 500;
-	color: rgba(0,0,0,0.4);
 	text-transform: uppercase;
 	letter-spacing: 0.025em;
 }
