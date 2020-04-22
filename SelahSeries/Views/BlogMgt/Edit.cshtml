@@ -118,7 +118,12 @@
             <div class="form-group">
                 <button type="button" class="collapsible"> Select Category</button>
                 <div class="content">
-                    <input asp-for="CategoryId" class="form-control" />
+                    <select asp-for="CategoryId" class="form-Control">
+                        <option value=1>Sports</option>
+                        <option value=2>Relationship and Marriage</option>
+                        <option value=3>Career</option>
+                        <option value=4>Politics</option>
+                    </select>
                     <span asp-validation-for="CategoryId" class="text-danger"></span>
                 </div>
 

@@ -52,6 +52,7 @@
                                 <nav class="main_nav">
                                     <ul>
                                         <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
+                                        <li>@Html.ActionLink("About", "About", "Home")</li>
                                         <li>
                                             <a class="nav-link dropdown-toggle" href="~/" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 Blog
@@ -59,8 +60,8 @@
                                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
 
-                                              
-                                             
+
+
                                                 <a>   @Html.ActionLink("Sports", "Category", "Blog", new { @class = "dropdown-item" }) </a>
 
                                                 <a class="dropdown-item" href="~/Blog/Category">Relationship & Marriage</a>
@@ -70,20 +71,20 @@
 
                                             </div>
                                         </li>
-                                        <li>@Html.ActionLink("About", "About", "Home")</li>
+
                                         <li>
                                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 Support/Counselling
                                             </a>
                                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
-                                              
-                                               
+
+
 
 
                                                 <a class="dropdown-item" href="~/Support/Index">Our Support Links</a>
                                                 <a class="dropdown-item" href="~/Support/Message_Form">Send Message</a>
- 
+
                                             </div>
                                         </li>
                                         <li>@Html.ActionLink("Books", "Index", "Home")</li>
