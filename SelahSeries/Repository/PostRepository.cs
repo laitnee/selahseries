@@ -43,7 +43,7 @@ namespace SelahSeries.Repository
         public async Task<PaginatedList<Post>> GetPostsByCategory(PaginationParam pageParam, int categoryId)
         {
             return await _selahDbContext.Posts
-                                .Where(post => post.CatergoryId == categoryId || post.Category.ParentId == categoryId)
+                                .Where(post => post.CategoryId == categoryId || post.Category.ParentId == categoryId)
                                 .ToPaginatedListAsync(pageParam.PageIndex, pageParam.Limit, pageParam.SortColoumn);
         }
         public async Task<PaginatedList<Post>> GetPublishedPosts(PaginationParam pageParam)
@@ -56,7 +56,7 @@ namespace SelahSeries.Repository
         public async Task<PaginatedList<Post>> GetPublishedPostsByCategory(PaginationParam pageParam, int categoryId)
         {
             return await _selahDbContext.Posts
-                                .Where(post => (post.CatergoryId == categoryId ||  post.ParentId == categoryId) && post.Published == true)
+                                .Where(post => (post.CategoryId == categoryId ||  post.ParentId == categoryId) && post.Published == true)
                                 .ToPaginatedListAsync(pageParam.PageIndex, pageParam.Limit, pageParam.SortColoumn);
         }
         public async Task<bool> UpdatePost(Post post)

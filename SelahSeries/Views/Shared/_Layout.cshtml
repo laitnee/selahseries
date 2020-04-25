@@ -37,10 +37,67 @@
     </environment>
 </head>
 <body>
-
     
-        <div class="site-wrap">
+
+    <div class="site-wrap">
+        @if (ViewData["Add Navigation"] != "false")
+        {
             <header class="header">
+<<<<<<< HEAD
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="header_content d-flex flex-row align-items-center justify-content-start">
+
+                                <div class="logo">@Html.ActionLink("SELAH", "Index", "Home")</div>
+                                <nav class="main_nav">
+                                    <ul>
+                                        <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
+                                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                                        <li>
+                                            <a class="nav-link dropdown-toggle" href="~/" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Blog
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+
+
+
+                                                <a>   @Html.ActionLink("Sports", "Category", "Blog", new { @class = "dropdown-item" }) </a>
+
+                                                <a class="dropdown-item" href="~/Blog/Category">Relationship & Marriage</a>
+                                                <a class="dropdown-item" href="~/Blog/Category">Politics</a>
+                                                <a class="dropdown-item" href="~/Blog/Category">Sports</a>
+                                                <a class="dropdown-item" href="~/Blog/Category">Career</a>
+
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Support/Counselling
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+
+
+
+
+                                                <a class="dropdown-item" href="~/Support/Index">Our Support Links</a>
+                                                <a class="dropdown-item" href="~/Support/Message_Form">Send Message</a>
+
+                                            </div>
+                                        </li>
+                                        <li>@Html.ActionLink("Books", "Index", "Home")</li>
+
+                                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                                    </ul>
+                                </nav>
+                                <div class="hamburger ml-auto menu_mm">
+                                    <i class="fa fa-bars trans_200 menu_mm" aria-hidden="true"></i>
+                                </div>
+                            </div>
+=======
                 
                    
 
@@ -85,6 +142,7 @@
                                       <a class="nav-link" href="~/Home/Contact">Contact</a>
                                   </li>
                               </ul>
+>>>>>>> 5d64b067c34bc0478c606b264274a678f3b395c2
                         </div>
                             
 
@@ -127,11 +185,13 @@
                 </nav>
             </div>*@
 
+        }
 
 
-            @RenderBody()
+        @RenderBody()
 
-
+        @if (ViewData["Add Navigation"] != "false")
+        {
             <!-- Footer -->
 
             <footer class="footer">
@@ -153,7 +213,7 @@
                                 <div class="copyright">
                                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                     Copyright &copy;
-                                    <script>document.write(new Date().getFullYear());</script> 
+                                    <script>document.write(new Date().getFullYear());</script>
                                     @*<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>*@
                                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                 </div>
@@ -162,38 +222,39 @@
                     </div>
                 </div>
             </footer>
+        }
         </div>
-        <environment include="Development">
-            <script src="~/NewFolder2/js/jquery-3.2.1.min.js"></script>
-            <script src="~/NewFolder2/styles/bootstrap4/popper.js"></script>
-            <script src="~/NewFolder2/styles/bootstrap4/bootstrap.min.js"></script>
-            <script src="~/NewFolder2/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-            <script src="~/NewFolder2/plugins/easing/easing.js"></script>
-            <script src="~/NewFolder2/plugins/masonry/masonry.js"></script>
-            <script src="~/NewFolder2/js/js3/aos.js"></script>
-            <script src="~/NewFolder2/js/js3/main.js"></script>
-            @if (IsSectionDefined("AddToEnd"))
-            {
-                @RenderSection("AddToEnd", required: false)
-            }
-        </environment>
-        <environment exclude="Development">
-            <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
-                    asp-fallback-src="~/NewFolder2/js/jquery-3.2.1.min.js"
-                    asp-fallback-test="window.jQuery"
-                    crossorigin="anonymous"
-                    integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
-            </script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
-                    asp-fallback-src="~/NewFolder2/js/styles/bootstrap4/bootstrap.min.js"
-                    asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-                    crossorigin="anonymous"
-                    integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd">
-            </script>
-            <script src="~/js/site.min.js" asp-append-version="true"></script>
-        </environment>
+    <environment include="Development">
+        <script src="~/NewFolder2/js/jquery-3.2.1.min.js"></script>
+        <script src="~/NewFolder2/styles/bootstrap4/popper.js"></script>
+        <script src="~/NewFolder2/styles/bootstrap4/bootstrap.min.js"></script>
+        <script src="~/NewFolder2/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+        <script src="~/NewFolder2/plugins/easing/easing.js"></script>
+        <script src="~/NewFolder2/plugins/masonry/masonry.js"></script>
+        <script src="~/NewFolder2/js/js3/aos.js"></script>
+        <script src="~/NewFolder2/js/js3/main.js"></script>
+        @if (IsSectionDefined("AddToEnd"))
+        {
+            @RenderSection("AddToEnd", required: false)
+        }
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                asp-fallback-src="~/NewFolder2/js/jquery-3.2.1.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+                asp-fallback-src="~/NewFolder2/js/styles/bootstrap4/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
 
-        @RenderSection("Scripts", required: false)
+    @RenderSection("Scripts", required: false)
 
 
 </body>
@@ -206,6 +267,9 @@
     .dropdown-menu a:hover{
         color: cadetblue;
     }
+<<<<<<< HEAD
+</style>
+=======
     .topnav a:hover {
         border-bottom: 3px solid red;
     }
@@ -229,3 +293,4 @@
         color: rgba(0,0,0,.9);
     }
 </style>
+>>>>>>> 5d64b067c34bc0478c606b264274a678f3b395c2

@@ -1,0 +1,149 @@
+﻿@model SelahSeries.Models.Post
+
+@{
+    ViewData["Title"] = "Edit";
+    ViewData["Add Navigation"] = "false";
+}
+
+
+@section AddToHead {
+    <link rel="stylesheet" type="text/css" href="~/NewFolder2/KothingEditor/build/css/keditor.min.css">
+    <style>
+        .collapsible {
+            background-color: #777;
+            color: white;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+        }
+
+            .active, .collapsible:hover {
+                background-color: rgba(3, 73, 165, 0.7);
+            }
+
+            .collapsible:after {
+                content: '\002B';
+                color: white;
+                font-weight: bold;
+                float: right;
+                margin-left: 5px;
+            }
+
+        .active:after {
+            content: "\2212";
+        }
+
+        .content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            background-color: rgba(242, 242, 242, 1);
+        }
+
+            .content input {
+                border: none;
+                outline: none;
+                border-bottom: solid #D91438 2px;
+            }
+
+                .content input active {
+                    border-bottom: solid #D91438 3px;
+                }
+    </style>
+}
+@section AddToEnd {
+    <script src="~/NewFolder2/KothingEditor/app.js" type="module"></script>
+    <script src="~/NewFolder2/js/blogmgt.js"></script>
+
+}
+<hr />
+<div class="row">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10">
+        @using (Html.BeginForm("Edit", "BlogMgt", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="PostId" />
+            <span type="hidden" asp-validation-for="ParentId" class="text-danger"></span>
+
+            <div class="form-group">
+                <button type="button" class="collapsible">Enter author's name</button>
+                <div class="content">
+                    <input asp-for="Author" class="form-control" />
+                    <span asp-validation-for="Author" class="text-danger"></span>
+                </div>
+
+
+            </div>
+            <div class="form-group">
+                <button type="button" class="collapsible">Enter post title</button>
+                <div class="content">
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button type="button" class="collapsible">Post Body/Content</button>
+                <div class="content">
+                    <span asp-validation-for="Content" class="text-danger"></span>
+                    <textarea asp-for="Content" id="contentEditor" style="width: 100%; height: 200px; display: none;">  </textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="button" class="collapsible"> Upload Image for Article Heading</button>
+                <div class="content">
+                    <a data-mockFile style="color:white;" class=" btn btn-primary"> Select Image </a>
+                    <span style="color:blue;" data-fileValue> </span>
+                    <input type="file" data-fileSelector style="visibility:hidden" accept="image/*" />
+                </div>
+
+            </div>
+            <div class="form-group">
+                <button type="button" class="collapsible"> Publish Post</button>
+                <div class="content">
+                    <div class="checkbox">
+                        <label>
+                            Publish <input asp-for="Published" />
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <button type="button" class="collapsible"> Select Category</button>
+                <div class="content">
+                    <select asp-for="CategoryId" class="form-Control">
+                        <option value=1>Sports</option>
+                        <option value=2>Relationship and Marriage</option>
+                        <option value=3>Career</option>
+                        <option value=4>Politics</option>
+                    </select>
+                    <span asp-validation-for="CategoryId" class="text-danger"></span>
+                </div>
+
+            </div>
+            <div style="text-align: center;" class="form-group">
+                <input type="submit" value="Save Changes" class="btn btn-danger btn-lg" />
+            </div>
+        }
+    </div>
+    <div class="col-lg-1"></div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+<div style="color: #ffcc00; background-color:black; margin-bottom:0;" class=" text-center">
+    <h1>Selah Series</h1>
+    <p> &copy; 2020</p>
+</div>

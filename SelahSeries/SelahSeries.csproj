@@ -81,6 +81,9 @@
     <None Include="wwwroot\NewFolder2\js\post.js" />
     <None Include="wwwroot\NewFolder2\js\post_nosidebar.js" />
     <None Include="wwwroot\NewFolder2\js\regular.js" />
+    <None Include="wwwroot\NewFolder2\KothingEditor\build\fonts\688522218ec6987e6fada6a165d490d7.woff2" />
+    <None Include="wwwroot\NewFolder2\KothingEditor\build\fonts\8ff9f7f411ce1684210c0b15ad4e9f5c.svg" />
+    <None Include="wwwroot\NewFolder2\KothingEditor\build\keditor.min.js" />
     <None Include="wwwroot\NewFolder2\plugins\easing\easing.js" />
     <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
     <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />

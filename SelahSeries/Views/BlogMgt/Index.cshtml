@@ -1,0 +1,93 @@
+﻿@model IEnumerable<SelahSeries.Models.Post>
+
+@{
+    ViewData["Title"] = "Index";
+    ViewData["Add Navigation"] = "false";
+}
+@section AddToEnd {
+    <script src="~/NewFolder2/js/blogmgt.js"></script>
+}
+<div style="color: #ffcc00; background-color:black;" class="jumbotron text-center">
+    <h1>Blog Content Management Page <br /> (List of Posts)</h1>
+    <p> Add, Delete, Edit, Archive Blog Posts Here...</p>
+</div>
+
+
+<p>
+    <a class="btn btn-primary btn-lg" asp-action="Create">Create New Blog Post</a>
+</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Content)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TitleImageUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Published)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td data-StripTag>
+                    @Html.DisplayFor(modelItem => item.Content) <span>...</span>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TitleImageUrl)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Published)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedAt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModifiedAt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryId)
+                </td>
+                <td>
+                    <div class="btn-group">
+                        <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.PostId">Edit</a>
+                        <a class="btn btn-info" asp-action="Details" asp-route-id="@item.PostId">Details</a>
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.PostId">Delete</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div style="color: #ffcc00; background-color:black; margin-bottom:0;" class=" text-center">
+    <h1>Selah Series</h1>
+    <p> &copy; 2020</p>
+</div>
