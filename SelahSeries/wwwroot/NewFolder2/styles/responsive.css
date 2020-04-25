@@ -288,8 +288,15 @@
     .container .featured-property-half div {
         width: 100%;
     }
-
-
+    .col-lg-8 .site-section-heading{
+        padding: 9px;
+    }
+    .featured{
+        width: 94%;
+    }
+    .container .featured {
+        width: 94%;
+    }
     
 }
 
@@ -370,6 +377,10 @@
         width: 100%;
     }
 
+    .col-lg-8 .site-section-heading {
+        padding: 9px;
+    }
+
 }
 
 /************
@@ -426,6 +437,14 @@
     .container.featured-property-half div {
         width: 100%;
     }
+
+    .col-lg-8 .site-section-heading {
+        padding: 9px;
+    }
+
+    .container .featured {
+        width: 100%;
+    }
 }
 
 /************
@@ -472,7 +491,12 @@
             width: 100%;
         }
 
-        
+        .col-lg-8 .site-section-heading {
+            padding: 9px;
+        }
+        .container .featured {
+            width: 100%;
+        }
     }
 }
 
@@ -502,5 +526,11 @@
         width: 100%;
     }
 
+    .col-lg-8 .site-section-heading {
+        padding: 9px;
+    }
+    .container .featured {
+        width: 100%;
+    }
 }
 }
