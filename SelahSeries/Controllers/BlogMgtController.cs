@@ -10,6 +10,7 @@ using SelahSeries.Models;
 using SelahSeries.Models.DTOs;
 using SelahSeries.ViewModels;
 using Microsoft.AspNetCore.Hosting;
+using SelahSeries.Repository;
 
 namespace SelahSeries.Controllers
 {
@@ -17,68 +18,35 @@ namespace SelahSeries.Controllers
     {
         private readonly IMapper _mapper;
         private readonly IHostingEnvironment hostingEnvironment;
-        static List<Post> BlogPosts = new List<Post>
+        private readonly IPostRepository _postRepo;
+        public BlogMgtController(IPostRepository postRepo, IMapper mapper, IHostingEnvironment environment)
         {
-            new Post
-            {
-                PostId = 1,
-                ParentId = 2,
-                Author = "Lekan Agunbiade",
-                Title = "Why do we cry",
-                Content = "We cry not because we are weak but because we are humans",
-                TitleImageUrl = "defaultPostPhoto.jpg",
-                Published = true,
-                CreatedAt = new DateTime(2009, 11, 23),
-                ModifiedAt = new DateTime(2019, 05, 09),
-                CategoryId = 1,
-            },
-            new Post
-            {
-                PostId = 2,
-                ParentId = 2,
-                Author = "Titilayo Agunbiade",
-                Title = "Marriage Life",
-                Content = "What would we be if we are single to stupor",
-                TitleImageUrl = "defaultPostPhoto.jpg",
-                Published = true,
-                CreatedAt = new DateTime(2012, 11, 23),
-                ModifiedAt = new DateTime(2019, 05, 09),
-                CategoryId = 1,
-            },
-            new Post
-            {
-                PostId = 3,
-                ParentId = 2,
-                Author = "Lois Smart",
-                Title = "The path of a champion",
-                Content = "It takes training, hardwork, tenacity and little talent to forge a path - Olympiad champion",
-                TitleImageUrl = "defaultPostPhoto.jpg",
-                Published = false,
-                CreatedAt = new DateTime(2013, 11, 23),
-                ModifiedAt = new DateTime(2019, 05, 09),
-                CategoryId = 1,
-            }
-        };
-        public BlogMgtController(IMapper mapper, IHostingEnvironment environment)
-        {
+            _postRepo = postRepo;
             _mapper = mapper;
             hostingEnvironment = environment;
         }
         // GET: BlogMgt
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View(BlogPosts);
+            var pageParam = new PaginationParam
+            {
+                PageIndex = 1,
+                Limit = 20,
+                SortColoumn = "CreatedAt"
+            };
+            var posts = await _postRepo.GetPosts(pageParam); 
+            return View(posts.Source);
         }
 
         // GET: BlogMgt/Details/5
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Details(int id)
         {
-            var blog = BlogPosts.Where(x => x.PostId == id).FirstOrDefault();
-            return View(blog);
+            var post = await _postRepo.GetPost(id);
+            return View(post);
         }
 
         // GET: BlogMgt/Create
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
             return View();
         }
@@ -88,33 +56,26 @@ namespace SelahSeries.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([FromForm] PostCreateViewModel postVM)
         { 
-
             if (ModelState.IsValid)
             {
                 var uploadedImage = "";
-
                 if(postVM.PostPhoto != null) uploadedImage = await ProcessPhoto(postVM.PostPhoto);
-                   
+
                 try
                 {
                     var post = _mapper.Map<Post>(postVM);
                     post.CreatedAt = DateTime.Now;
-                    post.ModifiedAt = DateTime.Now;
-                    post.PostId = BlogPosts.Count +1;
-                    post.ParentId = 3;
-                    post.TitleImageUrl = string.IsNullOrWhiteSpace(uploadedImage)? "defaultPostPhoto.jpg" : uploadedImage;
+                    post.TitleImageUrl = string.IsNullOrWhiteSpace(uploadedImage) ? "defaultPostPhoto.jpg" : uploadedImage;
 
-                    BlogPosts.Add(post);
-                
-                    return RedirectToAction(nameof(Index));
-                }
-                catch
-                {
+                    if (await _postRepo.AddPost(post)) return RedirectToAction(nameof(Index));
+
+                    ViewBag.Error = "Unable to add post, please try again or contact administrator";
                     return View();
                 }
+                catch { return View(); }               
             }
            
-                return View(postVM);
+            return View(postVM);
             
         }
 
@@ -138,10 +99,10 @@ namespace SelahSeries.Controllers
         }
 
         // GET: BlogMgt/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
 
-            var blogPost = BlogPosts.Where(x => x.PostId == id).FirstOrDefault();
+            var blogPost = await _postRepo.GetPost(id);
             var blogPostVM = _mapper.Map<PostCreateViewModel>(blogPost);
             return View(blogPostVM);
         }
@@ -157,19 +118,14 @@ namespace SelahSeries.Controllers
                 if (postVM.PostPhoto != null) uploadedImage = await ProcessPhoto(postVM.PostPhoto);
                 try
                 {
-                    var post = BlogPosts[postVM.PostId];
                     var editPost = _mapper.Map<Post>(postVM);
-
-                    post = editPost;
-                    post.TitleImageUrl = string.IsNullOrWhiteSpace(uploadedImage) ? post.TitleImageUrl
+                    var post = await _postRepo.GetPost(postVM.PostId);
+                    editPost.TitleImageUrl = string.IsNullOrWhiteSpace(uploadedImage) ? post.TitleImageUrl
                         : uploadedImage;
-
+                    await _postRepo.UpdatePost(editPost);
                     return RedirectToAction(nameof(Index));
                 }
-                catch
-                {
-                    return View();
-                }
+                catch { return View(); }
             }
             return View();
         }
@@ -177,8 +133,7 @@ namespace SelahSeries.Controllers
         // GET: BlogMgt/Delete/5
         public ActionResult Delete(int id)
         {
-            var post = BlogPosts.Where(pos => pos.PostId == id).FirstOrDefault();
-            BlogPosts.Remove(post);
+            _postRepo.DeletePost(id);
             return RedirectToAction(nameof(Index));
         }
 

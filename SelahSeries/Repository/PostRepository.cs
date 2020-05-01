@@ -33,7 +33,12 @@ namespace SelahSeries.Repository
                             .FirstOrDefaultAsync();
 
         }
-
+        public void DeletePost(int postId)
+        {
+            var post = GetPost(postId);
+            _selahDbContext.Remove(post);
+            _selahDbContext.SaveChanges();
+        }
         public async Task<PaginatedList<Post>> GetPosts(PaginationParam pageParam)
         {
             return await _selahDbContext.Posts
@@ -61,7 +66,7 @@ namespace SelahSeries.Repository
         }
         public async Task<bool> UpdatePost(Post post)
         {
-            _selahDbContext.Update(post);
+            _selahDbContext.Update<Post>(post);
             return Convert.ToBoolean(await _selahDbContext.SaveChangesAsync());
         }
         public Task ClapPost()

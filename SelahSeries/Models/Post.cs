@@ -8,8 +8,13 @@ namespace SelahSeries.Models
 {
     public class Post
     {
+        public Post()
+        {
+            
+            ModifiedAt = DateTime.Now;
+        }
         public int PostId { get; set; }
-        public int ParentId { get; set; }
+        public int? ParentId { get; set; }
         [StringLength(50)]
         public string Author { get; set; }
         [StringLength(100)]

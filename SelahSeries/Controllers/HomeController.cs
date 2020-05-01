@@ -4,12 +4,19 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using SelahSeries.Data;
 using SelahSeries.Models;
 
 namespace SelahSeries.Controllers
 {
     public class HomeController : Controller
     {
+        public HomeController(
+            //SeedData seedData
+            )
+        {
+
+        }
         public IActionResult Index()
         {
            
