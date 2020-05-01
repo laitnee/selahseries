@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace SelahSeries.Repository
 {
-    interface ICategoryRepository
+    public interface ICategoryRepository
     {
+        Task<bool> AddCategory(Category category);
         Task<Category> GetCategory(int id);
         Task<List<Category>> GetCategoriesAsync(); 
     }

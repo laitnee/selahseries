@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using SelahSeries.Data;
 using SelahSeries.Repository;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,14 @@ namespace SelahSeries.Core
             services.AddTransient<ISoftBookRepository, SoftBookRepository>();
 
             return services;
+        }
+        public static IServiceCollection AddSeedData(this IServiceCollection services)
+        {
+            services.AddTransient<SeedData>(sp => new SeedData(sp.GetService<ICommentRepository>(), 
+                sp.GetService<IPostRepository>(), 
+                sp.GetService<ICategoryRepository>()));
+            
+                return services;
         }
     }
 }

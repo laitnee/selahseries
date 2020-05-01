@@ -1,4 +1,4 @@
-﻿@model SelahSeries.Models.Post
+﻿@model SelahSeries.ViewModels.PostCreateViewModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -68,7 +68,6 @@
         {
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="PostId" />
-            <span type="hidden" asp-validation-for="ParentId" class="text-danger"></span>
 
             <div class="form-group">
                 <button type="button" class="collapsible">Enter author's name</button>
@@ -99,7 +98,7 @@
                 <div class="content">
                     <a data-mockFile style="color:white;" class=" btn btn-primary"> Select Image </a>
                     <span style="color:blue;" data-fileValue> </span>
-                    <input type="file" data-fileSelector style="visibility:hidden" accept="image/*" />
+                    <input type="file"  asp-for="PostPhoto" data-fileSelector style="visibility:hidden" accept="image/*" />
                 </div>
 
             </div>
