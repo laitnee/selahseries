@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SelahSeries.Repository
 {
-    interface IPostRepository
+    public interface IPostRepository
     {
         Task<bool> AddPost(Post post);
         Task<Post> GetPost(int postId);

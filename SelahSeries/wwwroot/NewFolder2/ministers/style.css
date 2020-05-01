@@ -2,9 +2,7 @@
 
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
-#team {
-    background: #d6d6d6 !important;
-}
+
 
 .btn-primary:hover,
 .btn-primary:focus {
@@ -132,9 +130,9 @@ section {
         }
 
         .frontside .card .card-body img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
+            width: 179px;
+            height: 179px;
+            border-radius: 0px;
         }
 .support_head {
     text-transform: capitalize;

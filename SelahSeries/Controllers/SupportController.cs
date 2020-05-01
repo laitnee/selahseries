@@ -19,8 +19,9 @@ namespace SelahSeries.Controllers
         }
 
 
-        public IActionResult Bio()
+        public IActionResult Bio(int id)
         {
+            ViewData["Id"] = id;
             return View();
         }
     }

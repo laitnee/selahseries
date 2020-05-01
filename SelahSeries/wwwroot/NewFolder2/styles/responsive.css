@@ -297,6 +297,18 @@
     .container .featured {
         width: 94%;
     }
+    div.containe{
+        padding: 47px;
+    }
+    div .containe .card2{
+        margin-bottom: 25px;
+    }
+    div.books .carousel-inner{
+        height: 358px;
+    }
+    .bass .imge{
+        display: none;
+    }
     
 }
 
@@ -497,6 +509,9 @@
         .container .featured {
             width: 100%;
         }
+        div.containe{
+            padding: 32px;
+        }
     }
 }
 
@@ -532,5 +547,13 @@
     .container .featured {
         width: 100%;
     }
+    div.containe{
+        padding: 35px;
+    }
 }
+
+@media only screen and (max-width: 320px) {
+    div.containe {
+        padding: 16px;
+    }
 }
