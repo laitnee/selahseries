@@ -1,5 +1,4 @@
-﻿@model SelahSeries.ViewModels.PostDetailViewModel
-@{
+﻿@{
     ViewData["Title"] = "Politics";
 }
 
@@ -130,11 +129,10 @@
                             <div class="row">
                                 <div class="col-xl-9">
                                     <div class="post_comment_form_container">
-                                        <form method="post" asp-controller="Blog" asp-action="PostComment">
-                                            <input type="hidden" asp-for="post.PostId"/>
-                                            <input type="text" asp-for="Comment.Author" class="comment_input comment_input_name" placeholder="Your Name" required="required">
-                                            <input type="email" asp-for="Comment.Email" class="comment_input comment_input_email" placeholder="Your Email" required="required">
-                                            <textarea asp-for="Comment.Content" class="comment_text" placeholder="Your Comment" required="required"></textarea>
+                                        <form action="#">
+                                            <input type="text" class="comment_input comment_input_name" placeholder="Your Name" required="required">
+                                            <input type="email" class="comment_input comment_input_email" placeholder="Your Email" required="required">
+                                            <textarea class="comment_text" placeholder="Your Comment" required="required"></textarea>
                                             <button type="submit" class="comment_button">Post Comment</button>
                                         </form>
                                     </div>
@@ -145,12 +143,14 @@
                         <!-- Comments -->
                         <div class="comments">
                             <div class="comments_title">Comments <span>(12)</span></div>
-
                             <div class="row">
                                 <div class="col-xl-9">
                                     <div class="comments_container">
-                                        <ul data-commentList class="comment_list">
-                                            <li data-omment class="comment">
+
+                                        <ul class="comment_list">
+
+                                            <!-- Reply -->
+                                            <li class="comment">
                                                 <div class="comment_body">
                                                     <div class="comment_panel d-flex flex-row align-items-center justify-content-start">
                                                         <small class="post_meta"><a href="#">Katy Liu</a><span>Sep 29, 2017 at 9:48 am</span></small>
@@ -211,6 +211,43 @@
 
 
                                             </li>
+
+
+                                            <!-- Reply -->
+
+                                            <li class="comment">
+                                                <div class="comment_body">
+                                                    <div class="comment_panel d-flex flex-row align-items-center justify-content-start">
+                                                        <small class="post_meta"><a href="#">Katy Liu</a><span>Sep 29, 2017 at 9:48 am</span></small>
+                                                        <button type="button" class="reply_button ml-auto">Reply</button>
+                                                    </div>
+                                                    <div class="comment_content">
+                                                        <p>Nulla facilisi. Aenean porttitor quis tortor id tempus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus molestie varius tincidunt. Vestibulum congue sed libero ac sodales.</p>
+                                                    </div>
+                                                    <div class="reply_info">
+                                                        <small class="comment_replies">5 replies <a href="#" class="view_button"><span>View replies</span></a></small>
+                                                    </div>
+                                                </div>
+
+
+                                            </li>
+
+                                            <!--Reply-->
+                                            <li class="comment">
+                                                <div class="comment_body">
+                                                    <div class="comment_panel d-flex flex-row align-items-center justify-content-start">
+                                                        <small class="post_meta"><a href="#">Katy Liu</a><span>Sep 29, 2017 at 9:48 am</span></small>
+                                                        <button type="button" class="reply_button ml-auto">Reply</button>
+                                                    </div>
+                                                    <div class="comment_content">
+                                                        <p>Pick the yellow peach that looks like a sunset with its red, orange, and pink coat skin, peel it off with your teeth. Sink them into unripened.</p>
+                                                    </div>
+                                                    <div class="reply_info">
+                                                        <small class="comment_replies">12 replies <a onclick="showReplies()"><span>View replies</span></a></small>
+                                                    </div>
+
+                                                </div>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -240,7 +277,6 @@
                                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                              width="7px" height="12px" viewBox="0 0 7 12" enable-background="new 0 0 7 12" xml:space="preserve">
                                         <polyline fill="#bebebe" points="0,5.61 5.609,0 7,0 7,1.438 2.438,6 7,10.563 7,12 5.609,12 -0.002,6.39 " />
-
 										</svg>
                                     </div>
                                     <ul id="custom_dots" class="custom_dots custom_dots_top">
@@ -252,7 +288,6 @@
                                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                              width="7px" height="12px" viewBox="0 0 7 12" enable-background="new 0 0 7 12" xml:space="preserve">
                                         <polyline fill="#bebebe" points="6.998,6.39 1.389,12 -0.002,12 -0.002,10.562 4.561,6 -0.002,1.438 -0.002,0 1.389,0 7,5.61 " />
-
 											</svg>
                                     </div>
                                 </div>

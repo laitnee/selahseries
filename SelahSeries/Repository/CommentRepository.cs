@@ -31,16 +31,16 @@ namespace SelahSeries.Repository
         public async Task<List<Comment>> GetComments(int postId)
         {
             return await _selahDbContext.Comments
-                                 .Include(c => c.ChildrenComments
-                                                .Where(cC => c.CommentId == cC.ParentId).Count())  
-                                 .ToListAsync();
+                                    .Include(m => m.Replies)
+                                    .Where(com => com.PostId == postId && com.ParentCommentId == null)
+                                    .ToListAsync();
         }
         public async Task<List<Comment>> GetSubComments(int postId, int commentId)
         {
             return await _selahDbContext.Comments
-                     .Where(com => com.ParentId == commentId)
-                     .Include(comment => comment.ChildrenComments
-                                    .Where(childComments => comment.CommentId == childComments.ParentId).Count())
+                     .Where(com => com.ParentCommentId == commentId)
+                     .Include(comment => comment.Replies
+                                    .Where(childComments => comment.CommentId == childComments.ParentCommentId).Count())
                     .ToListAsync();
         }
 

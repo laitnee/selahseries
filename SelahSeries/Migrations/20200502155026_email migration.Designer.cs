@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SelahSeries.Data;
 
 namespace SelahSeries.Migrations
 {
     [DbContext(typeof(SelahSeriesDataContext))]
-    partial class SelahSeriesDataContextModelSnapshot : ModelSnapshot
+    [Migration("20200502155026_email migration")]
+    partial class emailmigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -45,6 +47,8 @@ namespace SelahSeries.Migrations
                     b.Property<string>("Author")
                         .HasMaxLength(50);
 
+                    b.Property<int?>("CommentId1");
+
                     b.Property<string>("Content");
 
                     b.Property<DateTime>("CreatedAt");
@@ -52,13 +56,13 @@ namespace SelahSeries.Migrations
                     b.Property<string>("Email")
                         .HasMaxLength(50);
 
-                    b.Property<int?>("ParentCommentId");
+                    b.Property<int?>("ParentId");
 
                     b.Property<int>("PostId");
 
                     b.HasKey("CommentId");
 
-                    b.HasIndex("ParentCommentId");
+                    b.HasIndex("CommentId1");
 
                     b.HasIndex("PostId");
 
@@ -187,9 +191,9 @@ namespace SelahSeries.Migrations
 
             modelBuilder.Entity("SelahSeries.Models.Comment", b =>
                 {
-                    b.HasOne("SelahSeries.Models.Comment", "Parent")
-                        .WithMany("Replies")
-                        .HasForeignKey("ParentCommentId");
+                    b.HasOne("SelahSeries.Models.Comment")
+                        .WithMany("ChildrenComments")
+                        .HasForeignKey("CommentId1");
 
                     b.HasOne("SelahSeries.Models.Post", "Post")
                         .WithMany()

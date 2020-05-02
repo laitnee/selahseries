@@ -106,7 +106,7 @@ namespace SelahSeries.Data
             await _commentRepo.AddComment(comment);
            comment = new Comment
             {
-                ParentId =   1,
+                ParentCommentId =   1,
                 Content = "First Subcomment for first Comment Lorem Ipsum",
                 CreatedAt = new DateTime(2020, 04, 10),
                 Author = "YunLa",
