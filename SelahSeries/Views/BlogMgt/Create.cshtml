@@ -1,4 +1,4 @@
-﻿@model SelahSeries.Models.Post
+﻿@model SelahSeries.ViewModels.PostCreateViewModel
 
 @{
     ViewData["Title"] = "Create";
@@ -69,8 +69,9 @@
     <div class="row">
         <div class="col-lg-1"></div>
         <div class=" col-lg-10">
-            @using (Html.BeginForm("Create", "BlogMgt", FormMethod.Post, new { enctype = "multipart/form-data" }))
-            {
+            <form method="post" enctype="multipart/form-data" asp-controller="BlogMgt" asp-action="create">
+
+ 
                 @Html.AntiForgeryToken()
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
@@ -78,7 +79,7 @@
                     <button type="button" class="collapsible">Enter author's name</button>
                     <div class="content">
                         <input asp-for="Author" class="form-control" />
-                        <span asp-validation-for="Author" class="text-danger"></span>
+                       <span asp-validation-for="Author" class="text-danger"></span>
                     </div>
 
 
@@ -103,7 +104,7 @@
                     <div class="content">
                         <a data-mockFile style="color:white;" class=" btn btn-primary"> Select Image </a>
                         <span style="color:blue;" data-fileValue> </span>
-                        <input type="file" data-fileSelector style="visibility:hidden" accept="image/*" />
+                        <input type="file"  data-fileSelector style="visibility:hidden" accept="image/*" asp-for="PostPhoto"/>
                     </div>
 
                 </div>
@@ -136,9 +137,9 @@
                 <div style="text-align: center;" class="form-group">
                     <input type="submit" value="Create" class="btn btn-danger btn-lg" />
                 </div>
-            }
+            </form> 
         </div>
-            
+           
         <div class="col-lg-1"></div>
     </div>
 

@@ -1,12 +1,12 @@
 ﻿function StrigHTMLTags() {
     document.querySelectorAll('[data-StripTag]').forEach((element) => {
-        let stripTagContent = element.textContent.trim().substring(0, 30).replace(/<(?:.|\s)*?>/g, "") + "...";
+        let stripTagContent = element.textContent.trim().replace(/<(?:.|\s)*?>/g, "").substring(0, 30) + "...";
         element.textContent = stripTagContent;
     });
 }
 
 function UseHTMLTags() {
-    let element = document.querySelector('[data-usehtmltag]')
+    let element = document.querySelector('[data-usehtmltag]');
     if (element) {
         let useHTMLContent = element.textContent;
         element.innerHTML = useHTMLContent;

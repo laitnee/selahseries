@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using SelahSeries.Data;
 using SelahSeries.Core;
 using Microsoft.Net.Http.Headers;
+using AutoMapper;
 
 namespace SelahSeries
 {
@@ -37,10 +38,13 @@ namespace SelahSeries
 
             services.AddDbContext<SelahSeriesDataContext>(c =>
                  c.UseSqlServer(Configuration.GetConnectionString("SelahSeriesDB")));
-
+            services.AddAutoMapper(typeof(Startup));
             services.AddCustomServices();
+
+            //services.AddSeedData();
             
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

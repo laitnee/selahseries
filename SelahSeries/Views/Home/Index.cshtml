@@ -1,17 +1,17 @@
 ﻿@model IEnumerable<SelahSeries.Models.Post>
 @{
     ViewData["Title"] = "Home Page";
-    List<Post> latestArticles = new List<Post>();
-    for (int i = Model.Count(); i > Math.Max(0, Model.Count() - 10); --i)
-    {
-        foreach(var item in Model)
-        {
-            if (item.PostId == i)
-            {
-                latestArticles.Add(item);
-            }
-        }
-    }
+    //List<Post> latestArticles = new List<Post>();
+    //for (int i = Model.Count(); i > Math.Max(0, Model.Count() - 10); --i)
+    //{
+    //    foreach(var item in Model)
+    //    {
+    //        if (item.PostId == i)
+    //        {
+    //            latestArticles.Add(item);
+    //        }
+    //    }
+    //}
 
 }
 
@@ -49,9 +49,9 @@
         </div>
 
 
-        <div class="carousel-item" style="background-image: url('/NewFolder2/new/man-in-black-jacket-1118895.jpg')">
+        <div class="carousel-item" style="background-image: url('/NewFolder2/new/green-tree-on-grass-field-during-daytime-53435.jpg')">
             <div class="carousel-caption text-block d-md-block">
-                <h3 class="mb-4" style="color: #f2ba16 ; font-family: 'Work Sans', sans-serif">Find your path to fulfilment</h3>
+                <h3 class="mb-4" style="color: #f2ba16 ; font-family: 'Work Sans', sans-serif">Selah...A place of Growth</h3>
 
 
                 <p><a href="#blog" class="btn btn-primary px-4 py-2">Visit Blog</a></p>
@@ -203,18 +203,17 @@
 
                         <div class="section_content">
                             <div class="grid clearfix">
-                                @foreach (var item in Model)
                                 {
                                     <!-- Largest Card With Image -->
                                     <div class="card card_largest_with_image grid-item">
                                         <img class="card-img-top" src="/NewFolder2/images/post_1.jpg" alt="https://unsplash.com/">
                                         <div class="card-body">
-                                            <div class="card-title"><a href="~/blog/post">@Html.DisplayFor(modelItem => item.Title)</a></div>
-                                            <p class="card-text line-clamp">@Html.DisplayFor(modelItem => item.Content)</p>
-                                            <small class="post_meta"><a href="#">@Html.DisplayFor(modelItem => item.Author)</a><span>@Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
+                                            <div class="card-title"><a href="~/blog/post">Html.DisplayFor(modelItem => item.Title)</a></div>
+                                            <p class="card-text line-clamp">Html.DisplayFor(modelItem => item.Content)</p>
+                                            <small class="post_meta"><a href="#">Html.DisplayFor(modelItem => item.Author)</a><span>Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
                                         </div>
                                     </div>
-                                }
+                                
 
                                     <!-- Small Card Without Image -->
                                     <div class="card card_default card_small_no_image grid-item">
@@ -267,61 +266,61 @@
                         <div class="section_content">
                             <div class="grid clearfix">
 
-                                @foreach (var item in latestArticles)
+                                @*@foreach (var item in latestArticles)
                                 {
 
                                     if (item.PostId % 5 == 0)
-                                    {
+                                    {*@
                                         <!-- Small Card With Image -->
                                         <div class="card card_small_with_image grid-item">
                                             <img class="card-img-top" src="/NewFolder2/images/post_10.jpg" alt="">
                                             <div class="card-body">
-                                                <div class="card-title card-title-small"><a href="~/blog/post">@Html.DisplayFor(modelItem => item.Title)</a></div>
-                                                <small class="post_meta"><a href="#">@Html.DisplayFor(modelItem => item.Author)</a><span>@Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
+                                                <div class="card-title card-title-small"><a href="~/blog/post">Html.DisplayFor(modelItem => item.Title)</a></div>
+                                                <small class="post_meta"><a href="#">Html.DisplayFor(modelItem => item.Author)</a><span>Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
                                             </div>
                                         </div>
-                                    }
+                                    @*}
 
                                     else if (item.PostId % 3 == 0)
-                                    {
+                                    {*@
                                         <!-- Small Card With Image -->
                                         <div class="card card_small_with_image grid-item">
                                             <img class="card-img-top" src="/NewFolder2/images/post_15.jpg" alt="">
                                             <div class="card-body">
-                                                <div class="card-title card-title-small"><a href="~/blog/post">@Html.DisplayFor(modelItem => item.Title)</a></div>
-                                                <small class="post_meta"><a href="#">@Html.DisplayFor(modelItem => item.Author)</a><span>@Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
+                                                <div class="card-title card-title-small"><a href="~/blog/post">Html.DisplayFor(modelItem => item.Title)</a></div>
+                                                <small class="post_meta"><a href="#">Html.DisplayFor(modelItem => item.Author)</a><span>Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
                                             </div>
                                         </div>
-                                    }
+                                    @*}
 
 
                                     else if (item.PostId % 2 == 0)
-                                    {
+                                    {*@
 
                                         <!-- Small Card With Image -->
                                         <div class="card card_small_with_image grid-item">
                                             <img class="card-img-top" src="/NewFolder2/images/post_15.jpg" alt="">
                                             <div class="card-body">
-                                                <div class="card-title card-title-small"><a href="~/blog/post">@Html.DisplayFor(modelItem => item.Title)</a></div>
-                                                <small class="post_meta"><a href="#">@Html.DisplayFor(modelItem => item.Author)</a><span>@Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
+                                                <div class="card-title card-title-small"><a href="~/blog/post">Html.DisplayFor(modelItem => item.Title)</a></div>
+                                                <small class="post_meta"><a href="#">Html.DisplayFor(modelItem => item.Author)</a><span>Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
                                             </div>
                                         </div>
 
-                                    }
+                                    @*}
 
                                     else
-                                    {
+                                    {*@
                                         <!-- Small Card With Background -->
                                         <div class="card card_default card_small_with_background grid-item">
                                             <div class="card_background" style="background-image:url(/NewFolder2/images/post_11.jpg)"></div>
                                             <div class="card-body">
-                                                <div class="card-title card-title-small"><a href="~/blog/post">@Html.DisplayFor(modelItem => item.Title)</a></div>
-                                                <small class="post_meta"><a href="#">@Html.DisplayFor(modelItem => item.Author)</a><span>@Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
+                                                <div class="card-title card-title-small"><a href="~/blog/post">Title</a></div>
+                                                <small class="post_meta"><a href="#">Html.DisplayFor(modelItem => item.Author)</a><span>Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
                                             </div>
                                         </div>
-                                    }
+                                    @*}
 
-                                }
+                                }*@
 
 
 

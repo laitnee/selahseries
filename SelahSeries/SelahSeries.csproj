@@ -9,7 +9,6 @@
     <Compile Remove="wwwroot\images\**" />
     <Compile Remove="wwwroot\js\**" />
     <Compile Remove="wwwroot\lib\**" />
-    <Compile Remove="wwwroot\NewFolder1\**" />
     <Compile Remove="wwwroot\NewFolder2\js\js3\js\**" />
     <Compile Remove="wwwroot\NewFolder2\js\NewFolder\**" />
     <Compile Remove="wwwroot\NewFolder2\plugins\jquery.mb.YTPlayer-3.1.12\**" />
@@ -19,7 +18,6 @@
     <Content Remove="wwwroot\images\**" />
     <Content Remove="wwwroot\js\**" />
     <Content Remove="wwwroot\lib\**" />
-    <Content Remove="wwwroot\NewFolder1\**" />
     <Content Remove="wwwroot\NewFolder2\js\js3\js\**" />
     <Content Remove="wwwroot\NewFolder2\js\NewFolder\**" />
     <Content Remove="wwwroot\NewFolder2\plugins\jquery.mb.YTPlayer-3.1.12\**" />
@@ -29,7 +27,6 @@
     <EmbeddedResource Remove="wwwroot\images\**" />
     <EmbeddedResource Remove="wwwroot\js\**" />
     <EmbeddedResource Remove="wwwroot\lib\**" />
-    <EmbeddedResource Remove="wwwroot\NewFolder1\**" />
     <EmbeddedResource Remove="wwwroot\NewFolder2\js\js3\js\**" />
     <EmbeddedResource Remove="wwwroot\NewFolder2\js\NewFolder\**" />
     <EmbeddedResource Remove="wwwroot\NewFolder2\plugins\jquery.mb.YTPlayer-3.1.12\**" />
@@ -39,7 +36,6 @@
     <None Remove="wwwroot\images\**" />
     <None Remove="wwwroot\js\**" />
     <None Remove="wwwroot\lib\**" />
-    <None Remove="wwwroot\NewFolder1\**" />
     <None Remove="wwwroot\NewFolder2\js\js3\js\**" />
     <None Remove="wwwroot\NewFolder2\js\NewFolder\**" />
     <None Remove="wwwroot\NewFolder2\plugins\jquery.mb.YTPlayer-3.1.12\**" />
@@ -53,6 +49,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
@@ -121,6 +118,10 @@
     <None Include="wwwroot\NewFolder2\plugins\parallax-js-master\parallax.min.js" />
     <None Include="wwwroot\NewFolder2\styles\bootstrap4\bootstrap.min.js" />
     <None Include="wwwroot\NewFolder2\styles\bootstrap4\popper.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Uploads\" />
   </ItemGroup>
 
 </Project>

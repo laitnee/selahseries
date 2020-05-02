@@ -27,6 +27,8 @@ namespace SelahSeries.Migrations
 
                     b.Property<string>("Description");
 
+                    b.Property<int?>("ParentId");
+
                     b.Property<string>("Title");
 
                     b.HasKey("CategoryId");
@@ -43,15 +45,19 @@ namespace SelahSeries.Migrations
                     b.Property<string>("Author")
                         .HasMaxLength(50);
 
+                    b.Property<int?>("CommentId1");
+
                     b.Property<string>("Content");
 
                     b.Property<DateTime>("CreatedAt");
 
-                    b.Property<int>("ParentId");
+                    b.Property<int?>("ParentId");
 
                     b.Property<int>("PostId");
 
                     b.HasKey("CommentId");
+
+                    b.HasIndex("CommentId1");
 
                     b.HasIndex("PostId");
 
@@ -121,9 +127,7 @@ namespace SelahSeries.Migrations
                     b.Property<string>("Author")
                         .HasMaxLength(50);
 
-                    b.Property<int?>("CategoryId");
-
-                    b.Property<int>("CatergoryId");
+                    b.Property<int>("CategoryId");
 
                     b.Property<string>("Content");
 
@@ -131,7 +135,7 @@ namespace SelahSeries.Migrations
 
                     b.Property<DateTime>("ModifiedAt");
 
-                    b.Property<int>("ParentId");
+                    b.Property<int?>("ParentId");
 
                     b.Property<bool>("Published");
 
@@ -182,6 +186,10 @@ namespace SelahSeries.Migrations
 
             modelBuilder.Entity("SelahSeries.Models.Comment", b =>
                 {
+                    b.HasOne("SelahSeries.Models.Comment")
+                        .WithMany("ChildrenComments")
+                        .HasForeignKey("CommentId1");
+
                     b.HasOne("SelahSeries.Models.Post", "Post")
                         .WithMany()
                         .HasForeignKey("PostId")
@@ -204,9 +212,10 @@ namespace SelahSeries.Migrations
 
             modelBuilder.Entity("SelahSeries.Models.Post", b =>
                 {
-                    b.HasOne("SelahSeries.Models.Category")
+                    b.HasOne("SelahSeries.Models.Category", "Category")
                         .WithMany("Posts")
-                        .HasForeignKey("CategoryId");
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("SelahSeries.Models.SoftBook", b =>
