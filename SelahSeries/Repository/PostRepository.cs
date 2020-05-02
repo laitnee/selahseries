@@ -24,7 +24,10 @@ namespace SelahSeries.Repository
                 await _selahDbContext.SaveChangesAsync());
         }
 
-
+        public async Task SaveChanges()
+        {
+            await _selahDbContext.SaveChangesAsync();
+        }
 
         public async Task<Post> GetPost(int postId)
         {

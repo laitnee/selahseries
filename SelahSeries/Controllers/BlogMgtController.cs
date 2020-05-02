@@ -115,17 +115,17 @@ namespace SelahSeries.Controllers
             if (ModelState.IsValid)
             {
                 var uploadedImage = "";
+                var editPost = _mapper.Map<Post>(postVM);
                 if (postVM.PostPhoto != null) uploadedImage = await ProcessPhoto(postVM.PostPhoto);
                 try
                 {
-                    var editPost = _mapper.Map<Post>(postVM);
-                    var post = await _postRepo.GetPost(postVM.PostId);
-                    editPost.TitleImageUrl = string.IsNullOrWhiteSpace(uploadedImage) ? post.TitleImageUrl
-                        : uploadedImage;
+                    if(!string.IsNullOrWhiteSpace(uploadedImage)) editPost.TitleImageUrl = uploadedImage;
+
                     await _postRepo.UpdatePost(editPost);
+
                     return RedirectToAction(nameof(Index));
                 }
-                catch { return View(); }
+                catch(Exception ex ) { return View(); }
             }
             return View();
         }
