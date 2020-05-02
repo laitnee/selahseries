@@ -543,7 +543,7 @@ a {
       bottom: 0;
       right: 0;
       top: 0;
-      background: rgba(0, 0, 0, 0.7); }
+      background: rgba(0, 0, 0, 0.4); }
   .site-blocks-cover, .site-blocks-cover .row {
     min-height: 600px;
     height: calc(100vh); }
@@ -1794,7 +1794,7 @@ figure figcaption {
           background: #e3c4a8; }
 
 .featured-property-half {
-  position: relative;
+  position: relative;s
   background: #fff;
   margin-top: -70px;
   -webkit-box-shadow: 0 0 20px -5px rgba(0, 0, 0, 0.1);
@@ -1806,7 +1806,9 @@ figure figcaption {
     background-position: center center;
     background-repeat: no-repeat; }
   .featured-property-half .text {
-    padding: 62px; }
+    padding: 62px; 
+    background-color: white;
+  }
     .featured-property-half .text ul {
       padding: 0;
       margin: 0;
@@ -1822,6 +1824,6 @@ figure figcaption {
 .support_head{
     text-transform: capitalize;
     color: white;
-    font-weight: 500;
-    font-size: 43px;
+    font-weight: 300;
+    font-size: 36px;
 }

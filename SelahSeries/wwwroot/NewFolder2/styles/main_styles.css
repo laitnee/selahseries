@@ -1476,7 +1476,7 @@ section {
 .load_more_button {
     width: 118px;
     height: 36px;
-    width: 35%;
+    width: 200px;
     background: #AD001C;
     border-radius: 18px;
     margin: 0 auto;

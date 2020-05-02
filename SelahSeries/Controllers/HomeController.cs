@@ -6,20 +6,21 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SelahSeries.Data;
 using SelahSeries.Models;
+using SelahSeries.Models.DTOs;
+using SelahSeries.Repository;
 
 namespace SelahSeries.Controllers
 {
     public class HomeController : Controller
     {
         public HomeController(
-            //SeedData seedData
-            )
+           //SeedData seedData
+           )
         {
 
         }
         public IActionResult Index()
         {
-           
             return View();
         }
 
@@ -27,6 +28,12 @@ namespace SelahSeries.Controllers
         {
            
 
+            return View();
+        }
+
+        [Route("Home/About/Read_More")]
+        public IActionResult Read_More()
+        {
             return View();
         }
 
