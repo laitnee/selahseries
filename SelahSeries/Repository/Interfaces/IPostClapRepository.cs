@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SelahSeries.Repository.Interfaces
+namespace SelahSeries.Repository
 {
-    interface IPostClapRepository
+    public interface IPostClapRepository
     {
-        Task<bool> Clap(int clapNumber);
+        Task<int> Clap(int clapNumber, int postId);
+        Task<int> GetClaps(int postId);
     }
 }

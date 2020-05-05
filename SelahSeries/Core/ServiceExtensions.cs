@@ -19,6 +19,7 @@ namespace SelahSeries.Core
             services.AddTransient<IOrderRepository, OrderRepository>();
             services.AddTransient<IPostRepository, PostRepository>();
             services.AddTransient<ISoftBookRepository, SoftBookRepository>();
+            services.AddTransient<IPostClapRepository, PostClapRepository>();
 
             return services;
         }

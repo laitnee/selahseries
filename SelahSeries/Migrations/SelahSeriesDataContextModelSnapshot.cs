@@ -153,6 +153,21 @@ namespace SelahSeries.Migrations
                     b.ToTable("Posts");
                 });
 
+            modelBuilder.Entity("SelahSeries.Models.PostClap", b =>
+                {
+                    b.Property<int>("PostClapId");
+
+                    b.Property<int>("Claps");
+
+                    b.Property<int?>("PostId");
+
+                    b.HasKey("PostClapId");
+
+                    b.HasIndex("PostId");
+
+                    b.ToTable("PostClaps");
+                });
+
             modelBuilder.Entity("SelahSeries.Models.SoftBook", b =>
                 {
                     b.Property<int>("SoftBookId")
@@ -217,6 +232,13 @@ namespace SelahSeries.Migrations
                         .WithMany("Posts")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("SelahSeries.Models.PostClap", b =>
+                {
+                    b.HasOne("SelahSeries.Models.Post", "Post")
+                        .WithMany()
+                        .HasForeignKey("PostId");
                 });
 
             modelBuilder.Entity("SelahSeries.Models.SoftBook", b =>

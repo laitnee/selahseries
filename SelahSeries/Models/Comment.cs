@@ -24,6 +24,6 @@ namespace SelahSeries.Models
 
         public int? ParentCommentId { get; set; }
         public Comment Parent { get; set; }
-        public List<Comment> Replies { get; set; }
+        public ICollection<Comment> Replies { get; set; }
     }
 }

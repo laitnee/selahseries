@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using SelahSeries.Models;
 using SelahSeries.Repository;
+using SelahSeries.ViewModels;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -16,10 +17,12 @@ namespace SelahSeries.Controllers
     {
         private readonly ICommentRepository _commentRepo;
         private readonly IPostRepository _postRepo;
-        public BlogController(ICommentRepository commentRepo, IPostRepository postRepo)
+        private readonly IPostClapRepository    _postClapRepo;
+        public BlogController(ICommentRepository commentRepo, IPostRepository postRepo, IPostClapRepository postClapRepo)
         {
             _commentRepo = commentRepo;
             _postRepo = postRepo;
+            _postClapRepo = postClapRepo;
         }
         // GET: /<controller>/
         public IActionResult Category()
@@ -32,35 +35,44 @@ namespace SelahSeries.Controllers
         {
             var post = await _postRepo.GetPost(postId);
             var comments = await _commentRepo.GetComments(postId);
-            return View();
+            
+            var postDetailViewModel = new PostDetailViewModel(){ Post = post, CommentList = comments };
+            return View(postDetailViewModel);
         }
-        
+
         [HttpPost]
         public async Task<IActionResult> PostComment([FromForm] Comment comment)
         {
             if (ModelState.IsValid)
             {
-                try
-                {
-                    comment.PostId = 1;
-                    comment.CreatedAt = DateTime.UtcNow;
-                    if(!await _commentRepo.AddComment(comment)) return View();
-                    RedirectToAction("Post", "Blog");
-                } catch { return View(); }
-                
-
+                comment.CreatedAt = DateTime.UtcNow;
+                await _commentRepo.AddComment(comment);
             }
-            return View();
-            }
-
-        [Route("comments/{postId}")]
-        [HttpGet]
-        public async Task<JsonResult> GetComments(int postId)
-        {
-            var comment = await _commentRepo.GetComments(postId);
-            return Json(JsonConvert.SerializeObject(comment));
+            return RedirectToAction("Post", "Blog", new { postId = comment.PostId });
         }
 
+        [Route("clap")]
+        [HttpPost]
+        public async Task<JsonResult> AddClaps([FromBody]PostClapVM postClapVM)
+        {
+            int result = 0;
+            try
+            {
+            if (postClapVM.ClapNumber > 0 && postClapVM.PostId > 0) result = await _postClapRepo.Clap(postClapVM.ClapNumber, postClapVM.PostId);
+
+            }
+            catch (Exception ex) { }
+            return Json(JsonConvert.SerializeObject(new { Claps = result }));
+        }
+
+        [Route("/{postId}/claps")]
+        [HttpGet]
+        public async Task<JsonResult> GetClaps(int postId)
+        {
+            var result = 0;
+            if ( postId > 0) result = await _postClapRepo.GetClaps(postId);
+            return Json(JsonConvert.SerializeObject(new { Claps = result }));
+        }
 
 
     }

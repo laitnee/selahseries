@@ -41,8 +41,8 @@ namespace SelahSeries
             services.AddAutoMapper(typeof(Startup));
             services.AddCustomServices();
 
-            //services.AddSeedData();
-            
+            services.AddSeedData();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             
         }

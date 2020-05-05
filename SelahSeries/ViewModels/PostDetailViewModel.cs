@@ -8,7 +8,8 @@ namespace SelahSeries.ViewModels
 {
     public class PostDetailViewModel
     {
-        public Post post { get; set; }
+        public Post Post { get; set; }
         public Comment Comment { get; set; }
+        public IEnumerable<Comment> CommentList { get; set; }
     }
 }

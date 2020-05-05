@@ -30,10 +30,10 @@ section {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-attachment:local;
+    background-attachment:scroll;
 
 
-    padding: 0 0;
+    padding: 60px 0;
 
 }
 
@@ -46,6 +46,7 @@ section {
 
 #team .card {
     border: none;
+    border-radius: 3px;
     background: #ffffff;
 }
 

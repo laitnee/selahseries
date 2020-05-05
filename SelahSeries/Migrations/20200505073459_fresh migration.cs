@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SelahSeries.Migrations
 {
-    public partial class INitialmigration : Migration
+    public partial class freshmigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,6 +14,7 @@ namespace SelahSeries.Migrations
                 {
                     CategoryId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ParentId = table.Column<int>(nullable: true),
                     Title = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true)
                 },
@@ -53,7 +54,7 @@ namespace SelahSeries.Migrations
                 {
                     PostId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    ParentId = table.Column<int>(nullable: false),
+                    ParentId = table.Column<int>(nullable: true),
                     Author = table.Column<string>(maxLength: 50, nullable: true),
                     Title = table.Column<string>(maxLength: 100, nullable: true),
                     Content = table.Column<string>(nullable: true),
@@ -61,8 +62,7 @@ namespace SelahSeries.Migrations
                     Published = table.Column<bool>(nullable: false),
                     CreatedAt = table.Column<DateTime>(nullable: false),
                     ModifiedAt = table.Column<DateTime>(nullable: false),
-                    CatergoryId = table.Column<int>(nullable: false),
-                    CategoryId = table.Column<int>(nullable: true)
+                    CategoryId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -72,7 +72,7 @@ namespace SelahSeries.Migrations
                         column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "CategoryId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -129,15 +129,22 @@ namespace SelahSeries.Migrations
                 {
                     CommentId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    ParentId = table.Column<int>(nullable: false),
                     Content = table.Column<string>(nullable: true),
                     CreatedAt = table.Column<DateTime>(nullable: false),
                     Author = table.Column<string>(maxLength: 50, nullable: true),
-                    PostId = table.Column<int>(nullable: false)
+                    Email = table.Column<string>(maxLength: 50, nullable: true),
+                    PostId = table.Column<int>(nullable: false),
+                    ParentCommentId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Comments", x => x.CommentId);
+                    table.ForeignKey(
+                        name: "FK_Comments_Comments_ParentCommentId",
+                        column: x => x.ParentCommentId,
+                        principalTable: "Comments",
+                        principalColumn: "CommentId",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Comments_Posts_PostId",
                         column: x => x.PostId,
@@ -145,6 +152,30 @@ namespace SelahSeries.Migrations
                         principalColumn: "PostId",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "PostClaps",
+                columns: table => new
+                {
+                    PostClapId = table.Column<int>(nullable: false),
+                    PostId = table.Column<int>(nullable: true),
+                    Claps = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PostClaps", x => x.PostClapId);
+                    table.ForeignKey(
+                        name: "FK_PostClaps_Posts_PostId",
+                        column: x => x.PostId,
+                        principalTable: "Posts",
+                        principalColumn: "PostId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Comments_ParentCommentId",
+                table: "Comments",
+                column: "ParentCommentId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comments_PostId",
@@ -160,6 +191,11 @@ namespace SelahSeries.Migrations
                 name: "IX_Orders_HardBookId",
                 table: "Orders",
                 column: "HardBookId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PostClaps_PostId",
+                table: "PostClaps",
+                column: "PostId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Posts_CategoryId",
@@ -181,13 +217,16 @@ namespace SelahSeries.Migrations
                 name: "Orders");
 
             migrationBuilder.DropTable(
+                name: "PostClaps");
+
+            migrationBuilder.DropTable(
                 name: "SoftBooks");
 
             migrationBuilder.DropTable(
-                name: "Posts");
+                name: "HardBooks");
 
             migrationBuilder.DropTable(
-                name: "HardBooks");
+                name: "Posts");
 
             migrationBuilder.DropTable(
                 name: "Categories");

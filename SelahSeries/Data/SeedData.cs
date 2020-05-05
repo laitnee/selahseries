@@ -17,10 +17,10 @@ namespace SelahSeries.Data
             _commentRepo = commentRepo;
             _postRepo = postRepo;
             _categoryRepo = categoryRepo;
-
+            
             Task.Run(() =>
            {
-               SeedCategories().Wait();
+                   SeedCategories().Wait();
                SeedPosts().Wait();
                SeedComments().Wait();
            }).Wait();
@@ -29,11 +29,18 @@ namespace SelahSeries.Data
 
         public async Task SeedCategories()
         {
-            
-            var category = new Category
+            if ((await _categoryRepo.GetCategoriesAsync()).Count > 0) return;
+
+                var category = new Category
             {
                 Title = "Sport",
                 Description = "For sports new and debates",
+            };
+            await _categoryRepo.AddCategory(category);
+            category = new Category
+            {
+                Title = "Politics",
+                Description = "Politics"
             };
             await _categoryRepo.AddCategory(category);
             category = new Category
@@ -48,15 +55,11 @@ namespace SelahSeries.Data
                 Description = "Career"
             };
             await  _categoryRepo.AddCategory(category);
-            category = new Category
-            {
-                Title = "Politics",
-                Description = "Politics"
-            };
-            await _categoryRepo.AddCategory(category);
+
         }
          public async Task  SeedPosts()
         {
+            if ((await _postRepo.GetPosts(new Models.DTOs.PaginationParam { PageIndex = 1, Limit = 20, SortColoumn = "CreatedAt" })).TotalCount > 0) return;
             var post = new Post
             {
                 Author = "Lois Smart",
@@ -96,6 +99,7 @@ namespace SelahSeries.Data
         }
         public async Task SeedComments()
         {
+            if ((await _categoryRepo.GetCategoriesAsync()).Count > 0) return;
             var comment = new Comment
             {
                 Content = "First Comment Lorem Ipsum",

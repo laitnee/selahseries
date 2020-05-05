@@ -14,7 +14,7 @@ namespace SelahSeries.Controllers
     public class HomeController : Controller
     {
         public HomeController(
-           //SeedData seedData
+           SeedData seedData
            )
         {
 

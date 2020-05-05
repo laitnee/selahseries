@@ -617,21 +617,26 @@ section
 	margin: 0 auto;
 }
 .post_category {
-    width: 83px;
-    height: 28px;
-    background: #ad001c;
-    border-radius: 14px;
+    width: auto;
+    height: auto;
+    
+   
+    
     text-align: center;
 }
-.post_category a
-{
-	display: block;
-	line-height: 28px;
-	font-family: 'Ubuntu', sans-serif;
-	font-size: 12px;
-	color: rgba(255,255,255,1);
-	text-transform: uppercase;
-}
+    .post_category a {
+        background: #ad001c;
+        width: auto;
+        height: auto;
+        display: block;
+        line-height: 28px;
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 1em;
+        padding: 10px;
+        border-radius: 14px;
+        color: rgba(255,255,255,1);
+        text-transform: uppercase;
+    }
 .post_category:hover
 {
 	background: rgba(255,255,255,1);
@@ -642,7 +647,8 @@ section
 }
 .post_title
 {
-	font-size: 24px;
+	font-size: 2.0em;
+    letter-spacing:0.05em;
 	color: #FFFFFF;
 	font-weight: 600;
 	margin-top: 19px;
@@ -1188,7 +1194,9 @@ section
 .comments {
     margin-top: 70px;
 }
-
+.comments_border {
+    border-left: 2px solid gold;
+}
 .comments_title {
     font-family: 'Ubuntu', sans-serif;
     font-size: 18px;

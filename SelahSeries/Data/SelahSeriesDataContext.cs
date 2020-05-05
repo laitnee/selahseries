@@ -23,7 +23,7 @@ namespace SelahSeries.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<SoftBook> SoftBooks{ get; set; }
-
+        public DbSet<PostClap> PostClaps { get; set; }
 
         //public DbSet<HardBookCategory> HardBookCategories { get; set; }
         //public DbSet<PostCategory> PostCategories { get; set; }

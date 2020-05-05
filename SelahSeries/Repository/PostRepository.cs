@@ -32,6 +32,7 @@ namespace SelahSeries.Repository
         public async Task<Post> GetPost(int postId)
         {
             return await _selahDbContext.Posts
+                            .Include(p => p.Category)
                             .Where(post => post.PostId == postId)
                             .FirstOrDefaultAsync();
 
@@ -45,18 +46,21 @@ namespace SelahSeries.Repository
         public async Task<PaginatedList<Post>> GetPosts(PaginationParam pageParam)
         {
             return await _selahDbContext.Posts
+                            .Include(p => p.Category)
                             .ToPaginatedListAsync(pageParam.PageIndex, pageParam.Limit, pageParam.SortColoumn);
         }
 
         public async Task<PaginatedList<Post>> GetPostsByCategory(PaginationParam pageParam, int categoryId)
         {
             return await _selahDbContext.Posts
+                            .Include(p => p.Category)
                                 .Where(post => post.CategoryId == categoryId || post.Category.ParentId == categoryId)
                                 .ToPaginatedListAsync(pageParam.PageIndex, pageParam.Limit, pageParam.SortColoumn);
         }
         public async Task<PaginatedList<Post>> GetPublishedPosts(PaginationParam pageParam)
         {
             return await _selahDbContext.Posts
+                            .Include(p => p.Category)
                             .Where(post => post.Published == true)
                             .ToPaginatedListAsync(pageParam.PageIndex, pageParam.Limit, pageParam.SortColoumn);
         }
@@ -64,6 +68,7 @@ namespace SelahSeries.Repository
         public async Task<PaginatedList<Post>> GetPublishedPostsByCategory(PaginationParam pageParam, int categoryId)
         {
             return await _selahDbContext.Posts
+                            .Include(p => p.Category)
                                 .Where(post => (post.CategoryId == categoryId ||  post.ParentId == categoryId) && post.Published == true)
                                 .ToPaginatedListAsync(pageParam.PageIndex, pageParam.Limit, pageParam.SortColoumn);
         }

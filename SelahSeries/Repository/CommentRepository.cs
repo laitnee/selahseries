@@ -31,8 +31,7 @@ namespace SelahSeries.Repository
         public async Task<List<Comment>> GetComments(int postId)
         {
             return await _selahDbContext.Comments
-                                    .Include(m => m.Replies)
-                                    .Where(com => com.PostId == postId && com.ParentCommentId == null)
+                                    .Where(com => com.PostId == postId)
                                     .ToListAsync();
         }
         public async Task<List<Comment>> GetSubComments(int postId, int commentId)
