@@ -59,13 +59,34 @@ namespace SelahSeries.Controllers
             if (ModelState.IsValid)
             {
                 var uploadedImage = "";
-                if(postVM.PostPhoto != null) uploadedImage = await ProcessPhoto(postVM.PostPhoto);
+                string defaultPostPhoto = "";
+                if (postVM.PostPhoto != null) uploadedImage = await ProcessPhoto(postVM.PostPhoto);
 
                 try
                 {
+                    
                     var post = _mapper.Map<Post>(postVM);
                     post.CreatedAt = DateTime.Now;
-                    post.TitleImageUrl = string.IsNullOrWhiteSpace(uploadedImage) ? "defaultPostPhoto.jpg" : uploadedImage;
+                    if (post.CategoryId == 1)
+                    {
+                        defaultPostPhoto = "sportsPhoto.jpg";
+                    }
+
+                    else if (post.CategoryId == 3)
+                    {
+                        defaultPostPhoto = "careerPhoto.jpg";
+                    }
+                    else if (post.CategoryId == 4)
+                    {
+                        defaultPostPhoto = "politicsPhoto.jpg";
+                    }
+                    else
+                    {
+                        defaultPostPhoto = "marriagePhoto.jpg";
+                    }
+
+                    post.TitleImageUrl = string.IsNullOrWhiteSpace(uploadedImage) ? defaultPostPhoto : uploadedImage;
+                   
 
                     if (await _postRepo.AddPost(post)) return RedirectToAction(nameof(Index));
 

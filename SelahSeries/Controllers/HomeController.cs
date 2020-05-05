@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using SelahSeries.Data;
 using SelahSeries.Models;
@@ -13,15 +15,30 @@ namespace SelahSeries.Controllers
 {
     public class HomeController : Controller
     {
-        public HomeController(
-           SeedData seedData
-           )
+        private readonly IMapper _mapper;
+        private readonly IHostingEnvironment hostingEnvironment;
+        private readonly IPostRepository _postRepo;
+        //public HomeController(
+        //   //SeedData seedData
+        //   )
+        //{
+        //}
+        public HomeController(IPostRepository postRepo, IMapper mapper, IHostingEnvironment environment)
         {
-
+            _postRepo = postRepo;
+            _mapper = mapper;
+            hostingEnvironment = environment;
         }
-        public IActionResult Index()
+        public async  Task<IActionResult> Index()
         {
-            return View();
+            var pageParam = new PaginationParam
+            {
+                PageIndex = 1,
+                Limit = 20,
+                SortColoumn = "CreatedAt"
+            };
+            var posts = await _postRepo.GetPublishedPosts(pageParam);
+            return View(posts.Source);
         }
 
         public IActionResult About()
