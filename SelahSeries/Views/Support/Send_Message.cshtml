@@ -50,7 +50,9 @@
             <div class="card-heading"></div>
             <div class="card-body">
                 <h4 class="title" style="color:black" ; text-transform:"inherit">Are you in need of counselling/prayer? Contact our support links and we will get in touch with you.</h4>
-                <form method="POST">
+                @using (Html.BeginForm(FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
                     <div class="input-group">
                         <input class="input--style-2" type="text" placeholder="Full name" name="fullname" required="required">
                     </div>
@@ -105,7 +107,7 @@
                     <div class="p-t-30">
                         <button class="btn btn--radius btn--green" type="submit">Send</button>
                     </div>
-                </form>
+                }
             </div>
         </div>
 

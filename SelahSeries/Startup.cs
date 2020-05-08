@@ -14,6 +14,7 @@ using SelahSeries.Data;
 using SelahSeries.Core;
 using Microsoft.Net.Http.Headers;
 using AutoMapper;
+using SelahSeries.Services;
 
 namespace SelahSeries
 {
@@ -40,9 +41,12 @@ namespace SelahSeries
                  c.UseSqlServer(Configuration.GetConnectionString("SelahSeriesDB")));
             services.AddAutoMapper(typeof(Startup));
             services.AddCustomServices();
-
+       
+        
+                services.AddTransient<IEmailService, EmailService>();
+           
             //services.AddSeedData();
-            
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             
         }

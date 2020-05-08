@@ -145,7 +145,9 @@
 
 @media only screen and (max-width: 1024px)
 {
-	
+    div.eurek {
+        margin-top: -63px;
+    }	
 }
 
 /************
@@ -309,7 +311,9 @@
     .bass .imge{
         display: none;
     }
-    
+    div.eurek {
+        margin-top: -45px;
+    }
 }
 
 /************
@@ -512,7 +516,21 @@
         div.containe{
             padding: 32px;
         }
-    }
+        .carousel-item .text-block{
+            padding: 20px;
+        }
+        div.bio{
+            width: 100%;
+        }
+        div.eurek{
+            margin-top: -9px;
+        }
+        .container .featured-property-half .text {
+            padding: 36px;
+        }
+        div.authors {
+            padding-bottom: 10px;
+        }
 }
 
 /************
