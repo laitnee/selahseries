@@ -56,7 +56,7 @@ const app = () => {
     });
     const countTotalAnimation = new mojs.Html({
         el: '#clap--count-total',
-        isShowStart: true,
+        isShowStart: false,
         isShowEnd: true,
         opacity: { 1: 1 },
         delay: 3 * (tlDuration) / 2,

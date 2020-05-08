@@ -37,17 +37,18 @@ namespace SelahSeries.Repository
                             .FirstOrDefaultAsync();
 
         }
-        public void DeletePost(int postId)
+        public async Task DeletePost(int postId)
         {
-            var post = GetPost(postId);
-            _selahDbContext.Remove(post);
-            _selahDbContext.SaveChanges();
+            var post = await _selahDbContext.Posts.Where(p => p.PostId == postId).FirstOrDefaultAsync();
+
+            _selahDbContext.Remove<Post>(post);
+            await _selahDbContext.SaveChangesAsync();
         }
         public async Task<PaginatedList<Post>> GetPosts(PaginationParam pageParam)
         {
             return await _selahDbContext.Posts
                             .Include(p => p.Category)
-                            .ToPaginatedListAsync(pageParam.PageIndex, pageParam.Limit, pageParam.SortColoumn);
+                            .ToPaginatedListAsync(pageParam);
         }
 
         public async Task<PaginatedList<Post>> GetPostsByCategory(PaginationParam pageParam, int categoryId)
@@ -55,14 +56,14 @@ namespace SelahSeries.Repository
             return await _selahDbContext.Posts
                             .Include(p => p.Category)
                                 .Where(post => post.CategoryId == categoryId || post.Category.ParentId == categoryId)
-                                .ToPaginatedListAsync(pageParam.PageIndex, pageParam.Limit, pageParam.SortColoumn);
+                                .ToPaginatedListAsync(pageParam);
         }
         public async Task<PaginatedList<Post>> GetPublishedPosts(PaginationParam pageParam)
         {
             return await _selahDbContext.Posts
                             .Include(p => p.Category)
                             .Where(post => post.Published == true)
-                            .ToPaginatedListAsync(pageParam.PageIndex, pageParam.Limit, pageParam.SortColoumn);
+                            .ToPaginatedListAsync(pageParam);
         }
 
         public async Task<PaginatedList<Post>> GetPublishedPostsByCategory(PaginationParam pageParam, int categoryId)
@@ -70,7 +71,7 @@ namespace SelahSeries.Repository
             return await _selahDbContext.Posts
                             .Include(p => p.Category)
                                 .Where(post => (post.CategoryId == categoryId ||  post.ParentId == categoryId) && post.Published == true)
-                                .ToPaginatedListAsync(pageParam.PageIndex, pageParam.Limit, pageParam.SortColoumn);
+                                .ToPaginatedListAsync(pageParam);
         }
         public async Task<bool> UpdatePost(Post post)
         {

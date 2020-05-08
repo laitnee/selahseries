@@ -1,32 +1,32 @@
 ﻿@model IEnumerable<SelahSeries.Models.Post>
 @{
-        ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home Page";
 
-        var latestArticle = Model.OrderByDescending(x => x.CreatedAt).Take(11);
-
-       
-        //for (Model.OrderByAscending(x => x.created.take(11))
-        //{
-        //    foreach (var item in Model)
-        //    {
-        //        if (item.PostId == i)
-        //        {
-        //            latestArticles.Add(item);
-        //        }
-        //    }
-        //}
-
-    }
+    var latestArticle = Model.OrderByDescending(x => x.CreatedAt).Take(10);
 
 
+    //for (Model.OrderByAscending(x => x.created.take(11))
+    //{
+    //    foreach (var item in Model)
+    //    {
+    //        if (item.PostId == i)
+    //        {
+    //            latestArticles.Add(item);
+    //        }
+    //    }
+    //}
 
-    @section AddToHead {
+}
+
+
+
+@section AddToHead {
     <link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/main_styles.css">
     <link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/responsive.css">
     <link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/more_styles.css">
 }
 
-    @section AddToEnd {
+@section AddToEnd {
     <script src="~/NewFolder2/plugins/masonry/images_loaded.js"></script>
     <script src="~/NewFolder2/js/custom.js"></script>
 }
@@ -43,8 +43,7 @@
         <div class="carousel-item active" style="background-image: url('/NewFolder2/new/brooke-cagle-kvKSL7B6eTo-unsplash.jpg')">
 
             <div class="carousel-caption text-block d-md-block">
-                <h3 class="mb-4" style="color: #f2ba16 ;     font-size: 0.8em;
-    letter-spacing: 0.03em; font-family: 'Work Sans', sans-serif">Welcome to Selah Series</h3>
+                <h3 class="mb-4">Halt and ponder about your path to destiny</h3>
                 <p><a href="#blog" style=" letter-spacing: 0.02em;" class="btn btn-primary px-4 py-2">Visit Blog</a></p>
 
             </div>
@@ -55,8 +54,7 @@
 
         <div class="carousel-item" style="background-image: url('/NewFolder2/new/bigtree.jpg')">
             <div class="carousel-caption text-block d-md-block">
-                <h3 class="mb-4" style="color: #f2ba16 ; font-family: 'Work Sans', sans-serif;     font-size: 0.8em;
-    letter-spacing: 0.03em;"> Grow With Selah</h3>
+                <h3 class="mb-4"> The place where potentials grow</h3>
 
 
                 <p><a href="#blog" style=" letter-spacing: 0.02em;" class="btn btn-primary px-4 py-2">Visit Blog</a></p>
@@ -66,8 +64,7 @@
         <!-- Slide Two - Set the background image for this slide in the line below -->
         <div class="carousel-item" style="background-image: url('/NewFolder2/new/hian-oliveira-7-gtkXm2b5U-unsplash (1).jpg')">
             <div class="carousel-caption text-block d-md-block">
-                <h3 class="mb-4" style="color: #f2ba16 ;     font-size: 0.8em;
-    letter-spacing: 0.03em; font-family: 'Work Sans', sans-serif">Home of counsel and support</h3>
+                <h3 class="mb-4" style="">Home of counsel and support</h3>
 
 
                 <p><a href="#blog" style=" letter-spacing: 0.02em;" class="btn btn-primary px-4 py-2">Visit Blog</a></p>
@@ -77,10 +74,9 @@
         <!-- Slide Three - Set the background image for this slide in the line below -->
         <div class="carousel-item" style="background-image: url('/NewFolder2/new/emilio-garcia-AWdCgDDedH0-unsplash.jpg')">
             <div class="carousel-caption text-block d-md-block">
-                <h3 class="mb-4" style="color: #f2ba16 ;     font-size: 0.8em;
-    letter-spacing: 0.03em; font-family: 'Work Sans', sans-serif;">Get updates on sports and politics</h3>
+                <h3 class="mb-4">For incising updates on politics and football</h3>
 
-                <p><a href="#blog" style=" letter-spacing: 0.02em;"  class="btn btn-primary">Visit Blog</a></p>
+                <p><a href="#blog" style=" letter-spacing: 0.02em;" class="btn btn-primary">Visit Blog</a></p>
             </div>
 
         </div>
@@ -109,7 +105,6 @@
             </div>
 
         </div>
-        //this cards self , cant the entire card be the link do we really need the readmore
         <div class=" col-sm-12 col-md-6 col-lg-3">
             <div class="card2">
                 <img src="/NewFolder2/new/kakudmi-JO19K0HDDXI-unsplash (1).jpg" alt="Avatar">
@@ -154,10 +149,10 @@
 
 <div id="blog">
     <div class="row" style="background: url('/NewFolder2/new/brass-black-brown-fountain-pen-163029 (2).jpg')">
-        <div class="">
+        <div class="has-overlay">
             <img style="width:100%; height:18.06em" src='/NewFolder2/new/brass-black-brown-fountain-pen-163029 (2).jpg' alt="image" />
         </div>
-        @*<div class="centered h2" style="font-family: 'Ubuntu', sans-serif; color:#f2ba16">Blog</div>*@
+        <div class="centered h2" style="font-family: 'Ubuntu', sans-serif; color:#f2ba16">Blog</div>
     </div>
 </div>
 
@@ -183,14 +178,14 @@
                         <div class="section_panel d-flex flex-row align-items-center justify-content-start">
                             <div class="section_title">Don't Miss</div>
                             @*<div class="section_tags ml-auto">
-                                <ul>
-                                    <li class="active"><a href="category.html">all</a></li>
-                                    <li>@Html.ActionLink("Relationship & Marriage", "Category", "Blog")</li>
-                                    <li>@Html.ActionLink("Politics", "Category", "Blog")</li>
-                                    <li>@Html.ActionLink("Sports", "Category", "Blog")</li>
-                                    <li>@Html.ActionLink("career", "Category", "Blog")</li>
-                                </ul>
-                            </div>*@
+                                    <ul>
+                                        <li class="active"><a href="category.html">all</a></li>
+                                        <li>@Html.ActionLink("Relationship & Marriage", "Category", "Blog")</li>
+                                        <li>@Html.ActionLink("Politics", "Category", "Blog")</li>
+                                        <li>@Html.ActionLink("Sports", "Category", "Blog")</li>
+                                        <li>@Html.ActionLink("career", "Category", "Blog")</li>
+                                    </ul>
+                                </div>*@
                             @*<div class="section_panel_more">
                                     <ul>
                                         <li>
@@ -210,7 +205,7 @@
 
                         <div class="section_content">
                             <div class="grid clearfix">
-                                
+
                                 @foreach (var item in latestArticle)
                                 {
                                     <!-- Small Card With Image -->
@@ -224,13 +219,13 @@
 
                                     <!-- Largest Card With Image -->
                                     @*<div class="card card_largest_with_image grid-item">
-                                        <img class="card-img-top" src="/NewFolder2/images/post_1.jpg" alt="https://unsplash.com/">
-                                        <div class="card-body">
-                                            <div class="card-title"><a href="~/blog/post">@/*Html.DisplayFor(modelItem => item.Title)*/</a></div>
-                                            <div class="card-text line-clamp">@/*Html.Raw("<div class=\"line-clamp\">" + item.Content + "</div>")*/</div>
-                                            <small class="post_meta"><a href="#">@/*Html.DisplayFor(modelItem => item.Author)*/</a><span>@/*Html.DisplayFor(modelItem => item.ModifiedAt)*/</span></small>
-                                        </div>
-                                    </div>*@
+                                            <img class="card-img-top" src="/NewFolder2/images/post_1.jpg" alt="https://unsplash.com/">
+                                            <div class="card-body">
+                                                <div class="card-title"><a href="~/blog/post">@/*Html.DisplayFor(modelItem => item.Title)*/</a></div>
+                                                <div class="card-text line-clamp">@/*Html.Raw("<div class=\"line-clamp\">" + item.Content + "</div>")*/</div>
+                                                <small class="post_meta"><a href="#">@/*Html.DisplayFor(modelItem => item.Author)*/</a><span>@/*Html.DisplayFor(modelItem => item.ModifiedAt)*/</span></small>
+                                            </div>
+                                        </div>*@
 
                                 }
 
@@ -288,16 +283,16 @@
 
                                 @foreach (var item in latestArticle)
                                 {
-                                <div class="card card_small_with_image grid-item">
-                                    <img class="card-img-top" src='~/Uploads/@Html.DisplayFor(modelItem => item.TitleImageUrl)' alt="https://unsplash.com/">
-                                    <div class="card-body">
-                                        <div class="card-title card-title-small"><a href="~/blog/post/@Html.DisplayFor(modelItem => item.PostId)">@Html.DisplayFor(modelItem => item.Title)</a></div>
-                                        <small class="post_meta"><a href="#">@Html.DisplayFor(modelItem => item.Author)</a><span>@Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
+                                    <div class="card card_small_with_image grid-item">
+                                        <img class="card-img-top" src='~/Uploads/@Html.DisplayFor(modelItem => item.TitleImageUrl)' alt="https://unsplash.com/">
+                                        <div class="card-body">
+                                            <div class="card-title card-title-small"><a href="~/blog/post/@Html.DisplayFor(modelItem => item.PostId)">@Html.DisplayFor(modelItem => item.Title)</a></div>
+                                            <small class="post_meta"><a href="#">@Html.DisplayFor(modelItem => item.Author)</a><span>@Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
+                                        </div>
                                     </div>
-                                </div>
                                 }
 
-           
+
                                 <!-- Small Card With Image -->
                                 <div class="card card_small_with_image grid-item">
                                     <img class="card-img-top" src="/NewFolder2/images/post_10.jpg" alt="">
@@ -306,8 +301,8 @@
                                         <small class="post_meta"><a href="#">Html.DisplayFor(modelItem => item.Author)</a><span>Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
                                     </div>
                                 </div>
-                               
-           <!-- Small Card With Image -->
+
+                                <!-- Small Card With Image -->
                                 <div class="card card_small_with_image grid-item">
                                     <img class="card-img-top" src="/NewFolder2/images/post_15.jpg" alt="">
                                     <div class="card-body">
@@ -328,7 +323,7 @@
                                     </div>
                                 </div>
 
-                 
+
                                 <!-- Small Card With Background -->
                                 <div class="card card_default card_small_with_background grid-item">
                                     <div class="card_background" style="background-image:url(/NewFolder2/images/post_11.jpg)"></div>
@@ -337,7 +332,7 @@
                                         <small class="post_meta"><a href="#">Html.DisplayFor(modelItem => item.Author)</a><span>Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
                                     </div>
                                 </div>
-                               
+
 
 
 
@@ -378,6 +373,14 @@
 
 
 
+
+
+
+
+
+
+
+
 											</svg>
                                     </div>
                                     <ul id="custom_dots" class="custom_dots custom_dots_vid">
@@ -389,6 +392,14 @@
                                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                              width="7px" height="12px" viewBox="0 0 7 12" enable-background="new 0 0 7 12" xml:space="preserve">
                                         <polyline fill="#bebebe" points="6.998,6.39 1.389,12 -0.002,12 -0.002,10.562 4.561,6 -0.002,1.438 -0.002,0 1.389,0 7,5.61 " />
+
+
+
+
+
+
+
+
 
 
 
@@ -818,12 +829,14 @@
 </div>
 
 <style>
-    .load_more a{
+    .load_more a {
         color: white;
     }
-    .load_more a:hover{
-        color: darkred;
-    }
+
+        .load_more a:hover {
+            color: darkred;
+        }
+
     .contain {
         position: relative;
         text-align: center;
@@ -853,16 +866,23 @@
     .books .carousel-inner {
         height: 320px;
     }
+
     .line-clamp {
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: no-content;
     }
-    div.carousel-caption{
-        width: 750px;
+
+    div.carousel-caption {
+        text-align: center;
+        width: 75%;
         margin-left: auto;
         margin-right: auto;
         margin-bottom: 20px;
+        color: #f2ba16;
+        font-size: 0.6em;
+        letter-spacing: 0.03em;
+        font-family: 'Work Sans', sans-serif;
     }
 </style>

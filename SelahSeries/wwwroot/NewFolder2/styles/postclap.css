@@ -1,16 +1,4 @@
-/*======================== SASS definitions =======================*/
-/*======================== FLEXBOX ALIGNMENT =======================*/
- body {
-	 display: flex;
-	 align-items: center;
-	 justify-content: center;
-	 min-height: 100vh;
-}
-/*======================== BASIC styles =======================*/
- * {
-	 box-sizing: border-box;
-}
-/*======================== BUTTON styles =======================*/
+
 button:focus{
     outline:none;
 }
@@ -79,7 +67,7 @@ button:focus{
  #message {
 	 position: absolute;
 	 bottom: 20px;
-	 color: rgba(39, 174, 96, 1);
+	 color: rgba(39, 96, 174, 1);
 	 line-height: 1.52rem;
 	 padding: 1rem;
 	 font-size: 0.9rem;
@@ -90,13 +78,13 @@ button:focus{
  @keyframes shockwave {
 	 0% {
 		 transform: scale(1);
-		 box-shadow: 0 0 2px rgba(39, 174, 96, 1);
+		 box-shadow: 0 0 2px rgba(39, 96, 174, 1);
 		 opacity: 1;
 	}
 	 100% {
 		 transform: scale(1);
 		 opacity: 0;
-		 box-shadow: 0 0 50px rgba(20, 91, 50, 1), inset 0 0 10px rgba(39, 174, 96, 1);
+		 box-shadow: 0 0 50px rgba(20, 50, 91, 1), inset 0 0 10px rgba(39, 96, 174, 1);
 	}
 }
  

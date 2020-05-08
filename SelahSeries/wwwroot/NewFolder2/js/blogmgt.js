@@ -1,9 +1,4 @@
-﻿function StrigHTMLTags() {
-    document.querySelectorAll('[data-StripTag]').forEach((element) => {
-        let stripTagContent = element.textContent.trim().replace(/<(?:.|\s)*?>/g, "").substring(0, 30) + "...";
-        element.textContent = stripTagContent;
-    });
-}
+﻿
 
 function UseHTMLTags() {
     let element = document.querySelector('[data-usehtmltag]');
@@ -48,4 +43,11 @@ function Collapsibles() {
         });
     }
 }
-document.addEventListener("DOMContentLoaded", function () { StrigHTMLTags(); UseHTMLTags(); Collapsibles();  FileUploadMod();  });
+function StripHTMLTags() {
+    document.querySelectorAll('[data-StripTag]').forEach((element) => {
+        let stripTagContent = element.textContent.trim().replace(/<(?:.|\s)*?>/g, "").replace(/(\$nbsp;)/g, " ").substring(0, 30) + "...";
+        element.textContent = stripTagContent;
+    });
+}
+StripHTMLTags();
+document.addEventListener("DOMContentLoaded", function () { UseHTMLTags(); Collapsibles();  FileUploadMod();  });

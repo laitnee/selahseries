@@ -1,7 +1,7 @@
 ﻿@model SelahSeries.ViewModels.PostDetailViewModel
 @{
-    ViewData["Title"] = "Politics";
-    var pageURL = $"";
+    ViewData["Title"] = Model.Post.Title;
+    var pageURL = $"{Context.Request.Scheme}://{Context.Request.Host}{Context.Request.Path}{Context.Request.QueryString}";
 }
 
 @section AddToHead {
@@ -19,307 +19,481 @@
     <script src="~/NewFolder2/js/postclap.js"></script>
 }
 
-
-<!-- Home -->
-<span data-postId style="display:none;">@Model.Post.PostId</span>
-<div class="home">
-    <div class="home_background parallax-window" data-parallax="scroll" style="background-image:url('/uploads/@Model.Post.TitleImageUrl'); margin-top:20px" data-speed="0.8"></div>
-    <div class="home_content">
-        <div class="post_category trans_200"><a style="box-sizing:border-box;" href="category.html" class="trans_200">@Model.Post.Category.Title</a></div>
-        <div class="post_title">@Model.Post.Title</div>
+<div style="max-width:100%;" class="container">
+    <!-- Home -->
+    <span data-postId style="display:none;">@Model.Post.PostId</span>
+    <div class="home">
+        <div class="home_background parallax-window" data-parallax="scroll" style="background-image:url('/uploads/@Model.Post.TitleImageUrl'); margin-top:20px" data-speed="0.8"></div>
+        <div class="home_content">
+            <div class="post_category trans_200"><a style="box-sizing:border-box;" href="category.html" class="trans_200">@Model.Post.Category.Title</a></div>
+            <div style="" class="post_title">@Model.Post.Title</div>
+        </div>
     </div>
-</div>
+    <!-- Page Content -->
+    <div class="page_content">
+        <div class="container">
+            <div class="row row-lg-eq-height">
 
-<!-- Page Content -->
-
-<div class="page_content">
-    <div class="container">
-        <div class="row row-lg-eq-height">
-
-
-
-            <!-- Post Content -->
-
-            <div class="col-lg-9">
-
-                <div class="post_content">
-
-                    <!-- Top Panel -->
-                    <div class="post_panel post_panel_top d-flex flex-row align-items-center justify-content-start">
-                        <div class="author_image">
-                            <div><img src="https://ui-avatars.com/api/?name=@Model.Post.Author&background=D4AF37&color=fff" alt=""></div>
+                <!-- Post Content -->
+                <div class="col-lg-9">
+                    <div class="post_content">
+                        <!-- Top Panel -->
+                        <div class="post_panel post_panel_top d-flex flex-row align-items-center justify-content-start">
+                            <div class="author_image">
+                                <div><img src="https://ui-avatars.com/api/?name=@Model.Post.Author&background=D4AF37&color=fff" alt=""></div>
+                            </div>
+                            <div class="post_meta"><a href="#">@Model.Post.Author</a><span>@Model.Post.CreatedAt.ToShortDateString() at @Model.Post.CreatedAt.ToShortTimeString()</span></div>
+                            <div class="post_share ml-sm-auto">
+                                <span>share</span>
+                                <ul class="post_share_list">
+                                    <li class="post_share_item">
+                                        <a href="https://facebook.com/sharer/sharer.php?u=@Uri.EscapeDataString(pageURL)&t=@Model.Post.Title"
+                                           class="share-popup"
+                                           target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                    </li>
+                                    <li class="post_share_item">
+                                        <a href="https://twitter.com/share?url=@Uri.EscapeDataString(pageURL)&via=2uung&text=@Model.Post.Title"
+                                           class="share-popup"
+                                           target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                    </li>
+                                    <li class="post_share_item">
+                                        <a href="https://linkedin.com/shareArticle?mini=true&url=@Uri.EscapeDataString(pageURL)&title=@Model.Post.Title"
+                                           class="share-popup"
+                                           target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="post_meta"><a href="#">@Model.Post.Author</a><span>@Model.Post.CreatedAt.ToShortDateString() at @Model.Post.CreatedAt.ToShortTimeString()</span></div>
-                        <div class="post_share ml-sm-auto">
-                            <span>share</span>
-                            <ul class="post_share_list">
-                                <li class="post_share_item">
-                                    <a href="https://facebook.com/sharer/sharer.php?u=@Uri.EscapeDataString(pageURL)&t=@Model.Post.Title"
-                                       class="share-popup"
-                                       target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                </li>
-                                <li class="post_share_item">
-                                    <a href="https://twitter.com/share?url=@Uri.EscapeDataString(pageURL)&via=2uung&text=@Model.Post.Title"
-                                       class="share-popup"
-                                       target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                </li>
-                                <li class="post_share_item">
-                                    <a href="https://linkedin.com/shareArticle?mini=true&url=@Uri.EscapeDataString(pageURL)&title=@Model.Post.Title"
-                                       class="share-popup"
-                                       target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Post Body -->
-
-                    <div class="post_body">
-                        <div>
-                            <button id="clap" class="clap">
-                                <span>
-                                    <!--  SVG Created by Luis Durazo from the Noun Project  -->
-                                    <svg id="clap--icon" xmlns="http://www.w3.org/2000/svg" viewBox="-549 338 100.1 125">
-                                        <path d="M-471.2 366.8c1.2 1.1 1.9 2.6 2.3 4.1.4-.3.8-.5 1.2-.7 1-1.9.7-4.3-1-5.9-2-1.9-5.2-1.9-7.2.1l-.2.2c1.8.1 3.6.9 4.9 2.2zm-28.8 14c.4.9.7 1.9.8 3.1l16.5-16.9c.6-.6 1.4-1.1 2.1-1.5 1-1.9.7-4.4-.9-6-2-1.9-5.2-1.9-7.2.1l-15.5 15.9c2.3 2.2 3.1 3 4.2 5.3zm-38.9 39.7c-.1-8.9 3.2-17.2 9.4-23.6l18.6-19c.7-2 .5-4.1-.1-5.3-.8-1.8-1.3-2.3-3.6-4.5l-20.9 21.4c-10.6 10.8-11.2 27.6-2.3 39.3-.6-2.6-1-5.4-1.1-8.3z" />
-                                        <path d="M-527.2 399.1l20.9-21.4c2.2 2.2 2.7 2.6 3.5 4.5.8 1.8 1 5.4-1.6 8l-11.8 12.2c-.5.5-.4 1.2 0 1.7.5.5 1.2.5 1.7 0l34-35c1.9-2 5.2-2.1 7.2-.1 2 1.9 2 5.2.1 7.2l-24.7 25.3c-.5.5-.4 1.2 0 1.7.5.5 1.2.5 1.7 0l28.5-29.3c2-2 5.2-2 7.1-.1 2 1.9 2 5.1.1 7.1l-28.5 29.3c-.5.5-.4 1.2 0 1.7.5.5 1.2.4 1.7 0l24.7-25.3c1.9-2 5.1-2.1 7.1-.1 2 1.9 2 5.2.1 7.2l-24.7 25.3c-.5.5-.4 1.2 0 1.7.5.5 1.2.5 1.7 0l14.6-15c2-2 5.2-2 7.2-.1 2 2 2.1 5.2.1 7.2l-27.6 28.4c-11.6 11.9-30.6 12.2-42.5.6-12-11.7-12.2-30.8-.6-42.7m18.1-48.4l-.7 4.9-2.2-4.4m7.6.9l-3.7 3.4 1.2-4.8m5.5 4.7l-4.8 1.6 3.1-3.9" />
-                                    </svg>
-                                </span>
-                                <span id="clap--count" class="clap--count"></span>
-                                <span id="clap--count-total" class="clap--count-total"></span>
-                            </button>
-                        </div>
-
-                        <p class="post_p">
-                            @(Model.Post.Content)
-                        </p>
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-
-                        <p class="post_p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce enim nulla, mollis eu metus in, sagittis fringilla tortor. Phasellus eget purus id felis dignissim convallis. Suspendisse et augue dui. Morbi gravida sed justo vel venenatis. Ut tempor pretium maximus. Donec libero diam, faucibus vitae lectus nec, accumsan gravida dui. Nam interdum mi eget lacus aliquet, sit amet ultricies magna pharetra. In ut odio a ligula egestas pretium et quis sapien. Etiam faucibus magna eu porta vulputate. Aliquam euismod rhoncus malesuada. Nunc rutrum hendrerit semper.</p>
-
-                        <p class="post_p">Donec orci dolor, pretium in luctus id, consequat vitae nibh. Quisque hendrerit, lorem sit amet mollis malesuada, urna orci volutpat ex, sed scelerisque nunc velit et massa. Sed maximus id erat vel feugiat. Phasellus bibendum nisi non urna bibendum elementum. Aenean tincidunt nibh vitae ex facilisis ultrices. Integer ornare efficitur ultrices. Integer neque lectus, venenatis at pulvinar quis, aliquet id neque. Mauris ultrices consequat velit, sed dignissim elit posuere in. Cras vitae dictum dui.</p>
-
-                        <!-- Post Tags -->
-                        @*<div class="post_tags">
-                <ul>
-                    <li class="post_tag"><a href="#">Liberty</a></li>
-                    <li class="post_tag"><a href="#">Manual</a></li>
-                    <li class="post_tag"><a href="#">Interpretation</a></li>
-                    <li class="post_tag"><a href="#">Recommendation</a></li>
-                </ul>
-            </div>*@
-                    </div>
-                    <div>
-                        <button id="clap" class="clap">
-                            <span>
-                                <!--  SVG Created by Luis Durazo from the Noun Project  -->
-                                <svg id="clap--icon" xmlns="http://www.w3.org/2000/svg" viewBox="-549 338 100.1 125">
-                                    <path d="M-471.2 366.8c1.2 1.1 1.9 2.6 2.3 4.1.4-.3.8-.5 1.2-.7 1-1.9.7-4.3-1-5.9-2-1.9-5.2-1.9-7.2.1l-.2.2c1.8.1 3.6.9 4.9 2.2zm-28.8 14c.4.9.7 1.9.8 3.1l16.5-16.9c.6-.6 1.4-1.1 2.1-1.5 1-1.9.7-4.4-.9-6-2-1.9-5.2-1.9-7.2.1l-15.5 15.9c2.3 2.2 3.1 3 4.2 5.3zm-38.9 39.7c-.1-8.9 3.2-17.2 9.4-23.6l18.6-19c.7-2 .5-4.1-.1-5.3-.8-1.8-1.3-2.3-3.6-4.5l-20.9 21.4c-10.6 10.8-11.2 27.6-2.3 39.3-.6-2.6-1-5.4-1.1-8.3z" />
-                                    <path d="M-527.2 399.1l20.9-21.4c2.2 2.2 2.7 2.6 3.5 4.5.8 1.8 1 5.4-1.6 8l-11.8 12.2c-.5.5-.4 1.2 0 1.7.5.5 1.2.5 1.7 0l34-35c1.9-2 5.2-2.1 7.2-.1 2 1.9 2 5.2.1 7.2l-24.7 25.3c-.5.5-.4 1.2 0 1.7.5.5 1.2.5 1.7 0l28.5-29.3c2-2 5.2-2 7.1-.1 2 1.9 2 5.1.1 7.1l-28.5 29.3c-.5.5-.4 1.2 0 1.7.5.5 1.2.4 1.7 0l24.7-25.3c1.9-2 5.1-2.1 7.1-.1 2 1.9 2 5.2.1 7.2l-24.7 25.3c-.5.5-.4 1.2 0 1.7.5.5 1.2.5 1.7 0l14.6-15c2-2 5.2-2 7.2-.1 2 2 2.1 5.2.1 7.2l-27.6 28.4c-11.6 11.9-30.6 12.2-42.5.6-12-11.7-12.2-30.8-.6-42.7m18.1-48.4l-.7 4.9-2.2-4.4m7.6.9l-3.7 3.4 1.2-4.8m5.5 4.7l-4.8 1.6 3.1-3.9" />
-                                </svg>
-                            </span>
-                            <span id="clap--count" class="clap--count"></span>
-                            <span id="clap--count-total" class="clap--count-total"></span>
-                        </button>
-                    </div>
-                    <!-- Bottom Panel -->
-                    <div class="post_panel bottom_panel d-flex flex-row align-items-center justify-content-start">
-                        <div class="author_image"><div><img src="https://ui-avatars.com/api/?name=@Model.Post.Author&background=D4AF37&color=fff" alt=""></div></div>
-                        <div class="post_meta"><a href="#">@Model.Post.Author</a><span>@Model.Post.CreatedAt.ToShortDateString() at @Model.Post.CreatedAt.ToShortTimeString()</span></div>
-                        <div class="post_share ml-sm-auto">
-                            <span>share</span>
-                            <ul class="post_share_list">
-                                <li class="post_share_item">
-                                    <a href="https://facebook.com/sharer/sharer.php?u=@Uri.EscapeDataString(pageURL)&t=@Model.Post.Title"
-                                       class="share-popup"
-                                       target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                </li>
-                                <li class="post_share_item">
-                                    <a href="https://twitter.com/share?url=@Uri.EscapeDataString(pageURL)&via=TWITTER_HANDLE&text=@Model.Post.Title"
-                                       class="share-popup"
-                                       target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                </li>
-                                <li class="post_share_item">
-                                    <a href="https://linkedin.com/shareArticle?mini=true&url=@Uri.EscapeDataString(pageURL)&title=@Model.Post.Title"
-                                       class="share-popup"
-                                       target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Similar Posts -->
-                    <div class="similar_posts">
-                        <div class="grid clearfix">
-
-                            <!-- Small Card With Image -->
-                            <div class="card card_small_with_image grid-item">
-                                <img class="card-img-top" src="~/NewFolder2/images/post_25.jpg" alt="https://unsplash.com">
-                                <div class="card-body">
-                                    <div class="card-title card-title-small"><a href="post.html">How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</a></div>
-                                    <small class="post_meta"><a href="#">Katy Liu</a><span>Sep 29, 2017 at 9:48 am</span></small>
-                                </div>
+                        <!-- Post Body -->
+                        <div class="post_body">
+                            <div>
+                                <button id="clap" class="clap">
+                                    <span>
+                                        <!--  SVG Created by Luis Durazo from the Noun Project  -->
+                                        <svg id="clap--icon" xmlns="http://www.w3.org/2000/svg" viewBox="-549 338 100.1 125">
+                                            <path d="M-471.2 366.8c1.2 1.1 1.9 2.6 2.3 4.1.4-.3.8-.5 1.2-.7 1-1.9.7-4.3-1-5.9-2-1.9-5.2-1.9-7.2.1l-.2.2c1.8.1 3.6.9 4.9 2.2zm-28.8 14c.4.9.7 1.9.8 3.1l16.5-16.9c.6-.6 1.4-1.1 2.1-1.5 1-1.9.7-4.4-.9-6-2-1.9-5.2-1.9-7.2.1l-15.5 15.9c2.3 2.2 3.1 3 4.2 5.3zm-38.9 39.7c-.1-8.9 3.2-17.2 9.4-23.6l18.6-19c.7-2 .5-4.1-.1-5.3-.8-1.8-1.3-2.3-3.6-4.5l-20.9 21.4c-10.6 10.8-11.2 27.6-2.3 39.3-.6-2.6-1-5.4-1.1-8.3z" />
+                                            <path d="M-527.2 399.1l20.9-21.4c2.2 2.2 2.7 2.6 3.5 4.5.8 1.8 1 5.4-1.6 8l-11.8 12.2c-.5.5-.4 1.2 0 1.7.5.5 1.2.5 1.7 0l34-35c1.9-2 5.2-2.1 7.2-.1 2 1.9 2 5.2.1 7.2l-24.7 25.3c-.5.5-.4 1.2 0 1.7.5.5 1.2.5 1.7 0l28.5-29.3c2-2 5.2-2 7.1-.1 2 1.9 2 5.1.1 7.1l-28.5 29.3c-.5.5-.4 1.2 0 1.7.5.5 1.2.4 1.7 0l24.7-25.3c1.9-2 5.1-2.1 7.1-.1 2 1.9 2 5.2.1 7.2l-24.7 25.3c-.5.5-.4 1.2 0 1.7.5.5 1.2.5 1.7 0l14.6-15c2-2 5.2-2 7.2-.1 2 2 2.1 5.2.1 7.2l-27.6 28.4c-11.6 11.9-30.6 12.2-42.5.6-12-11.7-12.2-30.8-.6-42.7m18.1-48.4l-.7 4.9-2.2-4.4m7.6.9l-3.7 3.4 1.2-4.8m5.5 4.7l-4.8 1.6 3.1-3.9" />
+                                        </svg>
+                                    </span>
+                                    <span style="opacity:0;" id="clap--count" class="clap--count"></span>
+                                    <span id="clap--count-total" class="clap--count-total"></span>
+                                </button>
                             </div>
 
-                            <!-- Small Card With Image -->
-                            <div class="card card_small_with_image grid-item">
-                                <img class="card-img-top" src="~/NewFolder2/images/post_2.jpg" alt="https://unsplash.com/">
-                                <div class="card-body">
-                                    <div class="card-title card-title-small"><a href="post.html">How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</a></div>
-                                    <small class="post_meta"><a href="#">Katy Liu</a><span>Sep 29, 2017 at 9:48 am</span></small>
-                                </div>
-                            </div>
+                            <p class="post_p">
+                                @Html.Raw(Model.Post.Content)
+                            </p>
+                            <br />
+                            <br />
+                            <br />
+                            <br />
 
-                            <!-- Small Card With Image -->
-                            <div class="card card_small_with_image grid-item">
-                                <img class="card-img-top" src="~/NewFolder2/images/post_26.jpg" alt="https://unsplash.com">
-                                <div class="card-body">
-                                    <div class="card-title card-title-small"><a href="post.html">How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</a></div>
-                                    <small class="post_meta"><a href="#">Katy Liu</a><span>Sep 29, 2017 at 9:48 am</span></small>
-                                </div>
-                            </div>
+                            <p class="post_p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce enim nulla, mollis eu metus in, sagittis fringilla tortor. Phasellus eget purus id felis dignissim convallis. Suspendisse et augue dui. Morbi gravida sed justo vel venenatis. Ut tempor pretium maximus. Donec libero diam, faucibus vitae lectus nec, accumsan gravida dui. Nam interdum mi eget lacus aliquet, sit amet ultricies magna pharetra. In ut odio a ligula egestas pretium et quis sapien. Etiam faucibus magna eu porta vulputate. Aliquam euismod rhoncus malesuada. Nunc rutrum hendrerit semper.</p>
 
+                            <p class="post_p">Donec orci dolor, pretium in luctus id, consequat vitae nibh. Quisque hendrerit, lorem sit amet mollis malesuada, urna orci volutpat ex, sed scelerisque nunc velit et massa. Sed maximus id erat vel feugiat. Phasellus bibendum nisi non urna bibendum elementum. Aenean tincidunt nibh vitae ex facilisis ultrices. Integer ornare efficitur ultrices. Integer neque lectus, venenatis at pulvinar quis, aliquet id neque. Mauris ultrices consequat velit, sed dignissim elit posuere in. Cras vitae dictum dui.</p>
+
+                            <!-- Post Tags -->
+                            @*<div class="post_tags">
+                                    <ul>
+                                        <li class="post_tag"><a href="#">Liberty</a></li>
+                                        <li class="post_tag"><a href="#">Manual</a></li>
+                                        <li class="post_tag"><a href="#">Interpretation</a></li>
+                                        <li class="post_tag"><a href="#">Recommendation</a></li>
+                                    </ul>
+                                </div>*@
+                        </div>
+                        <!-- Bottom Panel -->
+                        <div class="post_panel bottom_panel d-flex flex-row align-items-center justify-content-start">
+                            <div class="author_image"><div><img src="https://ui-avatars.com/api/?name=@Model.Post.Author&background=D4AF37&color=fff" alt=""></div></div>
+                            <div class="post_meta"><a href="#">@Model.Post.Author</a><span>@Model.Post.CreatedAt.ToShortDateString() at @Model.Post.CreatedAt.ToShortTimeString()</span></div>
+                            <div class="post_share ml-sm-auto">
+                                <span>share</span>
+                                <ul class="post_share_list">
+                                    <li class="post_share_item">
+                                        <a href="https://facebook.com/sharer/sharer.php?u=@Uri.EscapeDataString(pageURL)&t=@Model.Post.Title"
+                                           class="share-popup"
+                                           target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                    </li>
+                                    <li class="post_share_item">
+                                        <a href="https://twitter.com/share?url=@Uri.EscapeDataString(pageURL)&via=TWITTER_HANDLE&text=@Model.Post.Title"
+                                           class="share-popup"
+                                           target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                    </li>
+                                    <li class="post_share_item">
+                                        <a href="https://linkedin.com/shareArticle?mini=true&url=@Uri.EscapeDataString(pageURL)&title=@Model.Post.Title"
+                                           class="share-popup"
+                                           target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
 
-                        <!-- Post Comment -->
-                        <div class="post_comment">
-                            <div class="post_comment_title">Post Comment</div>
-                            <div class="row">
-                                <div class="col-xl-9">
-                                    <div class="post_comment_form_container">
-                                        <form method="post" asp-controller="Blog" asp-action="PostComment">
-                                            <input type="hidden" value="@Model.Post.PostId" asp-for="Post.PostId" />
-                                            <input type="text" asp-for="Comment.Author" class="comment_input comment_input_name" placeholder="Your Name" required="required">
-                                            <input type="email" asp-for="Comment.Email" class="comment_input comment_input_email" placeholder="Your Email" required="required">
-                                            <textarea asp-for="Comment.Content" class="comment_text" placeholder="Your Comment" required="required"></textarea>
-                                            <button type="submit" class="comment_button">Post Comment</button>
-                                        </form>
+                        <!-- Similar Posts -->
+                        <div class="similar_posts">
+                            <div class="grid clearfix">
+
+                                <!-- Small Card With Image -->
+                                <div class="card card_small_with_image grid-item">
+                                    <img class="card-img-top" src="~/NewFolder2/images/post_25.jpg" alt="https://unsplash.com">
+                                    <div class="card-body">
+                                        <div class="card-title card-title-small"><a href="post.html">How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</a></div>
+                                        <small class="post_meta"><a href="#">Katy Liu</a><span>Sep 29, 2017 at 9:48 am</span></small>
+                                    </div>
+                                </div>
+
+                                <!-- Small Card With Image -->
+                                <div class="card card_small_with_image grid-item">
+                                    <img class="card-img-top" src="~/NewFolder2/images/post_2.jpg" alt="https://unsplash.com/">
+                                    <div class="card-body">
+                                        <div class="card-title card-title-small"><a href="post.html">How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</a></div>
+                                        <small class="post_meta"><a href="#">Katy Liu</a><span>Sep 29, 2017 at 9:48 am</span></small>
+                                    </div>
+                                </div>
+
+                                <!-- Small Card With Image -->
+                                <div class="card card_small_with_image grid-item">
+                                    <img class="card-img-top" src="~/NewFolder2/images/post_26.jpg" alt="https://unsplash.com">
+                                    <div class="card-body">
+                                        <div class="card-title card-title-small"><a href="post.html">How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</a></div>
+                                        <small class="post_meta"><a href="#">Katy Liu</a><span>Sep 29, 2017 at 9:48 am</span></small>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- Post Comment -->
+                            <div class="post_comment">
+                                <div class="post_comment_title">Post Comment</div>
+                                <div class="row">
+                                    <div class="col-xl-9">
+                                        <div class="post_comment_form_container">
+                                            <form method="post" asp-controller="Blog" asp-action="PostComment">
+                                                <input type="hidden" value="@Model.Post.PostId" asp-for="Post.PostId" />
+                                                <input type="text" asp-for="Comment.Author" class="comment_input comment_input_name" placeholder="Your Name" required="required">
+                                                <input type="email" asp-for="Comment.Email" class="comment_input comment_input_email" placeholder="Your Email" required="required">
+                                                <textarea asp-for="Comment.Content" class="comment_text" placeholder="Your Comment" required="required"></textarea>
+                                                <button type="submit" class="comment_button">Post Comment</button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- Comments -->
-                        <div class="comments">
-                            <div class="comments_title">Comments <span>@{Model.CommentList.Count();}</span></div>
+                            <!-- Comments -->
+                            <div class="comments">
+                                <div class="comments_title">Comments <span>@{Model.CommentList.Count();}</span></div>
 
-                            <div class="row">
-                                <div class="col-xl-12">
-                                    <div class="comments_container">
-                                        <ul data-commentList class="comment_list">
-                                            @foreach (var item in Model.CommentList.Where(com => com.ParentCommentId == null))
-                                            {
-                                                <li data-omment class="comment">
-                                                    <div class="comment_body">
-                                                        <div class="comment_panel d-flex flex-row align-items-center justify-content-start">
-                                                            <small class="post_meta">
-                                                                <a href="#">@item.Author</a><span>
-                                                                    @item.CreatedAt.ToShortDateString()
-                                                                    at @item.CreatedAt.ToShortTimeString()
-                                                                </span>
-                                                            </small>
-                                                            <button type="button" data-ReplyListener="@item.CommentId" class="reply_button ml-auto">Reply</button>
-                                                        </div>
-                                                        <div class="comment_content">
-                                                            <p>@item.Content : Pick the yellow peach that looks like a sunset with its red, orange, and pink coat skin, peel it off with your teeth. Sink them into unripened.</p>
-                                                        </div>
+                                <div class="row">
+                                    <div class="col-xl-12">
+                                        <div class="comments_container">
+                                            <ul data-commentList class="comment_list">
+                                                @foreach (var item in Model.CommentList.Where(com => com.ParentCommentId == null))
+                                                {
+                                                    <li data-omment class="comment">
+                                                        <div class="comment_body">
+                                                            <div class="comment_panel d-flex flex-row align-items-center justify-content-start">
+                                                                <small class="post_meta">
+                                                                    <a href="#">@item.Author</a><span>
+                                                                        @item.CreatedAt.ToShortDateString()
+                                                                        at @item.CreatedAt.ToShortTimeString()
+                                                                    </span>
+                                                                </small>
+                                                                <button type="button" data-ReplyListener="@item.CommentId" class="reply_button ml-auto">Reply</button>
+                                                            </div>
+                                                            <div class="comment_content">
+                                                                <p>@item.Content : Pick the yellow peach that looks like a sunset with its red, orange, and pink coat skin, peel it off with your teeth. Sink them into unripened.</p>
+                                                            </div>
 
-                                                        @await Html.PartialAsync("Comments", new SelahSeries.ViewModels.CommentVM() { Comments = Model.CommentList, ParentId = item.CommentId })
+                                                            @await Html.PartialAsync("Comments", new SelahSeries.ViewModels.CommentVM() { Comments = Model.CommentList, ParentId = item.CommentId })
 
-                                                        <!--Comment Reply Form-->
-                                                        <template id="CommentBox">
-                                                            <div replyForm class="row">
-                                                                <div class="col-xl-10">
-                                                                    <div style="margin-top:5px;" class="comment_reply_form_container" id="comment_reply_form">
-                                                                        <form method="post" asp-controller="Blog" asp-action="PostComment">
-                                                                            <input type="hidden" value="@Model.Post.PostId" asp-for="Comment.PostId" />
-                                                                            <input type="hidden" data-commentParent asp-for="Comment.ParentCommentId" />
-                                                                            <input type="text" asp-for="Comment.Author" class="comment_input comment_input_name" placeholder="Your Name" required="required">
-                                                                            <input type="email" asp-for="Comment.Email" class="comment_input comment_input_email" placeholder="Your Email" required="required">
-                                                                            <textarea asp-for="Comment.Content" class="comment_text" placeholder="Your Comment" required="required"></textarea>
-                                                                            <button type="submit" class="comment_button">Post Comment</button>
-                                                                        </form>
+                                                            <!--Comment Reply Form-->
+                                                            <template id="CommentBox">
+                                                                <div replyForm class="row">
+                                                                    <div class="col-xl-10">
+                                                                        <div style="margin-top:5px;" class="comment_reply_form_container" id="comment_reply_form">
+                                                                            <form method="post" asp-controller="Blog" asp-action="PostComment">
+                                                                                <input type="hidden" value="@Model.Post.PostId" asp-for="Comment.PostId" />
+                                                                                <input type="hidden" data-commentParent asp-for="Comment.ParentCommentId" />
+                                                                                <input type="text" asp-for="Comment.Author" class="comment_input comment_input_name" placeholder="Your Name" required="required">
+                                                                                <input type="email" asp-for="Comment.Email" class="comment_input comment_input_email" placeholder="Your Email" required="required">
+                                                                                <textarea asp-for="Comment.Content" class="comment_text" placeholder="Your Comment" required="required"></textarea>
+                                                                                <button type="submit" class="comment_button">Post Comment</button>
+                                                                            </form>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                        </template>
+                                                            </template>
 
-                                                    </div>
-                                                </li>
-                                            }
-                                        </ul>
+                                                        </div>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    @*<div class="load_more">
+                            <div id="load_more" class="load_more_button text-center trans_200">Load More</div>
+                        </div>*@
                 </div>
-                @*<div class="load_more">
-                        <div id="load_more" class="load_more_button text-center trans_200">Load More</div>
-                    </div>*@
-            </div>
 
-            <!-- Sidebar -->
+                <!-- Sidebar -->
 
-            <div class="col-lg-3">
-                <div class="sidebar">
-                    <div class="sidebar_background"></div>
+                <div class="col-lg-3">
+                    <div class="sidebar">
+                        <div class="sidebar_background"></div>
 
-                    <!-- Top Stories -->
+                        <!-- Top Stories -->
 
-                    <div class="sidebar_section">
-                        <div class="sidebar_title_container">
-                            <div class="sidebar_title">Top Stories</div>
-                            <div class="sidebar_slider_nav">
-                                <div class="custom_nav_container sidebar_slider_nav_container">
-                                    <div class="custom_prev custom_prev_top">
-                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                             width="7px" height="12px" viewBox="0 0 7 12" enable-background="new 0 0 7 12" xml:space="preserve">
-                                        <polyline fill="#bebebe" points="0,5.61 5.609,0 7,0 7,1.438 2.438,6 7,10.563 7,12 5.609,12 -0.002,6.39 " />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                        <div class="sidebar_section">
+                            <div class="sidebar_title_container">
+                                <div class="sidebar_title">Top Stories</div>
+                                <div class="sidebar_slider_nav">
+                                    <div class="custom_nav_container sidebar_slider_nav_container">
+                                        <div class="custom_prev custom_prev_top">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                 width="7px" height="12px" viewBox="0 0 7 12" enable-background="new 0 0 7 12" xml:space="preserve">
+                                            <polyline fill="#bebebe" points="0,5.61 5.609,0 7,0 7,1.438 2.438,6 7,10.563 7,12 5.609,12 -0.002,6.39 " />
 
 
 
 										</svg>
-                                    </div>
-                                    <ul id="custom_dots" class="custom_dots custom_dots_top">
-                                        <li class="custom_dot custom_dot_top active"><span></span></li>
-                                        <li class="custom_dot custom_dot_top"><span></span></li>
-                                        <li class="custom_dot custom_dot_top"><span></span></li>
-                                    </ul>
-                                    <div class="custom_next custom_next_top">
-                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                             width="7px" height="12px" viewBox="0 0 7 12" enable-background="new 0 0 7 12" xml:space="preserve">
-                                        <polyline fill="#bebebe" points="6.998,6.39 1.389,12 -0.002,12 -0.002,10.562 4.561,6 -0.002,1.438 -0.002,0 1.389,0 7,5.61 " />
+                                        </div>
+                                        <ul id="custom_dots" class="custom_dots custom_dots_top">
+                                            <li class="custom_dot custom_dot_top active"><span></span></li>
+                                            <li class="custom_dot custom_dot_top"><span></span></li>
+                                            <li class="custom_dot custom_dot_top"><span></span></li>
+                                        </ul>
+                                        <div class="custom_next custom_next_top">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                 width="7px" height="12px" viewBox="0 0 7 12" enable-background="new 0 0 7 12" xml:space="preserve">
+                                            <polyline fill="#bebebe" points="6.998,6.39 1.389,12 -0.002,12 -0.002,10.562 4.561,6 -0.002,1.438 -0.002,0 1.389,0 7,5.61 " />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -352,222 +526,223 @@
 
 
 											</svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sidebar_section_content">
+
+                                <!-- Top Stories Slider -->
+                                <div class="sidebar_slider_container">
+                                    <div class="owl-carousel owl-theme sidebar_slider_top">
+
+                                        <!-- Top Stories Slider Item -->
+                                        <div class="owl-item">
+
+                                            <!-- Sidebar Post -->
+                                            <div class="side_post">
+                                                <a href="post.html">
+                                                    <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
+                                                        <div class="side_post_image"><div><img src="~/NewFolder2/images/top_1.jpg" alt=""></div></div>
+                                                        <div class="side_post_content">
+                                                            <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
+                                                            <small class="post_meta">Katy Liu<span>Sep 29</span></small>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                            <!-- Sidebar Post -->
+                                            <div class="side_post">
+                                                <a href="post.html">
+                                                    <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
+                                                        <div class="side_post_image"><div><img src="~/NewFolder2/images/top_2.jpg" alt=""></div></div>
+                                                        <div class="side_post_content">
+                                                            <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
+                                                            <small class="post_meta">Katy Liu<span>Sep 29</span></small>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                            <!-- Sidebar Post -->
+                                            <div class="side_post">
+                                                <a href="post.html">
+                                                    <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
+                                                        <div class="side_post_image"><div><img src="~/NewFolder2/images/top_3.jpg" alt=""></div></div>
+                                                        <div class="side_post_content">
+                                                            <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
+                                                            <small class="post_meta">Katy Liu<span>Sep 29</span></small>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                            <!-- Sidebar Post -->
+                                            <div class="side_post">
+                                                <a href="post.html">
+                                                    <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
+                                                        <div class="side_post_image"><div><img src="~/NewFolder2/images/top_4.jpg" alt=""></div></div>
+                                                        <div class="side_post_content">
+                                                            <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
+                                                            <small class="post_meta">Katy Liu<span>Sep 29</span></small>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                        </div>
+
+                                        <!-- Top Stories Slider Item -->
+                                        <div class="owl-item">
+
+                                            <!-- Sidebar Post -->
+                                            <div class="side_post">
+                                                <a href="post.html">
+                                                    <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
+                                                        <div class="side_post_image"><div><img src="~/NewFolder2/images/top_1.jpg" alt=""></div></div>
+                                                        <div class="side_post_content">
+                                                            <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
+                                                            <small class="post_meta">Katy Liu<span>Sep 29</span></small>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                            <!-- Sidebar Post -->
+                                            <div class="side_post">
+                                                <a href="post.html">
+                                                    <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
+                                                        <div class="side_post_image"><div><img src="~/NewFolder2/images/top_2.jpg" alt=""></div></div>
+                                                        <div class="side_post_content">
+                                                            <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
+                                                            <small class="post_meta">Katy Liu<span>Sep 29</span></small>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                            <!-- Sidebar Post -->
+                                            <div class="side_post">
+                                                <a href="post.html">
+                                                    <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
+                                                        <div class="side_post_image"><div><img src="~/NewFolder2/images/top_3.jpg" alt=""></div></div>
+                                                        <div class="side_post_content">
+                                                            <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
+                                                            <small class="post_meta">Katy Liu<span>Sep 29</span></small>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                            <!-- Sidebar Post -->
+                                            <div class="side_post">
+                                                <a href="post.html">
+                                                    <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
+                                                        <div class="side_post_image"><div><img src="~/NewFolder2/images/top_4.jpg" alt=""></div></div>
+                                                        <div class="side_post_content">
+                                                            <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
+                                                            <small class="post_meta">Katy Liu<span>Sep 29</span></small>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                        </div>
+
+                                        <!-- Top Stories Slider Item -->
+                                        <div class="owl-item">
+
+                                            <!-- Sidebar Post -->
+                                            <div class="side_post">
+                                                <a href="post.html">
+                                                    <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
+                                                        <div class="side_post_image"><div><img src="~/NewFolder2/images/top_1.jpg" alt=""></div></div>
+                                                        <div class="side_post_content">
+                                                            <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
+                                                            <small class="post_meta">Katy Liu<span>Sep 29</span></small>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                            <!-- Sidebar Post -->
+                                            <div class="side_post">
+                                                <a href="post.html">
+                                                    <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
+                                                        <div class="side_post_image"><div><img src="~/NewFolder2/images/top_2.jpg" alt=""></div></div>
+                                                        <div class="side_post_content">
+                                                            <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
+                                                            <small class="post_meta">Katy Liu<span>Sep 29</span></small>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                            <!-- Sidebar Post -->
+                                            <div class="side_post">
+                                                <a href="post.html">
+                                                    <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
+                                                        <div class="side_post_image"><div><img src="~/NewFolder2/images/top_3.jpg" alt=""></div></div>
+                                                        <div class="side_post_content">
+                                                            <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
+                                                            <small class="post_meta">Katy Liu<span>Sep 29</span></small>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                            <!-- Sidebar Post -->
+                                            <div class="side_post">
+                                                <a href="post.html">
+                                                    <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
+                                                        <div class="side_post_image"><div><img src="~/NewFolder2/images/top_4.jpg" alt=""></div></div>
+                                                        <div class="side_post_content">
+                                                            <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
+                                                            <small class="post_meta">Katy Liu<span>Sep 29</span></small>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="sidebar_section_content">
 
-                            <!-- Top Stories Slider -->
-                            <div class="sidebar_slider_container">
-                                <div class="owl-carousel owl-theme sidebar_slider_top">
+                        <!-- Advertising -->
 
-                                    <!-- Top Stories Slider Item -->
-                                    <div class="owl-item">
-
-                                        <!-- Sidebar Post -->
-                                        <div class="side_post">
-                                            <a href="post.html">
-                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
-                                                    <div class="side_post_image"><div><img src="~/NewFolder2/images/top_1.jpg" alt=""></div></div>
-                                                    <div class="side_post_content">
-                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
-                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-
-                                        <!-- Sidebar Post -->
-                                        <div class="side_post">
-                                            <a href="post.html">
-                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
-                                                    <div class="side_post_image"><div><img src="~/NewFolder2/images/top_2.jpg" alt=""></div></div>
-                                                    <div class="side_post_content">
-                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
-                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-
-                                        <!-- Sidebar Post -->
-                                        <div class="side_post">
-                                            <a href="post.html">
-                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
-                                                    <div class="side_post_image"><div><img src="~/NewFolder2/images/top_3.jpg" alt=""></div></div>
-                                                    <div class="side_post_content">
-                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
-                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-
-                                        <!-- Sidebar Post -->
-                                        <div class="side_post">
-                                            <a href="post.html">
-                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
-                                                    <div class="side_post_image"><div><img src="~/NewFolder2/images/top_4.jpg" alt=""></div></div>
-                                                    <div class="side_post_content">
-                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
-                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-
-                                    </div>
-
-                                    <!-- Top Stories Slider Item -->
-                                    <div class="owl-item">
-
-                                        <!-- Sidebar Post -->
-                                        <div class="side_post">
-                                            <a href="post.html">
-                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
-                                                    <div class="side_post_image"><div><img src="~/NewFolder2/images/top_1.jpg" alt=""></div></div>
-                                                    <div class="side_post_content">
-                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
-                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-
-                                        <!-- Sidebar Post -->
-                                        <div class="side_post">
-                                            <a href="post.html">
-                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
-                                                    <div class="side_post_image"><div><img src="~/NewFolder2/images/top_2.jpg" alt=""></div></div>
-                                                    <div class="side_post_content">
-                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
-                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-
-                                        <!-- Sidebar Post -->
-                                        <div class="side_post">
-                                            <a href="post.html">
-                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
-                                                    <div class="side_post_image"><div><img src="~/NewFolder2/images/top_3.jpg" alt=""></div></div>
-                                                    <div class="side_post_content">
-                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
-                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-
-                                        <!-- Sidebar Post -->
-                                        <div class="side_post">
-                                            <a href="post.html">
-                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
-                                                    <div class="side_post_image"><div><img src="~/NewFolder2/images/top_4.jpg" alt=""></div></div>
-                                                    <div class="side_post_content">
-                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
-                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-
-                                    </div>
-
-                                    <!-- Top Stories Slider Item -->
-                                    <div class="owl-item">
-
-                                        <!-- Sidebar Post -->
-                                        <div class="side_post">
-                                            <a href="post.html">
-                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
-                                                    <div class="side_post_image"><div><img src="~/NewFolder2/images/top_1.jpg" alt=""></div></div>
-                                                    <div class="side_post_content">
-                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
-                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-
-                                        <!-- Sidebar Post -->
-                                        <div class="side_post">
-                                            <a href="post.html">
-                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
-                                                    <div class="side_post_image"><div><img src="~/NewFolder2/images/top_2.jpg" alt=""></div></div>
-                                                    <div class="side_post_content">
-                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
-                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-
-                                        <!-- Sidebar Post -->
-                                        <div class="side_post">
-                                            <a href="post.html">
-                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
-                                                    <div class="side_post_image"><div><img src="~/NewFolder2/images/top_3.jpg" alt=""></div></div>
-                                                    <div class="side_post_content">
-                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
-                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-
-                                        <!-- Sidebar Post -->
-                                        <div class="side_post">
-                                            <a href="post.html">
-                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
-                                                    <div class="side_post_image"><div><img src="~/NewFolder2/images/top_4.jpg" alt=""></div></div>
-                                                    <div class="side_post_content">
-                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
-                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-
-                                    </div>
-
+                        <div class="sidebar_section">
+                            <div class="advertising">
+                                <div class="advertising_background" style="background-image:url(/NewFolder2/images/post_17.jpg)"></div>
+                                <div class="advertising_content d-flex flex-column align-items-start justify-content-end">
+                                    <div class="advertising_perc">-15%</div>
+                                    <div class="advertising_link"><a href="#">How Did van Gogh’s Turbulent Mind</a></div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Advertising -->
+                        <!-- Advertising 2 -->
 
-                    <div class="sidebar_section">
-                        <div class="advertising">
-                            <div class="advertising_background" style="background-image:url(/NewFolder2/images/post_17.jpg)"></div>
-                            <div class="advertising_content d-flex flex-column align-items-start justify-content-end">
-                                <div class="advertising_perc">-15%</div>
-                                <div class="advertising_link"><a href="#">How Did van Gogh’s Turbulent Mind</a></div>
+                        <div class="sidebar_section">
+                            <div class="advertising_2">
+                                <div class="advertising_background" style="background-image:url(/NewFolder2/images/post_18.jpg)"></div>
+                                <div class="advertising_2_content d-flex flex-column align-items-center justify-content-center">
+                                    <div class="advertising_2_link"><a href="#">Turbulent <span>Mind</span></a></div>
+                                </div>
                             </div>
                         </div>
+
+
+
+
+
                     </div>
-
-                    <!-- Advertising 2 -->
-
-                    <div class="sidebar_section">
-                        <div class="advertising_2">
-                            <div class="advertising_background" style="background-image:url(/NewFolder2/images/post_18.jpg)"></div>
-                            <div class="advertising_2_content d-flex flex-column align-items-center justify-content-center">
-                                <div class="advertising_2_link"><a href="#">Turbulent <span>Mind</span></a></div>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-
-
                 </div>
-            </div>
 
+            </div>
         </div>
     </div>
 </div>
