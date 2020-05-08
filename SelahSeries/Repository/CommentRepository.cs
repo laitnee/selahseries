@@ -17,6 +17,7 @@ namespace SelahSeries.Repository
         }
         public async Task<bool> AddComment(Comment comment)
         {
+            
             await _selahDbContext.AddAsync(comment);
             return Convert.ToBoolean(await _selahDbContext.SaveChangesAsync());
         }
@@ -31,17 +32,17 @@ namespace SelahSeries.Repository
         public async Task<List<Comment>> GetComments(int postId)
         {
             return await _selahDbContext.Comments
-                                 .Include(c => c.ChildrenComments
-                                                .Where(cC => c.CommentId == cC.ParentId).Count())  
-                                 .ToListAsync();
+                                    .Where(com => com.PostId == postId)
+                                    .ToListAsync();
         }
         public async Task<List<Comment>> GetSubComments(int postId, int commentId)
         {
-            return await _selahDbContext.Comments
-                     .Where(com => com.ParentId == commentId)
-                     .Include(comment => comment.ChildrenComments
-                                    .Where(childComments => comment.CommentId == childComments.ParentId).Count())
-                    .ToListAsync();
+            //return await _selahDbContext.Comments
+            //         .Where(com => com.ParentCommentId == commentId)
+            //         .Include(comment => comment.Replies
+            //                        .Where(childComments => comment.CommentId == childComments.ParentCommentId).Count())
+            //        .ToListAsync();
+            throw new NotImplementedException();
         }
 
     }

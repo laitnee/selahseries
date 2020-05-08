@@ -63,7 +63,7 @@
                         <!-- Post Body -->
 
                         <div class="post_body">
-                            <p data-usehtmltag class="post_p">@Html.DisplayFor(model => model.Content)</p>
+                            <p  class="post_p">@Html.Raw(Model.Content)</p>
                             <figure>
                                 <img src="images/post_image.jpg" alt="">
                                 <figcaption>Lorem Ipsum Dolor Sit Amet</figcaption>

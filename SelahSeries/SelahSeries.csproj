@@ -120,4 +120,14 @@
     <None Include="wwwroot\NewFolder2\styles\bootstrap4\popper.js" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Uploads\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\Blog\post - Copy.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
+
 </Project>

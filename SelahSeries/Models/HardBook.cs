@@ -8,17 +8,10 @@ namespace SelahSeries.Models
 {
     public class HardBook
     {
-        public int HardBookId { get; set; }
-        [StringLength(100)]
-        public string Title { get; set; }
-        [StringLength(50)]
-        public string Author { get; set; }
-        [StringLength(250)]
-        public string Description { get; set; }
-        [StringLength(100)]
-        public string ImageUrl { get; set; }
-        public decimal Price { get; set; }
-        public int CatergoryId { get; set; }
+        public int HarbookId { get; set; }
+        public double Price { get; set; }
 
+        public int BookId { get; set; }
+        public Book Book { get; set; }
     }
 }

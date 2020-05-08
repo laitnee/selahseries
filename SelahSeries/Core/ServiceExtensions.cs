@@ -1,10 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SelahSeries.Data;
 using SelahSeries.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using SelahSeries.Repository.Interfaces;
+using SelahSeries.Services;
+
 
 namespace SelahSeries.Core
 {
@@ -15,11 +14,11 @@ namespace SelahSeries.Core
         {
             services.AddTransient<ICategoryRepository, CategoryRepository>();
             services.AddTransient<ICommentRepository, CommentRepository>();
-            services.AddTransient<IHardBookRepository, HardBookRepository>();
             services.AddTransient<IOrderRepository, OrderRepository>();
             services.AddTransient<IPostRepository, PostRepository>();
-            services.AddTransient<ISoftBookRepository, SoftBookRepository>();
-
+            services.AddTransient<IPostClapRepository, PostClapRepository>();
+            services.AddTransient<IBookRepository, BookRepository>();
+            services.AddTransient<IEmailService, EmailService>();
             return services;
         }
         public static IServiceCollection AddSeedData(this IServiceCollection services)

@@ -20,8 +20,7 @@ namespace SelahSeries.Repository
             await _selahDbContext.AddAsync(category);
             return Convert.ToBoolean(await _selahDbContext.SaveChangesAsync());
         }
-        public async Task<List<Category>> GetCategoriesAsync() => await _selahDbContext.Categories
-            .Where(cat => cat.ParentId != null).ToListAsync();
+        public async Task<List<Category>> GetCategoriesAsync() => await _selahDbContext.Categories.ToListAsync();
 
         public Task<Category> GetCategory(int id)
         {

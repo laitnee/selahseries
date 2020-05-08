@@ -72,23 +72,23 @@
             else if (item.CategoryId == 2)
             {
                 <td>
-                    Relationship and Marriag
+                    Politics
                 </td>
             }
             else if (item.CategoryId == 3)
             {
-                <td>Career</td>
+                <td>Relationship and Marriage</td>
             }
             else if (item.CategoryId == 4)
             {
-                <td>Politics</td>
+                <td>Career</td>
             }
             else
             {
                 <td>Unknown</td>
             }
             <td data-StripTag>
-                @Html.DisplayFor(modelItem => item.Content) <span>...</span>
+                @item.Content
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TitleImageUrl)

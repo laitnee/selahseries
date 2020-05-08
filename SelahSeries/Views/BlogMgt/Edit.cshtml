@@ -68,7 +68,10 @@
         {
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="PostId" />
-
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="CreatedAt" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="TitleImageUrl" />
             <div class="form-group">
                 <button type="button" class="collapsible">Enter author's name</button>
                 <div class="content">
@@ -98,7 +101,7 @@
                 <div class="content">
                     <a data-mockFile style="color:white;" class=" btn btn-primary"> Select Image </a>
                     <span style="color:blue;" data-fileValue> </span>
-                    <input type="file"  asp-for="PostPhoto" data-fileSelector style="visibility:hidden" accept="image/*" />
+                    <input type="file" asp-for="PostPhoto" data-fileSelector style="visibility:hidden" accept="image/*" />
                 </div>
 
             </div>
@@ -119,9 +122,9 @@
                 <div class="content">
                     <select asp-for="CategoryId" class="form-Control">
                         <option value=1>Sports</option>
-                        <option value=2>Relationship and Marriage</option>
-                        <option value=3>Career</option>
-                        <option value=4>Politics</option>
+                        <option value=2>Politics</option>
+                        <option value=3>Relationship and Marriage</option>
+                        <option value=4>Career</option>
                     </select>
                     <span asp-validation-for="CategoryId" class="text-danger"></span>
                 </div>

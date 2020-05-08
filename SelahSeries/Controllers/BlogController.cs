@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AutoMapper;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using SelahSeries.Models.DTOs;
+using SelahSeries.Models;
 using SelahSeries.Repository;
+using SelahSeries.ViewModels;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -17,40 +16,88 @@ namespace SelahSeries.Controllers
     public class BlogController : Controller
     {
         private readonly ICommentRepository _commentRepo;
-        private readonly IMapper _mapper;
-        private readonly IHostingEnvironment hostingEnvironment;
         private readonly IPostRepository _postRepo;
-        public BlogController(IPostRepository postRepo, IMapper mapper, IHostingEnvironment environment, ICommentRepository commentRepo)
+        private readonly IPostClapRepository    _postClapRepo;
+        public BlogController(ICommentRepository commentRepo, IPostRepository postRepo, IPostClapRepository postClapRepo)
         {
-            _postRepo = postRepo;
-            _mapper = mapper;
-            hostingEnvironment = environment;
             _commentRepo = commentRepo;
+            _postRepo = postRepo;
+            _postClapRepo = postClapRepo;
         }
         // GET: /<controller>/
-        public async Task<IActionResult> Category()
+        public IActionResult Category()
         {
-            var pageParam = new PaginationParam
-            {
-                PageIndex = 1,
-                Limit = 20,
-                SortColoumn = "CreatedAt"
-            };
-            var posts = await _postRepo.GetPublishedPosts(pageParam);
-            return View(posts.Source);
-        }
-
-        public IActionResult Post()
-        {
-           
             return View();
         }
         
-        public async Task<JsonResult> GetComments(int postId)
+        [Route("blog/post/{postId}")]
+        public async Task<IActionResult> Post(int postId)
         {
-            var comment = await _commentRepo.GetComments(postId);
-            return Json(JsonConvert.SerializeObject(comment));
+            try
+            {
+                var post = await _postRepo.GetPost(postId);
+                var comments = await _commentRepo.GetComments(postId);
+
+                var postDetailViewModel = new PostDetailViewModel() { Post = post, CommentList = comments };
+                return View(postDetailViewModel);
+            }
+            catch
+            {
+                return View();
+            }
         }
+
+        [HttpPost]
+        public async Task<IActionResult> PostComment([FromForm] Comment comment)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    if (string.IsNullOrWhiteSpace(comment.Author)) comment.Author = "Anonymous";
+                    comment.CreatedAt = DateTime.UtcNow;
+                    await _commentRepo.AddComment(comment);
+                }
+                catch { return View(); }
+                
+            }
+            return RedirectToAction("Post", "Blog", new { postId = comment.PostId });
+        }
+
+        [Route("clap")]
+        [HttpPost]
+        public async Task<JsonResult> AddClaps([FromBody]PostClapVM postClapVM)
+        {
+            int result = 0;
+            try
+            {
+                if (postClapVM.ClapNumber > 0 && postClapVM.PostId > 0) result = await _postClapRepo.Clap(postClapVM.ClapNumber, postClapVM.PostId);
+                return Json(JsonConvert.SerializeObject(new { Claps = result }));
+            }
+            catch (Exception ex)
+            {
+                return Json(JsonConvert.SerializeObject(new { }));
+            }
+           
+        }
+
+        [Route("/{postId}/claps")]
+        [HttpGet]
+        public async Task<JsonResult> GetClaps(int postId)
+        {
+            try
+            {
+                var result = 0;
+                if (postId > 0) result = await _postClapRepo.GetClaps(postId);
+                return Json(JsonConvert.SerializeObject(new { Claps = result }));
+            }
+            catch (Exception ex)
+            {
+                return Json(JsonConvert.SerializeObject(new { }));
+            }
+
+        }
+
 
     }
 }

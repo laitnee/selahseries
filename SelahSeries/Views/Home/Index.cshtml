@@ -2,10 +2,24 @@
 @{
     ViewData["Title"] = "Home Page";
 
+
     var latestArticle = Model.OrderByDescending(x => x.CreatedAt).Take(11);
 
 }
 
+
+    //for (Model.OrderByAscending(x => x.created.take(11))
+    //{
+    //    foreach (var item in Model)
+    //    {
+    //        if (item.PostId == i)
+    //        {
+    //            latestArticles.Add(item);
+    //        }
+    //    }
+    //}
+
+}
 
 
 @section AddToHead {
@@ -31,42 +45,40 @@
         <div class="carousel-item active" style="background-image: url('/NewFolder2/new/brooke-cagle-kvKSL7B6eTo-unsplash.jpg')">
 
             <div class="carousel-caption text-block d-md-block">
-                <h3 class="mb-4" style="color: white ; font-family: 'Work Sans', sans-serif">Welcome to Selah Series</h3>
-                <h2 class="mb-4" style="color: #f2ba16 ; font-size:18px; font-family: 'Work Sans', sans-serif">Take a break and ponder on your path to fulfilment</h2>
-                <p><a href="#blog" class="btn btn-primary px-4 py-2">Visit Blog</a></p>
+                <h3 class="mb-4">Halt and ponder about your path to destiny</h3>
+                <p><a href="#blog" style=" letter-spacing: 0.02em;" class="btn btn-primary px-4 py-2">Visit Blog</a></p>
 
             </div>
 
 
         </div>
 
+
+        <div class="carousel-item" style="background-image: url('/NewFolder2/new/bigtree.jpg')">
+            <div class="carousel-caption text-block d-md-block">
+                <h3 class="mb-4"> The place where potentials grow</h3>
+
+
+                <p><a href="#blog" style=" letter-spacing: 0.02em;" class="btn btn-primary px-4 py-2">Visit Blog</a></p>
+            </div>
+
+        </div>
         <!-- Slide Two - Set the background image for this slide in the line below -->
         <div class="carousel-item" style="background-image: url('/NewFolder2/new/hian-oliveira-7-gtkXm2b5U-unsplash (1).jpg')">
             <div class="carousel-caption text-block d-md-block">
-                <h3 class="mb-4" style="color: #f2ba16 ; font-family: 'Work Sans', sans-serif">Home of counsel and support</h3>
+                <h3 class="mb-4" style="">Home of counsel and support</h3>
 
 
-                <p><a href="#blog" class="btn btn-primary px-4 py-2">Visit Blog</a></p>
+                <p><a href="#blog" style=" letter-spacing: 0.02em;" class="btn btn-primary px-4 py-2">Visit Blog</a></p>
             </div>
 
         </div>
-
-        <div class="carousel-item" style="background-image: url('/NewFolder2/new/agriculture-asia-cat-china-235648.jpg')">
-            <div class="carousel-caption text-block d-md-block">
-                <h3 class="mb-4" style="color: #f2ba16 ; font-family: 'Work Sans', sans-serif">With us, you come up and grow your potentials </h3>
-
-
-                <p><a href="#blog" class="btn btn-primary px-4 py-2">Visit Blog</a></p>
-            </div>
-
-        </div>
-
         <!-- Slide Three - Set the background image for this slide in the line below -->
         <div class="carousel-item" style="background-image: url('/NewFolder2/new/emilio-garcia-AWdCgDDedH0-unsplash.jpg')">
             <div class="carousel-caption text-block d-md-block">
-                <h3 class="mb-4" style="color: #f2ba16 ; font-family: 'Work Sans', sans-serif">Get incising updates on football and politics</h3>
+                <h3 class="mb-4">For incising updates on politics and football</h3>
 
-                <p><a href="#blog" class="btn btn-primary px-4 py-2">Visit Blog</a></p>
+                <p><a href="#blog" style=" letter-spacing: 0.02em;" class="btn btn-primary">Visit Blog</a></p>
             </div>
 
         </div>
@@ -100,7 +112,7 @@
             <div class="card2">
                 <img src="/NewFolder2/new/kakudmi-JO19K0HDDXI-unsplash (1).jpg" alt="Avatar">
                 <div class="container2">
-                    <h4>Need latest news on football?</h4>
+                    <h4>Need latest news on sports?</h4>
                     <p>@Html.ActionLink("See here >>>", "Category", "Blog")</p>
                 </div>
             </div>
@@ -140,10 +152,10 @@
 
 <div id="blog">
     <div class="row" style="background: url('/NewFolder2/new/brass-black-brown-fountain-pen-163029 (2).jpg')">
-        <div class="">
+        <div class="has-overlay">
             <img style="width:100%; height:18.06em" src='/NewFolder2/new/brass-black-brown-fountain-pen-163029 (2).jpg' alt="image" />
         </div>
-        @*<div class="centered h2" style="font-family: 'Ubuntu', sans-serif; color:#f2ba16">Blog</div>*@
+        <div class="centered h2" style="font-family: 'Ubuntu', sans-serif; color:#f2ba16">Blog</div>
     </div>
 </div>
 
@@ -168,6 +180,7 @@
 
                         <div class="section_panel d-flex flex-row align-items-center justify-content-start">
                             <div class="section_title">Don't Miss</div>
+
                             <div class="section_tags ml-auto">
                                 <ul>
                                     <li class="active"><a href="category.html">all</a></li>
@@ -192,6 +205,7 @@
                                     </li>
                                 </ul>
                             </div>
+
                         </div>
 
                         <div class="section_content">
@@ -846,6 +860,9 @@
         color: white;
         padding: 40px;
         opacity: 0.8;
+
+        font-size: 40px
+
     }
 
     .containe {
@@ -865,8 +882,18 @@
     }
 
     div.carousel-caption {
+
+        text-align: center;
+        width: 75%;
         margin-left: auto;
         margin-right: auto;
         margin-bottom: 20px;
+        
+    }
+    .mb-4 {
+        color: #f2ba16;
+        font-size: 0.6em;
+        letter-spacing: 0.03em;
+        font-family: 'Work Sans', sans-serif;
     }
 </style>

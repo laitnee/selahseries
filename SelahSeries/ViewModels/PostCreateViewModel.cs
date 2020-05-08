@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
 namespace SelahSeries.ViewModels
@@ -15,7 +16,8 @@ namespace SelahSeries.ViewModels
         public IFormFile PostPhoto { get; set; }
         [Required]
         public string Content { get; set; }
-        
+        public string TitleImageUrl { get; set; }
+        public DateTime CreatedAt { get; set; }
         public bool Published { get; set; }
         [Required]
         public int CategoryId { get; set; }

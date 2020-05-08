@@ -10,8 +10,8 @@ using SelahSeries.Data;
 namespace SelahSeries.Migrations
 {
     [DbContext(typeof(SelahSeriesDataContext))]
-    [Migration("20200501051519_new migration")]
-    partial class newmigration
+    [Migration("20200507130501_old self")]
+    partial class oldself
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,7 +29,7 @@ namespace SelahSeries.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<int>("ParentId");
+                    b.Property<int?>("ParentId");
 
                     b.Property<string>("Title");
 
@@ -47,19 +47,20 @@ namespace SelahSeries.Migrations
                     b.Property<string>("Author")
                         .HasMaxLength(50);
 
-                    b.Property<int?>("CommentId1");
-
                     b.Property<string>("Content");
 
                     b.Property<DateTime>("CreatedAt");
 
-                    b.Property<int?>("ParentId");
+                    b.Property<string>("Email")
+                        .HasMaxLength(50);
+
+                    b.Property<int?>("ParentCommentId");
 
                     b.Property<int>("PostId");
 
                     b.HasKey("CommentId");
 
-                    b.HasIndex("CommentId1");
+                    b.HasIndex("ParentCommentId");
 
                     b.HasIndex("PostId");
 
@@ -137,7 +138,7 @@ namespace SelahSeries.Migrations
 
                     b.Property<DateTime>("ModifiedAt");
 
-                    b.Property<int>("ParentId");
+                    b.Property<int?>("ParentId");
 
                     b.Property<bool>("Published");
 
@@ -152,6 +153,21 @@ namespace SelahSeries.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Posts");
+                });
+
+            modelBuilder.Entity("SelahSeries.Models.PostClap", b =>
+                {
+                    b.Property<int>("PostClapId");
+
+                    b.Property<int>("Claps");
+
+                    b.Property<int?>("PostId");
+
+                    b.HasKey("PostClapId");
+
+                    b.HasIndex("PostId");
+
+                    b.ToTable("PostClaps");
                 });
 
             modelBuilder.Entity("SelahSeries.Models.SoftBook", b =>
@@ -188,9 +204,9 @@ namespace SelahSeries.Migrations
 
             modelBuilder.Entity("SelahSeries.Models.Comment", b =>
                 {
-                    b.HasOne("SelahSeries.Models.Comment")
-                        .WithMany("ChildrenComments")
-                        .HasForeignKey("CommentId1");
+                    b.HasOne("SelahSeries.Models.Comment", "Parent")
+                        .WithMany("Replies")
+                        .HasForeignKey("ParentCommentId");
 
                     b.HasOne("SelahSeries.Models.Post", "Post")
                         .WithMany()
@@ -218,6 +234,13 @@ namespace SelahSeries.Migrations
                         .WithMany("Posts")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("SelahSeries.Models.PostClap", b =>
+                {
+                    b.HasOne("SelahSeries.Models.Post", "Post")
+                        .WithMany()
+                        .HasForeignKey("PostId");
                 });
 
             modelBuilder.Entity("SelahSeries.Models.SoftBook", b =>

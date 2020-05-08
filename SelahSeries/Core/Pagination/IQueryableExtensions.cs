@@ -14,7 +14,7 @@ namespace SelahSeries.Core.Pagination
             int limit, string sortColumn)
         {
             var totalCount = await query.CountAsync();
-            if (sortColumn != null)
+            if (!string.IsNullOrWhiteSpace(sortColumn))
             {
                 var collection = query
                     .OrderBy(sortColumn, false)
@@ -28,7 +28,7 @@ namespace SelahSeries.Core.Pagination
                 return new PaginatedList<T>(collection, totalCount);
             }
         }
-        public static async Task<PaginatedList<T>> ToPaginatedListAsync<T, TKey>(this IQueryable<T> query,
+        public static async Task<PaginatedList<T>> ToPaginatedListAsync<T>(this IQueryable<T> query,
             PaginationParam pageParam) where T : class
         {
             return await query.ToPaginatedListAsync(pageParam.PageIndex, pageParam.Limit, pageParam.SortColoumn);

@@ -10,7 +10,14 @@ namespace SelahSeries.Core.Pagination
         public PaginatedList(IQueryable<T> source, int count)
         {
             TotalCount = count;
-            Source = source.ToList();
+            try
+            {
+                Source = source.ToList();
+            }
+            catch(Exception ex)
+            {
+                Source = new List<T>();
+            }
         }
         public List<T> Source { get; set; }
         public int TotalCount { get; set; }
