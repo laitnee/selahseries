@@ -23,7 +23,7 @@ namespace SelahSeries.Controllers
         //   )
         //{
         //}
-        public HomeController(IPostRepository postRepo, IMapper mapper, IHostingEnvironment environment)
+        public HomeController(IPostRepository postRepo, IMapper mapper, IHostingEnvironment environment, SeedData seedData)
         {
             _postRepo = postRepo;
             _mapper = mapper;

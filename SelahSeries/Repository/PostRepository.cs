@@ -39,9 +39,9 @@ namespace SelahSeries.Repository
         }
         public async Task DeletePost(int postId)
         {
-            var post = await _selahDbContext.Posts.Where(p => p.PostId == postId).FirstOrDefaultAsync();
-
-            _selahDbContext.Remove<Post>(post);
+            Post post = await _selahDbContext.Posts.Where(p => p.PostId == postId).FirstOrDefaultAsync();
+            _selahDbContext.Remove(post);
+            
             await _selahDbContext.SaveChangesAsync();
         }
         public async Task<PaginatedList<Post>> GetPosts(PaginationParam pageParam)

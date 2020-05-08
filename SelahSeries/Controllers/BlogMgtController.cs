@@ -152,9 +152,9 @@ namespace SelahSeries.Controllers
         }
 
         // GET: BlogMgt/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            _postRepo.DeletePost(id);
+            await _postRepo.DeletePost(id);
             return RedirectToAction(nameof(Index));
         }
 

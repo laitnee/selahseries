@@ -33,11 +33,18 @@ namespace SelahSeries.Controllers
         [Route("blog/post/{postId}")]
         public async Task<IActionResult> Post(int postId)
         {
-            var post = await _postRepo.GetPost(postId);
-            var comments = await _commentRepo.GetComments(postId);
-            
-            var postDetailViewModel = new PostDetailViewModel(){ Post = post, CommentList = comments };
-            return View(postDetailViewModel);
+            try
+            {
+                var post = await _postRepo.GetPost(postId);
+                var comments = await _commentRepo.GetComments(postId);
+
+                var postDetailViewModel = new PostDetailViewModel() { Post = post, CommentList = comments };
+                return View(postDetailViewModel);
+            }
+            catch
+            {
+                return View();
+            }
         }
 
         [HttpPost]
@@ -45,8 +52,14 @@ namespace SelahSeries.Controllers
         {
             if (ModelState.IsValid)
             {
-                comment.CreatedAt = DateTime.UtcNow;
-                await _commentRepo.AddComment(comment);
+                try
+                {
+                    if (string.IsNullOrWhiteSpace(comment.Author)) comment.Author = "Anonymous";
+                    comment.CreatedAt = DateTime.UtcNow;
+                    await _commentRepo.AddComment(comment);
+                }
+                catch { return View(); }
+                
             }
             return RedirectToAction("Post", "Blog", new { postId = comment.PostId });
         }
@@ -58,20 +71,31 @@ namespace SelahSeries.Controllers
             int result = 0;
             try
             {
-            if (postClapVM.ClapNumber > 0 && postClapVM.PostId > 0) result = await _postClapRepo.Clap(postClapVM.ClapNumber, postClapVM.PostId);
-
+                if (postClapVM.ClapNumber > 0 && postClapVM.PostId > 0) result = await _postClapRepo.Clap(postClapVM.ClapNumber, postClapVM.PostId);
+                return Json(JsonConvert.SerializeObject(new { Claps = result }));
             }
-            catch (Exception ex) { }
-            return Json(JsonConvert.SerializeObject(new { Claps = result }));
+            catch (Exception ex)
+            {
+                return Json(JsonConvert.SerializeObject(new { }));
+            }
+           
         }
 
         [Route("/{postId}/claps")]
         [HttpGet]
         public async Task<JsonResult> GetClaps(int postId)
         {
-            var result = 0;
-            if ( postId > 0) result = await _postClapRepo.GetClaps(postId);
-            return Json(JsonConvert.SerializeObject(new { Claps = result }));
+            try
+            {
+                var result = 0;
+                if (postId > 0) result = await _postClapRepo.GetClaps(postId);
+                return Json(JsonConvert.SerializeObject(new { Claps = result }));
+            }
+            catch (Exception ex)
+            {
+                return Json(JsonConvert.SerializeObject(new { }));
+            }
+
         }
 
 

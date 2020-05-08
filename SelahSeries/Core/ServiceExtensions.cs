@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SelahSeries.Data;
 using SelahSeries.Repository;
+using SelahSeries.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,7 @@ namespace SelahSeries.Core
             services.AddTransient<IPostRepository, PostRepository>();
             services.AddTransient<ISoftBookRepository, SoftBookRepository>();
             services.AddTransient<IPostClapRepository, PostClapRepository>();
+            services.AddTransient<IBookRepository, BookRepository>();
 
             return services;
         }

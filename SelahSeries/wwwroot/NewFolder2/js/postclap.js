@@ -122,7 +122,7 @@ const app = () => {
 
     function clapResponseHandler(res) {
         res = JSON.parse(res);
-        if (initialNumberOfClaps === undefined) initialNumberOfClaps = res.Claps;
+        if (initialNumberOfClaps === undefined) res.Claps ? initialNumberOfClaps = res.Claps : initialNumberOfClaps = 0 ; 
         clapTotalCount.innerHTML = initialNumberOfClaps - numberOfClaps;
     }
 
@@ -155,8 +155,9 @@ const app = () => {
             method: 'POST',
             body: JSON.stringify({ PostId: `${postId}`, ClapNumber: `${numberOfClapsToSend}` }),
             headers: messageHeaders
-        }).then(response => response.json());
-        //.then(clapResponseHandler)
+        })
+            .then(response => response.json())
+            .then(clapResponseHandler);
         //.catch(console.log);
         console.log(url);
         clapsSent += numberOfClapsToSend;
@@ -165,16 +166,3 @@ const app = () => {
 }
 
 $(document).ready(app());
-
-/*====== TODO ==========
-1. Bug fix. The button shouldn't 
-scale up before being clicked (fixed)
-2. Shadow should NOT fire hover 
-animation in succession. 
-Some sort of delay is delay. (Not that important)
-3. Hover animation should be 
-absent upon click (Not that important)
-4. Handle onpress event on the button (Implemetaation is Buggy ATM)
-5. Dynamically change burst angle 
-everytime button is clicked 
-=========================*/
