@@ -2,19 +2,23 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using SelahSeries.Data;
 using SelahSeries.Models;
 using SelahSeries.Models.DTOs;
 using SelahSeries.Repository;
+using SelahSeries.Services;
 
 namespace SelahSeries.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IEmailService _emailService;
         private readonly IMapper _mapper;
         private readonly IHostingEnvironment hostingEnvironment;
         private readonly IPostRepository _postRepo;
@@ -23,10 +27,12 @@ namespace SelahSeries.Controllers
         //   )
         //{
         //}
-        public HomeController(IPostRepository postRepo, IMapper mapper, IHostingEnvironment environment, SeedData seedData)
+        public HomeController(IPostRepository postRepo, IMapper mapper, IHostingEnvironment environment)
         {
             _postRepo = postRepo;
             _mapper = mapper;
+            _emailService = emailService;
+    
             hostingEnvironment = environment;
         }
         public async  Task<IActionResult> Index()
@@ -54,11 +60,29 @@ namespace SelahSeries.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult Contact()
         {
            
-
             return View();
+        }
+
+        [HttpPost]
+        [Route("home/contact")]
+        public async Task<ActionResult> Contact([FromForm] string name, string email, string subject, string message)
+        {
+           
+            try
+            {
+                message = "Name: " + name + "\n" + "Email Address: " + email + "\n" + "Message: " + message;
+                await _emailService.SendEmail(subject, message);
+                ViewBag.Error = "Unable to send message, try again";
+                return View();
+            }
+            catch(Exception) {
+                ViewBag.Error = "Unable to send message, try again";
+                return View();
+            }
         }
 
         public IActionResult Privacy()
