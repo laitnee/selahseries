@@ -18,7 +18,8 @@ namespace SelahSeries.Repository
         Task<PaginatedList<Post>> GetPosts(PaginationParam pageParam);
         Task<PaginatedList<Post>> GetPostsByCategory(PaginationParam pageParam, int categoryId);
         Task<PaginatedList<Post>> GetPublishedPosts(PaginationParam pageParam);
-        Task<PaginatedList<Post>> GetPublishedPostsByCategory(PaginationParam pageParam, int categoryId);
+        IEnumerable<Post> GetPublishedDMPosts();
+        Task<PaginatedList<Post>> GetPublishedPostsByCategory(PaginationParam pageParam, string category);
         Task<bool> UpdatePost(Post post);
         Task ClapPost();
     }

@@ -14,7 +14,7 @@ namespace SelahSeries.Core.Profiles
         public AutoMapperProfile()
         {
             CreateMap<PostCreateViewModel, Post>().ReverseMap();
-            CreateMap<PostListViewModel, Post>().ReverseMap();
+            CreateMap<Post, PostListViewModel>();
         }
     }
 }

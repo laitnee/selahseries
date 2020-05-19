@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using SelahSeries.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -19,5 +20,7 @@ namespace SelahSeries.ViewModels
         public string TitleImageUrl { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime ModifiedAt { get; set; }
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
     }
 }

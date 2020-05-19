@@ -147,7 +147,22 @@
 {
     div.eurek {
         margin-top: -63px;
-    }	
+    }
+    .section_panel .section_panel_more > ul > li {
+        display: block;
+    }
+    .section_panel .section_panel_more > ul > li .first{
+        display: none;
+    }
+        .section_panel .section_panel_more > ul > li .second {
+            display: none;
+        }
+        .section_panel .section_panel_more > ul > li .third {
+            display: none;
+        }
+
+
+
 }
 
 /************
@@ -314,6 +329,12 @@
     div.eurek {
         margin-top: -45px;
     }
+    .section_panel .section_panel_more > ul > li .third {
+        display: block;
+    }
+    div.bio {
+        background: none;
+    }
 }
 
 /************
@@ -461,6 +482,9 @@
     .container .featured {
         width: 100%;
     }
+    .featured .card-2 .card-heading {
+        display: none;
+    }
 }
 
 /************
@@ -531,6 +555,41 @@
         div.authors {
             padding-bottom: 10px;
         }
+        .section_panel .section_panel_more > ul > li .all {
+            display: block;
+        }
+        .section_panel .section_panel_more > ul > li .first {
+            display: block;
+        }
+
+        .section_panel .section_panel_more > ul > li .second {
+            display: block;
+        }
+
+        .section_panel .section_panel_more > ul > li .third {
+            display: block;
+        }
+
+        footer.footer_big {
+            display: none;
+        }
+
+        footer.footer_small{
+            display: block;
+        }
+
+       div.bio{
+           background: none;
+       }
+       div.same{
+           margin: 0px;
+       }
+       div.eurekaa{
+           margin: 0px;
+       }
+       .col-lg-8 div.slide{
+           padding:28px;
+       }
 }
 
 /************

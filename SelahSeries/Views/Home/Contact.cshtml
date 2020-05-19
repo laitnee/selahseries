@@ -22,13 +22,13 @@
                     <div class="col-lg-6 offset-lg-3">
                         <!-- Post Comment -->
                         <div class="post_comment">
-                            <div class="contact_form_container">
+                            <div class="contact_form_container" style="margin-bottom:40px">
                                 @using (Html.BeginForm())
                                 {
                                     @Html.AntiForgeryToken()
                                     <input type="text" name="name" class="contact_input contact_input_name" placeholder="Your FullName" required="required">
                                     <input type="email" name="email" class="contact_input contact_input_email" placeholder="Your Email" required="required">
-                                    <input type="text" name="Subject" class="contact_input contact_input_name" placeholder="Mesage Subject" required="required">
+                                    <input type="text" name="Subject" class="contact_input" style="width:100%; margin-top:15px" placeholder="Mesage Subject" required="required">
                                     <textarea class="contact_text" name="message" placeholder="Your Message" required="required"></textarea>
                                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                                     <button type="submit" class="contact_button">Send Message</button>

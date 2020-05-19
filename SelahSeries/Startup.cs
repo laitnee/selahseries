@@ -67,7 +67,7 @@ namespace SelahSeries
             app.UseHttpsRedirection();
             app.Use(async (HttpContext, next) =>
             {
-                HttpContext.Response.Headers[HeaderNames.CacheControl] = "no-cache";
+                //HttpContext.Response.Headers[HeaderNames.CacheControl] = "no-cache";
                 await next();
             });
             app.UseStaticFiles();
@@ -76,8 +76,8 @@ namespace SelahSeries
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                name: "default",
+                template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
