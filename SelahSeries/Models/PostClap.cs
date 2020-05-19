@@ -11,9 +11,11 @@ namespace SelahSeries.Models
     public class PostClap
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [ForeignKey("Post")]
         public int PostClapId { get; set; }
+
         public Post Post { get; set; }
+
         public int Claps { get; set; }
     }
 }

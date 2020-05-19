@@ -10,6 +10,8 @@ namespace SelahSeries.ViewModels
     {
         public Post Post { get; set; }
         public Comment Comment { get; set; }
-        public IEnumerable<Comment> CommentList { get; set; }
+        public List<Post> RelatedPosts { get; set; }
+
+        public List<Post> TopStories { get; set; }
     }
 }

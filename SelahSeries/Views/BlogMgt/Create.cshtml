@@ -69,9 +69,10 @@
     <div class="row">
         <div class="col-lg-1"></div>
         <div class=" col-lg-10">
+            @await Html.PartialAsync("AlertViewPartial")
             <form method="post" enctype="multipart/form-data" asp-controller="BlogMgt" asp-action="create">
 
- 
+
                 @Html.AntiForgeryToken()
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
@@ -79,7 +80,7 @@
                     <button type="button" class="collapsible">Enter author's name</button>
                     <div class="content">
                         <input asp-for="Author" class="form-control" />
-                       <span asp-validation-for="Author" class="text-danger"></span>
+                        <span asp-validation-for="Author" class="text-danger"></span>
                     </div>
 
 
@@ -104,7 +105,7 @@
                     <div class="content">
                         <a data-mockFile style="color:white;" class=" btn btn-primary"> Select Image </a>
                         <span style="color:blue;" data-fileValue> </span>
-                        <input type="file"  data-fileSelector style="visibility:hidden" accept="image/*" asp-for="PostPhoto"/>
+                        <input type="file" data-fileSelector style="visibility:hidden" accept="image/*" asp-for="PostPhoto" />
                     </div>
 
                 </div>
@@ -129,7 +130,7 @@
                             <option value=3>Relationship and Marriage</option>
                             <option value=4>Career</option>
                         </select>
-                      
+
                         <span asp-validation-for="CategoryId" class="text-danger"></span>
                     </div>
 
@@ -137,7 +138,7 @@
                 <div style="text-align: center;" class="form-group">
                     <input type="submit" value="Create" class="btn btn-danger btn-lg" />
                 </div>
-            </form> 
+            </form>
         </div>
            
         <div class="col-lg-1"></div>

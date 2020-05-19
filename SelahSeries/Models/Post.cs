@@ -14,6 +14,10 @@ namespace SelahSeries.Models
             ModifiedAt = DateTime.Now;
         }
         public int PostId { get; set; }
+
+        
+        
+
         public int? ParentId { get; set; }
         [StringLength(50)]
         public string Author { get; set; }
@@ -29,5 +33,10 @@ namespace SelahSeries.Models
 
         public int CategoryId { get; set; }
         public Category Category { get; set; }
+
+        public ICollection<Comment> Comments { get; set; }
+
+        public PostClap postClap { get; set; }
+
     }
 }

@@ -33,6 +33,7 @@ namespace SelahSeries.Repository
         {
             return await _selahDbContext.Posts
                             .Include(p => p.Category)
+                            .Include(p => p.Comments)
                             .Where(post => post.PostId == postId)
                             .FirstOrDefaultAsync();
 
@@ -58,6 +59,7 @@ namespace SelahSeries.Repository
                                 .Where(post => post.CategoryId == categoryId || post.Category.ParentId == categoryId)
                                 .ToPaginatedListAsync(pageParam);
         }
+
         public async Task<PaginatedList<Post>> GetPublishedPosts(PaginationParam pageParam)
         {
             return await _selahDbContext.Posts
@@ -81,6 +83,18 @@ namespace SelahSeries.Repository
         public Task ClapPost()
         {
             throw new NotImplementedException();
+        }
+        public async Task<List<Post>> GetPublishedPostsByClaps(int limit)
+        {
+            return await _selahDbContext.Posts.Include(p => p.postClap)
+                .Where(p => p.postClap.PostClapId == p.PostId)
+                .OrderBy(x => x.postClap.Claps).Take(limit).ToListAsync();
+        }
+        public async Task<List<Post>> SearchPost(String searchText )
+        {
+            return await _selahDbContext.Posts
+                                    .Where(p => p.Title.Contains(searchText) || p.Author.Contains(searchText))
+                                    .ToListAsync();
         }
     }
 }

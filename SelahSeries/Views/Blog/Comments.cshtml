@@ -33,7 +33,7 @@
                                 <button type="button" data-ReplyListener="@item.CommentId" class="reply_button ml-auto">Reply</button>
                             </div>
                             <div class="comment_content">
-                                <p>@item.Content : Pick the yellow peach that looks like a sunset with its red, orange, and pink coat skin, peel it off with your teeth. Sink them into unripened.</p>
+                                <p>@item.Content </p>
                             </div>
                             @await Html.PartialAsync("Comments", new SelahSeries.ViewModels.CommentVM() { Comments = Model.Comments, ParentId = item.CommentId })
 

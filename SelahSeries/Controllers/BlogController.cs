@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using SelahSeries.Models;
+using SelahSeries.Models.DTOs;
 using SelahSeries.Repository;
 using SelahSeries.ViewModels;
 
@@ -36,9 +37,21 @@ namespace SelahSeries.Controllers
             try
             {
                 var post = await _postRepo.GetPost(postId);
-                var comments = await _commentRepo.GetComments(postId);
+                //var comments = await _commentRepo.GetComments(postId);
 
-                var postDetailViewModel = new PostDetailViewModel() { Post = post, CommentList = comments };
+                PaginationParam relPgParam = new PaginationParam() { PageIndex = 1, Limit = 4, SortColoumn = "CreatedAt" };
+                var relatedPosts = await _postRepo.GetPublishedPostsByCategory(relPgParam, post.CategoryId);
+
+                
+                const int LIMIT = 4;
+                var topStories = await _postRepo.GetPublishedPostsByClaps(LIMIT);
+
+
+                var postDetailViewModel = new PostDetailViewModel() {
+                    Post = post,
+                    RelatedPosts = relatedPosts.Source,
+                    TopStories = topStories
+                   };
                 return View(postDetailViewModel);
             }
             catch

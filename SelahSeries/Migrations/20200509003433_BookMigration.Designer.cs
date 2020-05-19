@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SelahSeries.Data;
 
 namespace SelahSeries.Migrations
 {
     [DbContext(typeof(SelahSeriesDataContext))]
-    partial class SelahSeriesDataContextModelSnapshot : ModelSnapshot
+    [Migration("20200509003433_BookMigration")]
+    partial class BookMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -179,7 +181,11 @@ namespace SelahSeries.Migrations
 
                     b.Property<int>("Claps");
 
+                    b.Property<int?>("PostId");
+
                     b.HasKey("PostClapId");
+
+                    b.HasIndex("PostId");
 
                     b.ToTable("PostClaps");
                 });
@@ -223,7 +229,7 @@ namespace SelahSeries.Migrations
                         .HasForeignKey("ParentCommentId");
 
                     b.HasOne("SelahSeries.Models.Post", "Post")
-                        .WithMany("Comments")
+                        .WithMany()
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
@@ -258,9 +264,8 @@ namespace SelahSeries.Migrations
             modelBuilder.Entity("SelahSeries.Models.PostClap", b =>
                 {
                     b.HasOne("SelahSeries.Models.Post", "Post")
-                        .WithOne("postClap")
-                        .HasForeignKey("SelahSeries.Models.PostClap", "PostClapId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .WithMany()
+                        .HasForeignKey("PostId");
                 });
 
             modelBuilder.Entity("SelahSeries.Models.SoftBook", b =>

@@ -1,8 +1,18 @@
 import './build/keditor.min.js';
 
 
+
 const _keditor = KEDITOR.create("contentEditor", {
     showPathLabel: false,
+    font: [
+        'Work sans',
+        'sans-serif',
+        'ubuntu',
+        'Georgia'
+    ],
+    fontSize: [
+        8, 10, 14, 16, 18, 24, 36
+    ],
     width: "auto",
     maxWidth: "100%",
     height: "auto",
@@ -42,8 +52,16 @@ const _keditor = KEDITOR.create("contentEditor", {
       ],
     ],
     callBackSave: function (contents) {
-        document.querySelector('#contentEditor').textContent = contents;
+
+        document.querySelector('#contentEditor').textContent = `<div style="text-shadow: rgba(0,0,0,.01) 0 0 1px; 
+                            -webkit-font-smoothing: antialiased; - webkit - text - shadow: rgba(0, 0, 0, .01) 0 0 1px; 
+                            line-height: 1.875; font-weight:500; color: rgba(0,0,0,0.8);"> `
+                            + contents +
+                            ' </div>';
     },
 });
 
+_keditor.onChange = (contents) => {
+    document.querySelector('[data-command=save]').click();
+};
 $(document).ready(_keditor);

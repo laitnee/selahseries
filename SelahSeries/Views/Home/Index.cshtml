@@ -37,6 +37,7 @@
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
     </ol>
     <div class="carousel-inner" role="listbox">
 
@@ -91,8 +92,10 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
+<div>
 
-<div class=" = 'container containe">
+</div>
+<div class="containe">
     <div class="row">
         <div class=" col-sm-12 col-md-6 col-lg-3">
             <div class="card2">
@@ -100,7 +103,6 @@
                 <img src="/NewFolder2/new/brigitte-tohm-XyGeWTj2E7w-unsplash.jpg" alt="Avatar">
                 <div class="container2">
                     <h4>Interested in articles on Relationship and Marriage?</h4>
-                    <p>@Html.ActionLink("See here >>>", "Category", "Blog")</p>
                 </div>
             </div>
 
@@ -110,7 +112,6 @@
                 <img src="/NewFolder2/new/kakudmi-JO19K0HDDXI-unsplash (1).jpg" alt="Avatar">
                 <div class="container2">
                     <h4>Need latest news on sports?</h4>
-                    <p>@Html.ActionLink("See here >>>", "Category", "Blog")</p>
                 </div>
             </div>
 
@@ -122,7 +123,6 @@
                 <img src="/NewFolder2/new/jacalyn-beales-geRpPjIiu8U-unsplash.jpg" alt="Avatar ">
                 <div class="container2">
                     <h4>Do you want to read about having a fulfilling career?</h4>
-                    <p>@Html.ActionLink("See here >>>", "Category", "Blog")</p>
                 </div>
             </div>
 
@@ -135,7 +135,6 @@
                 <img src="/NewFolder2/new/lucia-48UaeIMNAA4-unsplash (2).jpg" alt="Avatar">
                 <div class="container2">
                     <h4>Are you interested in politics?</h4>
-                    <p>@Html.ActionLink("See here >>>", "Category", "Blog")</p>
                 </div>
             </div>
 
@@ -144,8 +143,8 @@
     </div>
 </div>
 
-
-
+@{ViewData["Search"] = "all";}
+@await Html.PartialAsync("SearchPartial")
 
 <div id="blog">
     <div class="row" style="background: url('/NewFolder2/new/brass-black-brown-fountain-pen-163029 (2).jpg')">
@@ -881,6 +880,9 @@
         margin-right: auto;
         margin-bottom: 20px;
         
+    }
+    .carousel-item-next.carousel-item-left{
+        display: block !important;
     }
     .mb-4 {
         color: #f2ba16;

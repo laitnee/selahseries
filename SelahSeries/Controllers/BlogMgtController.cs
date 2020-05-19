@@ -34,6 +34,14 @@ namespace SelahSeries.Controllers
                 Limit = 20,
                 SortColoumn = "CreatedAt"
             };
+            if(TempData.ContainsKey("Alert"))
+            {
+                ViewBag.Alert = TempData["Alert"].ToString();
+            }
+            if (TempData.ContainsKey("Error"))
+            {
+                ViewBag.Error = TempData["Error"].ToString();
+            }
             var posts = await _postRepo.GetPosts(pageParam); 
             return View(posts.Source);
         }
@@ -86,16 +94,22 @@ namespace SelahSeries.Controllers
                     }
 
                     post.TitleImageUrl = string.IsNullOrWhiteSpace(uploadedImage) ? defaultPostPhoto : uploadedImage;
-                   
 
-                    if (await _postRepo.AddPost(post)) return RedirectToAction(nameof(Index));
 
+                    if (await _postRepo.AddPost(post))
+                    {
+                        TempData["Alert"] = "Post Created Successfully";
+                        return RedirectToAction(nameof(Index));
+                    }
+                    
                     ViewBag.Error = "Unable to add post, please try again or contact administrator";
                     return View();
                 }
-                catch { return View(); }               
+                catch {
+                    ViewBag.Error = "Unable to add post, please try again or contact administrator";
+                    return View(); }               
             }
-           
+            ViewBag.Error = "Please correct the error(s) in Form";
             return View(postVM);
             
         }
@@ -143,19 +157,32 @@ namespace SelahSeries.Controllers
                     if(!string.IsNullOrWhiteSpace(uploadedImage)) editPost.TitleImageUrl = uploadedImage;
 
                     await _postRepo.UpdatePost(editPost);
-
+                    TempData["Alert"] = "Post Edited Successfully";
                     return RedirectToAction(nameof(Index));
                 }
-                catch(Exception ex ) { return View(); }
+                catch(Exception ex ) {
+                    ViewBag.Error = "Unable to add post, please try again or contact administrator";
+                    return View(); }
             }
+            ViewBag.Error = "Please correct the error(s) in Form";
             return View();
         }
 
         // GET: BlogMgt/Delete/5
         public async Task<IActionResult> Delete(int id)
         {
-            await _postRepo.DeletePost(id);
-            return RedirectToAction(nameof(Index));
+            try {
+
+                await _postRepo.DeletePost(id);
+                TempData["Alert"] = "Post Deleted Successfully";
+                return RedirectToAction(nameof(Index));
+
+
+            }
+            catch {
+                TempData["Error"] = "Error occured: Unable to delete post";
+                return RedirectToAction(nameof(Index));
+            }
         }
 
         // POST: BlogMgt/Delete/5
