@@ -1,4 +1,4 @@
-﻿@*<!DOCTYPE html>*@
+﻿<!DOCTYPE html>
 <html>
 <head>
     <title>@ViewData["Title"] - SelahSeries</title>
@@ -6,10 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Demo project">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    @if (IsSectionDefined("AddMetaTags"))
-    {
-        @RenderSection("AddMetaTags", required: false)
-    }
+
     <environment include="Development">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Oswald:400,700">
         <link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/bootstrap4/bootstrap.min.css">
@@ -24,9 +21,9 @@
             @RenderSection("AddToHead", required: false)
         }
 
-        <link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/aos.css">
+         <link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/aos.css">
         <link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/style.css">
-
+        
 
     </environment>
     <environment exclude="Development">
@@ -49,13 +46,13 @@
 
 
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <a class="navbar-brand" href="#">SELAH</a>
+                    <a class="navbar-brand" href="#"><img style="height:42px"src="~/NewFolder2/new/selah hdr md.png" /></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ml-auto topnav">
-                            <li class="nav-item active">
+                    <div class="idNav collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul style="font-family:'Ubuntu', sans-serif"class="navbar-nav ml-auto topnav">
+                            <li class="nav-item">
                                 <a class="nav-link" href="~/Home/Index">Home <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
@@ -66,11 +63,11 @@
                                     Blog
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="~/Blog/Category">Relationship & Marriage</a>
-                                    <a class="dropdown-item" href="~/Blog/Category">Sports</a>
-                                    @*<div class="dropdown-divider"></div>*@
-                                    <a class="dropdown-item" href="~/Blog/Category">Politics</a>
-                                    <a class="dropdown-item" href="~/Blog/Category">Career</a>
+                                    <a class="dropdown-item" href="~/?category=relationship_and_marriage#blog">Relationship & Marriage</a>
+                                    <a class="dropdown-item" href="~/?category=sports#blog">Sports</a>
+
+                                    <a class="dropdown-item" href="~/?category=politics#blog">Politics</a>
+                                    <a class="dropdown-item" href="~/?category=career#blog">Career</a>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
@@ -99,37 +96,38 @@
 
         }
 
+
         @RenderBody()
 
         @if (ViewData["Add Navigation"] != "false")
         {
             <!-- Footer -->
 
-            <footer>
+            <footer class="footer_big">
 
 
 
                 <div class="container pt-5 border-bottom">
                     <div class="row">
                         <div class="col-md-3 col-sm-6  col-6 mb-3 text-center" style="color:white">
-                            SELAH LOGO
+                            <img style="width:100%; height:100%; margin-top:-24px" src="~/NewFolder2/new/selah s.png" />
                         </div>
 
 
 
 
                         <div class="col-md-3 col-sm-6 col-6 p-0 mb-3 float-left text-center">
-                            <h4 class="mb-4 font-weight-bold text-uppercase">Blog</h4>
+                            <h4 class="font-weight-bold text-uppercase">Blog</h4>
                             <ul class="list-group">
-                                <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~Blog/Category">Relationship & Marriage</a></li>
-                                <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~Blog/Category">Career</a></li>
-                                <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~Blog/Category">Sports</a></li>
-                                <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~Blog/Categoryc">Politics</a></li>
+                                <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~/?category=relationship_and_marriage#blog">Relationship & Marriage</a></li>
+                                <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~/?category=careere#blog">Career</a></li>
+                                <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~/?category=sports#blog">Sports</a></li>
+                                <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~/?category=politics#blog">Politics</a></li>
                             </ul>
                         </div>
 
                         <div class="col-md-3 col-sm-6 col-6 mb-3 p-0 float-left text-center">
-                            <h4 class="mb-4 font-weight-bold text-uppercase">quick links</h4>
+                            <h4 class="font-weight-bold text-uppercase">Quick Links</h4>
                             <ul class="list-group">
                                 <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~Support/Send_Message">Support/Counselling</a></li>
                                 @*<li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~Support/Index">Support Links</a></li>*@
@@ -140,7 +138,7 @@
                         </div>
 
                         <div class="col-md-3 col-sm-6 col-6 mb-3 p-0 float-left text-center">
-                            <h4 class="mb-4 font-weight-bold text-uppercase">Connect</h4>
+                            <h4 class="font-weight-bold text-uppercase">Connect</h4>
                             <ul class="list-group">
                                 <li class="list-group-item bg-transparent border-0 p-0 mb-2">
                                     <a href="https://www.linkedin.com/company/naologic"><i class="fa fa-linkedin mr-1"></i> LinkedIn</a>
@@ -154,6 +152,74 @@
 
                                 <li class="list-group-item bg-transparent border-0 p-0 mb-2">
                                     <a href="https://www.facebook.com/naologic/" target="_blank"><i class="fa fa-facebook mr-1"></i> Facebook</a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    @*<div class="col-md-12">
+                            <div class="py-4 d-flex justify-content-center align-items-center">
+                                <p style="color:white">Copyright &copy; <script>document.write(new Date().getFullYear());</script></p>
+                            </div>
+                    </div>*@
+                </div>
+
+
+            </footer>
+
+            <footer class="footer_small">
+
+
+
+                <div class="container mborder-bottom">
+                    <div class="row">
+                        <div class=" col-sm-12  col-12 text-center" style="color:white">
+                            <img style="width:68%; height:96%" src="~/NewFolder2/new/selah s.png" />
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-6 p-0 mb-3 float-left text-center">
+                            <h4 class="font-weight-bold text-uppercase">Blog</h4>
+                            <ul class="list-group">
+                                <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~/?category=relationship_and_marriage#blog">Relationship & Marriage</a></li>
+                                <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~/?category=careere#blog">Career</a></li>
+                                <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~/?category=sports#blog">Sports</a></li>
+                                <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~/?category=politics#blog">Politics</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-md-6 col-sm-6 col-6 mb-3 p-0 float-left text-center">
+                            <h4 class="font-weight-bold text-uppercase">Quick Links</h4>
+                            <ul class="list-group">
+                                <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~Support/Send_Message">Support/Counselling</a></li>
+                                @*<li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~Support/Index">Support Links</a></li>*@
+                                <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~Home/About">About us</a></li>
+                                <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~Home/Contact">Contact us</a></li>
+                                <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~Books/Index">Books</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top:18px">
+                        <div class="col-md-12 col-sm-12 col-12 mb-3 p-0 float-left text-center">
+                            
+                            <ul>
+                                <li class="d-inline list-group-item bg-transparent border-0 p-0 mb-2">
+                                    <a href="https://www.linkedin.com/company/naologic"><i class="fa fa-linkedin mr-1"></i></a>
+                                </li>
+                                <li class="d-inline bg-transparent border-0 p-0 mb-2">
+                                    <a href="https://twitter.com/naologicerp"><i class="fa fa-twitter mr-1"></i></a>
+                                </li>
+                                <li class="d-inline list-group-item bg-transparent border-0 p-0 mb-2">
+                                    <a href="https://github.com/naologic" target="_blank"><i class="fa fa-instagram mr-1"></i></a>
+                                </li>
+
+                                <li class="d-inline list-group-item bg-transparent border-0 p-0 mb-2">
+                                    <a href="https://www.facebook.com/naologic/" target="_blank"><i class="fa fa-facebook mr-1"></i></a>
                                 </li>
 
                             </ul>
@@ -250,6 +316,13 @@
         color: rgba(0,0,0,.9);
     }
 
+    .footer_block{
+        display:block;
+    }
+
+    .footer_small {
+        display: none;
+    }
     footer h4 {
         font-family: "Ubuntu", sans-serif;
         font-size: 1rem;
@@ -283,4 +356,29 @@
         font-family: "Ubuntu", "Work-sans", sans-serif;
         background: #012035;
     }
+    .d-inline{
+        margin-right: 18px;
+    }
 </style>
+<script>
+    // Add active class to the current button (highlight it)
+    //var header = document.getElementById("navDiv");
+    //var btns = header.getElementsByClassName("nav-item");
+    //for (var i = 0; i < btns.length; i++) {
+    //    btns[i].addEventListener("click", function () {
+    //        var current = document.getElementsByClassName("active");
+    //        current[0].className = current[0].className.replace(" active", "");
+    //        this.className += " active";
+    //    });
+    //}
+    
+    
+     
+        $(function () {
+            $('nav a[href="/' + location.pathname.split("/")[1] + '/' + location.pathname.split("/")[2] + '"]').parents('li').addClass('active');
+           
+        });
+        
+    
+
+</script>

@@ -8,11 +8,13 @@ using AutoMapper;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using SelahSeries.Core.Pagination;
 using SelahSeries.Data;
 using SelahSeries.Models;
 using SelahSeries.Models.DTOs;
 using SelahSeries.Repository;
 using SelahSeries.Services;
+using SelahSeries.ViewModels;
 
 namespace SelahSeries.Controllers
 {
@@ -22,11 +24,7 @@ namespace SelahSeries.Controllers
         private readonly IMapper _mapper;
         private readonly IHostingEnvironment hostingEnvironment;
         private readonly IPostRepository _postRepo;
-        //public HomeController(
-        //   //SeedData seedData
-        //   )
-        //{
-        //}
+        
         public HomeController(IPostRepository postRepo, IMapper mapper, IHostingEnvironment environment, IEmailService emailService)
         {
             _postRepo = postRepo;
@@ -35,17 +33,44 @@ namespace SelahSeries.Controllers
     
             hostingEnvironment = environment;
         }
-        public async  Task<IActionResult> Index()
+        [Route("/")]
+        [Route("Home/Index")]
+        [HttpGet("{pageIndex}")]
+        public async Task<IActionResult> Index(int pageIndex, string category)
         {
-            var pageParam = new PaginationParam
+           PostHomeViewModel postHomeVM = new PostHomeViewModel();
+           int page = (pageIndex == 0)? 1 : pageIndex;
+           var pageParam = new PaginationParam
             {
-                PageIndex = 1,
+                PageIndex = page,
                 Limit = 20,
                 SortColoumn = "CreatedAt"
             };
-            var posts = await _postRepo.GetPublishedPosts(pageParam);
-            return View(posts.Source);
+            var dontMiss =_postRepo.GetPublishedDMPosts();
+            var dontMissVM = _mapper.Map<List<PostListViewModel>>(dontMiss);
+            postHomeVM.DontMiss = dontMissVM;
+            if (category == "all" || category == null )
+            {
+                var latestArticles = await _postRepo.GetPublishedPosts(pageParam);
+                var latestArticlesVM = _mapper.Map<List<PostListViewModel>>(latestArticles.Source);
+                postHomeVM.LatestArticle = latestArticlesVM;
+            }
+            else {
+                var latestArticles = await _postRepo.GetPublishedPostsByCategory(pageParam, category);
+                var latestArticlesVM = _mapper.Map<List<PostListViewModel>>(latestArticles.Source);
+                postHomeVM.LatestArticle = latestArticlesVM;
+            }
+            ViewData["Category"] = category;
+            return View(postHomeVM);
         }
+
+        public List<PostListViewModel> Map(PaginatedList<Post> section)
+        {
+            return _mapper.Map<List<PostListViewModel>>(section);
+            
+        }
+
+      
 
         public IActionResult About()
         {
@@ -95,5 +120,7 @@ namespace SelahSeries.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+       
     }
 }

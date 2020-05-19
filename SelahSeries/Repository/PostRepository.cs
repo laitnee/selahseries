@@ -16,6 +16,7 @@ namespace SelahSeries.Repository
         public PostRepository(SelahSeriesDataContext selahDbContext)
         {
             _selahDbContext = selahDbContext;
+         
         }
         public async Task<bool> AddPost(Post post)
         {
@@ -53,7 +54,7 @@ namespace SelahSeries.Repository
         }
 
         public async Task<PaginatedList<Post>> GetPostsByCategory(PaginationParam pageParam, int categoryId)
-        {
+        {  
             return await _selahDbContext.Posts
                             .Include(p => p.Category)
                                 .Where(post => post.CategoryId == categoryId || post.Category.ParentId == categoryId)
@@ -67,13 +68,39 @@ namespace SelahSeries.Repository
                             .Where(post => post.Published == true)
                             .ToPaginatedListAsync(pageParam);
         }
-
-        public async Task<PaginatedList<Post>> GetPublishedPostsByCategory(PaginationParam pageParam, int categoryId)
+        public IEnumerable<Post> GetPublishedDMPosts()
         {
-            return await _selahDbContext.Posts
+            return _selahDbContext.Posts
                             .Include(p => p.Category)
-                                .Where(post => (post.CategoryId == categoryId ||  post.ParentId == categoryId) && post.Published == true)
-                                .ToPaginatedListAsync(pageParam);
+                            .Where(post => post.Published == true)
+                           .OrderByDescending(x => x.CreatedAt).Take(20);
+        }
+        public async Task<PaginatedList<Post>> GetPublishedPostsByCategory(PaginationParam pageParam, string category)
+        {
+            int _categoryId = 0;
+            
+           
+                switch (category)
+                {
+                    case "sports":
+                        _categoryId = 1;
+                        break;
+                    case "relationship_and_marriage":
+                        _categoryId = 2;
+                        break;
+                    case "career":
+                        _categoryId = 3;
+                        break;
+                    case "politics":
+                        _categoryId = 4;
+                        break;
+                }
+                return await _selahDbContext.Posts
+                                .Include(p => p.Category)
+                                    .Where(post => (post.CategoryId == _categoryId || post.ParentId == _categoryId) && post.Published == true)
+                                    .ToPaginatedListAsync(pageParam);
+            
+            
         }
         public async Task<bool> UpdatePost(Post post)
         {
@@ -90,11 +117,16 @@ namespace SelahSeries.Repository
                 .Where(p => p.postClap.PostClapId == p.PostId)
                 .OrderBy(x => x.postClap.Claps).Take(limit).ToListAsync();
         }
-        public async Task<List<Post>> SearchPost(String searchText )
+        public async Task<List<Post>> SearchPost(String searchText)
         {
             return await _selahDbContext.Posts
                                     .Where(p => p.Title.Contains(searchText) || p.Author.Contains(searchText))
                                     .ToListAsync();
+        }
+
+        public Task<PaginatedList<Post>> GetPublishedPostsByCategory(PaginationParam pageParam, int categoryId)
+        {
+            throw new NotImplementedException();
         }
     }
 }
