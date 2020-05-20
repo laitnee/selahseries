@@ -10,8 +10,8 @@ using SelahSeries.Data;
 namespace SelahSeries.Migrations
 {
     [DbContext(typeof(SelahSeriesDataContext))]
-    [Migration("20200505073459_fresh migration")]
-    partial class freshmigration
+    [Migration("20200519213910_Deploy")]
+    partial class Deploy
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,35 @@ namespace SelahSeries.Migrations
                 .HasAnnotation("ProductVersion", "2.1.14-servicing-32113")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("SelahSeries.Models.Book", b =>
+                {
+                    b.Property<int>("BookId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Author")
+                        .HasMaxLength(50);
+
+                    b.Property<int>("CategoryId");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(250);
+
+                    b.Property<string>("ImageUrl")
+                        .HasMaxLength(100);
+
+                    b.Property<bool>("IsHardBook");
+
+                    b.Property<string>("Title")
+                        .HasMaxLength(100);
+
+                    b.HasKey("BookId");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("Books");
+                });
 
             modelBuilder.Entity("SelahSeries.Models.Category", b =>
                 {
@@ -73,25 +102,16 @@ namespace SelahSeries.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Author")
-                        .HasMaxLength(50);
+                    b.Property<int>("BookId");
 
                     b.Property<int?>("CategoryId");
 
-                    b.Property<int>("CatergoryId");
-
-                    b.Property<string>("Description")
-                        .HasMaxLength(250);
-
-                    b.Property<string>("ImageUrl")
-                        .HasMaxLength(100);
-
-                    b.Property<decimal>("Price");
-
-                    b.Property<string>("Title")
-                        .HasMaxLength(100);
+                    b.Property<double>("Price");
 
                     b.HasKey("HardBookId");
+
+                    b.HasIndex("BookId")
+                        .IsUnique();
 
                     b.HasIndex("CategoryId");
 
@@ -108,7 +128,7 @@ namespace SelahSeries.Migrations
 
                     b.Property<int?>("HardBookId");
 
-                    b.Property<decimal>("Price");
+                    b.Property<double>("Price");
 
                     b.Property<int>("ShippingAddress");
 
@@ -161,11 +181,7 @@ namespace SelahSeries.Migrations
 
                     b.Property<int>("Claps");
 
-                    b.Property<int?>("PostId");
-
                     b.HasKey("PostClapId");
-
-                    b.HasIndex("PostId");
 
                     b.ToTable("PostClaps");
                 });
@@ -176,30 +192,30 @@ namespace SelahSeries.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Author")
-                        .HasMaxLength(50);
+                    b.Property<int>("BookId");
 
-                    b.Property<int>("CategoryId");
-
-                    b.Property<string>("Description")
-                        .HasMaxLength(500);
+                    b.Property<int?>("CategoryId");
 
                     b.Property<int>("Downloads");
 
-                    b.Property<string>("ImageUrl")
-                        .HasMaxLength(100);
-
-                    b.Property<string>("Location")
-                        .HasMaxLength(100);
-
-                    b.Property<string>("Title")
-                        .HasMaxLength(100);
+                    b.Property<string>("Location");
 
                     b.HasKey("SoftBookId");
+
+                    b.HasIndex("BookId")
+                        .IsUnique();
 
                     b.HasIndex("CategoryId");
 
                     b.ToTable("SoftBooks");
+                });
+
+            modelBuilder.Entity("SelahSeries.Models.Book", b =>
+                {
+                    b.HasOne("SelahSeries.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("SelahSeries.Models.Comment", b =>
@@ -209,13 +225,18 @@ namespace SelahSeries.Migrations
                         .HasForeignKey("ParentCommentId");
 
                     b.HasOne("SelahSeries.Models.Post", "Post")
-                        .WithMany()
+                        .WithMany("Comments")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("SelahSeries.Models.HardBook", b =>
                 {
+                    b.HasOne("SelahSeries.Models.Book", "Book")
+                        .WithOne("HardBook")
+                        .HasForeignKey("SelahSeries.Models.HardBook", "BookId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("SelahSeries.Models.Category")
                         .WithMany("HardBooks")
                         .HasForeignKey("CategoryId");
@@ -239,16 +260,21 @@ namespace SelahSeries.Migrations
             modelBuilder.Entity("SelahSeries.Models.PostClap", b =>
                 {
                     b.HasOne("SelahSeries.Models.Post", "Post")
-                        .WithMany()
-                        .HasForeignKey("PostId");
+                        .WithOne("postClap")
+                        .HasForeignKey("SelahSeries.Models.PostClap", "PostClapId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("SelahSeries.Models.SoftBook", b =>
                 {
+                    b.HasOne("SelahSeries.Models.Book", "Book")
+                        .WithOne("SoftBook")
+                        .HasForeignKey("SelahSeries.Models.SoftBook", "BookId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("SelahSeries.Models.Category")
                         .WithMany("SoftBooks")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("CategoryId");
                 });
 #pragma warning restore 612, 618
         }

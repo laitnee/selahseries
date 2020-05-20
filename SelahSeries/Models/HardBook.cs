@@ -8,8 +8,8 @@ namespace SelahSeries.Models
 {
     public class HardBook
     {
-        [Key]
-        public int HarbookId { get; set; }
+        public int HardBookId { get; set; }
+
         public double Price { get; set; }
 
         public int BookId { get; set; }

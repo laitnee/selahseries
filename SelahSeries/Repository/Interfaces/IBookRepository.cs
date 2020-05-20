@@ -8,11 +8,12 @@ using System.Threading.Tasks;
 
 namespace SelahSeries.Repository.Interfaces
 {
-    interface IBookRepository
+    public interface IBookRepository
     {
         Task<bool> AddBook(Book book);
         Task<PaginatedList<Book>> GetBooks(PaginationParam pageParam);
         Task<Book> GetBook(int bookId);
         Task<bool> DeleteBookAsync(Book book);
+        Task<List<Book>> SearchBooks(string searchText);
     }
 }

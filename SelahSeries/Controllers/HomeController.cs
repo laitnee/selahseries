@@ -33,9 +33,10 @@ namespace SelahSeries.Controllers
     
             hostingEnvironment = environment;
         }
-        [Route("/")]
+        
         [Route("Home/Index")]
         [HttpGet("{pageIndex}")]
+        [Route("/")]
         public async Task<IActionResult> Index(int pageIndex, string category)
         {
            PostHomeViewModel postHomeVM = new PostHomeViewModel();
@@ -49,17 +50,19 @@ namespace SelahSeries.Controllers
             var dontMiss =_postRepo.GetPublishedDMPosts();
             var dontMissVM = _mapper.Map<List<PostListViewModel>>(dontMiss);
             postHomeVM.DontMiss = dontMissVM;
+
+            PaginatedList<Post> latestArticles;
             if (category == "all" || category == null )
             {
-                var latestArticles = await _postRepo.GetPublishedPosts(pageParam);
-                var latestArticlesVM = _mapper.Map<List<PostListViewModel>>(latestArticles.Source);
-                postHomeVM.LatestArticle = latestArticlesVM;
+                latestArticles = await _postRepo.GetPublishedPosts(pageParam);          
             }
             else {
-                var latestArticles = await _postRepo.GetPublishedPostsByCategory(pageParam, category);
-                var latestArticlesVM = _mapper.Map<List<PostListViewModel>>(latestArticles.Source);
-                postHomeVM.LatestArticle = latestArticlesVM;
+                latestArticles = await _postRepo.GetPublishedPostsByCategory(pageParam, category);
             }
+            postHomeVM.TotalPostCount = latestArticles.TotalCount;
+            var latestArticlesVM = _mapper.Map<List<PostListViewModel>>(latestArticles.Source);
+            postHomeVM.LatestArticle = latestArticlesVM;
+
             ViewData["Category"] = category;
             return View(postHomeVM);
         }

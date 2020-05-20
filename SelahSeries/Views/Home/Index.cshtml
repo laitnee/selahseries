@@ -4,7 +4,7 @@
 
     var category = ViewData["Category"];
     var latestArticle = Model.LatestArticle.OrderByDescending(x => x.CreatedAt);
-   
+
 
 }
 
@@ -24,6 +24,7 @@
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
     </ol>
     <div class="carousel-inner" role="listbox">
 
@@ -80,13 +81,15 @@
 </div>
 
 <div class=" = 'container containe">
+
     <div class="row" style="height:150px; margin-bottom:40px">
         <div class=" col-sm-12  col-12 text-center" >
             <img style="height:150px" src="~/NewFolder2/new/middl selah.png" alt="image"/>
+
         </div>
     </div>
-    <div class="row">
-        <div class=" col-sm-12 col-md-6 col-lg-3">
+    @*<div class="row">
+        <div class="col-sm-6 col-md-6 col-lg-3">
             <div class="card2">
 
                 <img src="/NewFolder2/new/brigitte-tohm-XyGeWTj2E7w-unsplash.jpg" alt="Avatar">
@@ -98,7 +101,7 @@
 
         </div>
 
-        <div class=" col-sm-12 col-md-6 col-lg-3">
+        <div class="col-sm-6 col-md-6 col-lg-3">
             <div class="card2">
                 <img src="/NewFolder2/new/kakudmi-JO19K0HDDXI-unsplash (1).jpg" alt="Avatar">
                 <div class="container2">
@@ -110,7 +113,7 @@
         </div>
 
 
-        <div class=" col-sm-12 col-md-6 col-lg-3">
+        <div class="col-sm-6 col-md-6 col-lg-3">
             <div class="card2">
 
                 <img src="/NewFolder2/new/jacalyn-beales-geRpPjIiu8U-unsplash.jpg" alt="Avatar ">
@@ -124,7 +127,7 @@
 
 
 
-        <div class=" col-sm-12 col-md-6 col-lg-3">
+        <div class="col-sm-6 col-md-6 col-lg-3">
             <div class="card2">
                 <img src="/NewFolder2/new/lucia-48UaeIMNAA4-unsplash (2).jpg" alt="Avatar">
                 <div class="container2">
@@ -135,10 +138,11 @@
 
         </div>
 
-    </div>
+    </div>*@
 </div>
 
-
+@{ViewData["Search"] = "all";}
+@await Html.PartialAsync("SearchPartial")
 
 
 <div id="blog">
@@ -198,66 +202,63 @@
                         </div>
                         <div class="section_content">
                             <div class="grid clearfix">
-                                @{
-                                    
-                                            foreach (var item in latestArticle)
-                                            {
-                                                
-                                                    <div class="card card_small_with_image grid-item">
-                                                        <img class="card-img-top" src='~/Uploads/@Html.DisplayFor(modelItem => item.TitleImageUrl)' alt="https://unsplash.com/">
-                                                        <div class="card-body">
-                                                            <div class="card-title card-title-small"><a href="~/blog/post/@Html.DisplayFor(modelItem => item.PostId)">@Html.DisplayFor(modelItem => item.Title)</a></div>
-                                                            <small class="post_meta"><a href="#">@Html.DisplayFor(modelItem => item.Author)</a><span>@Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
-                                                        </div>
-                                                    </div>
-                                                
-
-                                            }
-                                         
-
-                                    }
-                                
 
 
-                                <!-- Small Card With Image -->
-                                <div class="card card_small_with_image grid-item">
-                                    <img class="card-img-top" src="/NewFolder2/images/post_10.jpg" alt="">
-                                    <div class="card-body">
-                                        <div class="card-title card-title-small"><a href="~/blog/post">Html.DisplayFor(modelItem => item.Title)</a></div>
-                                        <small class="post_meta"><a href="#">Html.DisplayFor(modelItem => item.Author)</a><span>Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
-                                    </div>
-                                </div>
+                                @foreach (var item in latestArticle)
+        {
 
-                                <!-- Small Card With Image -->
-                                <div class="card card_small_with_image grid-item">
-                                    <img class="card-img-top" src="/NewFolder2/images/post_15.jpg" alt="">
-                                    <div class="card-body">
-                                        <div class="card-title card-title-small"><a href="~/blog/post">Html.DisplayFor(modelItem => item.Title)</a></div>
-                                        <small class="post_meta"><a href="#">Html.DisplayFor(modelItem => item.Author)</a><span>Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
-                                    </div>
-                                </div>
+            <div class="card card_default card_small_with_image grid-item">
+                <img class="card-img-top" src='~/Uploads/@Html.DisplayFor(modelItem => item.TitleImageUrl)' alt="https://unsplash.com/">
+                <div class="card-body">
+                    <div class="card-title card-title-small"><a href="~/blog/post/@Html.DisplayFor(modelItem => item.PostId)">@Html.DisplayFor(modelItem => item.Title)</a></div>
+                    <small class="post_meta"><a href="#">@Html.DisplayFor(modelItem => item.Author)</a><span>@Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
+                </div>
+            </div>
+
+
+        }
 
 
 
 
-                                <!-- Small Card With Image -->
-                                <div class="card card_small_with_image grid-item">
-                                    <img class="card-img-top" src="/NewFolder2/images/post_15.jpg" alt="">
-                                    <div class="card-body">
-                                        <div class="card-title card-title-small"><a href="~/blog/post">Html.DisplayFor(modelItem => item.Title)</a></div>
-                                        <small class="post_meta"><a href="#">Html.DisplayFor(modelItem => item.Author)</a><span>Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
-                                    </div>
-                                </div>
 
 
-                                <!-- Small Card With Background -->
-                                <div class="card card_default card_small_with_background grid-item">
-                                    <div class="card_background" style="background-image:url(/NewFolder2/images/post_11.jpg)"></div>
-                                    <div class="card-body">
-                                        <div class="card-title card-title-small"><a href="~/blog/post">Title</a></div>
-                                        <small class="post_meta"><a href="#">Html.DisplayFor(modelItem => item.Author)</a><span>Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
-                                    </div>
-                                </div>
+
+                                <!-- Small Card Without Image -->
+                                @*@<div class="card card_default card_small_no_image grid-item">
+            <div class="card-body">
+                <div class="card-title card-title-small"><a href="~/blog/post">How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</a></div>
+                <small class="post_meta"><a href="#">Katy Liu</a><span>Sep 29, 2017 at 9:48 am</span></small>
+            </div>
+        </div>
+
+        *<!-- Small Card With Background -->
+        <div class="card card_default card_small_with_background grid-item">
+            <div class="card_background" style="background-image:url(/NewFolder2/images/post_4.jpg)"></div>
+            <div class="card-body">
+                <div class="card-title card-title-small"><a href="~/blog/post">How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</a></div>
+                <small class="post_meta"><a href="#">Katy Liu</a><span>Sep 29, 2017 at 9:48 am</span></small>
+            </div>
+        </div>
+
+        <!-- Small Card With Image -->
+        <div class="card card_small_with_image grid-item">
+            <img class="card-img-top" src="/NewFolder2/images/post_2.jpg" alt="https://unsplash.com/">
+            <div class="card-body">
+                <div class="card-title card-title-small"><a href="~/blog/post">How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</a></div>
+                <small class="post_meta"><a href="#">Katy Liu</a><span>Sep 29, 2017 at 9:48 am</span></small>
+            </div>
+        </div>
+
+        <!-- Small Card With Image -->
+        <div class="card card_small_with_image grid-item">
+            <img class="card-img-top" src="/NewFolder2/images/post_3.jpg" alt="https://unsplash.com/">
+            <div class="card-body">
+                <div class="card-title card-title-small"><a href="~/blog/post">How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</a></div>
+                <small class="post_meta"><a href="#">Katy Liu</a><span>Sep 29, 2017 at 9:48 am</span></small>
+            </div>
+        </div>*@
+
 
 
 
@@ -275,11 +276,18 @@
                                         <span class="sr-only">Previous</span>
                                     </a>
                                 </li>
-                                <li class="page-item btnn0 active"><a href="~/2?@category=all#blog" class="page-link waves-effect waves-effect">1</a></li>
+                                @{
+                                    var numberOfPages = (int)Math.Ceiling((Decimal)Model.LatestArticle.Count() / Model.TotalPostCount);
+                                    foreach (var item in Enumerable.Range(1, numberOfPages))
+                                    {
+                                        <li class="page-item btnn0 active "><a href="~/@item?@category=all#blog" class="page-link waves-effect waves-effect">@item</a></li>
+                                    }
+                                }
+                                @*<li class="page-item btnn0 active"><a href="~/2?@category=all#blog" class="page-link waves-effect waves-effect">1</a></li>
                                 <li class="page-item btnn0"><a href="~/2?category=@category#blog" class="page-link waves-effect waves-effect">2</a></li>
                                 <li class="page-item btnn0"><a href="~/3?category=@category#blog" class="page-link waves-effect waves-effect">3</a></li>
                                 <li class="page-item btnn0"><a href="~/4?category=@category#blog" class="page-link waves-effect waves-effect">4</a></li>
-                                <li class="page-item btnn0"><a href="~/5?category=@category#blog" class="page-link waves-effect waves-effect">5</a></li>
+                                <li class="page-item btnn0"><a href="~/5?category=@category#blog" class="page-link waves-effect waves-effect">5</a></li>*@
                                 <li class="page-item btnn0">
                                     <a class="page-link waves-effect waves-effect" aria-label="Next">
                                         <span aria-hidden="true">»</span>
@@ -302,14 +310,14 @@
 
                         <div class="section_content">
                             <div class="grid clearfix">
-                                
 
-                            @foreach (var item in Model.DontMiss)
-                                        {
+
+                                @foreach (var item in Model.DontMiss)
+                                {
 
 
                                     <!-- Small Card With Image -->
-                                    <div class="card card_small_with_image grid-item">
+                                    <div class="card card_default  card_small_with_image grid-item">
                                         <img class="card-img-top" src='~/Uploads/@Html.DisplayFor(modelItem => item.TitleImageUrl)' alt="https://unsplash.com/">
                                         <div class="card-body">
                                             <div class="card-title card-title-small"><a href="~/blog/post/@Html.DisplayFor(modelItem => item.PostId)">@Html.DisplayFor(modelItem => item.Title)</a></div>
@@ -318,12 +326,12 @@
                                     </div>
 
 
-                            }
-
-                                       
+                                }
 
 
-                                <!-- Small Card Without Image -->
+
+
+                                @*<!-- Small Card Without Image -->
                                 <div class="card card_default card_small_no_image grid-item">
                                     <div class="card-body">
                                         <div class="card-title card-title-small"><a href="~/blog/post">How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</a></div>
@@ -356,7 +364,7 @@
                                         <div class="card-title card-title-small"><a href="~/blog/post">How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</a></div>
                                         <small class="post_meta"><a href="#">Katy Liu</a><span>Sep 29, 2017 at 9:48 am</span></small>
                                     </div>
-                                </div>
+                                </div>*@
 
 
 
@@ -367,11 +375,11 @@
                     </div>
 
                 </div>
-                
+
 
                 @*<div class="load_more">
-                    <div id="load_more" class="load_more_button text-center trans_200"><a href="~/blog/category">View More</a></div>
-                </div>*@
+                        <div id="load_more" class="load_more_button text-center trans_200"><a href="~/blog/category">View More</a></div>
+                    </div>*@
 
             </div>
 
@@ -407,6 +415,22 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 											</svg>
                                     </div>
                                     <ul id="custom_dots" class="custom_dots custom_dots_vid">
@@ -418,6 +442,22 @@
                                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                              width="7px" height="12px" viewBox="0 0 7 12" enable-background="new 0 0 7 12" xml:space="preserve">
                                         <polyline fill="#bebebe" points="6.998,6.39 1.389,12 -0.002,12 -0.002,10.562 4.561,6 -0.002,1.438 -0.002,0 1.389,0 7,5.61 " />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -881,9 +921,7 @@
         color: white;
         padding: 40px;
         opacity: 0.8;
-
         font-size: 40px
-
     }
 
     .containe {
@@ -903,34 +941,35 @@
     }
 
     div.carousel-caption {
-
         text-align: center;
         width: 75%;
         margin-left: auto;
         margin-right: auto;
         margin-bottom: 20px;
-        
     }
+
     .mb-4 {
         color: #f2ba16;
         font-size: 0.6em;
         letter-spacing: 0.03em;
         font-family: 'Work Sans', sans-serif;
     }
+
     .page-link:hover {
         z-index: 2;
         color: #fff;
         background-color: #ad001c;
         border-color: #ad001c;
-        cursor:pointer;
+        cursor: pointer;
     }
+
     .pagination .active {
         z-index: 2;
         color: #fff;
         background-color: #ad001c;
         border-color: #ad001c;
-        
     }
+
     .section_panel_more > ul > li {
         display: none;
     }

@@ -34,6 +34,7 @@ namespace SelahSeries.Repository
         {
             return await _selahDbContext.Posts
                             .Include(p => p.Category)
+                            .Include(p => p.Comments)
                             .Where(post => post.PostId == postId)
                             .FirstOrDefaultAsync();
 
@@ -59,6 +60,7 @@ namespace SelahSeries.Repository
                                 .Where(post => post.CategoryId == categoryId || post.Category.ParentId == categoryId)
                                 .ToPaginatedListAsync(pageParam);
         }
+
         public async Task<PaginatedList<Post>> GetPublishedPosts(PaginationParam pageParam)
         {
             return await _selahDbContext.Posts
@@ -72,6 +74,12 @@ namespace SelahSeries.Repository
                             .Include(p => p.Category)
                             .Where(post => post.Published == true)
                            .OrderByDescending(x => x.CreatedAt).Take(20);
+        }
+        public async Task<PaginatedList<Post>> GetPublishedPostsByCategory(PaginationParam pageParam, int categoryId)
+        {
+            return await _selahDbContext.Posts
+                                    .Where(post => (post.CategoryId == categoryId || post.ParentId == categoryId) && post.Published == true)
+                                    .ToPaginatedListAsync(pageParam);
         }
         public async Task<PaginatedList<Post>> GetPublishedPostsByCategory(PaginationParam pageParam, string category)
         {
@@ -109,10 +117,22 @@ namespace SelahSeries.Repository
         {
             throw new NotImplementedException();
         }
-
-        public Task<PaginatedList<Post>> GetPublishedPostsByCategory(PaginationParam pageParam, int categoryId)
+        public async Task<List<Post>> GetPublishedPostsByClaps(int limit)
         {
-            throw new NotImplementedException();
+            return await _selahDbContext.Posts
+                .Include(p => p.postClap)
+                .Where(p => p.Published == true && p.postClap.PostClapId == p.PostId)
+                .OrderBy(x => x.postClap.Claps)
+                .Take(limit)
+                .ToListAsync();
         }
+        public async Task<List<Post>> SearchPost(String searchText)
+        {
+            return await _selahDbContext.Posts
+                                    .Where(p => p.Title.Contains(searchText) || p.Author.Contains(searchText))
+                                    .ToListAsync();
+        }
+
+        
     }
 }

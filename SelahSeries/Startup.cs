@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -14,7 +13,7 @@ using SelahSeries.Data;
 using SelahSeries.Core;
 using Microsoft.Net.Http.Headers;
 using AutoMapper;
-using SelahSeries.Services;
+
 
 namespace SelahSeries
 {
@@ -41,11 +40,13 @@ namespace SelahSeries
                  c.UseSqlServer(Configuration.GetConnectionString("SelahSeriesDB")));
             services.AddAutoMapper(typeof(Startup));
             services.AddCustomServices();
-       
-        
-                services.AddTransient<IEmailService, EmailService>();
-           
-            //services.AddSeedData();
+
+            services.Configure<CookieTempDataProviderOptions>(options => {
+                options.Cookie.IsEssential = true;
+            });
+
+
+            services.AddSeedData();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             
@@ -65,19 +66,19 @@ namespace SelahSeries
             }
 
             app.UseHttpsRedirection();
-            app.Use(async (HttpContext, next) =>
-            {
-                //HttpContext.Response.Headers[HeaderNames.CacheControl] = "no-cache";
-                await next();
-            });
+            //app.Use(async (HttpContext, next) =>
+            //{
+            //    HttpContext.Response.Headers[HeaderNames.CacheControl] = "no-cache";
+            //    await next();
+            //});
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                name: "default",
-                template: "{controller=Home}/{action=Index}/{id?}");
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

@@ -56,7 +56,7 @@ const app = () => {
     });
     const countTotalAnimation = new mojs.Html({
         el: '#clap--count-total',
-        isShowStart: false,
+        isShowStart: true,
         isShowEnd: true,
         opacity: { 1: 1 },
         delay: 3 * (tlDuration) / 2,
@@ -123,7 +123,7 @@ const app = () => {
     function clapResponseHandler(res) {
         res = JSON.parse(res);
         if (initialNumberOfClaps === undefined) res.Claps ? initialNumberOfClaps = res.Claps : initialNumberOfClaps = 0 ; 
-        clapTotalCount.innerHTML = initialNumberOfClaps - numberOfClaps;
+        clapTotalCount.innerHTML = Math.abs(initialNumberOfClaps + (numberOfClaps - clapsSent)) ;
     }
 
     let postingClaps;

@@ -47,5 +47,12 @@ namespace SelahSeries.Repository
                                         .Include(bk => bk.SoftBook)
                             .ToPaginatedListAsync(pageParam.PageIndex, pageParam.Limit, pageParam.SortColoumn);
         }
+
+        public async Task<List<Book>> SearchBooks(string searchText)
+        {
+            return await _selahDbContext.Books
+                                    .Where(p => p.Title.Contains(searchText) || p.Author.Contains(searchText))
+                                    .ToListAsync();
         }
+    }
 }

@@ -96,7 +96,7 @@ namespace SelahSeries.Migrations
 
             modelBuilder.Entity("SelahSeries.Models.HardBook", b =>
                 {
-                    b.Property<int>("HarbookId")
+                    b.Property<int>("HardBookId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -106,7 +106,7 @@ namespace SelahSeries.Migrations
 
                     b.Property<double>("Price");
 
-                    b.HasKey("HarbookId");
+                    b.HasKey("HardBookId");
 
                     b.HasIndex("BookId")
                         .IsUnique();
@@ -124,9 +124,9 @@ namespace SelahSeries.Migrations
 
                     b.Property<int>("BookId");
 
-                    b.Property<int?>("HardBookHarbookId");
+                    b.Property<int?>("HardBookId");
 
-                    b.Property<decimal>("Price");
+                    b.Property<double>("Price");
 
                     b.Property<int>("ShippingAddress");
 
@@ -134,7 +134,7 @@ namespace SelahSeries.Migrations
 
                     b.HasKey("OrderId");
 
-                    b.HasIndex("HardBookHarbookId");
+                    b.HasIndex("HardBookId");
 
                     b.ToTable("Orders");
                 });
@@ -179,11 +179,7 @@ namespace SelahSeries.Migrations
 
                     b.Property<int>("Claps");
 
-                    b.Property<int?>("PostId");
-
                     b.HasKey("PostClapId");
-
-                    b.HasIndex("PostId");
 
                     b.ToTable("PostClaps");
                 });
@@ -227,7 +223,7 @@ namespace SelahSeries.Migrations
                         .HasForeignKey("ParentCommentId");
 
                     b.HasOne("SelahSeries.Models.Post", "Post")
-                        .WithMany()
+                        .WithMany("Comments")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
@@ -248,7 +244,7 @@ namespace SelahSeries.Migrations
                 {
                     b.HasOne("SelahSeries.Models.HardBook", "HardBook")
                         .WithMany()
-                        .HasForeignKey("HardBookHarbookId");
+                        .HasForeignKey("HardBookId");
                 });
 
             modelBuilder.Entity("SelahSeries.Models.Post", b =>
@@ -262,8 +258,9 @@ namespace SelahSeries.Migrations
             modelBuilder.Entity("SelahSeries.Models.PostClap", b =>
                 {
                     b.HasOne("SelahSeries.Models.Post", "Post")
-                        .WithMany()
-                        .HasForeignKey("PostId");
+                        .WithOne("postClap")
+                        .HasForeignKey("SelahSeries.Models.PostClap", "PostClapId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("SelahSeries.Models.SoftBook", b =>

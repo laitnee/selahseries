@@ -64,6 +64,7 @@
 <div class="row">
     <div class="col-lg-1"></div>
     <div class="col-lg-10">
+        @await Html.PartialAsync("AlertViewPartial")
         @using (Html.BeginForm("Edit", "BlogMgt", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>

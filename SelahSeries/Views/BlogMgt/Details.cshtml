@@ -29,7 +29,7 @@
     <div class="home">
         <div class="home_background parallax-window" data-parallax="scroll" style="background-image:url(/Uploads/@(Model.TitleImageUrl)" data-speed="0.8"></div>
         <div class="home_content">
-            <div class="post_category trans_200"><a href="category.html" class="trans_200">Relationship</a></div>
+            <div class="post_category trans_200"><a href="category.html" class="trans_200">@Model.Category.Title</a></div>
             <div class="post_title">@Html.DisplayFor(model => model.Title)</div>
         </div>
     </div>
@@ -64,18 +64,7 @@
 
                         <div class="post_body">
                             <p  class="post_p">@Html.Raw(Model.Content)</p>
-                            <figure>
-                                <img src="images/post_image.jpg" alt="">
-                                <figcaption>Lorem Ipsum Dolor Sit Amet</figcaption>
-                            </figure>
-                            <p class="post_p">Maecenas vitae sem varius, imperdiet nisi a, tristique nisi. Sed scelerisque suscipit leo cursus accumsan. Donec vel turpis quam. Mauris non nisl nec nunc gravida ullamcorper id vestibulum magna. Donec non velit finibus, laoreet arcu nec, facilisis augue. Aliquam sed purus id erat accumsan congue. Mauris semper ullamcorper nibh non pellentesque. Aenean euismod purus sit amet quam vehicula ornare.</p>
-                            <div class="post_quote">
-                                <p class="post_p">Aliquam auctor lacus a dapibus pulvinar. Morbi in elit erat. Quisque et augue nec tortor blandit hendrerit eget sit amet sapien. Curabitur at tincidunt metus, quis porta ex. Duis lacinia metus vel eros cursus pretium eget.</p>
-                                <div class="post_quote_source">Robert Morgan</div>
-                            </div>
-                            <p class="post_p">Donec orci dolor, pretium in luctus id, consequat vitae nibh. Quisque hendrerit, lorem sit amet mollis malesuada, urna orci volutpat ex, sed scelerisque nunc velit et massa. Sed maximus id erat vel feugiat. Phasellus bibendum nisi non urna bibendum elementum. Aenean tincidunt nibh vitae ex facilisis ultrices. Integer ornare efficitur ultrices. Integer neque lectus, venenatis at pulvinar quis, aliquet id neque. Mauris ultrices consequat velit, sed dignissim elit posuere in. Cras vitae dictum dui.</p>
-
-
+                            
                         </div>
 
                     </div>

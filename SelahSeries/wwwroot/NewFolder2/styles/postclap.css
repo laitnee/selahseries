@@ -3,9 +3,10 @@ button:focus{
     outline:none;
 }
 .clap {
-    position: absolute;
-    right: 1.2em;
-    top: -5em;
+    position: relative;
+    /*right: 1.2em;
+    top: -5em;*/
+    margin:5px;
     outline: 1px solid transparent;
     border-radius: 50%;
     border: 1px solid rgba(189, 195, 199, 1);
@@ -13,16 +14,17 @@ button:focus{
     height: 80px;
     background: none;
 }
- .clap:after {
-	 content: "";
-	 position: absolute;
-	 top: 0;
-	 left: 0;
-	 display: block;
-	 border-radius: 50%;
-	 width: 79px;
-	 height: 79px;
-}
+    .clap:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        border-radius: 50%;
+        
+        width: 79px;
+        height: 79px;
+    }
  .clap:hover {
 	 cursor: pointer;
 	 border: 1px solid rgba(39, 96, 174, 1);
@@ -54,15 +56,16 @@ button:focus{
         width: 40px;
         line-height: 40px;
     }
- .clap .clap--count-total {
-	 position: absolute;
-	 font-size: 0.8rem;
-	 width: 80px;
-	 text-align: center;
-	 left: 0;
-	 top: -22.8571428571px;
-	 color: rgba(189, 195, 199, 1);
-}
+    .clap .clap--count-total {
+        position: absolute;
+        font-size: 0.8rem;
+        width: 80px;
+        text-align: center;
+        left: 0;
+        top: -22.8571428571px;
+        color: rgba(48, 78, 68, 1);
+        
+    }
 /*==================== Message ======================*/
  #message {
 	 position: absolute;
