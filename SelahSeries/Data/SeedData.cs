@@ -21,8 +21,8 @@ namespace SelahSeries.Data
             Task.Run(() =>
            {
                    SeedCategories().Wait();
-               SeedPosts().Wait();
-               SeedComments().Wait();
+               //SeedPosts().Wait();
+               //SeedComments().Wait();
            }).Wait();
 
         }

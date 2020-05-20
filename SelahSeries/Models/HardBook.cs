@@ -9,6 +9,7 @@ namespace SelahSeries.Models
     public class HardBook
     {
         public int HardBookId { get; set; }
+
         public double Price { get; set; }
 
         public int BookId { get; set; }

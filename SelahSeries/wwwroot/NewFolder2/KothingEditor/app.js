@@ -53,7 +53,7 @@ const _keditor = KEDITOR.create("contentEditor", {
     ],
     callBackSave: function (contents) {
 
-        document.querySelector('#contentEditor').textContent = `<div style="text-shadow: rgba(0,0,0,.01) 0 0 1px; 
+        document.querySelector('#contentEditor').textContent = `<div style="text-shadow: rgba(0,0,0,.01) 0 0 1px; word-break: break-word;
                             -webkit-font-smoothing: antialiased; - webkit - text - shadow: rgba(0, 0, 0, .01) 0 0 1px; 
                             line-height: 1.875; font-weight:500; color: rgba(0,0,0,0.8);"> `
                             + contents +

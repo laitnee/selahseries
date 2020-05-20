@@ -9,7 +9,9 @@ namespace SelahSeries.Models
     public class SoftBook
     {
         public int SoftBookId { get; set; }
+
         public string Location { get; set; }
+
         public int Downloads { get; set; }
 
         public int BookId { get; set; }

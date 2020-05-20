@@ -10,8 +10,8 @@ using SelahSeries.Data;
 namespace SelahSeries.Migrations
 {
     [DbContext(typeof(SelahSeriesDataContext))]
-    [Migration("20200517220315_PpostClapToPOST")]
-    partial class PpostClapToPOST
+    [Migration("20200519213910_Deploy")]
+    partial class Deploy
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -128,7 +128,7 @@ namespace SelahSeries.Migrations
 
                     b.Property<int?>("HardBookId");
 
-                    b.Property<decimal>("Price");
+                    b.Property<double>("Price");
 
                     b.Property<int>("ShippingAddress");
 
@@ -160,8 +160,6 @@ namespace SelahSeries.Migrations
 
                     b.Property<int?>("ParentId");
 
-                    b.Property<int?>("PostClapId");
-
                     b.Property<bool>("Published");
 
                     b.Property<string>("Title")
@@ -173,8 +171,6 @@ namespace SelahSeries.Migrations
                     b.HasKey("PostId");
 
                     b.HasIndex("CategoryId");
-
-                    b.HasIndex("PostClapId");
 
                     b.ToTable("Posts");
                 });
@@ -229,7 +225,7 @@ namespace SelahSeries.Migrations
                         .HasForeignKey("ParentCommentId");
 
                     b.HasOne("SelahSeries.Models.Post", "Post")
-                        .WithMany()
+                        .WithMany("Comments")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
@@ -259,10 +255,14 @@ namespace SelahSeries.Migrations
                         .WithMany("Posts")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
 
-                    b.HasOne("SelahSeries.Models.PostClap", "postClap")
-                        .WithMany()
-                        .HasForeignKey("PostClapId");
+            modelBuilder.Entity("SelahSeries.Models.PostClap", b =>
+                {
+                    b.HasOne("SelahSeries.Models.Post", "Post")
+                        .WithOne("postClap")
+                        .HasForeignKey("SelahSeries.Models.PostClap", "PostClapId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("SelahSeries.Models.SoftBook", b =>

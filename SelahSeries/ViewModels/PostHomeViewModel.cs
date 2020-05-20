@@ -8,6 +8,7 @@ namespace SelahSeries.ViewModels
     public class PostHomeViewModel
     {
         public List<PostListViewModel> DontMiss { get; set; }
+        public int TotalPostCount { get; set; }
         public List<PostListViewModel> LatestArticle { get; set; }
     }
 }

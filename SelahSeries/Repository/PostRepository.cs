@@ -75,6 +75,12 @@ namespace SelahSeries.Repository
                             .Where(post => post.Published == true)
                            .OrderByDescending(x => x.CreatedAt).Take(20);
         }
+        public async Task<PaginatedList<Post>> GetPublishedPostsByCategory(PaginationParam pageParam, int categoryId)
+        {
+            return await _selahDbContext.Posts
+                                    .Where(post => (post.CategoryId == categoryId || post.ParentId == categoryId) && post.Published == true)
+                                    .ToPaginatedListAsync(pageParam);
+        }
         public async Task<PaginatedList<Post>> GetPublishedPostsByCategory(PaginationParam pageParam, string category)
         {
             int _categoryId = 0;
@@ -113,9 +119,12 @@ namespace SelahSeries.Repository
         }
         public async Task<List<Post>> GetPublishedPostsByClaps(int limit)
         {
-            return await _selahDbContext.Posts.Include(p => p.postClap)
-                .Where(p => p.postClap.PostClapId == p.PostId)
-                .OrderBy(x => x.postClap.Claps).Take(limit).ToListAsync();
+            return await _selahDbContext.Posts
+                .Include(p => p.postClap)
+                .Where(p => p.Published == true && p.postClap.PostClapId == p.PostId)
+                .OrderBy(x => x.postClap.Claps)
+                .Take(limit)
+                .ToListAsync();
         }
         public async Task<List<Post>> SearchPost(String searchText)
         {
@@ -124,9 +133,6 @@ namespace SelahSeries.Repository
                                     .ToListAsync();
         }
 
-        public Task<PaginatedList<Post>> GetPublishedPostsByCategory(PaginationParam pageParam, int categoryId)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

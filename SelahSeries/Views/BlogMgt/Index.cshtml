@@ -16,7 +16,7 @@
 <p>
     <a class="btn btn-primary btn-lg" asp-action="Create">Create New Blog Post</a>
 </p>
-<table class="table table-striped table-responsive">
+<table style="width:100%; text-align:center;" class="table table-striped table-responsive">
     <thead>
         <tr>
             <th></th>
@@ -30,9 +30,9 @@
 
                 @Html.DisplayNameFor(model => model.CategoryId)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.Content)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.TitleImageUrl)
             </th>
@@ -87,9 +87,9 @@
                 {
                     <td>Unknown</td>
                 }
-                <td data-StripTag>
+                @*<td data-StripTag>
                     @item.Content
-                </td>
+                </td>*@
                 <td>
                     @Html.DisplayFor(modelItem => item.TitleImageUrl)
                 </td>

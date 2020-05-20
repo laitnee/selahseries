@@ -1,6 +1,6 @@
 ﻿@model SelahSeries.ViewModels.PostDetailViewModel
 @{
-    ViewData["Title"] = Model.Post.Title;
+    ViewData["Title"] = Model.Post.Title ?? "Selah Series";
     var pageURL = $"{Context.Request.Scheme}://{Context.Request.Host}{Context.Request.Path}{Context.Request.QueryString}";
 }
 @section AddMetaTags{
@@ -277,6 +277,7 @@
 
                                             foreach (var (item, index) in Model.TopStories.Select((v, i) => (v, i)))
                                             {
+                                                if (Model.Post.PostId == item.PostId) { continue; }
                                                 bool renderRow = index % POST_PER_SLIDE == 0;
                                                 if (renderRow)
                                                 {

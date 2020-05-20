@@ -11,21 +11,24 @@ using SelahSeries.Models.DTOs;
 using SelahSeries.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using SelahSeries.Repository;
+using SelahSeries.Data;
 
 namespace SelahSeries.Controllers
 {
+    
     public class BlogMgtController : Controller
     {
         private readonly IMapper _mapper;
         private readonly IHostingEnvironment hostingEnvironment;
         private readonly IPostRepository _postRepo;
-        public BlogMgtController(IPostRepository postRepo, IMapper mapper, IHostingEnvironment environment)
+        public BlogMgtController(IPostRepository postRepo, IMapper mapper, IHostingEnvironment environment, SeedData seedData)
         {
             _postRepo = postRepo;
             _mapper = mapper;
             hostingEnvironment = environment;
         }
         // GET: BlogMgt
+        [Route("[controller]")]
         public async Task<ActionResult> Index()
         {
             var pageParam = new PaginationParam
@@ -105,7 +108,7 @@ namespace SelahSeries.Controllers
                     ViewBag.Error = "Unable to add post, please try again or contact administrator";
                     return View();
                 }
-                catch {
+                catch(Exception ex) {
                     ViewBag.Error = "Unable to add post, please try again or contact administrator";
                     return View(); }               
             }

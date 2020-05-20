@@ -126,7 +126,7 @@ namespace SelahSeries.Migrations
 
                     b.Property<int?>("HardBookId");
 
-                    b.Property<decimal>("Price");
+                    b.Property<double>("Price");
 
                     b.Property<int>("ShippingAddress");
 

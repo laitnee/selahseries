@@ -46,7 +46,7 @@ namespace SelahSeries
             });
 
 
-            //services.AddSeedData();
+            services.AddSeedData();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             
