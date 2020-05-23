@@ -64,6 +64,7 @@ namespace SelahSeries.Controllers
             postHomeVM.LatestArticle = latestArticlesVM;
 
             ViewData["Category"] = category;
+            ViewData["PageIndex"] = page;
             return View(postHomeVM);
         }
 
@@ -73,8 +74,8 @@ namespace SelahSeries.Controllers
             
         }
 
-      
 
+        [Route("/About")]
         public IActionResult About()
         {
            
@@ -82,13 +83,14 @@ namespace SelahSeries.Controllers
             return View();
         }
 
-        [Route("Home/About/Read_More")]
+        [Route("/About/Read_More")]
         public IActionResult Read_More()
         {
             return View();
         }
 
         [HttpGet]
+        [Route("/Contact")]
         public IActionResult Contact()
         {
            
@@ -96,7 +98,7 @@ namespace SelahSeries.Controllers
         }
 
         [HttpPost]
-        [Route("home/contact")]
+        [Route("/contact")]
         public async Task<ActionResult> Contact([FromForm] string name, string email, string subject, string message)
         {
            

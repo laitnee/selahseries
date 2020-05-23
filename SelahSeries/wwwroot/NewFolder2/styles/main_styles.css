@@ -987,7 +987,7 @@ section {
     -o-transform: translateY(-50%);
     transform: translateY(-50%);
     right: 0;
-    width: 55px;
+    width: auto;
 }
 
     .section_panel_more ul li {

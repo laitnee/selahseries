@@ -3,9 +3,10 @@
     ViewData["Title"] = "Home Page";
 
     var category = ViewData["Category"];
+    var pageIndex = Convert.ToInt32(ViewData["PageIndex"]);
+    var previous = pageIndex - 1;
+    var next = pageIndex + 1;
     var latestArticle = Model.LatestArticle.OrderByDescending(x => x.CreatedAt);
-
-
 }
 
 @section AddToHead {
@@ -80,65 +81,15 @@
     </a>
 </div>
 
-<div class=" = 'container containe">
+<div class="container containe">
 
-    <div class="row" style="height:150px; margin-bottom:40px">
+    <div class="imagee row" style="height:150px; margin-bottom:40px">
         <div class=" col-sm-12  col-12 text-center" >
             <img style="height:150px" src="~/NewFolder2/new/middl selah.png" alt="image"/>
 
         </div>
     </div>
-    @*<div class="row">
-        <div class="col-sm-6 col-md-6 col-lg-3">
-            <div class="card2">
-
-                <img src="/NewFolder2/new/brigitte-tohm-XyGeWTj2E7w-unsplash.jpg" alt="Avatar">
-                <div class="container2">
-                    <h4>Interested in articles on Relationship and Marriage?</h4>
-                    <p><a href="~/?category=relationship_and_marriage#blog">See here</a></p>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="col-sm-6 col-md-6 col-lg-3">
-            <div class="card2">
-                <img src="/NewFolder2/new/kakudmi-JO19K0HDDXI-unsplash (1).jpg" alt="Avatar">
-                <div class="container2">
-                    <h4>Need latest news on sports?</h4>
-                    <p><a href="~/?category=sports#blog">See here</a></p>
-                </div>
-            </div>
-
-        </div>
-
-
-        <div class="col-sm-6 col-md-6 col-lg-3">
-            <div class="card2">
-
-                <img src="/NewFolder2/new/jacalyn-beales-geRpPjIiu8U-unsplash.jpg" alt="Avatar ">
-                <div class="container2">
-                    <h4>Do you want to read about having a fulfilling career?</h4>
-                    <p><a href="~/?category=career#blog">See here</a></p>
-                </div>
-            </div>
-
-        </div>
-
-
-
-        <div class="col-sm-6 col-md-6 col-lg-3">
-            <div class="card2">
-                <img src="/NewFolder2/new/lucia-48UaeIMNAA4-unsplash (2).jpg" alt="Avatar">
-                <div class="container2">
-                    <h4>Are you interested in politics?</h4>
-                    <p><a href="~/?category=politics#blog">See here</a></p>
-                </div>
-            </div>
-
-        </div>
-
-    </div>*@
+   
 </div>
 
 @{ViewData["Search"] = "all";}
@@ -176,18 +127,22 @@
                         <div class="section_panel d-flex flex-row align-items-center justify-content-start">
                             <div class="section_title">Articles</div>
                             <div class="section_tags ml-auto">
-                                <ul id="navDiv">
-                                    <li class="active btnn"><a href="~/?category=all#blog">All</a></li>
-                                    <li class="btnn"><a href="~/?category=relationship_and_marriage#blog">Relationship & Marriage</a></li>
-                                    <li class="btnn"><a href="~/?category=politics#blog">Politics</a></li>
-                                    <li class="btnn"><a href="~/?category=sports#blog">Sports</a></li>
-                                    <li class="btnn"><a href="~/?category=career#blog">Career</a></li>
-                                </ul>
+                                <nav>
+                                    <ul id="navDiv">
+                                        <li class="active btnn"><a href="~/?category=all#blog">All</a></li>
+                                        <li class="btnn"><a href="~/?category=relationship_and_marriage#blog">Relationship & Marriage</a></li>
+                                        <li class="btnn"><a href="~/?category=politics#blog">Politics</a></li>
+                                        <li class="btnn"><a href="~/?category=sports#blog">Sports</a></li>
+                                        <li class="btnn"><a href="~/?category=career#blog">Career</a></li>
+                                    </ul>
+                                </nav>
+
                             </div>
                             <div class="section_panel_more">
                                 <ul>
                                     <li>
-                                        more
+                                        <p class="more" style="margin-bottom:0px">more</p>
+                                        <p class="category" style="margin-bottom:0px">category</p>
                                         <ul>
                                             <li class="all active"><a href="~/?category=all#blog">All</a></li>
                                             <li class="first"><a href="~/?category=relationship_and_marriage#blog">Relationship & Marriage</a></li>
@@ -224,41 +179,7 @@
 
 
 
-                                <!-- Small Card Without Image -->
-                                @*@<div class="card card_default card_small_no_image grid-item">
-            <div class="card-body">
-                <div class="card-title card-title-small"><a href="~/blog/post">How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</a></div>
-                <small class="post_meta"><a href="#">Katy Liu</a><span>Sep 29, 2017 at 9:48 am</span></small>
-            </div>
-        </div>
-
-        *<!-- Small Card With Background -->
-        <div class="card card_default card_small_with_background grid-item">
-            <div class="card_background" style="background-image:url(/NewFolder2/images/post_4.jpg)"></div>
-            <div class="card-body">
-                <div class="card-title card-title-small"><a href="~/blog/post">How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</a></div>
-                <small class="post_meta"><a href="#">Katy Liu</a><span>Sep 29, 2017 at 9:48 am</span></small>
-            </div>
-        </div>
-
-        <!-- Small Card With Image -->
-        <div class="card card_small_with_image grid-item">
-            <img class="card-img-top" src="/NewFolder2/images/post_2.jpg" alt="https://unsplash.com/">
-            <div class="card-body">
-                <div class="card-title card-title-small"><a href="~/blog/post">How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</a></div>
-                <small class="post_meta"><a href="#">Katy Liu</a><span>Sep 29, 2017 at 9:48 am</span></small>
-            </div>
-        </div>
-
-        <!-- Small Card With Image -->
-        <div class="card card_small_with_image grid-item">
-            <img class="card-img-top" src="/NewFolder2/images/post_3.jpg" alt="https://unsplash.com/">
-            <div class="card-body">
-                <div class="card-title card-title-small"><a href="~/blog/post">How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</a></div>
-                <small class="post_meta"><a href="#">Katy Liu</a><span>Sep 29, 2017 at 9:48 am</span></small>
-            </div>
-        </div>*@
-
+                           
 
 
 
@@ -271,7 +192,7 @@
                         <nav>
                             <ul id="navDiv0" class="pagination pg-red pagination-lg justify-content-center">
                                 <li class="page-item">
-                                    <a class="page-link waves-effect waves-effect" aria-label="Previous">
+                                    <a href="~/@previous?category=@category#blog" class="page-link waves-effect waves-effect" aria-label="Previous">
                                         <span aria-hidden="true">«</span>
                                         <span class="sr-only">Previous</span>
                                     </a>
@@ -280,16 +201,12 @@
                                     var numberOfPages = (int)Math.Ceiling((Decimal)Model.LatestArticle.Count() / Model.TotalPostCount);
                                     foreach (var item in Enumerable.Range(1, numberOfPages))
                                     {
-                                        <li class="page-item btnn0 active "><a href="~/@item?@category=all#blog" class="page-link waves-effect waves-effect">@item</a></li>
+                                        <li class="page-item btnn0 active "><a href="~/@item?category=@category#blog" class="page-link waves-effect waves-effect">@item</a></li>
                                     }
                                 }
-                                @*<li class="page-item btnn0 active"><a href="~/2?@category=all#blog" class="page-link waves-effect waves-effect">1</a></li>
-                                <li class="page-item btnn0"><a href="~/2?category=@category#blog" class="page-link waves-effect waves-effect">2</a></li>
-                                <li class="page-item btnn0"><a href="~/3?category=@category#blog" class="page-link waves-effect waves-effect">3</a></li>
-                                <li class="page-item btnn0"><a href="~/4?category=@category#blog" class="page-link waves-effect waves-effect">4</a></li>
-                                <li class="page-item btnn0"><a href="~/5?category=@category#blog" class="page-link waves-effect waves-effect">5</a></li>*@
+                                
                                 <li class="page-item btnn0">
-                                    <a class="page-link waves-effect waves-effect" aria-label="Next">
+                                    <a href="~/@next?category=@category#blog" class="page-link waves-effect waves-effect" aria-label="Next">
                                         <span aria-hidden="true">»</span>
                                         <span class="sr-only">Next</span>
                                     </a>
@@ -973,6 +890,23 @@
     .section_panel_more > ul > li {
         display: none;
     }
+    .section_panel_more > ul > li .all {
+        display: none;
+    }
+
+    .category{
+        display: none;
+    }
 </style>
 
-<script></script>
+<script>
+  
+     
+        $(function () {
+            $('nav a[href="/' + location.href.split("/")[3] + '"]').addClass('active');
+           
+        });
+        
+    
+
+</script>
