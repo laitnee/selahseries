@@ -86,7 +86,7 @@
             <h1 style="color:black">LOGO</h1>
         </div>
     </div>
-    @*<div class="row">
+    <div class="row">
         <div class="col-sm-6 col-md-6 col-lg-3">
             <div class="card2">
 
@@ -136,7 +136,7 @@
 
         </div>
 
-    </div>*@
+    </div>
 </div>
 
 @{ViewData["Search"] = "all";}
@@ -275,7 +275,8 @@
                                     </a>
                                 </li>
                                 @{
-                                    var numberOfPages = (int)Math.Ceiling((Decimal)Model.LatestArticle.Count() / Model.TotalPostCount);
+                                    var postCount = Model.TotalPostCount > 0 ? Model.TotalPostCount : 1;
+                                    var numberOfPages = (int)Math.Ceiling((Decimal)Model.LatestArticle.Count() / postCount);
                                     foreach (var item in Enumerable.Range(1, numberOfPages))
                                     {
                                         <li class="page-item btnn0 active "><a href="~/@item?@category=all#blog" class="page-link waves-effect waves-effect">@item</a></li>
