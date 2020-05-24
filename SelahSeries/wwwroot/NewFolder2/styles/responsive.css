@@ -75,7 +75,7 @@
 {
 	.header_search_input
 	{
-		width: 193px;
+		width: auto;
 	}
 	.home_slider_next_container
 	{
@@ -173,6 +173,9 @@
         padding-left: 22px;
         padding-right: 22px;
     }
+    nav > .navbar-collapse{
+        flex-grow:0.5;
+    }
 
 }
 
@@ -220,10 +223,7 @@
 	{
 		display: none;
 	}
-	.search_container
-	{
-		display: none;
-	}
+	
 	.hamburger
 	{
 		display: block;
@@ -658,6 +658,15 @@
     div.mainflip .frontside .card .card-body img {
         width: 70%;
         height: 17em;
+    }
+    .post_content > .before{
+        display: none;
+    }
+    .post_content > .after {
+        display: block;
+    }
+    div.search_container form {
+        display: block;
     }
 }
 /************

@@ -46,60 +46,70 @@
     <div class="site-wrap">
         @if (ViewData["Add Navigation"] != "false")
         {
-            <header class="header">
+        <header class="header">
+            <div class="row">
+                <div class="col" style="padding:0">
+                    @*<div class="header_content d-flex flex-row align-items-center justify-content-start">*@
 
+                        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                            <a class="navbar-brand" href="/"><img style="height:42px" src="~/NewFolder2/new/selah hdr md.png" /></a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="idNav collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul style="font-family:'Ubuntu', sans-serif" class="navbar-nav ml-auto topnav">
+                                 
+                                    
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="~/Home/Index">Home <span class="sr-only">(current)</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="~/About">About</a>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Blog
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="~/?category=relationship_and_marriage#blog">Relationship & Marriage</a>
+                                            <a class="dropdown-item" href="~/?category=sports#blog">Sports</a>
 
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <a class="navbar-brand" href="/"><img style="height:42px"src="~/NewFolder2/new/selah hdr md.png" /></a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="idNav collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul style="font-family:'Ubuntu', sans-serif" class="navbar-nav ml-auto topnav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="~/Home/Index">Home <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="~/About">About</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Blog
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="~/?category=relationship_and_marriage#blog">Relationship & Marriage</a>
-                                    <a class="dropdown-item" href="~/?category=sports#blog">Sports</a>
-
-                                    <a class="dropdown-item" href="~/?category=politics#blog">Politics</a>
-                                    <a class="dropdown-item" href="~/?category=career#blog">Career</a>
-                                </div>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Support/Counselling
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="~/Support/Index">Our Support Links</a>
-                                    <a class="dropdown-item" href="~/Support/Send_Message">Send Message</a>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Books</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="~/Contact">Contact</a>
-                            </li>
-                            <li class="nav-item">
+                                            <a class="dropdown-item" href="~/?category=politics#blog">Politics</a>
+                                            <a class="dropdown-item" href="~/?category=career#blog">Career</a>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Support/Counselling
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="~/Support/Index">Our Support Links</a>
+                                            <a class="dropdown-item" href="~/Support/Send_Message">Send Message</a>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Books</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="~/Contact">Contact</a>
+                                    </li>
+                                                        @*<li class="nav-item">
                                 @{ViewData["Search"] = "all";}
                                 @await Html.PartialAsync("SearchPartial")
-                            </li>
-                        </ul>
-                    </div>
+                            </li>*@
+                                </ul>
+                                @{ViewData["Search"] = "all";}
+                                @await Html.PartialAsync("SearchPartial")
+                            </div>
 
 
-                </nav>
+                        </nav>
+                       
+                    @*</div>*@
+                </div>
+            </div>
 
-            </header>
+        </header>
 
 
         }
@@ -357,6 +367,9 @@
     }
     li:not(:last-child).d-inline {
         margin-right: 18px;
+    }
+    .searchbox{
+        display: none;
     }
 </style>
 @*<script>

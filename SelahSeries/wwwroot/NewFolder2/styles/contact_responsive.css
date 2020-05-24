@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 
 /******************************
@@ -97,10 +97,7 @@
 	{
 		display: none;
 	}
-	.search_container
-	{
-		display: none;
-	}
+	
 	.hamburger
 	{
 		display: block;

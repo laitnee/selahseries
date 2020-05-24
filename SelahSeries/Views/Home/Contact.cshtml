@@ -6,6 +6,7 @@
 @section AddToHead {
     <link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/contact.css">
     <link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/contact_responsive.css">
+
     <link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/responsive.css">
 }
 
@@ -42,3 +43,67 @@
     </div>
 </div>
 
+<style>
+    .search_container form {
+        display: inline-block;
+        position: relative;
+    }
+
+    .header_search_input {
+        display: inline-block;
+        width: 262px;
+        height: 46px;
+        background: #4177b0;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        padding-left: 49px;
+        color: white;
+    }
+
+        .header_search_input::-webkit-input-placeholder {
+            font-family: 'Ubuntu', sans-serif;
+            font-size: 14px !important;
+            font-weight: 400 !important;
+            color: rgba(255,255,255,0.5) !important;
+        }
+
+        .header_search_input:-moz-placeholder {
+            font-family: 'Ubuntu', sans-serif;
+            font-size: 14px !important;
+            font-weight: 400 !important;
+            color: rgba(255,255,255,0.5) !important;
+        }
+
+        .header_search_input::-moz-placeholder {
+            font-family: 'Ubuntu', sans-serif;
+            font-size: 14px !important;
+            font-weight: 400 !important;
+            color: rgba(255,255,255,0.5) !important;
+        }
+
+        .header_search_input:-ms-input-placeholder {
+            font-family: 'Ubuntu', sans-serif;
+            font-size: 14px !important;
+            font-weight: 400 !important;
+            color: rgba(255,255,255,0.5) !important;
+        }
+
+        .header_search_input::input-placeholder {
+            font-family: 'Ubuntu', sans-serif;
+            font-size: 14px !important;
+            font-weight: 400 !important;
+            color: rgba(255,255,255,0.5) !important;
+        }
+
+    .header_search_icon {
+        position: absolute;
+        top: 50%;
+        left: 25px;
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+</style>

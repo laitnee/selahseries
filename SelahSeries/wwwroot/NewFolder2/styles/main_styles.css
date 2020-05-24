@@ -286,7 +286,7 @@ section {
 }
 
 .header_content {
-    height: 106px;
+    
     -webkit-transition: all 200ms ease;
     -moz-transition: all 200ms ease;
     -ms-transition: all 200ms ease;
@@ -390,12 +390,12 @@ section {
     display: inline-block;
     width: 262px;
     height: 46px;
-    background: rgba(255,255,255,0.2);
+    background: #4177b0;
     border: none;
     outline: none;
     border-radius: 5px;
     padding-left: 49px;
-    color: #FFFFFF;
+    color: white;
 }
 
     .header_search_input::-webkit-input-placeholder {

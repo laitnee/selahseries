@@ -192,10 +192,7 @@
 	{
 		display: none;
 	}
-	.search_container
-	{
-		display: none;
-	}
+	
 	.hamburger
 	{
 		display: block;
@@ -449,12 +446,14 @@
 	}
     .comment_body button.reply_button{
         font-size: 13.5px;
+        width: 61px;
     }
     div.comments_border {
         border-left: 1px solid gold;
     }
     .comment_reply_form_container button.comment_button, .post_comment_form_container button.comment_button {
         font-size: 13.5px;
+        width: 124px;
     }
     div.comment_reply_form_container {
         margin-left: 0px;
