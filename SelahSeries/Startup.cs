@@ -45,6 +45,10 @@ namespace SelahSeries
                 options.Cookie.IsEssential = true;
             });
 
+            services.AddSession(so =>
+            {
+                so.IdleTimeout = TimeSpan.FromSeconds(60);
+            });
 
             services.AddSeedData();
 
@@ -72,6 +76,7 @@ namespace SelahSeries
             //    await next();
             //});
             app.UseStaticFiles();
+            app.UseSession();
             app.UseCookiePolicy();
 
             app.UseMvc(routes =>

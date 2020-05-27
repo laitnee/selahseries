@@ -123,7 +123,7 @@ const app = () => {
     function clapResponseHandler(res) {
         res = JSON.parse(res);
         if (initialNumberOfClaps === undefined) res.Claps ? initialNumberOfClaps = res.Claps : initialNumberOfClaps = 0 ; 
-        clapTotalCount.innerHTML = Math.abs(initialNumberOfClaps + (numberOfClaps - clapsSent)) ;
+        clapTotalCount.innerHTML = initialNumberOfClaps ;
     }
 
     let postingClaps;

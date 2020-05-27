@@ -15,7 +15,7 @@ using SelahSeries.Data;
 
 namespace SelahSeries.Controllers
 {
-    
+   [ ] 
     public class BlogMgtController : Controller
     {
         private readonly IMapper _mapper;

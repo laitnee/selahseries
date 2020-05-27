@@ -34,7 +34,7 @@ namespace SelahSeries.Controllers
                 var subject = category;
                 message = "Name: " + fullname + "\n" + "Email Address: " + email + "\n" + "Age: " + age + "\n" + "Gender: " + gender + "\n" +"Location: " + address + "\n" + "Phone Number: " + phone + "\n" + "Message: " + message;
                 await _emailService.SendEmail(subject, message);
-                ViewBag.Error = "Unable to send message, try again";
+                ViewBag.Alert = "Message was sent successfully";
                 return View();
             }
             catch (Exception)

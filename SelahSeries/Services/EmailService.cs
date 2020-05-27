@@ -32,14 +32,15 @@ namespace SelahSeries.Services
                     client.Host = _configuration["Email:Host"];
                     client.Port = int.Parse(_configuration["Email:Port"]);
                     client.EnableSsl = true;
-
-                    using (var emailMessage = new MailMessage())
+                    
+                   using (var emailMessage = new MailMessage())
                     {
                         emailMessage.To.Add(new MailAddress(_configuration["Email:Email"]));
                         emailMessage.From = (new MailAddress(_configuration["Email:Email"]));
                         emailMessage.Subject = subject;
                         emailMessage.Body = message;
                         client.Send(emailMessage);
+                    
                     }
                 }
                 await Task.CompletedTask;

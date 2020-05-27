@@ -104,7 +104,7 @@ namespace SelahSeries.Controllers
             {
                 message = "Name: " + name + "\n" + "Email Address: " + email + "\n" + "Message: " + message;
                 await _emailService.SendEmail(subject, message);
-                ViewBag.Error = "Unable to send message, try again";
+                ViewBag.Alert = "Message was sent successfully";
                 return View();
             }
             catch(Exception) {
