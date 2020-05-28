@@ -212,7 +212,7 @@
         {
 
             <div class="card card_default card_small_with_image grid-item">
-                <img class="card-img-top" src='~/Uploads/@Html.DisplayFor(modelItem => item.TitleImageUrl)' alt="https://unsplash.com/">
+                <img class="card-img-top" src='~/Uploads/@Html.DisplayFor(modelItem => item.TitleImageUrl)' alt="@Html.DisplayFor(modelItem => item.Title)">
                 <div class="card-body">
                     <div class="card-title card-title-small"><a href="~/blog/post/@Html.DisplayFor(modelItem => item.PostId)">@Html.DisplayFor(modelItem => item.Title)</a></div>
                     <small class="post_meta"><a href="#">@Html.DisplayFor(modelItem => item.Author)</a><span>@Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
@@ -247,7 +247,8 @@
                                     </a>
                                 </li>
                                 @{
-                                    var numberOfPages = (int)Math.Ceiling((Decimal)Model.LatestArticle.Count() / Model.TotalPostCount);
+                                    var postCount = Model.TotalPostCount < 1 ? 1 : Model.TotalPostCount;
+                                    var numberOfPages = (int)Math.Ceiling((Decimal)Model.LatestArticle.Count() / postCount);
                                     foreach (var item in Enumerable.Range(1, numberOfPages))
                                     {
                                         <li class="page-item btnn0 active "><a href="~/@item?category=@category#blog" class="page-link waves-effect waves-effect">@item</a></li>
@@ -284,7 +285,7 @@
 
                                     <!-- Small Card With Image -->
                                     <div class="card card_default  card_small_with_image grid-item">
-                                        <img class="card-img-top" src='~/Uploads/@Html.DisplayFor(modelItem => item.TitleImageUrl)' alt="https://unsplash.com/">
+                                        <img class="card-img-top" src='~/Uploads/@Html.DisplayFor(modelItem => item.TitleImageUrl)' alt="@Html.DisplayFor(modelItem => item.Title)">
                                         <div class="card-body">
                                             <div class="card-title card-title-small"><a href="~/blog/post/@Html.DisplayFor(modelItem => item.PostId)">@Html.DisplayFor(modelItem => item.Title)</a></div>
                                             <small class="post_meta"><a href="#">@Html.DisplayFor(modelItem => item.Author)</a><span>@Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
