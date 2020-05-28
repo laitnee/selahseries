@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SelahSeries.Services;
 
 namespace SelahSeries.Controllers
 {
+    [AllowAnonymous]
     public class SupportController : Controller
     {
         private readonly IEmailService _emailService;

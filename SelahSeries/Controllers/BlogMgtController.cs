@@ -12,16 +12,18 @@ using SelahSeries.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using SelahSeries.Repository;
 using SelahSeries.Data;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace SelahSeries.Controllers
 {
-   [ ] 
+    
     public class BlogMgtController : Controller
     {
         private readonly IMapper _mapper;
         private readonly IHostingEnvironment hostingEnvironment;
         private readonly IPostRepository _postRepo;
-        public BlogMgtController(IPostRepository postRepo, IMapper mapper, IHostingEnvironment environment, SeedData seedData)
+        public BlogMgtController(IPostRepository postRepo, IMapper mapper, IHostingEnvironment environment)
         {
             _postRepo = postRepo;
             _mapper = mapper;
@@ -203,6 +205,14 @@ namespace SelahSeries.Controllers
             {
                 return View();
             }
+        }
+
+        [HttpGet]
+        public ActionResult SignOut()
+        {
+            var login = HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            TempData["Alert"] = " Logout successful ";
+            return RedirectToAction("Login", "Home");
         }
     }
 }

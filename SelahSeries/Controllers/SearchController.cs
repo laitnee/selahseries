@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SelahSeries.Repository;
 using SelahSeries.Repository.Interfaces;
@@ -9,6 +10,7 @@ using SelahSeries.ViewModels;
 
 namespace SelahSeries.Controllers
 {
+    [AllowAnonymous]
     public class SearchController : Controller
     {
         private readonly IBookRepository _bookRepo;

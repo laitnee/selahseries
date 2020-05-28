@@ -13,7 +13,9 @@ using SelahSeries.Data;
 using SelahSeries.Core;
 using Microsoft.Net.Http.Headers;
 using AutoMapper;
-
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.CookiePolicy;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 namespace SelahSeries
 {
@@ -50,9 +52,26 @@ namespace SelahSeries
                 so.IdleTimeout = TimeSpan.FromSeconds(60);
             });
 
-            services.AddSeedData();
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = Microsoft.AspNetCore.Http.SameSiteMode.Strict;
+                options.HttpOnly = HttpOnlyPolicy.None;
+                options.Secure = CookieSecurePolicy.Always;
+            });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+              .AddCookie(options =>
+              {
+                  options.Cookie.HttpOnly = true;
+                  options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+                  options.Cookie.SameSite = Microsoft.AspNetCore.Http.SameSiteMode.Lax;
+                  options.Cookie.Name = "SelahSeris.AuthCookieAspNetCore";
+                  options.LoginPath = "/Home/Login";
+                  options.LogoutPath = "/Home/Login";    
+              });
+
+            services.AddMvc(options => options.Filters.Add(new AuthorizeFilter())).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             
         }
 
@@ -78,6 +97,7 @@ namespace SelahSeries
             app.UseStaticFiles();
             app.UseSession();
             app.UseCookiePolicy();
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {
