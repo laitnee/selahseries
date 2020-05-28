@@ -46,60 +46,70 @@
     <div class="site-wrap">
         @if (ViewData["Add Navigation"] != "false")
         {
-            <header class="header">
+        <header class="header">
+            <div class="row">
+                <div class="col" style="padding:0">
+                    @*<div class="header_content d-flex flex-row align-items-center justify-content-start">*@
 
+                        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                            <a class="navbar-brand" href="/"><img style="height:42px" src="~/NewFolder2/new/selah hdr md.png" /></a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="idNav collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul style="font-family:'Ubuntu', sans-serif" class="navbar-nav ml-auto topnav">
+                                 
+                                    
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="~/Home/Index">Home <span class="sr-only">(current)</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="~/About">About</a>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Blog
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="~/?category=relationship_and_marriage#blog">Relationship & Marriage</a>
+                                            <a class="dropdown-item" href="~/?category=sports#blog">Sports</a>
 
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <a class="navbar-brand" href="/"><img style="height:42px"src="~/NewFolder2/new/selah hdr md.png" /></a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="idNav collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul style="font-family:'Ubuntu', sans-serif" class="navbar-nav ml-auto topnav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="~/Home/Index">Home <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="~/Home/About">About</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Blog
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="~/?category=relationship_and_marriage#blog">Relationship & Marriage</a>
-                                    <a class="dropdown-item" href="~/?category=sports#blog">Sports</a>
-
-                                    <a class="dropdown-item" href="~/?category=politics#blog">Politics</a>
-                                    <a class="dropdown-item" href="~/?category=career#blog">Career</a>
-                                </div>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Support/Counselling
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="~/Support/Index">Our Support Links</a>
-                                    <a class="dropdown-item" href="~/Support/Send_Message">Send Message</a>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Books</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="~/Home/Contact">Contact</a>
-                            </li>
-                            <li class="nav-item">
+                                            <a class="dropdown-item" href="~/?category=politics#blog">Politics</a>
+                                            <a class="dropdown-item" href="~/?category=career#blog">Career</a>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Support/Counselling
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="~/Support/Index">Our Support Links</a>
+                                            <a class="dropdown-item" href="~/Support/Send_Message">Send Message</a>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Books</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="~/Contact">Contact</a>
+                                    </li>
+                                                        @*<li class="nav-item">
                                 @{ViewData["Search"] = "all";}
                                 @await Html.PartialAsync("SearchPartial")
-                            </li>
-                        </ul>
-                    </div>
+                            </li>*@
+                                </ul>
+                                @{ViewData["Search"] = "all";}
+                                @await Html.PartialAsync("SearchPartial")
+                            </div>
 
 
-                </nav>
+                        </nav>
+                       
+                    @*</div>*@
+                </div>
+            </div>
 
-            </header>
+        </header>
 
 
         }
@@ -137,11 +147,11 @@
                         <div class="col-md-3 col-sm-6 col-6 mb-3 p-0 float-left text-center">
                             <h4 class="font-weight-bold text-uppercase">Quick Links</h4>
                             <ul class="list-group">
-                                <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~Support/Send_Message">Support/Counselling</a></li>
+                                <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~/Support/Send_Message">Support/Counselling</a></li>
                                 @*<li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~Support/Index">Support Links</a></li>*@
-                                <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~Home/About">About us</a></li>
-                                <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~Home/Contact">Contact us</a></li>
-                                <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~Books/Index">Books</a></li>
+                                <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~/About">About us</a></li>
+                                <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~/Contact">Contact us</a></li>
+                                <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~/Books/Index">Books</a></li>
                             </ul>
                         </div>
 
@@ -167,11 +177,7 @@
 
                     </div>
 
-                    @*<div class="col-md-12">
-                            <div class="py-4 d-flex justify-content-center align-items-center">
-                                <p style="color:white">Copyright &copy; <script>document.write(new Date().getFullYear());</script></p>
-                            </div>
-                    </div>*@
+        
                 </div>
 
 
@@ -203,11 +209,11 @@
                         <div class="col-md-6 col-sm-6 col-6 mb-3 p-0 float-left text-center">
                             <h4 class="font-weight-bold text-uppercase">Quick Links</h4>
                             <ul class="list-group">
-                                <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~Support/Send_Message">Support/Counselling</a></li>
+                                <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~/Support/Send_Message">Support/Counselling</a></li>
                                 @*<li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~Support/Index">Support Links</a></li>*@
-                                <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~Home/About">About us</a></li>
-                                <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~Home/Contact">Contact us</a></li>
-                                <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~Books/Index">Books</a></li>
+                                <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~/About">About us</a></li>
+                                <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~/Contact">Contact us</a></li>
+                                <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~/Books/Index">Books</a></li>
                             </ul>
                         </div>
                     </div>
@@ -292,7 +298,7 @@
     }
 
     .topnav a:hover {
-        border-bottom: 3px solid red;
+        border-bottom: 3px solid #ec517f;
     }
     
     .topnav a:active{
@@ -337,15 +343,10 @@
         line-height: 1.375;
         font-weight: 400;
         color: white;
+        margin-bottom: .5rem;
     }
 
-    /*h5 {
-        font-size: 1rem;
-        line-height: 1.375;
-        font-family: Rubik,Arial,sans-serif;
-        font-weight: 500;
-        color: white;
-    }*/
+  
 
     footer a {
         color: #f2ba16;
@@ -364,23 +365,15 @@
         font-family: "Ubuntu", "Work-sans", sans-serif;
         background: #012035;
     }
-    .d-inline{
+    li:not(:last-child).d-inline {
         margin-right: 18px;
     }
+    .searchbox{
+        display: none;
+    }
 </style>
-<script>
-    // Add active class to the current button (highlight it)
-    //var header = document.getElementById("navDiv");
-    //var btns = header.getElementsByClassName("nav-item");
-    //for (var i = 0; i < btns.length; i++) {
-    //    btns[i].addEventListener("click", function () {
-    //        var current = document.getElementsByClassName("active");
-    //        current[0].className = current[0].className.replace(" active", "");
-    //        this.className += " active";
-    //    });
-    //}
-    
-    
+@*<script>
+  
      
         $(function () {
             $('nav a[href="/' + location.pathname.split("/")[1] + '/' + location.pathname.split("/")[2] + '"]').parents('li').addClass('active');
@@ -389,4 +382,4 @@
         
     
 
-</script>
+</script>*@

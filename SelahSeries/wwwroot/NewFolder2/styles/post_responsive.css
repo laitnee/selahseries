@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 
 /******************************
@@ -192,10 +192,7 @@
 	{
 		display: none;
 	}
-	.search_container
-	{
-		display: none;
-	}
+	
 	.hamburger
 	{
 		display: block;
@@ -443,8 +440,36 @@
 
 @media only screen and (max-width: 479px)
 {
-	
-}
+	.comment.comment_body{
+        padding-left: 10px;
+        padding-right: 10px;
+	}
+    .comment_body button.reply_button{
+        font-size: 13.5px;
+        width: 61px;
+    }
+    div.comments_border {
+        border-left: 1px solid gold;
+    }
+    .comment_reply_form_container button.comment_button, .post_comment_form_container button.comment_button {
+        font-size: 13.5px;
+        width: 124px;
+    }
+    div.comment_reply_form_container {
+        margin-left: 0px;
+    }
+    div.comment_body {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        padding-left: 15px;
+        padding-right: 7px;
+    }
+    .reply .col-xl-10{
+        padding-right: 0px;
+    }
+    .replies_container div.replies_title{
+        margin-left:15px;
+    }
 
 /************
 14. 400px

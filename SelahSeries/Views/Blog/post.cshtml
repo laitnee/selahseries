@@ -15,6 +15,8 @@
 
 @section AddToHead {
     <link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/post.css">
+    
+    <link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/responsive.css">
     <link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/post_responsive.css">
     <link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/more_styles.css">
     <link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/postclap.css">
@@ -34,7 +36,7 @@
     <div class="home">
         <div class="home_background parallax-window" data-parallax="scroll" style="background-image:url('/uploads/@Model.Post.TitleImageUrl'); margin-top:20px" data-speed="0.8"></div>
         <div class="home_content">
-            <div class="post_category trans_200"><a style="box-sizing:border-box;" href="category.html" class="trans_200">@Model.Post.Category.Title</a></div>
+            <div class="post_category trans_200"><a style="box-sizing:border-box; color:white" class="trans_200">@Model.Post.Category.Title</a></div>
             <div style="" class="post_title">@Model.Post.Title</div>
         </div>
     </div>
@@ -58,12 +60,12 @@
                                     <li class="post_share_item">
                                         <a href="https://facebook.com/sharer/sharer.php"
                                            class="share-popup"
-                                           target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                           target="_blank"><i class="fa fa-facebook facebook" aria-hidden="true"></i></a>
                                     </li>
                                     <li class="post_share_item">
                                         <a href="https://twitter.com/share"
                                            class="share-popup"
-                                           target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                           target="_blank"><i class="fa fa-twitter twitter" aria-hidden="true"></i></a>
                                     </li>
                                     <li class="post_share_item">
                                         <a href="https://linkedin.com/shareArticle"
@@ -80,8 +82,8 @@
                             <p class="post_p">
                                 @Html.Raw(Model.Post.Content)
                             </p>
-                 
-                          
+
+
                         </div>
                         <!-- Bottom Panel -->
                         <div class="post_panel bottom_panel d-flex flex-row align-items-center justify-content-start">
@@ -107,12 +109,12 @@
                                     <li class="post_share_item">
                                         <a href="https://facebook.com/sharer/sharer.php?u=@Uri.EscapeDataString(pageURL)&t=@Model.Post.Title"
                                            class="share-popup"
-                                           target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                           target="_blank"><i class="fa fa-facebook facebook" aria-hidden="true"></i></a>
                                     </li>
                                     <li class="post_share_item">
                                         <a href="https://twitter.com/share?url=@Uri.EscapeDataString(pageURL)&via=TWITTER_HANDLE&text=@Model.Post.Title"
                                            class="share-popup"
-                                           target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                           target="_blank"><i class="fa fa-twitter twitter" aria-hidden="true"></i></a>
                                     </li>
                                     <li class="post_share_item">
                                         <a href="https://linkedin.com/shareArticle?mini=true&url=@Uri.EscapeDataString(pageURL)&title=@Model.Post.Title"
@@ -123,8 +125,8 @@
                             </div>
                         </div>
 
-                        <!-- Similar Posts -->
-                        <div class="similar_posts">
+                        <!-- Similar Posts Before-->
+                        <div class="similar_posts before">
                             <div class="grid clearfix">
 
                                 @foreach (var item in Model.RelatedPosts)
@@ -141,16 +143,21 @@
                                     }
 
                                 }
-                                    
 
-                                
+
+
 
                             </div>
                         </div>
-                            <div>
+
+                        <div>
                             <!-- Post Comment -->
                             <div class="post_comment">
                                 <div class="post_comment_title">Post Comment</div>
+                                @if (!(Model.Post.Comments.Count() > 0))
+                                {
+                                    <div style="font-family: 'Ubuntu', sans-serif; font-size: 14px; font-weight: 700; color: #007bff; margin-top:20px;"> Be the first to comment on this post </div>
+                                }
                                 <div class="row">
                                     <div class="col-xl-9">
                                         <div class="post_comment_form_container">
@@ -168,13 +175,13 @@
 
                             <!-- Comments -->
                             <div class="comments">
-                                @if (!(Model.Post.Comments.Count() > 0))
+                                @*@if ((Model.Post.Comments.Count() > 0))
+                                    {
+                                        <div style="text-align:center; margin:5px 5px 40px 5px;" class="comments_title"> Be the first to comment on this post </div>
+                                    }*@
+                                @if ((Model.Post.Comments.Count() > 0))
                                 {
-                                    <div style="text-align:center; margin:5px;" class="comments_title"> Be the first to comment on this posts </div>
-                                }
-                                else
-                                {
-                                    <div class="comments_title">Comments <span>@Model.Post.Comments.Where(c => c.ParentCommentId  == null).Count()</span></div>
+                                    <div class="comments_title">Comments <span>@Model.Post.Comments.Where(c => c.ParentCommentId == null).Count()</span></div>
 
                                     <div class="row">
                                         <div class="col-xl-12">
@@ -210,7 +217,7 @@
                                                                                     <input type="text" asp-for="Comment.Author" class="comment_input comment_input_name" placeholder="Your Name (Optional)" />
                                                                                     <input type="email" asp-for="Comment.Email" class="comment_input comment_input_email" placeholder="Your Email (Optional)">
                                                                                     <textarea asp-for="Comment.Content" class="comment_text" placeholder="Your Comment" required="required"></textarea>
-                                                                                    <button type="submit" class="comment_button">Post Comment</button>
+                                                                                    <button type="submit" class="comment_button">Post Reply</button>
                                                                                 </form>
                                                                             </div>
                                                                         </div>
@@ -228,10 +235,33 @@
 
                             </div>
                         </div>
+
+                        <!-- Similar Posts After-->
+                        <div class="similar_posts after">
+                            <div class="grid clearfix">
+
+                                @foreach (var item in Model.RelatedPosts)
+                                {
+                                    @if (item.PostId != Model.Post.PostId)
+                                    {
+                                        <div class="card card_small_with_image grid-item">
+                                            <img class="card-img-top" src='~/Uploads/@Html.DisplayFor(modelItem => item.TitleImageUrl)' alt="https://unsplash.com/">
+                                            <div class="card-body">
+                                                <div class="card-title card-title-small"><a href="~/blog/post/@Html.DisplayFor(modelItem => item.PostId)">@Html.DisplayFor(modelItem => item.Title)</a></div>
+                                                <small class="post_meta"><a href="#">@Html.DisplayFor(modelItem => item.Author)</a><span>@Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
+                                            </div>
+                                        </div>
+                                    }
+
+                                }
+
+
+
+
+                            </div>
+                        </div>
                     </div>
-                    @*<div class="load_more">
-                            <div id="load_more" class="load_more_button text-center trans_200">Load More</div>
-                        </div>*@
+
                 </div>
 
                 <!-- Sidebar -->
@@ -251,10 +281,13 @@
                                             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                                  width="7px" height="12px" viewBox="0 0 7 12" enable-background="new 0 0 7 12" xml:space="preserve">
                                             <polyline fill="#bebebe" points="0,5.61 5.609,0 7,0 7,1.438 2.438,6 7,10.563 7,12 5.609,12 -0.002,6.39 " />
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 </div>
+
+
+
+                                        </div>
                                         <ul id="custom_dots" class="custom_dots custom_dots_top">
                                             <li class="custom_dot custom_dot_top active"><span></span></li>
-                                            
+
                                             <li class="custom_dot custom_dot_top"><span></span></li>
                                             <li class="custom_dot custom_dot_top"><span></span></li>
                                         </ul>
@@ -263,13 +296,19 @@
                                                  width="7px" height="12px" viewBox="0 0 7 12" enable-background="new 0 0 7 12" xml:space="preserve">
                                             <polyline fill="#bebebe" points="6.998,6.39 1.389,12 -0.002,12 -0.002,10.562 4.561,6 -0.002,1.438 -0.002,0 1.389,0 7,5.61 " />
 
+
+
+
+
+
+
 											</svg>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="sidebar_section_content">
-                                
+
                                 <div class="sidebar_slider_container">
                                     <div class="owl-carousel owl-theme sidebar_slider_top">
                                         @{
@@ -283,51 +322,37 @@
                                                 {
                                                     @*@Html.Raw("<div class='owl-item'>");*@
                                                 }
-                                                    <div class="side_post">
-                                                        <a href="~/blog/post/@Html.DisplayFor(modelItem => item.PostId)">
-                                                            <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
-                                                                <div class="side_post_image"><div><img src='~/Uploads/@Html.DisplayFor(modelItem => item.TitleImageUrl)' alt="@item.Title"></div></div>
-                                                                <div class="side_post_content">
-                                                                    <div class="side_post_title">@Html.DisplayFor(modelItem => item.Title)</div>
-                                                                    <small class="post_meta">@Html.DisplayFor(modelItem => item.Author)<span>@item.ModifiedAt.Month.ToString() @item.ModifiedAt.Day</span></small>
-                                                                </div>
+                                                <div class="side_post">
+                                                    <a href="~/blog/post/@Html.DisplayFor(modelItem => item.PostId)">
+                                                        <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
+                                                            <div class="side_post_image"><div><img src='~/Uploads/@Html.DisplayFor(modelItem => item.TitleImageUrl)' alt="@item.Title"></div></div>
+                                                            <div class="side_post_content">
+                                                                <div class="side_post_title">@Html.DisplayFor(modelItem => item.Title)</div>
+                                                                <small class="post_meta">@Html.DisplayFor(modelItem => item.Author)<span>@item.ModifiedAt.Month.ToString() @item.ModifiedAt.Day</span></small>
                                                             </div>
-                                                        </a>
-                                                    </div>
-                                                    if (renderRow)
-                                                    {
-                                                        @*@Html.Raw("</div>");*@
-                                                    }
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                if (renderRow)
+                                                {
+                                                    @*@Html.Raw("</div>");*@
                                                 }
                                             }
+                                        }
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Advertising -->
+                        <style>
+                            .facebook {
+                                color: #3b5999;
+                            }
 
-                        @*<div class="sidebar_section">
-                            <div class="advertising">
-                                <div class="advertising_background" style="background-image:url(/NewFolder2/images/post_17.jpg)"></div>
-                                <div class="advertising_content d-flex flex-column align-items-start justify-content-end">
-                                    <div class="advertising_perc">-15%</div>
-                                    <div class="advertising_link"><a href="#">How Did van Gogh’s Turbulent Mind</a></div>
-                                </div>
-                            </div>
-                        </div>*@
-
-                        <!-- Advertising 2 -->
-
-                        @*<div class="sidebar_section">
-                            <div class="advertising_2">
-                                <div class="advertising_background" style="background-image:url(/NewFolder2/images/post_18.jpg)"></div>
-                                <div class="advertising_2_content d-flex flex-column align-items-center justify-content-center">
-                                    <div class="advertising_2_link"><a href="#">Turbulent <span>Mind</span></a></div>
-                                </div>
-                            </div>
-                        </div>*@
-
+                            .twitter {
+                                color: #55acee;
+                            }
+                        </style>
 
 
 
@@ -339,3 +364,71 @@
         </div>
     </div>
 </div>
+
+<style>
+    .after {
+        display: none;
+    }
+    .search_container form {
+        display: inline-block;
+        position: relative;
+    }
+
+    .header_search_input {
+        display: inline-block;
+        width: 262px;
+        height: 46px;
+        background: #4177b0;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        padding-left: 49px;
+        color: white;
+    }
+
+        .header_search_input::-webkit-input-placeholder {
+            font-family: 'Ubuntu', sans-serif;
+            font-size: 14px !important;
+            font-weight: 400 !important;
+            color: rgba(255,255,255,0.5) !important;
+        }
+
+        .header_search_input:-moz-placeholder {
+            font-family: 'Ubuntu', sans-serif;
+            font-size: 14px !important;
+            font-weight: 400 !important;
+            color: rgba(255,255,255,0.5) !important;
+        }
+
+        .header_search_input::-moz-placeholder {
+            font-family: 'Ubuntu', sans-serif;
+            font-size: 14px !important;
+            font-weight: 400 !important;
+            color: rgba(255,255,255,0.5) !important;
+        }
+
+        .header_search_input:-ms-input-placeholder {
+            font-family: 'Ubuntu', sans-serif;
+            font-size: 14px !important;
+            font-weight: 400 !important;
+            color: rgba(255,255,255,0.5) !important;
+        }
+
+        .header_search_input::input-placeholder {
+            font-family: 'Ubuntu', sans-serif;
+            font-size: 14px !important;
+            font-weight: 400 !important;
+            color: rgba(255,255,255,0.5) !important;
+        }
+
+    .header_search_icon {
+        position: absolute;
+        top: 50%;
+        left: 25px;
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+</style>
