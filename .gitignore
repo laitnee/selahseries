@@ -118,7 +118,6 @@ nCrunchTemp_*
 # MightyMoose
 *.mm.*
 AutoTest.Net/
-
 # Web workbench (sass)
 .sass-cache/
 
@@ -162,6 +161,7 @@ PublishScripts/
 # NuGet v3's project.json files produces more ignoreable files
 *.nuget.props
 *.nuget.targets
+*.Migrations
 
 # Microsoft Azure Build Output
 csx/

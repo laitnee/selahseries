@@ -70,23 +70,23 @@ namespace SelahSeries
                   options.Cookie.SameSite = Microsoft.AspNetCore.Http.SameSiteMode.Lax;
                   options.Cookie.Name = "SelahSeris.AuthCookieAspNetCore";
                   options.LoginPath = "/Home/Login";
-                  options.LogoutPath = "/Home/Login";
+                  options.LogoutPath = "/Home";
               }
               ).AddGoogle("Google", options =>
               {
                   options.ClientId = Configuration["Authentication:Google:ClientId"];
                   options.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
-                  //options.Events = new OAuthEvents
-                  //{
-                  //    OnCreatingTicket = context =>
-                  //    {
-                  //        string domain = context.User.Value<string>("domain");
-                  //        if (domain != Configuration["Authentication:Google:LoginEmail"])
-                  //            throw new Exception($"You must sign in with a { Configuration["Authentication: Google:LoginEmail"]} email address");
+              options.Events = new OAuthEvents
+              {
+                  OnCreatingTicket = context =>
+                  {
+                      string domain = context.User.Value<string>("domain");
+                      if (domain != Configuration["Authentication:Google:LoginEmail"])
+                          throw new Exception($"You must sign in with a { Configuration["Authentication: Google:LoginEmail"]} email address");
 
-                  //        return Task.CompletedTask;
-                  //    }
-                  //};
+                      return Task.CompletedTask;
+                  }
+                      };
               });
         
 

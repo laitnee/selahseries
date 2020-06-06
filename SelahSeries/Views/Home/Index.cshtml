@@ -10,10 +10,14 @@
     List<Book> Books_Slide1 = new List<Book>();
     List<Book> Books_Slide2 = new List<Book>();
     List<Book> Books_Slide3 = new List<Book>();
-    for (int i = 0; i < 2; i++)
+    if (Model.Books.Any())
     {
-        Books_Slide1.Add(Model.Books[i]);
+        for (int i = 0; i < 2; i++)
+        {
+            Books_Slide1.Add(Model.Books[i]);
+        }
     }
+
     //for (int i = 2; i < 3; i++)
     //{
     //    Books_Slide2.Add(Model.Books[i]);

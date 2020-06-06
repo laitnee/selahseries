@@ -32,10 +32,9 @@ namespace SelahSeries.Controllers
         private readonly IPostRepository _postRepo;
         private readonly IBookRepository _bookRepo;
 
-        public HomeController(IBookRepository bookRepo, IPostRepository postRepo, IMapper mapper, IHostingEnvironment environment, IEmailService emailService, SeedData seedData)
         private readonly IConfiguration _configuration;
 
-        public HomeController(IPostRepository postRepo, IMapper mapper, IHostingEnvironment environment, IEmailService emailService, IConfiguration configuration)
+        public HomeController(IBookRepository bookRepo, IPostRepository postRepo, IMapper mapper, IHostingEnvironment environment, IEmailService emailService, IConfiguration configuration)
         {
             _postRepo = postRepo;
             _bookRepo = bookRepo;
