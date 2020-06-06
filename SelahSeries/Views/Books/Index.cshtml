@@ -64,7 +64,7 @@
     <div class="container">
         <div class="row" style="margin-bottom: 10px;
     color: #4177b0;
-    font-size: 16px;"><p><span style="color:#ad001c">**</span> Note: Only residents in Nigeria (Ile-Ife, Ibadan and Ilesha ) can order for hard copy books. <span style="color:#ad001c">**</span></p></div>
+    font-size: 16px;"><p style="margin: 0px 20px"><span style="color:#ad001c">**</span> Note: Only residents in Nigeria (Ile-Ife, Ibadan and Ilesha ) can order for hard copy books. <span style="color:#ad001c">**</span></pstyle="></div>
         <div class="row">
             <div class="col-xl-9 col-lg-9 col-sm-12 col-xs-12 shop-content-right">
                 <div class="right-product-box">
@@ -635,17 +635,67 @@
     </style>
 
     <script>
-        //let buttons = document.getElementsByClassName(".cart");
+        $().ready(function () {
+            // our cart variable
+            let cart = {
+                cost: 0.00,
+                toppings: []
+            };
 
-        //for (var i = 0; i < buttons.length; i++) {
-        //    let button = button[i];
-        //    console.log(button);
-        //    button.addEventListener('click', function (event) {
-        //        console.clear();
-        //        console.log(event.target);
-        //        console.log(event.target.dataset.)
-        //    })
-        //}
+            let pizzaFlag = 0;
 
+            // getting the table and assigning it to a variable, making it a jQuery object
+            let cartTable = $('#cart-table');
+            // getting the total price label and making it a jQuery object.
+            let totalLabel = $('.cart-total-price');
+
+            //adding toppings to pizza
+            $('[id^=topping-]').click(function () {
+                if (pizzaFlag == 0) {
+                    alert("Please add a pizza first");
+                } else {
+                    // splitting out the id as a name
+                    let topping = this.id.split('-')[1];
+                    // adding the topping name to the pizza topping array
+                    pizza.toppings.push(topping);
+                    // adding the topping cost to the pizza cost, then changing the total text to reflect the new price
+                    pizza.cost += $('#' + topping).data().cost;
+                    totalLabel.text('$' + pizza.cost);
+                    // creating a table row with the topping name and cost, appending to the table
+                    cartTable.append(
+                        "<tr>" +
+                        "<td> " + topping + " </td> " +
+                        "<td> " + $('#' + topping).data().cost + " </td> " +
+                        "<td> 1 </td> " +
+                        "<tr>"
+                    );
+                }
+                // logging out the pizza to the console
+                console.log(pizza);
+            });
+
+            // adding a pizza
+            $('#pizza-btn').click(function () {
+                if (pizzaFlag == 1) {
+                    alert('You may only have one pizza at the moment');
+                } else {
+                    pizzaFlag = 1;
+                    pizza.cost += 10;
+                    console.log(pizza);
+                    cartTable.append(
+                        "<tr>" +
+                        "<td> Pizza </td> " +
+                        "<td> 10 </td> " +
+                        "<td> 1 </td> " +
+                        "<tr>"
+                    );
+                    totalLabel.text('$10');
+                }
+
+            });
+
+
+
+        });
 
     </script>
