@@ -160,6 +160,9 @@
         .section_panel .section_panel_more > ul > li .third {
             display: none;
         }
+    .section_panel_more > ul > li .fourth {
+        display: block;
+    }
 
     div.mainflip .frontside .card .card-body img {
         width: 85%;
@@ -373,6 +376,9 @@
         padding-left: 13px;
         padding-right: 13px;
     }
+    img.book_image {
+        height: 400px;
+    }
 }
 /************
 10. 767px
@@ -547,6 +553,9 @@
 ************/
 
 @media only screen and (max-width: 479px) {
+    div.books .carousel-inner{
+        height: auto;
+    }
     .card-body {
         padding-left: 15px;
         padding-right: 15px;
@@ -667,6 +676,10 @@
     }
     div.search_container form {
         display: block;
+    }
+    img.book_image {
+        height: 348px;
+        width: 67%;
     }
 }
 /************

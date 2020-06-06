@@ -34,7 +34,7 @@
     <!-- Home -->
     <span data-postId style="display:none;">@Model.Post.PostId</span>
     <div class="home">
-        <div class="home_background parallax-window" data-parallax="scroll" style="background-image:url('/uploads/@Model.Post.TitleImageUrl'); margin-top:20px" data-speed="0.8"></div>
+        <div class="home_background parallax-window" data-parallax="scroll" style="background-image:url('/uploads/@Model.Post.TitleImageUrl'); margin-top:69px; background-position:center; background-size:cover" data-speed="0.8"></div>
         <div class="home_content">
             <div class="post_category trans_200"><a style="box-sizing:border-box; color:white" class="trans_200">@Model.Post.Category.Title</a></div>
             <div style="" class="post_title">@Model.Post.Title</div>
@@ -127,140 +127,142 @@
 
                         <!-- Similar Posts Before-->
                         <div class="similar_posts before">
-                            <div class="grid clearfix">
+                            <div class="comments_title">More Posts</div>
+                                <div class="grid clearfix">
 
-                                @foreach (var item in Model.RelatedPosts)
-                                {
-                                    @if (item.PostId != Model.Post.PostId)
+                                    @foreach (var item in Model.RelatedPosts)
                                     {
-                                        <div class="card card_small_with_image grid-item">
-                                            <img class="card-img-top" src='~/Uploads/@Html.DisplayFor(modelItem => item.TitleImageUrl)' alt="https://unsplash.com/">
-                                            <div class="card-body">
-                                                <div class="card-title card-title-small"><a href="~/blog/post/@Html.DisplayFor(modelItem => item.PostId)">@Html.DisplayFor(modelItem => item.Title)</a></div>
-                                                <small class="post_meta"><a href="#">@Html.DisplayFor(modelItem => item.Author)</a><span>@Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
+                                        @if (item.PostId != Model.Post.PostId)
+                                        {
+                                            <div class="card card_small_with_image grid-item">
+                                                <img class="card-img-top" src='~/Uploads/@Html.DisplayFor(modelItem => item.TitleImageUrl)' alt="https://unsplash.com/">
+                                                <div class="card-body">
+                                                    <div class="card-title card-title-small"><a href="~/blog/post/@Html.DisplayFor(modelItem => item.PostId)">@Html.DisplayFor(modelItem => item.Title)</a></div>
+                                                    <small class="post_meta"><a href="#">@Html.DisplayFor(modelItem => item.Author)</a><span>@Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
+                                                </div>
                                             </div>
-                                        </div>
+                                        }
+
                                     }
 
-                                }
 
 
 
-
-                            </div>
-                        </div>
-
-                        <div>
-                            <!-- Post Comment -->
-                            <div class="post_comment">
-                                <div class="post_comment_title">Post Comment</div>
-                                @if (!(Model.Post.Comments.Count() > 0))
-                                {
-                                    <div style="font-family: 'Ubuntu', sans-serif; font-size: 14px; font-weight: 700; color: #007bff; margin-top:20px;"> Be the first to comment on this post </div>
-                                }
-                                <div class="row">
-                                    <div class="col-xl-9">
-                                        <div class="post_comment_form_container">
-                                            <form method="post" asp-controller="Blog" asp-action="PostComment">
-                                                <input type="hidden" value="@Model.Post.PostId" asp-for="Comment.PostId" />
-                                                <input type="text" asp-for="Comment.Author" class="comment_input comment_input_name" placeholder="Your Name (optional)" />
-                                                <input type="email" asp-for="Comment.Email" class="comment_input comment_input_email" placeholder="Your Email (optional)" />
-                                                <textarea asp-for="Comment.Content" class="comment_text" placeholder="Your Comment" required="required"></textarea>
-                                                <button type="submit" class="comment_button">Post Comment</button>
-                                            </form>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
 
-                            <!-- Comments -->
-                            <div class="comments">
-                                @*@if ((Model.Post.Comments.Count() > 0))
+                            <div>
+                                <!-- Post Comment -->
+                                <div class="post_comment">
+                                    <div class="post_comment_title">Post Comment</div>
+                                    @if (!(Model.Post.Comments.Count() > 0))
                                     {
-                                        <div style="text-align:center; margin:5px 5px 40px 5px;" class="comments_title"> Be the first to comment on this post </div>
-                                    }*@
-                                @if ((Model.Post.Comments.Count() > 0))
-                                {
-                                    <div class="comments_title">Comments <span>@Model.Post.Comments.Where(c => c.ParentCommentId == null).Count()</span></div>
-
+                                        <div style="font-family: 'Ubuntu', sans-serif; font-size: 16px; font-weight: 700; color: #007bff; margin-top:20px;"> Be the first to comment on this post </div>
+                                    }
                                     <div class="row">
-                                        <div class="col-xl-12">
-                                            <div class="comments_container">
-                                                <ul data-commentList class="comment_list">
-                                                    @foreach (var item in Model.Post.Comments.Where(com => com.ParentCommentId == null))
-                                                    {
-                                                        <li data-omment class="comment">
-                                                            <div class="comment_body">
-                                                                <div class="comment_panel d-flex flex-row align-items-center justify-content-start">
-                                                                    <small class="post_meta">
-                                                                        <a href="#">@item.Author</a><span>
-                                                                            @item.CreatedAt.ToShortDateString()
-                                                                            at @item.CreatedAt.ToShortTimeString()
-                                                                        </span>
-                                                                    </small>
-                                                                    <button type="button" data-ReplyListener="@item.CommentId" class="reply_button ml-auto">Reply</button>
-                                                                </div>
-                                                                <div class="comment_content">
-                                                                    <p>@item.Content </p>
-                                                                </div>
-
-                                                                @await Html.PartialAsync("Comments", new SelahSeries.ViewModels.CommentVM() { Comments = Model.Post.Comments, ParentId = item.CommentId })
-
-                                                                <!--Comment Reply Form-->
-                                                                <template id="CommentBox">
-                                                                    <div replyForm class="row">
-                                                                        <div class="col-xl-10">
-                                                                            <div style="margin-top:5px;" class="comment_reply_form_container" id="comment_reply_form">
-                                                                                <form method="post" asp-controller="Blog" asp-action="PostComment">
-                                                                                    <input type="hidden" value="@Model.Post.PostId" asp-for="Comment.PostId" />
-                                                                                    <input type="hidden" data-commentParent asp-for="Comment.ParentCommentId" />
-                                                                                    <input type="text" asp-for="Comment.Author" class="comment_input comment_input_name" placeholder="Your Name (Optional)" />
-                                                                                    <input type="email" asp-for="Comment.Email" class="comment_input comment_input_email" placeholder="Your Email (Optional)">
-                                                                                    <textarea asp-for="Comment.Content" class="comment_text" placeholder="Your Comment" required="required"></textarea>
-                                                                                    <button type="submit" class="comment_button">Post Reply</button>
-                                                                                </form>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </template>
-
-                                                            </div>
-                                                        </li>
-                                                    }
-                                                </ul>
+                                        <div class="col-xl-9">
+                                            <div class="post_comment_form_container">
+                                                <form method="post" asp-controller="Blog" asp-action="PostComment">
+                                                    <input type="hidden" value="@Model.Post.PostId" asp-for="Comment.PostId" />
+                                                    <input type="text" asp-for="Comment.Author" class="comment_input comment_input_name" placeholder="Your Name (optional)" />
+                                                    <input type="email" asp-for="Comment.Email" class="comment_input comment_input_email" placeholder="Your Email (optional)" />
+                                                    <textarea asp-for="Comment.Content" class="comment_text" placeholder="Your Comment" required="required"></textarea>
+                                                    <button type="submit" class="comment_button">Post Comment</button>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
-                                }
+                                </div>
 
-                            </div>
-                        </div>
-
-                        <!-- Similar Posts After-->
-                        <div class="similar_posts after">
-                            <div class="grid clearfix">
-
-                                @foreach (var item in Model.RelatedPosts)
-                                {
-                                    @if (item.PostId != Model.Post.PostId)
+                                <!-- Comments -->
+                                <div class="comments">
+                                    @*@if ((Model.Post.Comments.Count() > 0))
+                {
+                    <div style="text-align:center; margin:5px 5px 40px 5px;" class="comments_title"> Be the first to comment on this post </div>
+                }*@
+                                    @if ((Model.Post.Comments.Count() > 0))
                                     {
-                                        <div class="card card_small_with_image grid-item">
-                                            <img class="card-img-top" src='~/Uploads/@Html.DisplayFor(modelItem => item.TitleImageUrl)' alt="https://unsplash.com/">
-                                            <div class="card-body">
-                                                <div class="card-title card-title-small"><a href="~/blog/post/@Html.DisplayFor(modelItem => item.PostId)">@Html.DisplayFor(modelItem => item.Title)</a></div>
-                                                <small class="post_meta"><a href="#">@Html.DisplayFor(modelItem => item.Author)</a><span>@Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
+                                        <div class="comments_title">Comments <span>@Model.Post.Comments.Where(c => c.ParentCommentId == null).Count()</span></div>
+
+                                        <div class="row">
+                                            <div class="col-xl-12">
+                                                <div class="comments_container">
+                                                    <ul data-commentList class="comment_list">
+                                                        @foreach (var item in Model.Post.Comments.Where(com => com.ParentCommentId == null))
+                                                        {
+                                                            <li data-omment class="comment">
+                                                                <div class="comment_body">
+                                                                    <div class="comment_panel d-flex flex-row align-items-center justify-content-start">
+                                                                        <small class="post_meta">
+                                                                            <a href="#">@item.Author</a><span>
+                                                                                @item.CreatedAt.ToShortDateString()
+                                                                                at @item.CreatedAt.ToShortTimeString()
+                                                                            </span>
+                                                                        </small>
+                                                                        <button type="button" data-ReplyListener="@item.CommentId" class="reply_button ml-auto">Reply</button>
+                                                                    </div>
+                                                                    <div class="comment_content">
+                                                                        <p>@item.Content </p>
+                                                                    </div>
+
+                                                                    @await Html.PartialAsync("Comments", new SelahSeries.ViewModels.CommentVM() { Comments = Model.Post.Comments, ParentId = item.CommentId })
+
+                                                                    <!--Comment Reply Form-->
+                                                                    <template id="CommentBox">
+                                                                        <div replyForm class="row">
+                                                                            <div class="col-xl-10">
+                                                                                <div style="margin-top:5px;" class="comment_reply_form_container" id="comment_reply_form">
+                                                                                    <form method="post" asp-controller="Blog" asp-action="PostComment">
+                                                                                        <input type="hidden" value="@Model.Post.PostId" asp-for="Comment.PostId" />
+                                                                                        <input type="hidden" data-commentParent asp-for="Comment.ParentCommentId" />
+                                                                                        <input type="text" asp-for="Comment.Author" class="comment_input comment_input_name" placeholder="Your Name (Optional)" />
+                                                                                        <input type="email" asp-for="Comment.Email" class="comment_input comment_input_email" placeholder="Your Email (Optional)">
+                                                                                        <textarea asp-for="Comment.Content" class="comment_text" placeholder="Your Comment" required="required"></textarea>
+                                                                                        <button type="submit" class="comment_button">Post Reply</button>
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </template>
+
+                                                                </div>
+                                                            </li>
+                                                        }
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
                                     }
 
-                                }
+                                </div>
+                            </div>
+
+                            <!-- Similar Posts After-->
+                            <div class="similar_posts after">
+                                <div class="comments_title">More Posts</div>
+                                <div class="grid clearfix">
+
+                                    @foreach (var item in Model.RelatedPosts)
+                                    {
+                                        @if (item.PostId != Model.Post.PostId)
+                                        {
+                                            <div class="card card_small_with_image grid-item">
+                                                <img class="card-img-top" src='~/Uploads/@Html.DisplayFor(modelItem => item.TitleImageUrl)' alt="https://unsplash.com/">
+                                                <div class="card-body">
+                                                    <div class="card-title card-title-small"><a href="~/blog/post/@Html.DisplayFor(modelItem => item.PostId)">@Html.DisplayFor(modelItem => item.Title)</a></div>
+                                                    <small class="post_meta"><a href="#">@Html.DisplayFor(modelItem => item.Author)</a><span>@Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
+                                                </div>
+                                            </div>
+                                        }
+
+                                    }
 
 
 
 
+                                </div>
                             </div>
                         </div>
-                    </div>
 
                 </div>
 

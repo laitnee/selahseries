@@ -17,6 +17,7 @@ using SelahSeries.Data;
 using SelahSeries.Models;
 using SelahSeries.Models.DTOs;
 using SelahSeries.Repository;
+using SelahSeries.Repository.Interfaces;
 using SelahSeries.Services;
 using SelahSeries.ViewModels;
 
@@ -29,11 +30,15 @@ namespace SelahSeries.Controllers
         private readonly IMapper _mapper;
         private readonly IHostingEnvironment hostingEnvironment;
         private readonly IPostRepository _postRepo;
+        private readonly IBookRepository _bookRepo;
+
+        public HomeController(IBookRepository bookRepo, IPostRepository postRepo, IMapper mapper, IHostingEnvironment environment, IEmailService emailService, SeedData seedData)
         private readonly IConfiguration _configuration;
 
         public HomeController(IPostRepository postRepo, IMapper mapper, IHostingEnvironment environment, IEmailService emailService, IConfiguration configuration)
         {
             _postRepo = postRepo;
+            _bookRepo = bookRepo;
             _mapper = mapper;
             _emailService = emailService;
             _configuration = configuration;
@@ -57,6 +62,9 @@ namespace SelahSeries.Controllers
             var dontMiss =_postRepo.GetPublishedDMPosts();
             var dontMissVM = _mapper.Map<List<PostListViewModel>>(dontMiss);
             postHomeVM.DontMiss = dontMissVM;
+
+            var books = _bookRepo.GetHomeBooks();
+            postHomeVM.Books = books.ToList();
 
             PaginatedList<Post> latestArticles;
             if (category == "all" || category == null )

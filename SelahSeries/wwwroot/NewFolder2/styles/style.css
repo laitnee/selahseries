@@ -1,11 +1,11 @@
 /* Base */
 body {
-  line-height: 1.7;
-  font-weight: 400;
-  font-size: 1rem;
-  color: #333;
-  font-family: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; }
-
+    line-height: 1.7;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #333;
+    font-family: "Ubuntu", sans-serif;
+}
 ::-moz-selection {
   background: #000;
   color: #fff; }
@@ -149,13 +149,13 @@ a {
 
 .bg-image {
   background-size: cover;
-  background-repeat: no-rpeeat;
+  background-repeat: no-repeat;
   overflow: hidden;
   background-position: center center; }
   .bg-image.center {
     background-position: top center; }
   .bg-image.fixed {
-    background-position: fixed !important; }
+    background-position: !important; }
   .bg-image.overlay, .bg-image.overlay-primary, .bg-image.overlay-info, .bg-image.overlay-success, .bg-image.overlay-warning {
     position: relative; }
     .bg-image.overlay:before, .bg-image.overlay-primary:before, .bg-image.overlay-info:before, .bg-image.overlay-success:before, .bg-image.overlay-warning:before {
@@ -1182,7 +1182,7 @@ a {
   border: 1px solid red;
   -webkit-appearance: none;
   -moz-appearance: none;
-  appearance: none; }
+   }
 
 .search-domain .search-input {
   background: none;
@@ -1192,10 +1192,7 @@ a {
     color: #fff; }
   .search-domain .search-input:-ms-input-placeholder {
     color: #fff; }
-  .search-domain .search-input::-ms-input-placeholder {
-    color: #fff; }
-  .search-domain .search-input::placeholder {
-    color: #fff; }
+ 
 
 .search-domain .btn {
   background: #e3c4a8; }
@@ -1539,7 +1536,7 @@ a {
 .unit-9 {
   background-size: cover;
   background-position: center center;
-  background-repeat: none;
+  background-repeat: no-repeat;
   height: 300px;
   position: relative;
   display: block;
@@ -1794,7 +1791,7 @@ figure figcaption {
           background: #e3c4a8; }
 
 .featured-property-half {
-  position: relative;s
+  position: relative;
   background: #fff;
   margin-top: -70px;
   -webkit-box-shadow: 0 0 20px -5px rgba(0, 0, 0, 0.1);

@@ -329,4 +329,10 @@
 		display: none;
 	}
 }
+
+@media (max-width: 479px) {
+    div.view_style {
+        display: none;
+    }
+}
  

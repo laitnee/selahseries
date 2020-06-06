@@ -58,9 +58,11 @@
                                 <span class="navbar-toggler-icon"></span>
                             </button>
                             <div class="idNav collapse navbar-collapse" id="navbarSupportedContent">
+                                @{ViewData["Search"] = "all";}
+                                @await Html.PartialAsync("SearchPartial")
                                 <ul style="font-family:'Ubuntu', sans-serif" class="navbar-nav ml-auto topnav">
-                                 
-                                    
+
+
                                     <li class="nav-item">
                                         <a class="nav-link" href="~/Home/Index">Home <span class="sr-only">(current)</span></a>
                                     </li>
@@ -77,6 +79,7 @@
 
                                             <a class="dropdown-item" href="~/?category=politics#blog">Politics</a>
                                             <a class="dropdown-item" href="~/?category=career#blog">Career</a>
+                                            <a class="dropdown-item" href="~/?category=general#blog">General</a>
                                         </div>
                                     </li>
                                     <li class="nav-item dropdown">
@@ -89,18 +92,13 @@
                                         </div>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Books</a>
+                                        <a class="nav-link" href="~/Books/Index">Books</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="~/Contact">Contact</a>
                                     </li>
-                                                        @*<li class="nav-item">
-                                @{ViewData["Search"] = "all";}
-                                @await Html.PartialAsync("SearchPartial")
-                            </li>*@
                                 </ul>
-                                @{ViewData["Search"] = "all";}
-                                @await Html.PartialAsync("SearchPartial")
+
                             </div>
 
 
@@ -286,7 +284,7 @@
 
         @RenderSection("Scripts", required: false)
 
-    </div>
+    
 </body>
 </html>
 
@@ -324,7 +322,7 @@
     }
 
     .header {
-        border-bottom: 1px solid #007bff;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6), 0 6px 20px 0 rgba(0, 0, 0, 0.8);
     }
 
     .navbar-light .navbar-nav .nav-link {

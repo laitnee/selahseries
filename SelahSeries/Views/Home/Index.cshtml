@@ -7,8 +7,22 @@
     var previous = pageIndex - 1;
     var next = pageIndex + 1;
     var latestArticle = Model.LatestArticle.OrderByDescending(x => x.CreatedAt);
+    List<Book> Books_Slide1 = new List<Book>();
+    List<Book> Books_Slide2 = new List<Book>();
+    List<Book> Books_Slide3 = new List<Book>();
+    for (int i = 0; i < 2; i++)
+    {
+        Books_Slide1.Add(Model.Books[i]);
+    }
+    //for (int i = 2; i < 3; i++)
+    //{
+    //    Books_Slide2.Add(Model.Books[i]);
+    //}
+    //for (int i = 4; i < 6; i++)
+    //{
+    //    Books_Slide2.Add(Model.Books[i]);
+    //}
 }
-@section AddMetaTags{
 
     <meta property="og:title" content="Selah Series">
     <meta property="og:description" content="A blog on relationship and marriage, career, sport and politis">
@@ -207,6 +221,7 @@
                                             <li class="second"><a href="~/?category=politics#blog">Politics</a></li>
                                             <li class="third"><a href="~/?category=sports#blog">Sports</a></li>
                                             <li class="fourth"><a href="~/?category=career#blog">Career</a></li>
+                                            <li class="fifth"><a href="~/?category=general#blog">General</a></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -361,38 +376,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 											</svg>
                                     </div>
                                     <ul id="custom_dots" class="custom_dots custom_dots_vid">
@@ -435,38 +418,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 											</svg>
                                     </div>
                                 </div>
@@ -478,189 +429,20 @@
                             <div class="sidebar_slider_container">
                                 <div class="owl-carousel owl-theme sidebar_slider_vid">
 
-                                    <!-- Newest Videos Slider Item -->
-                                    <div class="owl-item">
-
-                                        <!-- Newest Videos Post -->
-                                        <div class="side_post">
-                                            <a href="~/blog/post">
-                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
-                                                    <div class="side_post_image"><div><img src="/NewFolder2/images/vid_1.jpg" alt=""></div></div>
-                                                    <div class="side_post_content">
-                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
-                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-
-                                        <!-- Newest Videos Post -->
-                                        <div class="side_post">
-                                            <a href="~/blog/post">
-                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
-                                                    <div class="side_post_image"><div><img src="/NewFolder2/images/vid_2.jpg" alt=""></div></div>
-                                                    <div class="side_post_content">
-                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
-                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-
-                                        <!-- Newest Videos Post -->
-                                        <div class="side_post">
-                                            <a href="~/blog/post">
-                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
-                                                    <div class="side_post_image"><div><img src="/NewFolder2/images/vid_3.jpg" alt=""></div></div>
-                                                    <div class="side_post_content">
-                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
-                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-
-                                        <!-- Newest Videos Post -->
-                                        <div class="side_post">
-                                            <a href="~/blog/post">
-                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
-                                                    <div class="side_post_image"><div><img src="/NewFolder2/images/vid_4.jpg" alt=""></div></div>
-                                                    <div class="side_post_content">
-                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
-                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-
-                                    </div>
-
-                                    <!-- Newest Videos Slider Item -->
-                                    <div class="owl-item">
-
-                                        <!-- Newest Videos Post -->
-                                        <div class="side_post">
-                                            <a href="~/blog/post">
-                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
-                                                    <div class="side_post_image"><div><img src="images/vid_1.jpg" alt=""></div></div>
-                                                    <div class="side_post_content">
-                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
-                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-
-                                        <!-- Newest Videos Post -->
-                                        <div class="side_post">
-                                            <a href="~/blog/post">
-                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
-                                                    <div class="side_post_image"><div><img src="images/vid_2.jpg" alt=""></div></div>
-                                                    <div class="side_post_content">
-                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
-                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-
-                                        <!-- Newest Videos Post -->
-                                        <div class="side_post">
-                                            <a href="~/blog/post">
-                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
-                                                    <div class="side_post_image"><div><img src="images/vid_3.jpg" alt=""></div></div>
-                                                    <div class="side_post_content">
-                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
-                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-
-                                        <!-- Newest Videos Post -->
-                                        <div class="side_post">
-                                            <a href="~/blog/post">
-                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
-                                                    <div class="side_post_image"><div><img src="images/vid_4.jpg" alt=""></div></div>
-                                                    <div class="side_post_content">
-                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
-                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-
-                                    </div>
-
-                                    <!-- Newest Videos Slider Item -->
-                                    <div class="owl-item">
-
-                                        <!-- Newest Videos Post -->
-                                        <div class="side_post">
-                                            <a href="~/blog/post">
-                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
-                                                    <div class="side_post_image"><div><img src="images/vid_1.jpg" alt=""></div></div>
-                                                    <div class="side_post_content">
-                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
-                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-
-                                        <!-- Newest Videos Post -->
-                                        <div class="side_post">
-                                            <a href="~/blog/post">
-                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
-                                                    <div class="side_post_image"><div><img src="images/vid_2.jpg" alt=""></div></div>
-                                                    <div class="side_post_content">
-                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
-                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-
-                                        <!-- Newest Videos Post -->
-                                        <div class="side_post">
-                                            <a href="~/blog/post">
-                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
-                                                    <div class="side_post_image"><div><img src="images/vid_3.jpg" alt=""></div></div>
-                                                    <div class="side_post_content">
-                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
-                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-
-                                        <!-- Newest Videos Post -->
-                                        <div class="side_post">
-                                            <a href="~/blog/post">
-                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
-                                                    <div class="side_post_image"><div><img src="images/vid_4.jpg" alt=""></div></div>
-                                                    <div class="side_post_content">
-                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
-                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-
-                                    </div>
+                                  
 
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Advertising 2 -->
+                    <!--  -->
 
                     <div class="sidebar_section">
                         <div class="advertising_2">
                             <div class="advertising_background" style="background-image:url(/NewFolder2/images/post_18.jpg)"></div>
                             <div class="advertising_2_content d-flex flex-column align-items-center justify-content-center">
-                                <div class="advertising_2_link"><a href="#">Turbulent <span>Mind</span></a></div>
+                                <div class="advertising_2_link"><a style="color:white">Selah <span>Series</span></a></div>
                             </div>
                         </div>
                     </div>
@@ -701,174 +483,78 @@
                     <!-- Wrapper for carousel items -->
 
                     <div class="carousel-inner">
-                        <div class="item carousel-item active">
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <div class="thumb-wrapper">
-                                        <div class="img-box">
-                                            <img src="/NewFolder2/new/element5-digital-7MEKVsmm44U-unsplash.jpg" class="img-responsive img-fluid" alt="">
+                     
+                            <div class="item carousel-item active">
+                                <div class="row">
+                                    @foreach (var item in Books_Slide1)
+                                    {
+                                        <div class="col-sm-6">
+                                            <div class="thumb-wrapper">
+                                                <div class="img-box">
+                                                    <img src="~/Uploads/@Html.DisplayFor(modelItem => item.ImageUrl)" class="img-responsive img-fluid" alt="">
+                                                </div>
+                                                <div class="thumb-content">
+                                                    <h5 style="color:black">@item.Title</h5>
+                                                    @if (item.IsHardBook == true)
+                                                    {
+                                                        <p class="item-price">@item.Price</p>
+                                                        <a href="#" class="btn btn-primary">Add to Cart</a>
+                                                    }
+                                                    <a href="#" class="btn btn-primary">Download</a>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="thumb-content">
-                                            <h5 style="color:black">Enjoying your marriage life.</h5>
-                                            <p class="item-price">$369.00</p>
-
-                                            <a href="#" class="btn btn-primary">Add to Cart</a>
-                                        </div>
+                                    }
                                     </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="thumb-wrapper">
-                                        <div class="img-box">
-                                            <img src="/NewFolder2/new/element5-digital-7MEKVsmm44U-unsplash.jpg" class="img-responsive img-fluid" alt="">
-                                        </div>
-                                        <div class="thumb-content">
-                                            <h5 style="color:black">Enjoying your marriage life.</h5>
-                                            <p class="item-price">$19.00</p>
+                            </div>
+                        
 
-                                            <a href="#" class="btn btn-primary">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="thumb-wrapper">
-                                        <div class="img-box">
-                                            <img src="/NewFolder2/new/element5-digital-7MEKVsmm44U-unsplash.jpg" class="img-responsive img-fluid" alt="">
-                                        </div>
-                                        <div class="thumb-content">
-                                            <h5 style="color:black">Enjoying your marriage life.</h5>
-                                            <p class="item-price">$29.00</p>
-
-                                            <a href="#" class="btn btn-primary">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="thumb-wrapper">
-                                        <div class="img-box">
-                                            <img src="/NewFolder2/new/element5-digital-7MEKVsmm44U-unsplash.jpg" class="img-responsive img-fluid" alt="">
-                                        </div>
-                                        <div class="thumb-content">
-                                            <h5 style="color:black">Enjoying your marriage life.</h5>
-                                            <p class="item-price">$30.00</p>
-
-                                            <a href="#" class="btn btn-primary">Add to Cart</a>
+                        @*@foreach (var item in Books_Slide2)
+                        {
+                            <div class="item carousel-item">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="thumb-wrapper">
+                                            <div class="img-box">
+                                                <img src="~/Uploads/@Html.DisplayFor(modelItem => item.ImageUrl)" class="img-responsive img-fluid" alt="">
+                                            </div>
+                                            <div class="thumb-content">
+                                                <h5 style="color:black">@item.Title</h5>
+                                                @if (item.IsHardBook == true)
+                                                {
+                                                    <p class="item-price">@item.Price</p>
+                                                    <a href="#" class="btn btn-primary">Add to Cart</a>
+                                                }
+                                                <a href="#" class="btn btn-primary">Download</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="item carousel-item">
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <div class="thumb-wrapper">
-                                        <div class="img-box">
-                                            <img src="/NewFolder2/new/element5-digital-7MEKVsmm44U-unsplash.jpg" class="img-responsive img-fluid" alt="">
-                                        </div>
-                                        <div class="thumb-content">
-                                            <h5 style="color:black">Enjoying your marriage life.</h5>
-                                            <p class="item-price">$49.00</p>
-
-                                            <a href="#" class="btn btn-primary">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="thumb-wrapper">
-                                        <div class="img-box">
-                                            <img src="/NewFolder2/new/element5-digital-7MEKVsmm44U-unsplash.jpg" class="img-responsive img-fluid" alt="">
-                                        </div>
-                                        <div class="thumb-content">
-                                            <h5 style="color:black">Enjoying your marriage life.</h5>
-                                            <p class="item-price">$59.00</p>
-
-                                            <a href="#" class="btn btn-primary">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="thumb-wrapper">
-                                        <div class="img-box">
-                                            <img src="/NewFolder2/new/element5-digital-7MEKVsmm44U-unsplash.jpg" class="img-responsive img-fluid" alt="">
-                                        </div>
-                                        <div class="thumb-content">
-                                            <h5 style="color:black">Enjoying your marriage life.</h5>
-                                            <p class="item-price">$69.00</p>
-
-                                            <a href="#" class="btn btn-primary">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="thumb-wrapper">
-                                        <div class="img-box">
-                                            <img src="/NewFolder2/new/element5-digital-7MEKVsmm44U-unsplash.jpg" class="img-responsive img-fluid" alt="">
-                                        </div>
-                                        <div class="thumb-content">
-                                            <h5 style="color:black">Enjoying your marriage life.</h5>
-                                            <p class="item-price">$79.00</p>
-
-                                            <a href="#" class="btn btn-primary">Add to Cart</a>
+                        }
+                        @foreach (var item in Books_Slide3)
+                        {
+                            <div class="item carousel-item">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="thumb-wrapper">
+                                            <div class="img-box">
+                                                <img src="~/Uploads/@Html.DisplayFor(modelItem => item.ImageUrl)" class="img-responsive img-fluid" alt="">
+                                            </div>
+                                            <div class="thumb-content">
+                                                <h5 style="color:black">@item.Title</h5>
+                                                @if (item.IsHardBook == true)
+                                                {
+                                                    <p class="item-price">@item.Price</p>
+                                                    <a href="#" class="btn btn-primary">Add to Cart</a>
+                                                }
+                                                <a href="#" class="btn btn-primary">Download</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="item carousel-item">
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <div class="thumb-wrapper">
-                                        <div class="img-box">
-                                            <img src="/NewFolder2/new/element5-digital-7MEKVsmm44U-unsplash.jpg" class="img-responsive img-fluid" alt="">
-                                        </div>
-                                        <div class="thumb-content">
-                                            <h5 style="color:black">Enjoying your marriage life.</h5>
-                                            <p class="item-price">$89.00</p>
-
-                                            <a href="#" class="btn btn-primary">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="thumb-wrapper">
-                                        <div class="img-box">
-                                            <img src="/NewFolder2/new/element5-digital-7MEKVsmm44U-unsplash.jpg" class="img-responsive img-fluid" alt="">
-                                        </div>
-                                        <div class="thumb-content">
-                                            <h5 style="color:black">Enjoying your marriage life.</h5>
-                                            <p class="item-price">$99.00</p>
-
-                                            <a href="#" class="btn btn-primary">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="thumb-wrapper">
-                                        <div class="img-box">
-                                            <img src="/NewFolder2/new/element5-digital-7MEKVsmm44U-unsplash.jpg" class="img-responsive img-fluid" alt="">
-                                        </div>
-                                        <div class="thumb-content">
-                                            <h5 style="color:black">Enjoying your marriage life.</h5>
-                                            <p class="item-price">$109.00</p>
-
-                                            <a href="#" class="btn btn-primary">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="thumb-wrapper">
-                                        <div class="img-box">
-                                            <img src="/NewFolder2/new/element5-digital-7MEKVsmm44U-unsplash.jpg" class="img-responsive img-fluid" alt="">
-                                        </div>
-                                        <div class="thumb-content">
-                                            <h5 style="color:black">Enjoying your marriage life.</h5>
-                                            <p class="item-price">$119.00</p>
-
-                                            <a href="#" class="btn btn-primary">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        }*@
                     </div>
                     <!-- Carousel controls -->
                     <a class="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev">
@@ -880,7 +566,7 @@
                 </div>
                 <div class="load_more">
                     <div id="load_more" class="load_more_button text-center trans_200">
-                        <a>Go to BookStore</a>
+                        <a href="~Books/Index">Go to BookStore</a>
                     </div>
                 </div>
             </div>
@@ -964,16 +650,35 @@
         border-color: #ad001c;
     }
 
-    .section_panel_more > ul > li {
+    ul > li {
+        display: block;
+    }
+     ul > li .all {
         display: none;
     }
 
-        .section_panel_more > ul > li .all {
+      ul > li .first {
             display: none;
+        }
+        ul > li .second {
+            display: none;
+        }
+        ul > li .third {
+            display: none;
+        }
+        ul > li .fourth {
+            display: none;
+        }
+        ul > li .fifth {
+            display: block;
         }
 
     .category {
         display: none;
+    }
+
+    .more{
+        display:block;
     }
 </style>
 

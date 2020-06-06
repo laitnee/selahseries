@@ -15,6 +15,8 @@ namespace SelahSeries.Core.Profiles
         {
             CreateMap<PostCreateViewModel, Post>().ReverseMap();
             CreateMap<Post, PostListViewModel>();
+            CreateMap<BookCreateViewModel, Book>().ReverseMap();
+            CreateMap<Book, BookListViewModel>();
         }
     }
 }

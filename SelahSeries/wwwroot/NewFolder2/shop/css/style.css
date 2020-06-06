@@ -35,7 +35,7 @@
  body {
      color: #666666;
      font-size: 15px;
-     font-family: 'Dosis', sans-serif;
+     font-family: 'Ubuntu', sans-serif;
      line-height: 1.80857;
 }
  a {
@@ -646,7 +646,7 @@
      transform: perspective(1px) translateZ(0);
      box-shadow: 0 0 1px rgba(0, 0, 0, 0);
      position: relative;
-     background: #b0b435;
+     background: #ad001c;
      -webkit-transition-property: color;
      transition-property: color;
      -webkit-transition-duration: 0.3s;
@@ -662,7 +662,7 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background: #000000;
+	background: #ad001c;
 	border-radius: 100%;
 	-webkit-transform: scale(0);
 	transform: scale(0);
@@ -932,13 +932,13 @@
      right: 0px;
      z-index:8;
 }
- .type-lb .sale{
-     background: #b0b435;
-     color: #ffffff;
-     padding: 2px 10px;
-     font-weight: 700;
-     text-transform: uppercase;
-}
+    .type-lb .sale {
+        background: #007bff;
+        color: #ffffff;
+        padding: 2px 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
  .type-lb .new{
      background: #000000;
      color: #ffffff;
@@ -955,15 +955,14 @@
      font-weight: 700;
      padding-bottom: 15px;
 }
- .why-text h5{
-     font-size: 18px;
-     font-family: 'Poppins', sans-serif;
-     padding: 4px;
-	 display: inline-block;
-	 background: #b0b435;
-	 color: #ffffff;
-     font-weight: 600;
-}
+    .why-text h5 {
+        font-size: 18px;
+        font-family: 'Ubuntu', sans-serif;
+        padding: 10px 8px;
+        display: inline-block;
+        color: #007bff;
+        font-weight: 400;
+    }
  .mask-icon{
      width: 100%;
      height: 100%;
@@ -979,24 +978,24 @@
 	 right: 0;
 }
  .mask-icon ul li{
-     background: #b0b435;
+     background: #007bff;
 }
  .mask-icon ul li a{
      color: #ffffff;
      padding: 5px 10px;
      display: block;
 }
- .mask-icon a.cart{
-     background: #b0b435;
-     position: absolute;
-     bottom: 0;
-     left: 0px;
-     padding: 10px 20px;
-     font-weight: 700;
-     color: #ffffff;
-}
+    .mask-icon a.cart {
+        background: #007bff;
+        position: absolute;
+        bottom: 0;
+        left: 0px;
+        padding: 10px 20px;
+        font-weight: 700;
+        color: #ffffff;
+    }
  .mask-icon a.cart:hover{
-     background: #000000;
+     background: #1763b5;
      color: #ffffff;
 }
  .mask-icon ul li a:hover{
@@ -1502,7 +1501,7 @@
 }
 /*------------------------------------------------------------------ All Pages -------------------------------------------------------------------*/
  .all-title-box{
-     background: url("../images/all-bg-title.jpg") no-repeat center center;
+     background: url("../images/book-chapter-six-5834.jpg") no-repeat center center;
      -webkit-background-size: cover;
      -moz-background-size: cover;
      -ms-background-size: cover;
@@ -1512,6 +1511,7 @@
      background-attachment: fixed;
      padding: 70px 0px;
      position: relative;
+     height: 260px;
 }
  .all-title-box::before{
      background: rgba(0,0,0,0.6);
@@ -1755,23 +1755,23 @@
  .search-product {
      position: relative;
 }
- .search-product input[type="text"] {
-     background: #333333;
-     border: 0;
-     box-shadow: none;
-     border-radius: 0;
-     color: #ffffff;
-     height: 55px;
-     font-weight: 300;
-     font-size: 16px;
-     margin-bottom: 15px;
-     padding: 0 20px;
-     -webkit-transition: all .5s ease;
-     -moz-transition: all .5s ease;
-     transition: all .5s ease;
-     width: 100%;
-     outline: 0;
-}
+    .search-product input[type="text"] {
+        background: #f2ba16;
+        border: 0;
+        box-shadow: none;
+        border-radius: 0;
+        color: #231f1f;
+        height: 55px;
+        font-weight: 300;
+        font-size: 16px;
+        margin-bottom: 15px;
+        padding: 0 20px;
+        -webkit-transition: all .5s ease;
+        -moz-transition: all .5s ease;
+        transition: all .5s ease;
+        width: 100%;
+        outline: 0;
+    }
  .search-product .form-control::-moz-placeholder {
      color: #ffffff;
      opacity: 1;
@@ -1789,9 +1789,9 @@
      cursor: pointer;
      height: 100%;
 }
- .search-product button:hover{
-     background: #b0b435;
-}
+    .search-product button:hover {
+        background: #4177b0;
+    }
  .filter-sidebar-left{
      margin-bottom: 20px;
 }
@@ -1801,7 +1801,8 @@
      margin-bottom: 20px;
 }
  .title-left h3{
-     font-weight: 700;
+     font-weight: 500;
+     color:black;
 }
  .list-group-item {
      border: none;
@@ -1843,11 +1844,11 @@
      height: 1px;
      background-color: #ced4da;
 }
- .list-group-tree .list-group-item:hover {
-     color: #b0b435;
-     background-color: #fff;
-     outline: 0;
-     font-weight: 700;
+.list-group-tree .list-group-item:hover {
+    color: #4177b0;
+    background-color: #fff;
+    outline: 0;
+    font-weight: 700;
 }
  .filter-price-left{
      margin-bottom: 20px;
@@ -1897,8 +1898,8 @@
      position: relative;
 }
  .product-item-filter{
-     border-bottom: 1px solid #000000;
-     border-top: 1px solid #000000;
+     border-bottom: 1px solid #007bff;
+     border-top: 1px solid #007bff;
      display: -webkit-box;
      display: -ms-flexbox;
      display: -webkit-flex;
@@ -1916,6 +1917,8 @@
      line-height: 42px;
      padding-right: 15px;
      float: left;
+     color: darkred;
+     font-size: 18px;
 }
  .product-item-filter .toolbar-sorter-right{
      width: 65%;
@@ -1958,6 +1961,7 @@
  .product-item-filter p{
      float: right;
      line-height: 42px;
+     color: darkred;
 }
  .product-item-filter .nav-tabs{
      border: none;
@@ -1972,16 +1976,16 @@
      border: none;
      border-radius: 0px;
      color: #111111;
-     font-size: 18px;
+     font-size: 16px;
      padding: 4px 12px;
 }
- .product-item-filter li .nav-link.active {
-     background: #b0b435;
-     border: none;
-     color: #ffffff;
-}
+    .product-item-filter li .nav-link.active {
+        background: #ad001c;
+        border: none;
+        color: white;
+    }
  .product-item-filter li .nav-link:hover {
-     background: #000000;
+     background: darkred;
      border: none;
      color: #ffffff;
 }
@@ -2004,7 +2008,7 @@
      color: #666;
 }
  .why-text.full-width h5{
-     color: #000000;
+     color: #fffff7;
      font-weight: 700;
 }
  .why-text.full-width p{
