@@ -100,7 +100,10 @@ namespace SelahSeries.Repository
                     case "politics":
                         _categoryId = 4;
                         break;
-                }
+                    case "general":
+                    _categoryId = 5;
+                    break;
+            }
                 return await _selahDbContext.Posts
                                 .Include(p => p.Category)
                                     .Where(post => (post.CategoryId == _categoryId || post.ParentId == _categoryId) && post.Published == true)

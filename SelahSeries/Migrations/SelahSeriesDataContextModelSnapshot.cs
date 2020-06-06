@@ -30,13 +30,18 @@ namespace SelahSeries.Migrations
 
                     b.Property<int>("CategoryId");
 
-                    b.Property<string>("Description")
-                        .HasMaxLength(250);
+                    b.Property<DateTime>("CreatedAt");
+
+                    b.Property<string>("Description");
 
                     b.Property<string>("ImageUrl")
                         .HasMaxLength(100);
 
                     b.Property<bool>("IsHardBook");
+
+                    b.Property<DateTime>("ModifiedAt");
+
+                    b.Property<string>("Price");
 
                     b.Property<string>("Title")
                         .HasMaxLength(100);
@@ -104,7 +109,7 @@ namespace SelahSeries.Migrations
 
                     b.Property<int?>("CategoryId");
 
-                    b.Property<double>("Price");
+                    b.Property<string>("Price");
 
                     b.HasKey("HardBookId");
 

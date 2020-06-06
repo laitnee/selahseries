@@ -39,20 +39,34 @@ namespace SelahSeries.Repository
                                         .FirstOrDefaultAsync();
         }
 
+        public  IEnumerable<Book> GetHomeBooks()
+        {
+            return  _selahDbContext.Books
+                                        .Include(bk => bk.HardBook)
+                                        .Include(bk => bk.SoftBook).OrderByDescending(x => x.CreatedAt).Take(12);
+
+        }
+
 
         public async Task<PaginatedList<Book>> GetBooks(PaginationParam pageParam)
         {
-            return    await _selahDbContext.Books
+            return await _selahDbContext.Books
                                         .Include(bk => bk.HardBook)
-                                        .Include(bk => bk.SoftBook)
-                            .ToPaginatedListAsync(pageParam.PageIndex, pageParam.Limit, pageParam.SortColoumn);
+                                        .Include(bk => bk.SoftBook).ToPaginatedListAsync(pageParam);
+                            
         }
-
+   
         public async Task<List<Book>> SearchBooks(string searchText)
         {
             return await _selahDbContext.Books
                                     .Where(p => p.Title.Contains(searchText) || p.Author.Contains(searchText))
                                     .ToListAsync();
+        }
+
+        public async Task<bool> UpdateBook(Book book)
+        {
+            _selahDbContext.Update<Book>(book);
+            return Convert.ToBoolean(await _selahDbContext.SaveChangesAsync());
         }
     }
 }

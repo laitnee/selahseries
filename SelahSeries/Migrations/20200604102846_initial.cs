@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SelahSeries.Migrations
 {
-    public partial class Deploy : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -31,10 +31,13 @@ namespace SelahSeries.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Title = table.Column<string>(maxLength: 100, nullable: true),
                     Author = table.Column<string>(maxLength: 50, nullable: true),
-                    Description = table.Column<string>(maxLength: 250, nullable: true),
+                    Description = table.Column<string>(nullable: true),
                     ImageUrl = table.Column<string>(maxLength: 100, nullable: true),
                     CategoryId = table.Column<int>(nullable: false),
-                    IsHardBook = table.Column<bool>(nullable: false)
+                    Price = table.Column<string>(nullable: true),
+                    IsHardBook = table.Column<bool>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    ModifiedAt = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -80,7 +83,7 @@ namespace SelahSeries.Migrations
                 {
                     HardBookId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Price = table.Column<double>(nullable: false),
+                    Price = table.Column<string>(nullable: true),
                     BookId = table.Column<int>(nullable: false),
                     CategoryId = table.Column<int>(nullable: true)
                 },

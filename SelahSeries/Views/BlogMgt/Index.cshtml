@@ -30,9 +30,6 @@
 
                 @Html.DisplayNameFor(model => model.CategoryId)
             </th>
-            @*<th>
-                @Html.DisplayNameFor(model => model.Content)
-            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.TitleImageUrl)
             </th>
@@ -51,60 +48,61 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
+        <tr>
+            <td>
+                <div class="btn-group">
+                    <a class="btn btn-info" asp-action="Edit" asp-route-id="@item.PostId">Edit</a>
+                    
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.PostId">Delete</a>
+                </div>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            @if (item.CategoryId == 1)
+            {
+                <td>Sports</td>
+            }
+            else if (item.CategoryId == 2)
+            {
                 <td>
-                    <div class="btn-group">
-                        <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.PostId">Edit</a>
-                        <a class="btn btn-info" asp-action="Details" asp-route-id="@item.PostId">Details</a>
-                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.PostId">Delete</a>
-                    </div>
+                    Politics
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Author)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                @if (item.CategoryId == 1)
-                {
-                    <td>Sports</td>
-                }
-                else if (item.CategoryId == 2)
-                {
-                    <td>
-                        Politics
-                    </td>
-                }
-                else if (item.CategoryId == 3)
-                {
-                    <td>Relationship and Marriage</td>
-                }
-                else if (item.CategoryId == 4)
-                {
-                    <td>Career</td>
-                }
-                else
-                {
-                    <td>Unknown</td>
-                }
-                @*<td data-StripTag>
-                    @item.Content
-                </td>*@
-                <td>
-                    @Html.DisplayFor(modelItem => item.TitleImageUrl)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Published)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreatedAt)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ModifiedAt)
-                </td>
+            }
+            else if (item.CategoryId == 3)
+            {
+                <td>Relationship and Marriage</td>
+            }
+            else if (item.CategoryId == 4)
+            {
+                <td>Career</td>
+            }
+            else if (item.CategoryId == 5)
+            {
+                <td>General</td>
+            }
+            else
+            {
+                <td>Unknown</td>
+            }
+            <td>
+                @Html.DisplayFor(modelItem => item.TitleImageUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Published)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedAt)
+            </td>
 
 
-            </tr>
+        </tr>
         }
     </tbody>
 </table>

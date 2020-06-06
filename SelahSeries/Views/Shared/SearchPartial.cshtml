@@ -1,39 +1,22 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
-
-<div class="search_container ml-auto">
+﻿<div class="search_container ml-auto">
 
     @if (ViewData["Search"].ToString() == "posts")
     {
-        @*<form action="~/search/searchposts" method="get">
-                <input class="search" type="text" name="searchText" id="search" />
-                <button class="submit" type="submit" value="Search">Search</button>
-            </form>*@
-
         <form action="~/search/searchposts" method="get">
-            <input type="search" name="searchText" id="search" class="header_search_input" required="required" placeholder="Type to Search...">
+            <input type="search" name="searchText" id="search" class="header_search_input" required="required" placeholder="Type to Search..">
             <img class="header_search_icon" src="~/NewFolder2/new/search.png" alt="">
         </form>
     }
     else if (ViewData["Search"].ToString() == "books")
     {
-        @*<form action="~/search/searchbooks" method="get">
-                <input class="search" type="text" name="searchText" id="search" />
-                <button class="submit" type="submit" value="Search">Search</button>
-            </form>*@
 
         <form action="~/search/searchbooks" method="get">
-            <input type="search" name="searchText" id="search" class="header_search_input" required="required" placeholder="Type to Search...">
+            <input type="search" name="searchText" id="search" class="header_search_input" required="required" placeholder="Type to Search..." />
             <img class="header_search_icon" src="~/NewFolder2/new/search.png" alt="">
         </form>
     }
     else
     {
-        @*<form action="~/search/searchall" method="get">
-                <input class="search" type="text" name="searchText" id="search" />
-                <button class="submit" type="submit" value="Search">Search</button>
-            </form>*@
 
         <form action="~/search/searchall" method="get">
             <input type="search" name="searchText" id="search" class="header_search_input" required="required" placeholder="Type to Search...">
@@ -46,51 +29,13 @@
 </div>
 
 <style>
-    /*.wrapper {
-                width: 100%;
-                height: 250px;
-                box-sizing: border-box;
-            }*/
-
     input {
         box-sizing: border-box;
         font-size: 13px;
-        /*vertical-align: top;*/
     }
 
         input:focus {
             outline: none;
         }
 
-    /*.wrapper {
-                text-align: center;
-                position: relative;
-                height: 80px;
-                /*font-size: 0;*/
-    /*top: 50%;
-                transform: translateY(-50%);
-            }*/
-
-    /*.search {
-                padding: 0 30px;
-                font-size: 18px;
-                width: 60%;
-                max-width: 400px;
-                height: 80px;
-                border: 1px solid #c31132;
-                border-radius: 20px 0 0 20px;
-            }
-
-            .submit {
-                cursor: pointer;
-                border: none;
-                background: #c31132;
-                background-size: 35px 35px;
-                border-radius: 0 20px 20px 0;
-                padding: 15px 25px;
-                display: inline-block;
-                width: 12S0px;
-                height: 80px;
-                color: white;
-            }*/
 </style>

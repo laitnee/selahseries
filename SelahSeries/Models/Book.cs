@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,6 +9,11 @@ namespace SelahSeries.Models
 {
     public class Book
     {
+        public Book()
+        {
+
+            ModifiedAt = DateTime.Now;
+        }
         public int BookId { get; set; }
 
         [StringLength(100)]
@@ -16,7 +22,6 @@ namespace SelahSeries.Models
         [StringLength(50)]
         public string Author { get; set; }
 
-        [StringLength(250)]
         public string Description { get; set; }
 
         [StringLength(100)]
@@ -25,7 +30,11 @@ namespace SelahSeries.Models
         public int CategoryId { get; set; }
         public Category Category { get; set; }
 
+        public string Price { get; set; }
+       
         public bool IsHardBook { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime ModifiedAt { get; set; }
 
         public HardBook HardBook { get; set; }
 
