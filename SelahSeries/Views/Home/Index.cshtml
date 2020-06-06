@@ -8,6 +8,15 @@
     var next = pageIndex + 1;
     var latestArticle = Model.LatestArticle.OrderByDescending(x => x.CreatedAt);
 }
+@section AddMetaTags{
+
+    <meta property="og:title" content="Selah Series">
+    <meta property="og:description" content="A blog on relationship and marriage, career, sport and politis">
+    <meta property="og:image" content="~/NewFolder2/new/selah s.png">
+    <meta property="og:url" content="selahseries.com">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+}
 
 @section AddToHead {
     <link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/main_styles.css">
@@ -209,26 +218,26 @@
 
 
                                 @foreach (var item in latestArticle)
-        {
+                                {
 
-            <div class="card card_default card_small_with_image grid-item">
-                <img class="card-img-top" src='~/Uploads/@Html.DisplayFor(modelItem => item.TitleImageUrl)' alt="@Html.DisplayFor(modelItem => item.Title)">
-                <div class="card-body">
-                    <div class="card-title card-title-small"><a href="~/blog/post/@Html.DisplayFor(modelItem => item.PostId)">@Html.DisplayFor(modelItem => item.Title)</a></div>
-                    <small class="post_meta"><a href="#">@Html.DisplayFor(modelItem => item.Author)</a><span>@Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
-                </div>
-            </div>
-
-
-        }
+                                    <div class="card card_default card_small_with_image grid-item">
+                                        <img class="card-img-top" src='~/Uploads/@Html.DisplayFor(modelItem => item.TitleImageUrl)' alt="@Html.DisplayFor(modelItem => item.Title)">
+                                        <div class="card-body">
+                                            <div class="card-title card-title-small"><a href="~/blog/post/@Html.DisplayFor(modelItem => item.PostId)">@Html.DisplayFor(modelItem => item.Title)</a></div>
+                                            <small class="post_meta"><a href="#">@Html.DisplayFor(modelItem => item.Author)</a><span>@Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
+                                        </div>
+                                    </div>
 
 
+                                }
 
 
 
 
 
-                           
+
+
+
 
 
 
@@ -254,7 +263,7 @@
                                         <li class="page-item btnn0 active "><a href="~/@item?category=@category#blog" class="page-link waves-effect waves-effect">@item</a></li>
                                     }
                                 }
-                                
+
                                 <li class="page-item btnn0">
                                     <a href="~/@next?category=@category#blog" class="page-link waves-effect waves-effect" aria-label="Next">
                                         <span aria-hidden="true">»</span>
@@ -352,6 +361,38 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 											</svg>
                                     </div>
                                     <ul id="custom_dots" class="custom_dots custom_dots_vid">
@@ -363,6 +404,38 @@
                                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                              width="7px" height="12px" viewBox="0 0 7 12" enable-background="new 0 0 7 12" xml:space="preserve">
                                         <polyline fill="#bebebe" points="6.998,6.39 1.389,12 -0.002,12 -0.002,10.562 4.561,6 -0.002,1.438 -0.002,0 1.389,0 7,5.61 " />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -894,23 +967,24 @@
     .section_panel_more > ul > li {
         display: none;
     }
-    .section_panel_more > ul > li .all {
-        display: none;
-    }
 
-    .category{
+        .section_panel_more > ul > li .all {
+            display: none;
+        }
+
+    .category {
         display: none;
     }
 </style>
 
 <script>
-  
-     
-        $(function () {
-            $('nav a[href="/' + location.href.split("/")[3] + '"]').addClass('active');
-           
-        });
-        
-    
+
+
+    $(function () {
+        $('nav a[href="/' + location.href.split("/")[3] + '"]').addClass('active');
+
+    });
+
+
 
 </script>

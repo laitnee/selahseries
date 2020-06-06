@@ -96,17 +96,19 @@ namespace SelahSeries.Controllers
             return View();
         }
         [HttpGet]
-        public IActionResult Login()
+        public async Task Login(string returnUrl = "/blogmgt")
         {
-            if (TempData.ContainsKey("Alert"))
-            {
-                ViewBag.Alert = TempData["Alert"].ToString();
-            }
-            if (TempData.ContainsKey("Error"))
-            {
-                ViewBag.Error = TempData["Error"].ToString();
-            }
-            return View();
+
+            await HttpContext.ChallengeAsync("Google", new AuthenticationProperties() { RedirectUri = returnUrl });
+            //if (TempData.ContainsKey("Alert"))
+            //{
+            //    ViewBag.Alert = TempData["Alert"].ToString();
+            //}
+            //if (TempData.ContainsKey("Error"))
+            //{
+            //    ViewBag.Error = TempData["Error"].ToString();
+            //}
+            //return View();
         }
         [HttpPost]
         public async Task<IActionResult> Login([FromForm] AppUser appUser)

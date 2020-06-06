@@ -7,7 +7,7 @@
 
     <meta property="og:title" content=@($"{Model.Post.Title}")>
     <meta property="og:description" content=@($"{Model.Post.Category.Title} Talks {Model.Post.Title} By {Model.Post.Author}")>
-    <meta property="og:image" content="http://selahseries.com//uploads/@Model.Post.TitleImageUrl>
+    <meta property="og:image" content="~/uploads/@Model.Post.TitleImageUrl>
     <meta property="og:url" content="@Uri.EscapeDataString(pageURL)">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">

@@ -206,7 +206,6 @@ namespace SelahSeries.Controllers
                 return View();
             }
         }
-
         [HttpGet]
         public ActionResult SignOut()
         {

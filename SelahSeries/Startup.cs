@@ -16,6 +16,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.AspNetCore.Authentication.OAuth;
 
 namespace SelahSeries
 {
@@ -61,15 +62,33 @@ namespace SelahSeries
             });
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-              .AddCookie(options =>
+              .AddCookie(
+                options =>
               {
                   options.Cookie.HttpOnly = true;
                   options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
                   options.Cookie.SameSite = Microsoft.AspNetCore.Http.SameSiteMode.Lax;
                   options.Cookie.Name = "SelahSeris.AuthCookieAspNetCore";
                   options.LoginPath = "/Home/Login";
-                  options.LogoutPath = "/Home/Login";    
+                  options.LogoutPath = "/Home/Login";
+              }
+              ).AddGoogle("Google", options =>
+              {
+                  options.ClientId = Configuration["Authentication:Google:ClientId"];
+                  options.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+                  //options.Events = new OAuthEvents
+                  //{
+                  //    OnCreatingTicket = context =>
+                  //    {
+                  //        string domain = context.User.Value<string>("domain");
+                  //        if (domain != Configuration["Authentication:Google:LoginEmail"])
+                  //            throw new Exception($"You must sign in with a { Configuration["Authentication: Google:LoginEmail"]} email address");
+
+                  //        return Task.CompletedTask;
+                  //    }
+                  //};
               });
+        
 
             services.AddMvc(options => options.Filters.Add(new AuthorizeFilter())).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             
