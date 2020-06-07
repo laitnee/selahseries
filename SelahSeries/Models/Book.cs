@@ -27,6 +27,9 @@ namespace SelahSeries.Models
         [StringLength(100)]
         public string ImageUrl { get; set; }
 
+        [StringLength(100)]
+        public string BookUrl { get; set; }
+
         public int CategoryId { get; set; }
         public Category Category { get; set; }
 

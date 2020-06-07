@@ -23,7 +23,7 @@ namespace SelahSeries.ViewModels
         public int CategoryId { get; set; }
         public Category Category { get; set; }
 
-        public double Price { get; set; }
+        public string Price { get; set; }
         public bool IsHardBook { get; set; }
 
         public HardBook HardBook { get; set; }

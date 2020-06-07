@@ -19,6 +19,8 @@ namespace SelahSeries.ViewModels
         public string Author { get; set; }
         public IFormFile BookPhoto { get; set; }
 
+        public IFormFile BookUpload { get; set; }
+
         [Required]
         public string Description { get; set; }
 

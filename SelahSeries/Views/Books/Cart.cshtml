@@ -1,15 +1,414 @@
-﻿
-@{
-    Layout = null;
+﻿@section AddToHead {
+    <link rel="icon" href="img/favicon.png" type="image/png" />
+    <link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/main_styles.css">
+    <link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/responsive.css">
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="/NewFolder2/shop/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/NewFolder2/shop/images/apple-touch-icon.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/NewFolder2/shop/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/NewFolder2/styles/eiser_theme/css/themify-icons.css" />
+    <link rel="stylesheet" href="~/NewFolder2/styles/eiser_theme/vendors/owl-carousel/" />
+    <link rel="stylesheet" href="~/NewFolder2/styles/eiser_theme/vendors/lightbox/simpleLightbox.css" />
+    <link rel="stylesheet" href="~/NewFolder2/styles/eiser_theme/vendors/nice-select/css/nice-select.css" />
+    <link rel="stylesheet" href="~/NewFolder2/styles/eiser_theme/vendors/animate-css/animate.css" />
+    <link rel="stylesheet" href="~/NewFolder2/styles/eiser_theme/vendors/jquery-ui/jquery-ui.css" />
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="/NewFolder2/shop/css/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="/NewFolder2/shop/css/responsive.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/NewFolder2/shop/css/custom.css">
+    <link rel="stylesheet" href="~/NewFolder2/shop/css/cart_responsive.css">
+    <link rel="stylesheet" href="~/NewFolder2/shop/css/cart_style.css">
+    <link rel="stylesheet" href="~/NewFolder2/shop/css/Checkout.css">
+    <link rel="stylesheet" href="~/NewFolder2/styles/linericon/style.css">
 }
 
-<!DOCTYPE html>
+@section AddToEnd {
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="~/NewFolder2/shop/js/Checkout.js"></script>
+    <script src="~/NewFolder2/shop/js/bookstore.js"></script>
+}
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Cart</title>
-</head>
-<body>
-</body>
-</html>
+<!-- Cart Modal -->
+
+                <section class="cart_area" style="margin-top:99px">
+                    <div class=" container">
+                        <div class="">
+                            <h3 style="color:black">View Cart</h3>
+                            <br />
+                            <p style="color:#ad001c">
+                                <h5 style="color:#ad001c">** Note: Only residents in Nigeria (Ile-Ife, Ibadan and Ilesha ) can order for hard copy books. **</h5>
+                            </p>
+                        </div>
+                        <div class="cart_inner" style="margin-bottom: 60px">
+                            <div class="products-container">
+                                <div class="product-header">
+                                    <div class="product-title" style="text-align:center">BOOK</div>
+                                    <div class="price">PRICE</div>
+                                    <div class="quantity d-none d-sm-block d-md-block d-xl-block">QUANTITY</div>
+                                    <div class="quantity d-lg-none d-xl-none d-sm-none" style="text-align:center">QTY</div>
+                                    <div class="total">TOTAL</div>
+                                </div>
+                                <div class="products">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container_ship">
+                        <div class="shipping_area">
+
+                            <h3>Shipping</h3>
+
+                            <div class="shipping_box">
+
+                                <h6 style="color:#007bff">
+                                    Calculate Shipping
+                                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                </h6>
+
+                                <h4 class="local_delivery" style="color:black">Local Delivery: &nbsp&nbsp  ₦<span>100.00</span></h4>
+                                <select class="shipping_select">
+                                    <option value="1">Nigeria</option>
+                                </select>
+                                <select class="shipping_select">
+                                    <option value="0">Select a City</option>
+                                    <option value="1">Ile-Ife</option>
+                                    <option value="4">Ilesha</option>
+                                    <option value="4">Ibadan</option>
+                                </select>
+
+
+
+
+
+
+                            </div>
+
+                        </div>
+
+                        <div class="total_payment"><h4 style="color: #ad001c; font-weight: 600">Total (plus shipping fee):&nbsp&nbsp   ₦<span>500</span></h4></div>
+
+                        <div class="out_button_area" style="margin-top:64px; margin-bottom:64px">
+
+                            <div class="checkout_btn_inner">
+                                <a class="gray_btn" href="~/Books/Index">Continue Shopping</a>
+                                <button type="button" data-toggle="modal" data-target="#checkout">
+                                    <a class="main_btn" href="#">Proceed to checkout</a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+           
+
+
+<!-- Checkout Modal -->
+<div class="modal fade" id="checkout" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Checkout</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <section class="checkout_area section_gap">
+                    <div class="container">
+                        <div class="billing_details">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <h3>Billing Details</h3>
+                                    <form class="row contact_form"
+                                          action="#"
+                                          method="post"
+                                          novalidate="novalidate">
+                                        <div class="col-md-6 form-group p_star">
+                                            <input type="text"
+                                                   class="form-control"
+                                                   id="first"
+                                                   name="name" />
+                                            <span class="placeholder"
+                                                  data-placeholder="First name"></span>
+                                        </div>
+                                        <div class="col-md-6 form-group p_star">
+                                            <input type="text"
+                                                   class="form-control"
+                                                   id="last"
+                                                   name="name" />
+                                            <span class="placeholder" data-placeholder="Last name"></span>
+                                        </div>
+                                        <div class="col-md-6 form-group p_star">
+                                            <input type="text"
+                                                   class="form-control"
+                                                   id="number"
+                                                   name="number" />
+                                            <span class="placeholder"
+                                                  data-placeholder="Phone number"></span>
+                                        </div>
+                                        <div class="col-md-6 form-group p_star">
+                                            <input type="text"
+                                                   class="form-control"
+                                                   id="email"
+                                                   name="compemailany" />
+                                            <span class="placeholder"
+                                                  data-placeholder="Email Address"></span>
+                                        </div>
+                                        <div class="col-md-12 form-group p_star">
+                                            <select class="nice-select country_select">
+                                                <option value="1" class="option selected">Nigeria</option>
+                                                <option value="2">Nigeria</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-12 form-group p_star">
+                                            <input type="text"
+                                                   class="form-control"
+                                                   id="add1"
+                                                   name="add1" />
+                                            <span class="placeholder"
+                                                  data-placeholder="Address line 01"></span>
+                                        </div>
+                                        <div class="col-md-12 form-group p_star">
+                                            <input type="text"
+                                                   class="form-control"
+                                                   id="add2"
+                                                   name="add2" />
+                                            <span class="placeholder"
+                                                  data-placeholder="Address line 02"></span>
+                                        </div>
+                                        <div class="col-md-12 form-group p_star">
+                                            <select class="nice-select city_select">
+                                                <option value="0">Select Town/City</option>
+                                                <option value="1">Ile-Ife</option>
+                                                <option value="1">Ilesha</option>
+                                                <option value="1">Ibadan</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-12 form-group">
+                                            <div class="creat_account">
+                                                <textarea class="form-control"
+                                                          name="message"
+                                                          id="message"
+                                                          rows="1"
+                                                          placeholder="Order Notes"></textarea>
+                                            </div>
+                                    </form>
+                                    @*<a class="main_btn" href="#">Proceed to Payment</a>*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div class="">
+                    <div class="total-logo">
+                        <div class="total" style="border-bottom:none">
+                            <span>Total:</span>&nbsp;&nbsp;&nbsp;
+                            <span class="payment_amount total-n">₦<span>0</span></span>
+                        </div>
+                        <div class="logo">
+                            <img style="height:42px" src="~/NewFolder2/new/selah hdr md.png" />
+                        </div>
+                    </div>
+                    <!--End TOTAL-LOGO-->
+                    <div class="step">
+                        <div class="retry">Retry</div>
+                        <div class="line"></div>
+                        <div class="payment">Payment</div>
+                    </div>
+                    <!--End STEP-->
+                    <div class="cont-forms">
+                        <form class="form" autocomplete="off" novalidate>
+                            <fieldset class="card-number">
+                                <label for="card-num">Credit card number</label>
+                                <div class="flex-wrapper">
+                                    <input class="cc-number" type="num" maxlength="4" />
+                                    <input class="cc-number" type="num" maxlength="4" />
+                                    <input class="cc-number" type="num" maxlength="4" />
+                                    <input class="cc-number" type="num" maxlength="4" />
+                                </div>
+                            </fieldset>
+                            <fieldset class="card-holder">
+                                <label for="card-num">Credit card holder</label>
+                                <input type="text" />
+                            </fieldset>
+                            <fieldset class="card-expiration">
+                                <div class="expiry-ccv">
+                                    <div class="cont expiration-date">
+                                        <label for="card-num">Expiration Date</label>
+                                        <input type="numb" maxlength="2" />
+                                        <input class="last" type="num" maxlength="4" />
+                                    </div>
+                                    <div class="cont ccv">
+                                        <label for="card-ccv">ccv</label>
+                                        <input type="num" maxlength="3" />
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset class="conf-button">
+                                <div class="flex-wrapper">
+                                    <button class="purchase"><span>Confirm purchase</span></button>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div><!--End CONT-FORMS-->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .gray_btn:hover {
+        color: black;
+        border: 1px solid black;
+    }
+
+    h2, h4 {
+        color: black;
+        font-family: 'Ubuntu', sans-serif;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Ubuntu', sans-serif;
+    }
+
+    p {
+        color: rgba(0,0,0,0.9);
+        text-align: justify;
+    }
+
+    .download_btn {
+        color: white
+    }
+
+        .download_btn:hover {
+            background-color: #ca102e;
+        }
+
+    a:hover {
+        color: white;
+    }
+
+    .float {
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        bottom: 40px;
+        right: 40px;
+        background-color: #007bff;
+        color: #FFF;
+        border-radius: 50px;
+        text-align: center;
+        box-shadow: 2px 2px 3px #999;
+        z-index: 20;
+    }
+
+    .my-float {
+        margin-top: 22px;
+    }
+
+    .modal-footer button {
+        color: #007bff;
+    }
+
+    form .searchh:focus {
+        background: #f2ba16;
+    }
+
+    .book_image {
+        height: 291px;
+        width: 80%;
+    }
+
+    .products-container, .container_ship {
+        max-width: 650px;
+        justify-content: space-around;
+        margin: 0 auto;
+        margin-top: 50px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+        .products-container ion-icon {
+            font-size: 25px;
+            color: #007bff;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+    .product-header {
+        width: 100%;
+        max-width: 650px;
+        display: flex;
+        justify-content: flex-start;
+        border-bottom: 4px solid lightgrey;
+        margin: 0 auto;
+    }
+
+    .product-title {
+        width: 45%;
+        border-bottom: 4px solid lightgrey;
+    }
+
+    .price {
+        width: 15%;
+        display: flex;
+        align-items: center;
+        border-bottom: 4px solid lightgrey;
+    }
+
+    .total {
+        width: 10%;
+        display: flex;
+        align-items: center;
+        border-bottom: 4px solid lightgrey;
+    }
+
+    .quantity {
+        width: 30%;
+        display: flex;
+        align-items: center;
+        border-bottom: 4px solid lightgrey;
+    }
+
+    .product {
+        width: 45%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 16px 0;
+        border-bottom: 4px solid lightgrey;
+    }
+
+    .products {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+        .products img {
+            width: 75px;
+        }
+
+    .basketTotalContainer {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    .basketTotalTitle {
+        width: 30%;
+    }
+
+    .basketTotal {
+        width: 10%;
+    }
+    }
+</style>

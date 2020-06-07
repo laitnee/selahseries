@@ -61,13 +61,17 @@ namespace SelahSeries.Controllers
             if (ModelState.IsValid)
             {
                 var uploadedImage = "";
+                var uploadedBook = "";
                 if (bookVM.BookPhoto != null) uploadedImage = await ProcessPhoto(bookVM.BookPhoto);
+                if (bookVM.BookUpload != null) uploadedBook= await ProcessPhoto(bookVM.BookUpload);
 
                 try
                 {
                     var book = _mapper.Map<Book>(bookVM);
                     book.CreatedAt = DateTime.Now;
                     book.ImageUrl = uploadedImage;
+                    book.BookUrl = uploadedBook;
+
                     book.Price = string.IsNullOrWhiteSpace(book.Price) ? "-" : book.Price ;
 
                     if (await _bookRepo.AddBook(book))

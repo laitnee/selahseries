@@ -12,7 +12,6 @@
     <Compile Remove="wwwroot\NewFolder2\js\js3\js\**" />
     <Compile Remove="wwwroot\NewFolder2\js\NewFolder\**" />
     <Compile Remove="wwwroot\NewFolder2\plugins\jquery.mb.YTPlayer-3.1.12\**" />
-    <Compile Remove="wwwroot\NewFolder2\styles\NewFolder\**" />
     <Compile Remove="wwwroot\NewFolder\**" />
     <Content Remove="wwwroot\css\**" />
     <Content Remove="wwwroot\images\**" />
@@ -21,7 +20,6 @@
     <Content Remove="wwwroot\NewFolder2\js\js3\js\**" />
     <Content Remove="wwwroot\NewFolder2\js\NewFolder\**" />
     <Content Remove="wwwroot\NewFolder2\plugins\jquery.mb.YTPlayer-3.1.12\**" />
-    <Content Remove="wwwroot\NewFolder2\styles\NewFolder\**" />
     <Content Remove="wwwroot\NewFolder\**" />
     <EmbeddedResource Remove="wwwroot\css\**" />
     <EmbeddedResource Remove="wwwroot\images\**" />
@@ -30,7 +28,6 @@
     <EmbeddedResource Remove="wwwroot\NewFolder2\js\js3\js\**" />
     <EmbeddedResource Remove="wwwroot\NewFolder2\js\NewFolder\**" />
     <EmbeddedResource Remove="wwwroot\NewFolder2\plugins\jquery.mb.YTPlayer-3.1.12\**" />
-    <EmbeddedResource Remove="wwwroot\NewFolder2\styles\NewFolder\**" />
     <EmbeddedResource Remove="wwwroot\NewFolder\**" />
     <None Remove="wwwroot\css\**" />
     <None Remove="wwwroot\images\**" />
@@ -39,7 +36,6 @@
     <None Remove="wwwroot\NewFolder2\js\js3\js\**" />
     <None Remove="wwwroot\NewFolder2\js\NewFolder\**" />
     <None Remove="wwwroot\NewFolder2\plugins\jquery.mb.YTPlayer-3.1.12\**" />
-    <None Remove="wwwroot\NewFolder2\styles\NewFolder\**" />
     <None Remove="wwwroot\NewFolder\**" />
   </ItemGroup>
 
@@ -118,10 +114,37 @@
     <None Include="wwwroot\NewFolder2\plugins\parallax-js-master\parallax.min.js" />
     <None Include="wwwroot\NewFolder2\styles\bootstrap4\bootstrap.min.js" />
     <None Include="wwwroot\NewFolder2\styles\bootstrap4\popper.js" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\Uploads\" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\css\style.css.map" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\css\style.map" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\js\bootstrap.min.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\js\contact.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\js\custom.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\js\gmaps.min.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\js\jquery-3.2.1.min.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\js\jquery.ajaxchimp.min.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\js\jquery.form.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\js\jquery.validate.min.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\js\mail-script.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\js\popper.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\js\stellar.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\js\theme.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\vendors\animate-css\wow.min.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\vendors\bootstrap-datepicker\bootstrap-datetimepicker.min.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\vendors\bootstrap-datepicker\bootstrap-select.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\vendors\counter-up\jquery.counterup.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\vendors\counter-up\jquery.waypoints.min.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\vendors\flipclock\timer.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\vendors\isotope\imagesloaded.pkgd.min.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\vendors\isotope\isotope-min.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\vendors\jquery-ui\jquery-ui.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\vendors\lightbox\simpleLightbox.min.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\vendors\linericon\fonts\Linearicons-Free.svg" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\vendors\linericon\fonts\Linearicons-Free.woff2" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\vendors\nice-select\js\jquery.nice-select.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\vendors\nice-select\js\jquery.nice-select.min.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\vendors\owl-carousel\owl.carousel.min.js" />
+    <None Include="wwwroot\NewFolder2\styles\linericon\fonts\Linearicons-Free.svg" />
+    <None Include="wwwroot\NewFolder2\styles\linericon\fonts\Linearicons-Free.woff2" />
   </ItemGroup>
 
   <ItemGroup>

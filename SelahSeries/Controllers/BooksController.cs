@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using SelahSeries.Models.DTOs;
 using SelahSeries.Repository.Interfaces;
 using SelahSeries.ViewModels;
@@ -39,7 +41,7 @@ namespace SelahSeries.Controllers
             return View(books.Source);
         }
 
-        public IActionResult Checkout()
+        public IActionResult Cart()
         {
             return View();
         }
