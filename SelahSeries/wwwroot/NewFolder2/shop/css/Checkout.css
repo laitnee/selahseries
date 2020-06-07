@@ -34,15 +34,14 @@
     }
 
         .total-logo .total span {
-            display: block;
             text-transform: uppercase;
-            font-size: 14px;
+            font-size: 21px;
             color: #fff;
             margin-bottom: 3px;
         }
 
         .total-logo .total .total-n {
-            font-size:20px;
+           
         }
 
     .total-logo .logo {

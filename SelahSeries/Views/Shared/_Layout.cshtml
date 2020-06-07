@@ -94,8 +94,12 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="~/Books/Index">Books</a>
                                     </li>
+
                                     <li class="nav-item">
                                         <a class="nav-link" href="~/Contact">Contact</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="cart nav-link" href="~/books/cart"><i class="fa fa-shopping-cart mr-1"></i><span style="background-color: #ad001c; padding: 2px 3px; color: white; border-radius: 6px">0</span></a>
                                     </li>
                                 </ul>
 
@@ -375,10 +379,9 @@
   
      
         $(function () {
-            $('nav a[href="/' + location.pathname.split("/")[1] + '/' + location.pathname.split("/")[2] + '"]').parents('li').addClass('active');
+            $('nav a[href="/' + location.pathname.split("/")[1] + '/' +  '"]').parents('li').addClass('active');
            
-        });
+        });*@
         
     
 
-</script>*@

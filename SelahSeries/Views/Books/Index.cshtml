@@ -1,9 +1,11 @@
 ﻿@model IEnumerable<SelahSeries.Models.Book>
+@using System.Collections;
+@using Newtonsoft.Json;
 @{
     ViewData["Title"] = "Books";
     var books = Model.OrderByDescending(x => x.ModifiedAt).Take(20);
-    List<Book> Cart = new List<Book>(); 
-
+    List<Book> Products = new List<Book>();
+    ArrayList productArray = new ArrayList();
 }
 
 @section AddToHead {
@@ -37,6 +39,8 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <script src="~/NewFolder2/shop/js/Checkout.js"></script>
+    <script src="~/NewFolder2/shop/js/bookstore.js"></script>
+
 }
 <!-- Start Top Search -->
 <div class="top-search">
@@ -93,6 +97,21 @@
                                     @foreach (var item in books)
                                     {
                                         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                            @if (item.IsHardBook == true)
+                                            {
+
+                                                Products.Add(new Book()
+                                                {
+                                                    Title = item.Title,
+                                                    Price = item.Price
+                                                });
+
+
+                                            }
+                                            @foreach (var el in Products)
+                                            {
+                                                productArray.Add(el);
+                                            }
                                             <div class="products-single fix">
                                                 <div class="box-img-hover">
                                                     <div class="type-lb">
@@ -104,13 +123,13 @@
                                                     <img class="book_image" src="~/Uploads/@Html.DisplayFor(modelItem => item.ImageUrl)" class="img-fluid" alt="Image">
                                                     <div class="mask-icon">
                                                         <ul>
-                                                            <li><button type="button" class="nv-link" data-toggle="modal" data-target="#@item.BookId">View</button></li>
+                                                            <li><button type="button" class="nv-link" style="cursor:pointer" data-toggle="modal" data-target="#@item.BookId">View</button></li>
                                                             @*<li><a class="nav-link" href="~/books/index#list-view" data-toggle="tab">View</a></li>*@
                                                         </ul>
 
                                                         @if (item.IsHardBook == true)
                                                         {
-                                                            <a class="cart" href="#">Add to Cart</a>
+                                                            <a class="add-cart cart" style="cursor:pointer">Add to Cart</a>
                                                         }
 
                                                     </div>
@@ -138,7 +157,7 @@
                                                 <h4>@item.Title</h4>
                                                 @if (item.IsHardBook == true)
                                                 {
-                                                    <h5  id="pricee"> @item.Price</h5>
+                                                <h5 id="pricee">₦@item.Price</h5>
                                                 }
                                                 <a class="btn hvr-hover download_btn" href="#">Download</a>
                                             </div>
@@ -148,6 +167,9 @@
 
 
 
+                                    }
+                                    @{
+                                        string dataStr = JsonConvert.SerializeObject(@productArray, Formatting.None);
                                     }
                                 </div>
                             </div>
@@ -177,14 +199,14 @@
                                                     <h4>@item.Title</h4>
                                                     @if (item.IsHardBook == true)
                                                     {
-                                                        <h5>@item.Price</h5>
+                                                    <h5>₦@item.Price</h5>
                                                     }
                                                     <p>
                                                         @item.Description
                                                     </p>
                                                     @if (item.IsHardBook == true)
                                                     {
-                                                        <a class="btn hvr-hover" href="#">Add to Cart</a>
+                                                        <a class="add-cart cart btn hvr-hover" >Add to Cart</a>
                                                     }
                                                     <a class="btn hvr-hover" href="#">Free Download</a>
                                                 </div>
@@ -194,6 +216,7 @@
                                 }
                             </div>
                         </div>
+                        <div data-products="@Products[0]"></div>
                     </div>
                 </div>
             </div>
@@ -234,347 +257,22 @@
                 </div>
             </div>
         </div>
-        <button type="button" data-toggle="modal" data-target="#shopping_cart">
-            <a href="#" class="float">
+        <button>
+            <a href="~/books/cart" class="float">
                 <i class="fa fa-shopping-cart my-float"></i>
             </a>
         </button>
-
-        <!-- Cart Modal -->
-        <div class="modal fade" id="shopping_cart" role="dialog">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">View Cart</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <section class="cart_area">
-                            <div class="container">
-                                <div class="check_title">
-                                    <p style="color:#ad001c">
-                                        <span style="color:#ad001c">**</span> Note: Only residents in Nigeria (Ile-Ife, Ibadan and Ilesha ) can order for hard copy books. <span style="color:#ad001c">**</span>
-                                    </p>
-                                    <br />
-                                </div>
-                                <div class="cart_inner">
-                                    <div class="table-responsive">
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">Book</th>
-                                                    <th scope="col">Price</th>
-                                                    <th scope="col">Quantity</th>
-                                                    <th scope="col">Total</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <div class="media">
-                                                            <div class="d-flex">
-                                                                <img src="img/product/single-product/cart-1.jpg"
-                                                                     alt="" />
-                                                            </div>
-                                                            <div class="media-body">
-                                                                <p>Minimalistic shop</p>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h5>$360.00</h5>
-                                                    </td>
-                                                    <td>
-                                                        <div class="product_count">
-                                                            <input type="text"
-                                                                   name="qty"
-                                                                   id="sst"
-                                                                   maxlength="12"
-                                                                   value="1"
-                                                                   title="Quantity:"
-                                                                   class="input-text qty" />
-                                                            <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                                                                    class="increase items-count"
-                                                                    type="button">
-                                                                <i class="lnr lnr-chevron-up"></i>
-                                                            </button>
-                                                            <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                                                                    class="reduced items-count"
-                                                                    type="button">
-                                                                <i class="lnr lnr-chevron-down"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h5>$720.00</h5>
-                                                    </td>
-                                                </tr>
-                                                <tr class="bottom_button">
-                                                    <td>
-                                                        <a class="gray_btn" href="#">Update Cart</a>
-                                                    </td>
-                                                    @*<td></td>
-            <td></td>
-            <td>
-                <div class="cupon_text">
-                    <input type="text" placeholder="Coupon Code" />
-                    <a class="main_btn" href="#">Apply</a>
-                    <a class="gray_btn" href="#">Close Coupon</a>
-                </div>
-            </td>*@
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td>
-                                                        <h5>Subtotal</h5>
-                                                    </td>
-                                                    <td>
-                                                        <h5>$2160.00</h5>
-                                                    </td>
-                                                    <td></td>
-                                                </tr>
-
-                                                <tr class="shipping_area">
-                                                    <td></td>
-                                                    <td>
-                                                        <h5>Shipping</h5>
-                                                    </td>
-                                                    <td>
-                                                        <div class="shipping_box">
-                                                            <ul class="list">
-                                                                @*<li>
-                            <a href="#">Flat Rate: $5.00</a>
-                        </li>
-                        <li>
-                            <a href="#">Free Shipping</a>
-                        </li>
-                        <li>
-                            <a href="#">Flat Rate: $10.00</a>
-                        </li>*@
-                                                                <li class="active">
-                                                                    <a href="#">Local Delivery: $2.00</a>
-                                                                </li>
-
-                                                            </ul>
-                                                            <h6>
-                                                                Calculate Shipping
-                                                                <i class="fa fa-caret-down" aria-hidden="true"></i>
-                                                            </h6>
-                                                            <select class="shipping_select">
-                                                                <option value="1">Nigeria</option>
-                                                            </select>
-                                                            <select class="shipping_select">
-                                                                <option value="0">Select a City</option>
-                                                                <option value="1">Ile-Ife</option>
-                                                                <option value="4">Ilesha</option>
-                                                                <option value="4">Ibadan</option>
-                                                            </select>
-                                                            @*<input type="text" placeholder="Postcode/Zipcode" />*@
-                                                            <div>
-                                                                <a class="gray_btn" href="#">Update Details</a>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td><h5>Total (plus shipping fee)</h5></td>
-                                                    <td>$500</td>
-                                                    <td></td>
-                                                </tr>
-
-                                                <tr class="out_button_area">
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td>
-                                                        <div class="checkout_btn_inner">
-                                                            <a class="gray_btn" href="~/Books/Index">Continue Shopping</a>
-                                                            <button type="button" data-toggle="modal" data-target="#checkout">
-                                                                <a class="main_btn" href="#">Proceed to checkout</a>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <!-- Checkout Modal -->
-        <div class="modal fade" id="checkout" role="dialog">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Checkout</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <section class="checkout_area section_gap">
-                            <div class="container">
-                                <div class="billing_details">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <h3>Billing Details</h3>
-                                            <form class="row contact_form"
-                                                  action="#"
-                                                  method="post"
-                                                  novalidate="novalidate">
-                                                <div class="col-md-6 form-group p_star">
-                                                    <input type="text"
-                                                           class="form-control"
-                                                           id="first"
-                                                           name="name" />
-                                                    <span class="placeholder"
-                                                          data-placeholder="First name"></span>
-                                                </div>
-                                                <div class="col-md-6 form-group p_star">
-                                                    <input type="text"
-                                                           class="form-control"
-                                                           id="last"
-                                                           name="name" />
-                                                    <span class="placeholder" data-placeholder="Last name"></span>
-                                                </div>
-                                                <div class="col-md-6 form-group p_star">
-                                                    <input type="text"
-                                                           class="form-control"
-                                                           id="number"
-                                                           name="number" />
-                                                    <span class="placeholder"
-                                                          data-placeholder="Phone number"></span>
-                                                </div>
-                                                <div class="col-md-6 form-group p_star">
-                                                    <input type="text"
-                                                           class="form-control"
-                                                           id="email"
-                                                           name="compemailany" />
-                                                    <span class="placeholder"
-                                                          data-placeholder="Email Address"></span>
-                                                </div>
-                                                <div class="col-md-12 form-group p_star">
-                                                    <select class="nice-select country_select">
-                                                        <option value="1" class="option selected">Nigeria</option>
-                                                        <option value="2">Nigeria</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-12 form-group p_star">
-                                                    <input type="text"
-                                                           class="form-control"
-                                                           id="add1"
-                                                           name="add1" />
-                                                    <span class="placeholder"
-                                                          data-placeholder="Address line 01"></span>
-                                                </div>
-                                                <div class="col-md-12 form-group p_star">
-                                                    <input type="text"
-                                                           class="form-control"
-                                                           id="add2"
-                                                           name="add2" />
-                                                    <span class="placeholder"
-                                                          data-placeholder="Address line 02"></span>
-                                                </div>
-                                                <div class="col-md-12 form-group p_star">
-                                                    <select class="nice-select city_select">
-                                                        <option value="0">Select Town/City</option>
-                                                        <option value="1">Ile-Ife</option>
-                                                        <option value="1">Ilesha</option>
-                                                        <option value="1">Ibadan</option>
-                                                    </select>
-                                                </div>
-
-                                                <div class="col-md-12 form-group">
-                                                    <div class="creat_account">
-                                                        <textarea class="form-control"
-                                                                  name="message"
-                                                                  id="message"
-                                                                  rows="1"
-                                                                  placeholder="Order Notes"></textarea>
-                                                    </div>
-                                            </form>
-                                            @*<a class="main_btn" href="#">Proceed to Payment</a>*@
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                        <div class="">
-                            <div class="total-logo">
-                                <div class="total">
-                                    <span>Total:</span>
-                                    <span class="total-n">$205,50</span>
-                                </div>
-                                <div class="logo">
-                                    <img style="height:42px" src="~/NewFolder2/new/selah hdr md.png" />
-                                </div>
-                            </div>
-                            <!--End TOTAL-LOGO-->
-                            <div class="step">
-                                <div class="retry">Retry</div>
-                                <div class="line"></div>
-                                <div class="payment">Payment</div>
-                            </div>
-                            <!--End STEP-->
-                            <div class="cont-forms">
-                                <form class="form" autocomplete="off" novalidate>
-                                    <fieldset class="card-number">
-                                        <label for="card-num">Credit card number</label>
-                                        <div class="flex-wrapper">
-                                            <input class="cc-number" type="num" maxlength="4" />
-                                            <input class="cc-number" type="num" maxlength="4" />
-                                            <input class="cc-number" type="num" maxlength="4" />
-                                            <input class="cc-number" type="num" maxlength="4" />
-                                        </div>
-                                    </fieldset>
-                                    <fieldset class="card-holder">
-                                        <label for="card-num">Credit card holder</label>
-                                        <input type="text" />
-                                    </fieldset>
-                                    <fieldset class="card-expiration">
-                                        <div class="expiry-ccv">
-                                            <div class="cont expiration-date">
-                                                <label for="card-num">Expiration Date</label>
-                                                <input type="numb" maxlength="2" />
-                                                <input class="last" type="num" maxlength="4" />
-                                            </div>
-                                            <div class="cont ccv">
-                                                <label for="card-ccv">ccv</label>
-                                                <input type="num" maxlength="3" />
-                                            </div>
-                                        </div>
-                                    </fieldset>
-                                    <fieldset class="conf-button">
-                                        <div class="flex-wrapper">
-                                            <button class="purchase"><span>Confirm purchase</span></button>
-                                        </div>
-                                    </fieldset>
-                                </form>
-                            </div><!--End CONT-FORMS-->
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
+</div>
+     
     <!-- End Shop Page -->
 
     <style>
-        .gray_btn:hover{
-            color:black;
-            border:1px solid black;
+        .gray_btn:hover {
+            color: black;
+            border: 1px solid black;
         }
+
         h2, h4 {
             color: black;
             font-family: 'Ubuntu', sans-serif;
@@ -612,7 +310,7 @@
             border-radius: 50px;
             text-align: center;
             box-shadow: 2px 2px 3px #999;
-            z-index:20;
+            z-index: 20;
         }
 
         .my-float {
@@ -631,71 +329,90 @@
             height: 291px;
             width: 80%;
         }
+
+        .products-container {
+            max-width: 650px;
+            justify-content: space-around;
+            margin: 0 auto;
+            margin-top: 50px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+            .products-container ion-icon {
+                font-size: 25px;
+                color: #007bff;
+                margin-left: 10px;
+                margin-right: 10px;
+                cursor: pointer;
+            }
+
+        .product-header {
+            width: 100%;
+            max-width: 650px;
+            display: flex;
+            justify-content: flex-start;
+            border-bottom: 4px solid lightgrey;
+            margin: 0 auto;
+        }
+
+        .product-title {
+            width: 45%;
+        }
+
+        .price {
+            width: 15%;
+            display: flex;
+            align-items: center;
+        }
+
+        .total {
+            width: 10%;
+            display: flex;
+            align-items: center;
+        }
+
+        .quantity {
+            width: 30%;
+            display: flex;
+            align-items: center;
+        }
+
+        .product {
+            width: 45%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 4px solid lightgrey;
+        }
+
+        .products {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+            .products img {
+                width: 75px;
+            }
+
+        .basketTotalContainer {
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+            padding: 10px 0;
+        }
+
+        .basketTotalTitle {
+            width: 30%;
+        }
+
+        .basketTotal {
+            width: 10%;
+        }
         }
     </style>
-
     <script>
-        $().ready(function () {
-            // our cart variable
-            let cart = {
-                cost: 0.00,
-                toppings: []
-            };
-
-            let pizzaFlag = 0;
-
-            // getting the table and assigning it to a variable, making it a jQuery object
-            let cartTable = $('#cart-table');
-            // getting the total price label and making it a jQuery object.
-            let totalLabel = $('.cart-total-price');
-
-            //adding toppings to pizza
-            $('[id^=topping-]').click(function () {
-                if (pizzaFlag == 0) {
-                    alert("Please add a pizza first");
-                } else {
-                    // splitting out the id as a name
-                    let topping = this.id.split('-')[1];
-                    // adding the topping name to the pizza topping array
-                    pizza.toppings.push(topping);
-                    // adding the topping cost to the pizza cost, then changing the total text to reflect the new price
-                    pizza.cost += $('#' + topping).data().cost;
-                    totalLabel.text('$' + pizza.cost);
-                    // creating a table row with the topping name and cost, appending to the table
-                    cartTable.append(
-                        "<tr>" +
-                        "<td> " + topping + " </td> " +
-                        "<td> " + $('#' + topping).data().cost + " </td> " +
-                        "<td> 1 </td> " +
-                        "<tr>"
-                    );
-                }
-                // logging out the pizza to the console
-                console.log(pizza);
-            });
-
-            // adding a pizza
-            $('#pizza-btn').click(function () {
-                if (pizzaFlag == 1) {
-                    alert('You may only have one pizza at the moment');
-                } else {
-                    pizzaFlag = 1;
-                    pizza.cost += 10;
-                    console.log(pizza);
-                    cartTable.append(
-                        "<tr>" +
-                        "<td> Pizza </td> " +
-                        "<td> 10 </td> " +
-                        "<td> 1 </td> " +
-                        "<tr>"
-                    );
-                    totalLabel.text('$10');
-                }
-
-            });
-
-
-
-        });
-
+    console.log(@productArray)
     </script>
