@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using SelahSeries.Data;
 using SelahSeries.Core;
 using Microsoft.Net.Http.Headers;
@@ -32,13 +33,7 @@ namespace SelahSeries
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<CookiePolicyOptions>(options =>
-            {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = Microsoft.AspNetCore.Http.SameSiteMode.None;
-            });
-
+            
             services.AddDbContext<SelahSeriesDataContext>(c =>
                  c.UseSqlServer(Configuration.GetConnectionString("SelahSeriesDB")));
             services.AddAutoMapper(typeof(Startup));
@@ -47,51 +42,36 @@ namespace SelahSeries
             services.Configure<CookieTempDataProviderOptions>(options => {
                 options.Cookie.IsEssential = true;
             });
-
-            services.AddSession(so =>
-            {
-                so.IdleTimeout = TimeSpan.FromSeconds(60);
-            });
-
-            services.Configure<CookiePolicyOptions>(options =>
-            {
-                options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = Microsoft.AspNetCore.Http.SameSiteMode.Strict;
-                options.HttpOnly = HttpOnlyPolicy.None;
-                options.Secure = CookieSecurePolicy.Always;
-            });
-
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-              .AddCookie(
-                options =>
-              {
-                  options.Cookie.HttpOnly = true;
-                  options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
-                  options.Cookie.SameSite = Microsoft.AspNetCore.Http.SameSiteMode.Lax;
-                  options.Cookie.Name = "SelahSeris.AuthCookieAspNetCore";
-                  options.LoginPath = "/Home/Login";
-                  options.LogoutPath = "/Home";
-              }
-              ).AddGoogle("Google", options =>
-              {
-                  options.ClientId = Configuration["Authentication:Google:ClientId"];
-                  options.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
-              options.Events = new OAuthEvents
-              {
-                  OnCreatingTicket = context =>
-                  {
-                      string domain = context.User.Value<string>("domain");
-                      if (domain != Configuration["Authentication:Google:LoginEmail"])
-                          throw new Exception($"You must sign in with a { Configuration["Authentication: Google:LoginEmail"]} email address");
-
-                      return Task.CompletedTask;
-                  }
-                      };
-              });
         
 
             services.AddMvc(options => options.Filters.Add(new AuthorizeFilter())).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+ 
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    options.Cookie.Name = "Signin";
+                    options.LoginPath = "/Home/Login";
+                    options.LogoutPath = "/Home";
+                }
+              )
+              .AddGoogle("Google", options =>
+                {
             
+                  options.ClientId = Configuration["Authentication:Google:ClientId"];
+                  options.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+                  
+                  options.Events = new OAuthEvents
+                  {
+                      OnCreatingTicket = context =>
+                      {
+                          string domain = context.User.Value<string>("email");
+                          if (domain != Configuration["Authentication:Google:LoginEmail"])
+                              throw new Exception($"You must sign in with a {Configuration["Authentication:Google:LoginEmail"]} email address");
+                          return Task.CompletedTask;
+                      }
+                  };
+              });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -114,8 +94,7 @@ namespace SelahSeries
             //    await next();
             //});
             app.UseStaticFiles();
-            app.UseSession();
-            app.UseCookiePolicy();
+     
             app.UseAuthentication();
 
             app.UseMvc(routes =>

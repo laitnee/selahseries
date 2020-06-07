@@ -103,10 +103,13 @@ namespace SelahSeries.Controllers
             return View();
         }
         [HttpGet]
-        public async Task Login(string returnUrl = "/blogmgt")
+        public async Task Login()
         {
 
-            await HttpContext.ChallengeAsync("Google", new AuthenticationProperties() { RedirectUri = returnUrl });
+                string returnUrl = HttpContext.Request.Query["ReturnUrl"];
+                returnUrl = string.IsNullOrEmpty(returnUrl) ? "/" : returnUrl;
+                await HttpContext.ChallengeAsync("Google", new AuthenticationProperties() { RedirectUri = returnUrl });
+
             //if (TempData.ContainsKey("Alert"))
             //{
             //    ViewBag.Alert = TempData["Alert"].ToString();
@@ -116,6 +119,14 @@ namespace SelahSeries.Controllers
             //    ViewBag.Error = TempData["Error"].ToString();
             //}
             //return View();
+        }
+        [Route("googleCallback")]
+        public async Task<ActionResult> GoogleLoginCallback()
+        {
+            var authenticateResult = await HttpContext.AuthenticateAsync("Google");
+            if (!authenticateResult.Succeeded) return LocalRedirect("/home");
+            var emailClaim = authenticateResult.Principal.FindFirst(ClaimTypes.Email);
+            return RedirectToAction("Index", "BlogMgt");
         }
         [HttpPost]
         public async Task<IActionResult> Login([FromForm] AppUser appUser)

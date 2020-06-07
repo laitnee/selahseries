@@ -211,7 +211,7 @@ namespace SelahSeries.Controllers
         {
             var login = HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             TempData["Alert"] = " Logout successful ";
-            return RedirectToAction("Login", "Home");
+            return RedirectToAction("Index", "Home");
         }
     }
 }
