@@ -130,13 +130,17 @@
 	}
 }
 
+@media (min-width:1000px) and (max-width: 1024px){
+    nav.navbar {
+        margin-left: -38px;
+        margin-right: -57px;
+    }
+    }
+}
 /************
 4. 1100px
 ************/
-
-@media only screen and (max-width: 1100px)
-{
-	
+@media only screen and (max-width: 1100px) {
 }
 
 /************
@@ -179,7 +183,7 @@
     nav > .navbar-collapse{
         flex-grow:0.5;
     }
-
+    
 }
 
 /************
@@ -378,6 +382,10 @@
     }
     img.book_image {
         height: 400px;
+    }
+    .header > .navbar{
+        padding-left:7%;
+        padding-right:7%;
     }
 }
 /************
@@ -680,6 +688,12 @@
     img.book_image {
         height: 348px;
         width: 67%;
+    }
+    div.before_shop{
+        display:block;
+    }
+    div.after_shop{
+        display: none;
     }
 }
 /************

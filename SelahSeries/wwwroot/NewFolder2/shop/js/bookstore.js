@@ -1,20 +1,23 @@
 ﻿
 let carts = document.querySelectorAll('.add-cart');
 
-let products = [
+
+let roducts = [
     {
-    name: "Hello World",
-        tag: "grey",
-        price: 750,
-        incart: 0
+    Title: "Hello World",
+        Tag: "grey",
+        Price: "750",
+        InCart: 0
     },
     {
-        name: "Welcome to Selah",
-        tag: "grep",
-        price: 500,
-        incart: 0
+        Title: "Welcome to Selah",
+        Tag: "grep",
+        Price: "500",
+        InCart: 0
     }
 ];
+
+let products = JSON.parse(localStorage.getItem("BooksForSale"));
 
 for (let i = 0; i < carts.length; i++) {
     carts[i].addEventListener('click', () => {
@@ -22,6 +25,8 @@ for (let i = 0; i < carts.length; i++) {
         totalCost(products[i]);
     } )
 }
+
+
 
 function onLoadCartNumbers() {
     let productNumbers = localStorage.getItem('cartNumbers');
@@ -52,21 +57,20 @@ function cartNumbers(product) {
 function setItems(product) {
     let CartItems = localStorage.getItem('productsInCart');
     CartItems = JSON.parse(CartItems);
-    console.log('My cart Items are', CartItems);
 
     if (CartItems != null) {
-        if (CartItems[product.tag] == undefined) {
+        if (CartItems[product.Tag] == undefined) {
             CartItems = {
                 ...CartItems,
-                [product.tag] : product
+                [product.Tag] : product
             }
         }
-        CartItems[product.tag].incart += 1;
+        CartItems[product.Tag].InCart += 1;
     }
     else {
-        product.incart = 1;
+        product.InCart = 1;
         CartItems = {
-            [product.tag]: product
+            [product.Tag]: product
         }
     }
   
@@ -75,18 +79,15 @@ function setItems(product) {
 }
 
 function totalCost(product) {
-    //console.log('the product price is', product.price);
     let cartCost = localStorage.getItem('totalCost');
-   
-    console.log('My cart cost is', cartCost);
 
     if (cartCost != null) {
         cartCost = parseInt(cartCost);
-        localStorage.setItem('totalCost', cartCost + product.price);
+        localStorage.setItem('totalCost', cartCost + parseInt(product.Price));
     }
 
     else {
-        localStorage.setItem('totalCost', product.price);
+        localStorage.setItem('totalCost', parseInt(product.Price));
     }
 }
 function displayCart() {
@@ -103,16 +104,16 @@ function displayCart() {
             <div class='product-title'>
                 <ion-icon style="color:#ad001c" name="close-circle"><i class="fa fa-close mr-1"></i></ion-icon> 
                 
-                <span>${item.name}</span>
+                <span>${item.Title}</span>
             </div>
-            <div class="price">₦${item.price}</div>
+            <div class="price">₦${item.Price}</div>
             <div class="quantity">
-                <ion-icon  name="close-circle"><i id="decrease" onclick = "decreaseQuantity()" class="fa fa-minus-square mr-1"></i></ion-icon>
-                <span>${item.incart}</span>
-                <ion-icon style="margin-left: 10px" name="close-circle"><i id="increase" onclick = "increaseQuantity()" class="fa fa-plus-square mr-1"></i></ion-icon> 
+                <ion-icon  class="decrease name="close-circle"><i id="decrease"  class="fa fa-minus-square mr-1"></i></ion-icon>
+                <span>${item.InCart}</span>
+                <ion-icon class="increase" style="margin-left: 10px" name="close-circle"><i id="increase"  class="fa fa-plus-square mr-1"></i></ion-icon> 
             </div>
             <div class="total">
-                ₦<span>${item.incart * item.price}.00</span>
+                ₦<span>${item.InCart * item.Price}</span>
             </div>
             `
            
@@ -126,12 +127,15 @@ function displayCart() {
         SubTotal
         </h4>
         <h4 class="subtotal basketTotal">
-        ₦<span>${cartCost}.00<span>
+        ₦<span>${cartCost}<span>
         </h4>
 
           `
     }
 }
+
+
+
 
 displayCart();
 onLoadCartNumbers();
@@ -143,4 +147,6 @@ let paymentAmount = document.querySelector('.payment_amount span');
 
 totalPayment.innerHTML = parseInt(subTotal.innerHTML) + parseInt(localDelivery.innerHTML);
 paymentAmount.innerHTML = parseInt(totalPayment.innerHTML);
+
+
 
