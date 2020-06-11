@@ -3,9 +3,8 @@
 @using Newtonsoft.Json;
 @{
     ViewData["Title"] = "Books";
-    var books = Model.OrderByDescending(x => x.ModifiedAt).Take(20);
-    List<Book> Products = new List<Book>();
-    ArrayList productArray = new ArrayList();
+ var books = Model.OrderByDescending(x => x.ModifiedAt).Take(20);
+ ArrayList Products = new ArrayList();
 }
 
 @section AddToHead {
@@ -42,6 +41,9 @@
     <script src="~/NewFolder2/shop/js/bookstore.js"></script>
 
 }
+
+
+
 <!-- Start Top Search -->
 <div class="top-search">
     <div class="container">
@@ -66,6 +68,43 @@
 <div class="shop-box-inner">
 
     <div class="container">
+
+        <div class="before_shop col-xl-3 col-lg-3 col-sm-12 col-xs-12 sidebar-shop-left">
+            <div class="product-categori">
+                <div class="second search-product">
+                    <form action="#">
+                        <input class="searchh form-control" placeholder="Search here..." type="text">
+                        <button type="submit"> <i class="fa fa-search"></i> </button>
+                    </form>
+                </div>
+                <div class="filter-sidebar-left">
+                    <div class="title-left">
+                        <h4 style="font-weight:400">Categories</h4>
+                    </div>
+                    <div class="list-group list-group-collapse list-group-sm list-group-tree" id="list-group-men" data-children=".sub-men">
+                        @*<div class="list-group-collapse sub-men">
+                                <a class="list-group-item list-group-item-action" href="#sub-men1" data-toggle="collapse" aria-expanded="true" aria-controls="sub-men1">
+                                    Fruits & Drinks <small class="text-muted">(100)</small>
+                                </a>
+                                <div class="collapse show" id="sub-men1" data-parent="#list-group-men">
+                                    <div class="list-group">
+                                        <a href="#" class="list-group-item list-group-item-action active">Fruits 1 <small class="text-muted">(50)</small></a>
+                                        <a href="#" class="list-group-item list-group-item-action">Fruits 2 <small class="text-muted">(10)</small></a>
+                                        <a href="#" class="list-group-item list-group-item-action">Fruits 3 <small class="text-muted">(10)</small></a>
+                                        <a href="#" class="list-group-item list-group-item-action">Fruits 4 <small class="text-muted">(10)</small></a>
+                                        <a href="#" class="list-group-item list-group-item-action">Fruits 5 <small class="text-muted">(20)</small></a>
+                                    </div>
+                                </div>
+                            </div>*@
+                        <a href="#" class="list-group-item list-group-item-action"> Relationship & Marriage</a>
+                        <a href="#" class="list-group-item list-group-item-action"> Sports </a>
+                        <a href="#" class="list-group-item list-group-item-action"> Politics </a>
+                        <a href="#" class="list-group-item list-group-item-action"> Career </a>
+                        <a href="#" class="list-group-item list-group-item-action"> General </a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row" style="margin-bottom: 10px;
     color: #4177b0;
     font-size: 16px;"><p style="margin: 0px 20px"><span style="color:#ad001c">**</span> Note: Only residents in Nigeria (Ile-Ife, Ibadan and Ilesha ) can order for hard copy books. <span style="color:#ad001c">**</span></pstyle="></div>
@@ -100,17 +139,14 @@
                                             @if (item.IsHardBook == true)
                                             {
 
-                                                Products.Add(new Book()
+                                                Products.Add(new ShopBook()
                                                 {
+                                                    Price = item.Price,
+                                                    Tag = item.ImageUrl,
                                                     Title = item.Title,
-                                                    Price = item.Price
+                                                    InCart = 0
                                                 });
 
-
-                                            }
-                                            @foreach (var el in Products)
-                                            {
-                                                productArray.Add(el);
                                             }
                                             <div class="products-single fix">
                                                 <div class="box-img-hover">
@@ -157,20 +193,18 @@
                                                 <h4>@item.Title</h4>
                                                 @if (item.IsHardBook == true)
                                                 {
-                                                <h5 id="pricee">₦@item.Price</h5>
+                                                    <h5 id="pricee">₦@item.Price</h5>
                                                 }
                                                 <a class="btn hvr-hover download_btn" href="~/Uploads/@item.BookUrl" download>Download</a>
                                             </div>
                                         </div>
-
-
-
-
-
                                     }
                                     @{
-                                        string dataStr = JsonConvert.SerializeObject(@productArray, Formatting.None);
+                                        var output = @Html.Raw(JsonConvert.SerializeObject(Products));
                                     }
+                                    <script>
+                                        localStorage.setItem("BooksForSale", JSON.stringify(@output))
+                                    </script>
                                 </div>
                             </div>
                             <div role="tabpanel" class="tab-pane fade" id="list-view">
@@ -199,14 +233,14 @@
                                                     <h4>@item.Title</h4>
                                                     @if (item.IsHardBook == true)
                                                     {
-                                                    <h5>₦@item.Price</h5>
+                                                        <h5>₦@item.Price</h5>
                                                     }
                                                     <p>
                                                         @item.Description
                                                     </p>
                                                     @if (item.IsHardBook == true)
                                                     {
-                                                        <a class="add-cart cart btn hvr-hover" >Add to Cart</a>
+                                                        <a class="add-cart cart btn hvr-hover">Add to Cart</a>
                                                     }
                                                     <a class="btn hvr-hover" href="~/uploads/@item.BookUrl" download>Free Download</a>
                                                 </div>
@@ -216,11 +250,11 @@
                                 }
                             </div>
                         </div>
-                        <div data-products="@Products[0]"></div>
+                        @*<div data-products="@Products[0]"></div>*@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-lg-3 col-sm-12 col-xs-12 sidebar-shop-left">
+            <div class="col-xl-3 after_shop col-lg-3 col-sm-12 col-xs-12 sidebar-shop-left">
                 <div class="product-categori">
                     <div class="second search-product">
                         <form action="#">
@@ -257,6 +291,9 @@
                 </div>
             </div>
         </div>
+
+
+
         <button>
             <a href="~/books/cart" class="float">
                 <i class="fa fa-shopping-cart my-float"></i>
@@ -264,155 +301,178 @@
         </button>
     </div>
 </div>
-     
-    <!-- End Shop Page -->
 
-    <style>
-        .gray_btn:hover {
-            color: black;
-            border: 1px solid black;
+
+<!-- End Shop Page -->
+
+<style>
+    .gray_btn:hover {
+        color: black;
+        border: 1px solid black;
+    }
+
+    h2, h4 {
+        color: black;
+        font-family: 'Ubuntu', sans-serif;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Ubuntu', sans-serif;
+    }
+
+    p {
+        color: rgba(0,0,0,0.9);
+        text-align: justify;
+    }
+
+    .download_btn {
+        color: white
+    }
+
+        .download_btn:hover {
+            background-color: #ca102e;
         }
 
-        h2, h4 {
-            color: black;
-            font-family: 'Ubuntu', sans-serif;
-        }
+    a:hover {
+        color: white;
+    }
 
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Ubuntu', sans-serif;
-        }
+    .float {
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        bottom: 40px;
+        right: 40px;
+        background-color: #007bff;
+        color: #FFF;
+        border-radius: 50px;
+        text-align: center;
+        box-shadow: 2px 2px 3px #999;
+        z-index: 20;
+    }
 
-        p {
-            color: rgba(0,0,0,0.9);
-            text-align: justify;
-        }
+    .my-float {
+        margin-top: 22px;
+    }
 
-        .download_btn {
-            color: white
-        }
+    .modal-footer button {
+        color: #007bff;
+    }
 
-            .download_btn:hover {
-                background-color: #ca102e;
-            }
+    form .searchh:focus {
+        background: #f2ba16;
+    }
 
-        a:hover {
-            color: white;
-        }
+    .book_image {
+        height: 291px;
+        width: 80%;
+    }
 
-        .float {
-            position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 40px;
-            right: 40px;
-            background-color: #007bff;
-            color: #FFF;
-            border-radius: 50px;
-            text-align: center;
-            box-shadow: 2px 2px 3px #999;
-            z-index: 20;
-        }
+    .products-container {
+        max-width: 650px;
+        justify-content: space-around;
+        margin: 0 auto;
+        margin-top: 50px;
+        display: flex;
+        flex-wrap: wrap;
+    }
 
-        .my-float {
-            margin-top: 22px;
-        }
-
-        .modal-footer button {
+        .products-container ion-icon {
+            font-size: 25px;
             color: #007bff;
+            margin-left: 10px;
+            margin-right: 10px;
+            cursor: pointer;
         }
 
-        form .searchh:focus {
-            background: #f2ba16;
+    .product-header {
+        width: 100%;
+        max-width: 650px;
+        display: flex;
+        justify-content: flex-start;
+        border-bottom: 4px solid lightgrey;
+        margin: 0 auto;
+    }
+
+    .product-title {
+        width: 45%;
+    }
+
+    .price {
+        width: 15%;
+        display: flex;
+        align-items: center;
+    }
+
+    .total {
+        width: 10%;
+        display: flex;
+        align-items: center;
+    }
+
+    .quantity {
+        width: 30%;
+        display: flex;
+        align-items: center;
+    }
+
+    .product {
+        width: 45%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 16px 0;
+        border-bottom: 4px solid lightgrey;
+    }
+
+    .products {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+        .products img {
+            width: 75px;
         }
 
-        .book_image {
-            height: 291px;
-            width: 80%;
-        }
+    .basketTotalContainer {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+        padding: 10px 0;
+    }
 
-        .products-container {
-            max-width: 650px;
-            justify-content: space-around;
-            margin: 0 auto;
-            margin-top: 50px;
-            display: flex;
-            flex-wrap: wrap;
-        }
+    .basketTotalTitle {
+        width: 30%;
+    }
 
-            .products-container ion-icon {
-                font-size: 25px;
-                color: #007bff;
-                margin-left: 10px;
-                margin-right: 10px;
-                cursor: pointer;
-            }
+    .basketTotal {
+        width: 10%;
+    }
 
-        .product-header {
-            width: 100%;
-            max-width: 650px;
-            display: flex;
-            justify-content: flex-start;
-            border-bottom: 4px solid lightgrey;
-            margin: 0 auto;
-        }
+    .before_shop {
+        display: none;
+    }
+    }
+</style>
 
-        .product-title {
-            width: 45%;
-        }
+@*<script>
+    let decrease_btns = document.querySelectorAll('.decrease');
+    let increase_btns = document.querySelectorAll('.increase');
+    console.log(decrease_btns);
 
-        .price {
-            width: 15%;
-            display: flex;
-            align-items: center;
-        }
+    for (let i = 0; i < decrease_btns.length; i++) {
+        decrease_btns[i].addEventListener('click', () => {
+            window.alert("I am clicked");
+            products[i].InCart = parseInt(products[i].InCart - 1);
+            document.querySelector(".quantity span") = products[i].InCart;
+        })
+    }
 
-        .total {
-            width: 10%;
-            display: flex;
-            align-items: center;
-        }
-
-        .quantity {
-            width: 30%;
-            display: flex;
-            align-items: center;
-        }
-
-        .product {
-            width: 45%;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            padding: 16px 0;
-            border-bottom: 4px solid lightgrey;
-        }
-
-        .products {
-            width: 100%;
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-            .products img {
-                width: 75px;
-            }
-
-        .basketTotalContainer {
-            display: flex;
-            justify-content: flex-end;
-            width: 100%;
-            padding: 10px 0;
-        }
-
-        .basketTotalTitle {
-            width: 30%;
-        }
-
-        .basketTotal {
-            width: 10%;
-        }
-        }
-    </style>
-    <script>
-    console.log(@productArray)
-    </script>
+    for (let i = 0; i < increase_btns.length; i++) {
+        increase_btns[i].addEventListener('click', () => {
+            products[i].InCart = parseInt(products[i].InCart + 1);
+            document.querySelector(".quantity span") = products[i].InCart;
+        })
+    }
+</script>*@

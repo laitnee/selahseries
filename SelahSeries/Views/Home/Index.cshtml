@@ -1,4 +1,6 @@
 ﻿@model SelahSeries.ViewModels.PostHomeViewModel
+@using Newtonsoft.Json;
+@using System.Collections;
 @{
     ViewData["Title"] = "Home Page";
 
@@ -10,6 +12,7 @@
     List<Book> Books_Slide1 = new List<Book>();
     List<Book> Books_Slide2 = new List<Book>();
     List<Book> Books_Slide3 = new List<Book>();
+    ArrayList Products = new ArrayList();
     if (Model.Books.Any())
     {
         for (int i = 0; i < 2; i++)
@@ -402,6 +405,198 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 											</svg>
                                     </div>
                                     <ul id="custom_dots" class="custom_dots custom_dots_vid">
@@ -413,6 +608,198 @@
                                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                              width="7px" height="12px" viewBox="0 0 7 12" enable-background="new 0 0 7 12" xml:space="preserve">
                                         <polyline fill="#bebebe" points="6.998,6.39 1.389,12 -0.002,12 -0.002,10.562 4.561,6 -0.002,1.438 -0.002,0 1.389,0 7,5.61 " />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -555,7 +942,17 @@
                                                 <h5 style="color:black">@item.Title</h5>
                                                 @if (item.IsHardBook == true)
                                                 {
-                                                <p class="item-price">₦@item.Price</p>
+
+                                                    Products.Add(new ShopBook()
+                                                    {
+                                                        Price = item.Price,
+                                                        Tag = item.ImageUrl,
+                                                        Title = item.Title,
+                                                        InCart = 0
+                                                    });
+
+
+                                                    <p class="item-price">₦@item.Price</p>
                                                     <a class="add-cart cart btn btn-primary">Add to Cart</a>
                                                 }
                                                 <a href="~/uploads/@item.BookUrl" download class="btn btn-primary">Download</a>
@@ -563,57 +960,68 @@
                                         </div>
                                     </div>
                                 }
+
                             </div>
                         </div>
 
 
                         @*@foreach (var item in Books_Slide2)
-                            {
-                                <div class="item carousel-item">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <div class="thumb-wrapper">
-                                                <div class="img-box">
-                                                    <img src="~/Uploads/@Html.DisplayFor(modelItem => item.ImageUrl)" class="img-responsive img-fluid" alt="">
-                                                </div>
-                                                <div class="thumb-content">
-                                                    <h5 style="color:black">@item.Title</h5>
-                                                    @if (item.IsHardBook == true)
-                                                    {
-                                                        <p class="item-price">@item.Price</p>
-                                                        <a href="#" class="btn btn-primary">Add to Cart</a>
-                                                    }
-                                                    <a href="#" class="btn btn-primary">Download</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+            {
+                <div class="item carousel-item">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="thumb-wrapper">
+                                <div class="img-box">
+                                    <img src="~/Uploads/@Html.DisplayFor(modelItem => item.ImageUrl)" class="img-responsive img-fluid" alt="">
                                 </div>
-                            }
-                            @foreach (var item in Books_Slide3)
-                            {
-                                <div class="item carousel-item">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <div class="thumb-wrapper">
-                                                <div class="img-box">
-                                                    <img src="~/Uploads/@Html.DisplayFor(modelItem => item.ImageUrl)" class="img-responsive img-fluid" alt="">
-                                                </div>
-                                                <div class="thumb-content">
-                                                    <h5 style="color:black">@item.Title</h5>
-                                                    @if (item.IsHardBook == true)
-                                                    {
-                                                        <p class="item-price">@item.Price</p>
-                                                        <a href="#" class="btn btn-primary">Add to Cart</a>
-                                                    }
-                                                    <a href="#" class="btn btn-primary">Download</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="thumb-content">
+                                    <h5 style="color:black">@item.Title</h5>
+                                    @if (item.IsHardBook == true)
+                                    {
+                                        <p class="item-price">@item.Price</p>
+                                        <a href="#" class="btn btn-primary">Add to Cart</a>
+                                    }
+                                    <a href="#" class="btn btn-primary">Download</a>
                                 </div>
-                            }*@
+                            </div>
+                        </div>
                     </div>
+                </div>
+            }
+            @foreach (var item in Books_Slide3)
+            {
+                <div class="item carousel-item">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="thumb-wrapper">
+                                <div class="img-box">
+                                    <img src="~/Uploads/@Html.DisplayFor(modelItem => item.ImageUrl)" class="img-responsive img-fluid" alt="">
+                                </div>
+                                <div class="thumb-content">
+                                    <h5 style="color:black">@item.Title</h5>
+                                    @if (item.IsHardBook == true)
+                                    {
+                                        <p class="item-price">@item.Price</p>
+                                        <a href="#" class="btn btn-primary">Add to Cart</a>
+                                    }
+                                    <a href="#" class="btn btn-primary">Download</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }*@
+                    </div>
+
+                    @{
+                        var output = @Html.Raw(JsonConvert.SerializeObject(Products));
+                    }
+
+                    <script>
+                                    if (localStorage.getItem("BooksForSale") == null) {
+                                        localStorage.setItem("BooksForSale", JSON.stringify(@output))
+                                    }
+                    </script>
                     <!-- Carousel controls -->
                     <a class="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev">
                         <i class="fa fa-angle-left"></i>
@@ -748,11 +1156,11 @@
 @*<script>
 
 
-    $(function () {
-        $('nav a[href="/' + location.href.split("/")[3] + '"]').addClass('active');
+        $(function () {
+            $('nav a[href="/' + location.href.split("/")[3] + '"]').addClass('active');
 
-    });
+        });
 
 
 
-</script>*@
+    </script>*@
