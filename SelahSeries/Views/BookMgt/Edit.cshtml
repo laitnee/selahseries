@@ -87,12 +87,11 @@
                     <span asp-validation-for="Title" class="text-danger"></span>
                 </div>
             </div>
-
             <div class="form-group">
                 <button type="button" class="collapsible">Book Description</button>
                 <div class="content">
                     <span asp-validation-for="Description" class="text-danger"></span>
-                    <textarea asp-for="Description" id="contentEditor" style="width: 100%; height: 200px; display: none;">  </textarea>
+                    <textarea asp-for="Description" class="form-control" style="width: 100%; height: 200px"></textarea>
                 </div>
             </div>
             <div class="form-group">
@@ -104,14 +103,14 @@
                 </div>
 
             </div>
-            @*<div class="form-group">
+            <div class="form-group">
                 <button type="button" class="collapsible"> Upload Book Soft Copy</button>
                 <div class="content">
                     <a data-mockFile style="color:white;" class=" btn btn-primary"> Upload Book </a>
                     <span style="color:blue;" data-fileValue> </span>
                     <input type="file" data-fileSelector style="visibility:hidden" accept=".doc, .docx,.ppt, .pptx,.pdf" asp-for="BookUpload" />
                 </div>
-            </div>*@
+            </div>
             <div class="form-group">
                 <button type="button" class="collapsible">Hard Book Available?</button>
                 <div class="content">

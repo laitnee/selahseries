@@ -8,12 +8,13 @@ function UseHTMLTags() {
     }
 }
 function FileUploadMod() {
-        document.querySelector('[data-fileSelector]').addEventListener("change", (e) => {
-            document.querySelector('[data-fileValue]').textContent =
-                document.querySelector('[data-fileSelector]').files[0].name + " ( " + e.target.files[0].size +"kb )";
-        });
-        document.querySelector('[data-mockFile]').addEventListener("click",
-            () => { document.querySelector('[data-fileSelector]').click(); });
+    document.querySelector('[data-fileSelector]').addEventListener("change", (e) => {
+        document.querySelector('[data-fileValue]').textContent =
+            document.querySelector('[data-fileSelector]').files[0].name + " ( " + e.target.files[0].size + "kb )";
+    });
+    document.querySelectorAll('[data-mockFile]').forEach(el => el.addEventListener("click",
+        (e) => { console.log(e.target); e.target.nextElementSibling.nextElementSibling.click(); })
+    );
 }
 
 function Collapsibles() {

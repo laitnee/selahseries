@@ -131,10 +131,15 @@ namespace SelahSeries.Controllers
             {
                 var uploadedImage = "";
                 var editBook = _mapper.Map<Book>(bookVM);
+                var uploadedBook = "";
                 if (bookVM.BookPhoto != null) uploadedImage = await ProcessPhoto(bookVM.BookPhoto);
+                if (bookVM.BookUpload != null) uploadedBook = await ProcessPhoto(bookVM.BookUpload);
+
                 try
                 {
                     if (!string.IsNullOrWhiteSpace(uploadedImage)) editBook.ImageUrl = uploadedImage;
+                    if (!string.IsNullOrWhiteSpace(uploadedBook)) editBook.BookUrl = uploadedBook;
+                    
 
                     await _bookRepo.UpdateBook(editBook);
                     TempData["Alert"] = "Book Edited Successfully";

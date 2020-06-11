@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using SelahSeries.Models.DTOs;
@@ -14,6 +15,7 @@ using SelahSeries.ViewModels;
 
 namespace SelahSeries.Controllers
 {
+    [AllowAnonymous]
     public class BooksController : Controller
     {
         private readonly IBookRepository _bookRepo;

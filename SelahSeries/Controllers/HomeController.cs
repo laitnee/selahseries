@@ -74,6 +74,8 @@ namespace SelahSeries.Controllers
                 latestArticles = await _postRepo.GetPublishedPostsByCategory(pageParam, category);
             }
             postHomeVM.TotalPostCount = latestArticles.TotalCount;
+            postHomeVM.CurrentPage = latestArticles.Currentpage;
+
             var latestArticlesVM = _mapper.Map<List<PostListViewModel>>(latestArticles.Source);
             postHomeVM.LatestArticle = latestArticlesVM;
 
@@ -204,7 +206,7 @@ namespace SelahSeries.Controllers
                 ViewBag.Alert = "Message was sent successfully";
                 return View();
             }
-            catch(Exception) {
+            catch(Exception  ex) {
                 ViewBag.Error = "Unable to send message, try again";
                 return View();
             }

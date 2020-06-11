@@ -92,13 +92,13 @@ namespace SelahSeries.Repository
                         _categoryId = 1;
                         break;
                     case "relationship_and_marriage":
-                        _categoryId = 2;
+                    _categoryId = 3;
                         break;
                     case "career":
-                        _categoryId = 3;
+                        _categoryId = 4;
                         break;
                     case "politics":
-                        _categoryId = 4;
+                        _categoryId = 2;
                         break;
                     case "general":
                     _categoryId = 5;

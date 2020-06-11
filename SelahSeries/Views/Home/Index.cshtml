@@ -206,11 +206,11 @@
                             <div class="section_tags ml-auto">
                                 <nav>
                                     <ul id="navDiv">
-                                        <li class="active btnn"><a href="~/?category=all#blog">All</a></li>
-                                        <li class="btnn"><a href="~/?category=relationship_and_marriage#blog">Relationship & Marriage</a></li>
-                                        <li class="btnn"><a href="~/?category=politics#blog">Politics</a></li>
-                                        <li class="btnn"><a href="~/?category=sports#blog">Sports</a></li>
-                                        <li class="btnn"><a href="~/?category=career#blog">Career</a></li>
+                                        <li class="@(ViewData["Category"]?.ToString() == "all" || ViewData["Category"] == null? "active": "" ) btnn"><a href="~/?category=all#blog">All</a></li>
+                                        <li class="@(ViewData["Category"]?.ToString() == "relationship_and_marriage"? "active": "" ) btnn"><a href="~/?category=relationship_and_marriage#blog">Relationship & Marriage</a></li>
+                                        <li class="@(ViewData["Category"]?.ToString() == "politics"? "active": "" ) btnn"><a href="~/?category=politics#blog">Politics</a></li>
+                                        <li class="@(ViewData["Category"]?.ToString() == "sports"? "active": "" ) btnn"><a href="~/?category=sports#blog">Sports</a></li>
+                                        <li class="@(ViewData["Category"]?.ToString() == "career"? "active": "" ) btnn"><a href="~/?category=career#blog">Career</a></li>
                                     </ul>
                                 </nav>
 
@@ -251,17 +251,6 @@
 
                                 }
 
-
-
-
-
-
-
-
-
-
-
-
                             </div>
 
                         </div>
@@ -280,7 +269,7 @@
                                     var numberOfPages = (int)Math.Ceiling((Decimal)Model.LatestArticle.Count() / postCount);
                                     foreach (var item in Enumerable.Range(1, numberOfPages))
                                     {
-                                        <li class="page-item btnn0 active "><a href="~/@item?category=@category#blog" class="page-link waves-effect waves-effect">@item</a></li>
+                                        <li class="page-item btnn0 @(Model.CurrentPage == item? "active" : "")   "><a href="~/@item?category=@category#blog" class="page-link waves-effect waves-effect">@item</a></li>
                                     }
                                 }
 
@@ -569,7 +558,7 @@
                                                 <p class="item-price">₦@item.Price</p>
                                                     <a class="add-cart cart btn btn-primary">Add to Cart</a>
                                                 }
-                                                <a href="#" class="btn btn-primary">Download</a>
+                                                <a href="~/uploads/@item.BookUrl" download class="btn btn-primary">Download</a>
                                             </div>
                                         </div>
                                     </div>

@@ -39,7 +39,7 @@ namespace SelahSeries.Controllers
                 ViewBag.Alert = "Message was sent successfully";
                 return View();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 ViewBag.Error = "Unable to send message, try again";
                 return View();

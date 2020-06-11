@@ -61,16 +61,16 @@ namespace SelahSeries
                   options.ClientId = Configuration["Authentication:Google:ClientId"];
                   options.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
                   
-                  options.Events = new OAuthEvents
-                  {
-                      OnCreatingTicket = context =>
-                      {
-                          string domain = context.User.Value<string>("email");
-                          if (domain != Configuration["Authentication:Google:LoginEmail"])
-                              throw new Exception($"You must sign in with a {Configuration["Authentication:Google:LoginEmail"]} email address");
-                          return Task.CompletedTask;
-                      }
-                  };
+                  //options.Events = new OAuthEvents
+                  //{
+                  //    OnCreatingTicket = context =>
+                  //    {
+                  //        string domain = context.User.Value<string>("email");
+                  //        if (domain != Configuration["Authentication:Google:LoginEmail"])
+                  //            throw new Exception($"You must sign in with a {Configuration["Authentication:Google:LoginEmail"]} email address");
+                  //        return Task.CompletedTask;
+                  //    }
+                  //};
               });
         }
 

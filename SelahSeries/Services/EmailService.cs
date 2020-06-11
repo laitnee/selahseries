@@ -22,6 +22,7 @@ namespace SelahSeries.Services
 
                 using (var client = new SmtpClient())
                 {
+                client.UseDefaultCredentials = false;
                     var credential = new NetworkCredential
                     {
                         UserName = _configuration["Email:Email"],
@@ -31,7 +32,7 @@ namespace SelahSeries.Services
                     client.Credentials = credential;
                     client.Host = _configuration["Email:Host"];
                     client.Port = int.Parse(_configuration["Email:Port"]);
-                    client.EnableSsl = true;
+                    client.EnableSsl = false;
                     
                    using (var emailMessage = new MailMessage())
                     {
@@ -39,8 +40,16 @@ namespace SelahSeries.Services
                         emailMessage.From = (new MailAddress(_configuration["Email:Email"]));
                         emailMessage.Subject = subject;
                         emailMessage.Body = message;
+                    try
+                    {
                         client.Send(emailMessage);
-                    
+
+                    }catch(SmtpException ex)
+                    {
+                        throw ex;
+                    }
+
+
                     }
                 }
                 await Task.CompletedTask;

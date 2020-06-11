@@ -20,12 +20,12 @@ namespace SelahSeries.Core.Pagination
                     .OrderBy(sortColumn, false)
                     .Skip((pageIndex - 1) * limit)
                     .Take(limit);
-                return new PaginatedList<T>(collection, totalCount);
+                return new PaginatedList<T>(collection, totalCount, pageIndex);
             }
             else
             {
                 var collection = query.Skip((pageIndex - 1) * limit).Take(limit);
-                return new PaginatedList<T>(collection, totalCount);
+                return new PaginatedList<T>(collection, totalCount, pageIndex);
             }
         }
         public static async Task<PaginatedList<T>> ToPaginatedListAsync<T>(this IQueryable<T> query,
