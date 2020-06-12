@@ -1,0 +1,11 @@
+/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/obj/Debug/netcoreapp2.1/SelahSeries.csprojAssemblyReference.cache
+/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/obj/Debug/netcoreapp2.1/SelahSeries.AssemblyInfoInputs.cache
+/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/obj/Debug/netcoreapp2.1/SelahSeries.AssemblyInfo.cs
+/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/obj/Debug/netcoreapp2.1/SelahSeries.csproj.CoreCompileInputs.cache
+/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/obj/Debug/netcoreapp2.1/SelahSeries.RazorAssemblyInfo.cache
+/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/obj/Debug/netcoreapp2.1/SelahSeries.RazorAssemblyInfo.cs
+/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/obj/Debug/netcoreapp2.1/SelahSeries.TagHelpers.input.cache
+/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/obj/Debug/netcoreapp2.1/SelahSeries.TagHelpers.output.cache
+/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/obj/Debug/netcoreapp2.1/SelahSeries.dll
+/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/obj/Debug/netcoreapp2.1/SelahSeries.pdb
+/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/obj/Debug/netcoreapp2.1/SelahSeries.RazorCoreGenerate.cache

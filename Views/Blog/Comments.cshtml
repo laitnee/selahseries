@@ -1,0 +1,45 @@
+﻿
+@model SelahSeries.ViewModels.CommentVM
+
+@{
+
+    var comments = Model.Comments.Where(com => com.ParentCommentId == Model.ParentId);
+}
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<div class="reply_info">
+    <small class="comment_replies"> @comments.Count() replies <a  data-CommentVisibility class="view_button"><span>@(comments.Count() > 0?"Hide replies":"")</span></a></small>
+</div>
+@if (comments.Count() >= 1)
+{
+    <div class="comments_border">
+        <div class="replies_container">
+
+            <div class="replies_title">Replies <span> @comments.Count() </span></div>
+            <ul class="reply_list">
+                @foreach (var item in comments)
+                {
+                    <li class="reply">
+                        <div class="comment_body">
+                            <div class="comment_panel d-flex flex-row align-items-center justify-content-start">
+                                <small class="post_meta">
+                                    <a href="#">@item.Author</a><span>
+                                        @item.CreatedAt.ToShortDateString()
+                                        at @item.CreatedAt.ToShortTimeString()
+                                    </span>
+                                </small>
+                                <button type="button" data-ReplyListener="@item.CommentId" class="reply_button ml-auto">Reply</button>
+                            </div>
+                            <div class="comment_content">
+                                <p>@item.Content </p>
+                            </div>
+                            @await Html.PartialAsync("Comments", new SelahSeries.ViewModels.CommentVM() { Comments = Model.Comments, ParentId = item.CommentId })
+
+                    </li>
+                }
+            </ul>
+        </div>
+        </div>
+        }

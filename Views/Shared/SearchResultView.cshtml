@@ -1,0 +1,178 @@
+﻿@model SelahSeries.ViewModels.SearchViewModel
+@{
+    ViewData["Title"] = "SearchResultView";
+}
+@section AddToHead {
+    <link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/main_styles.css">
+    <link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/responsive.css">
+}
+<h2 style="text-align:center; color:#ad001c; padding:10px; margin-top:99px"> Search Result </h2>
+<div class="container">
+    <div class="row ">
+        <div class="col-lg-2"> </div>
+        <div class=" col-sm-12 col-lg-8">
+            @if (Model.Posts != null)
+            {
+                <div class="section_title">Articles</div>
+                <div class="section_content">
+
+
+                    @foreach (var item in Model.Posts)
+                    {
+                        <a href="~/blog/post/@Html.DisplayFor(modelItem => item.PostId)">
+                            <!-- Small Card With Image -->
+                            <div class="searchItem ">
+                                <div class="row search-item">
+                                    <div class="col-md-4 col-lg-4 search-item-image">
+                                        <img style="" src='~/Uploads/@Html.DisplayFor(modelItem => item.TitleImageUrl)' alt="https://unsplash.com/" />
+                                    </div>
+                                    <div class="col-md-8 col-lg-8  search-item-title">
+                                        @Html.DisplayFor(modelItem => item.Title)
+                                        <br>
+                                        <span> @Html.DisplayFor(modelItem => item.Author) @Html.DisplayFor(modelItem => item.ModifiedAt)
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </a>
+
+                    }
+
+                </div>
+
+            }
+
+            @if (Model.Books != null)
+            {
+                <div class="section_title">Books</div>
+                <div class="section_content">
+
+
+                    @foreach (var item in Model.Posts)
+                    {
+                        <a href="~/blog/post/@Html.DisplayFor(modelItem => item.PostId)">
+                            <!-- Small Card With Image -->
+                            <div class="searchItem ">
+                                <div class="row search-item">
+                                    <div class="col-md-4 col-lg-4 search-item-image">
+                                        <img style="" src='~/Uploads/@Html.DisplayFor(modelItem => item.TitleImageUrl)' alt="https://unsplash.com/" />
+                                    </div>
+                                    <div class="col-md-8 col-lg-8  search-item-title">
+                                        @Html.DisplayFor(modelItem => item.Title)
+                                        <br>
+                                        <span> @Html.DisplayFor(modelItem => item.Author) @Html.DisplayFor(modelItem => item.ModifiedAt)
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </a>
+
+                    }
+
+                </div>
+
+
+            }
+        </div>
+        <div class="col-lg-2"> </div>
+
+    </div>
+</div>
+
+<style>
+    .row {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .searchItem {
+        margin: 10px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+        .searchItem:hover {
+            background-color: rgba(255, 216, 0, 0.1)
+        }
+
+    .search-item {
+        border-bottom: 1px solid #007bff;
+    }
+
+    .search-item-image img {
+        max-width: 100%;
+    }
+
+    .search-item-title {
+        text-align: center;
+        font-weight: bold;
+        color: black;
+    }
+
+        .search-item-title span {
+            font-size: small;
+            font-weight: normal;
+            color: #808080;
+            align-items: baseline;
+        }
+
+    .search-item-image, .search-item-title {
+        padding: 5px;
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+    }
+
+    .contain {
+        position: relative;
+        text-align: center;
+    }
+
+
+    .centered {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .text-block {
+        background-color: black;
+        color: white;
+        padding: 40px;
+        opacity: 0.8;
+        font-size: 40px
+    }
+
+    .section_title {
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 18px;
+        font-weight: 700;
+        color: #ad001c;
+        padding-bottom: 10px;
+        white-space: nowrap;
+        -webkit-transform: translateY(3px);
+        -moz-transform: translateY(3px);
+        -ms-transform: translateY(3px);
+        -o-transform: translateY(3px);
+        transform: translateY(3px);
+    }
+
+    .containe {
+        background-color: #F2F2F2;
+        padding: 62px;
+    }
+
+    .books .carousel-inner {
+        height: 320px;
+    }
+
+    .line-clamp {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: no-content;
+    }
+</style>

@@ -1,0 +1,157 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\css\**" />
+    <Compile Remove="wwwroot\images\**" />
+    <Compile Remove="wwwroot\js\**" />
+    <Compile Remove="wwwroot\lib\**" />
+    <Compile Remove="wwwroot\NewFolder2\js\js3\js\**" />
+    <Compile Remove="wwwroot\NewFolder2\js\NewFolder\**" />
+    <Compile Remove="wwwroot\NewFolder2\plugins\jquery.mb.YTPlayer-3.1.12\**" />
+    <Compile Remove="wwwroot\NewFolder\**" />
+    <Content Remove="wwwroot\css\**" />
+    <Content Remove="wwwroot\images\**" />
+    <Content Remove="wwwroot\js\**" />
+    <Content Remove="wwwroot\lib\**" />
+    <Content Remove="wwwroot\NewFolder2\js\js3\js\**" />
+    <Content Remove="wwwroot\NewFolder2\js\NewFolder\**" />
+    <Content Remove="wwwroot\NewFolder2\plugins\jquery.mb.YTPlayer-3.1.12\**" />
+    <Content Remove="wwwroot\NewFolder\**" />
+    <EmbeddedResource Remove="wwwroot\css\**" />
+    <EmbeddedResource Remove="wwwroot\images\**" />
+    <EmbeddedResource Remove="wwwroot\js\**" />
+    <EmbeddedResource Remove="wwwroot\lib\**" />
+    <EmbeddedResource Remove="wwwroot\NewFolder2\js\js3\js\**" />
+    <EmbeddedResource Remove="wwwroot\NewFolder2\js\NewFolder\**" />
+    <EmbeddedResource Remove="wwwroot\NewFolder2\plugins\jquery.mb.YTPlayer-3.1.12\**" />
+    <EmbeddedResource Remove="wwwroot\NewFolder\**" />
+    <None Remove="wwwroot\css\**" />
+    <None Remove="wwwroot\images\**" />
+    <None Remove="wwwroot\js\**" />
+    <None Remove="wwwroot\lib\**" />
+    <None Remove="wwwroot\NewFolder2\js\js3\js\**" />
+    <None Remove="wwwroot\NewFolder2\js\NewFolder\**" />
+    <None Remove="wwwroot\NewFolder2\plugins\jquery.mb.YTPlayer-3.1.12\**" />
+    <None Remove="wwwroot\NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Class.cs" />
+    <Content Remove="wwwroot\favicon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
+    <PackageReference Include="System.Runtime.Serialization.Json" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\NewFolder2\contact2\js\global.js" />
+    <None Include="wwwroot\NewFolder2\contact2\vendor\datepicker\daterangepicker.js" />
+    <None Include="wwwroot\NewFolder2\contact2\vendor\datepicker\moment.min.js" />
+    <None Include="wwwroot\NewFolder2\contact2\vendor\font-awesome-4.7\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\NewFolder2\contact2\vendor\font-awesome-4.7\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\NewFolder2\contact2\vendor\jquery\jquery.js" />
+    <None Include="wwwroot\NewFolder2\contact2\vendor\jquery\jquery.min.js" />
+    <None Include="wwwroot\NewFolder2\contact2\vendor\mdi-font\fonts\Material-Design-Iconic-Font.svg" />
+    <None Include="wwwroot\NewFolder2\contact2\vendor\mdi-font\fonts\Material-Design-Iconic-Font.woff2" />
+    <None Include="wwwroot\NewFolder2\contact2\vendor\select2\select2.min.js" />
+    <None Include="wwwroot\NewFolder2\images\arrow_r.svg" />
+    <None Include="wwwroot\NewFolder2\images\next_arrow.svg" />
+    <None Include="wwwroot\NewFolder2\images\next_arrow_2.svg" />
+    <None Include="wwwroot\NewFolder2\images\prev_arrow.svg" />
+    <None Include="wwwroot\NewFolder2\images\prev_arrow_2.svg" />
+    <None Include="wwwroot\NewFolder2\js\category.js" />
+    <None Include="wwwroot\NewFolder2\js\contact.js" />
+    <None Include="wwwroot\NewFolder2\js\custom.js" />
+    <None Include="wwwroot\NewFolder2\js\jquery-3.2.1.min.js" />
+    <None Include="wwwroot\NewFolder2\js\post.js" />
+    <None Include="wwwroot\NewFolder2\js\post_nosidebar.js" />
+    <None Include="wwwroot\NewFolder2\js\regular.js" />
+    <None Include="wwwroot\NewFolder2\KothingEditor\build\fonts\688522218ec6987e6fada6a165d490d7.woff2" />
+    <None Include="wwwroot\NewFolder2\KothingEditor\build\fonts\8ff9f7f411ce1684210c0b15ad4e9f5c.svg" />
+    <None Include="wwwroot\NewFolder2\KothingEditor\build\keditor.min.js" />
+    <None Include="wwwroot\NewFolder2\plugins\easing\easing.js" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\less\animated.less" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\less\core.less" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\less\fixed-width.less" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\less\font-awesome.less" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\less\icons.less" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\less\larger.less" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\less\list.less" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\less\mixins.less" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\less\path.less" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\less\screen-reader.less" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\less\stacked.less" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\less\variables.less" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\scss\_animated.scss" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\scss\_core.scss" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\scss\_icons.scss" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\scss\_larger.scss" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\scss\_list.scss" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\scss\_mixins.scss" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\scss\_path.scss" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\scss\_stacked.scss" />
+    <None Include="wwwroot\NewFolder2\plugins\font-awesome-4.7.0\scss\_variables.scss" />
+    <None Include="wwwroot\NewFolder2\plugins\masonry\images_loaded.js" />
+    <None Include="wwwroot\NewFolder2\plugins\masonry\masonry.js" />
+    <None Include="wwwroot\NewFolder2\plugins\OwlCarousel2-2.2.1\owl.carousel.js" />
+    <None Include="wwwroot\NewFolder2\plugins\parallax-js-master\parallax.min.js" />
+    <None Include="wwwroot\NewFolder2\styles\bootstrap4\bootstrap.min.js" />
+    <None Include="wwwroot\NewFolder2\styles\bootstrap4\popper.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\css\style.css.map" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\css\style.map" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\js\bootstrap.min.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\js\contact.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\js\custom.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\js\gmaps.min.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\js\jquery-3.2.1.min.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\js\jquery.ajaxchimp.min.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\js\jquery.form.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\js\jquery.validate.min.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\js\mail-script.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\js\popper.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\js\stellar.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\js\theme.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\vendors\animate-css\wow.min.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\vendors\bootstrap-datepicker\bootstrap-datetimepicker.min.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\vendors\bootstrap-datepicker\bootstrap-select.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\vendors\counter-up\jquery.counterup.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\vendors\counter-up\jquery.waypoints.min.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\vendors\flipclock\timer.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\vendors\isotope\imagesloaded.pkgd.min.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\vendors\isotope\isotope-min.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\vendors\jquery-ui\jquery-ui.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\vendors\lightbox\simpleLightbox.min.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\vendors\linericon\fonts\Linearicons-Free.svg" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\vendors\linericon\fonts\Linearicons-Free.woff2" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\vendors\nice-select\js\jquery.nice-select.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\vendors\nice-select\js\jquery.nice-select.min.js" />
+    <None Include="wwwroot\NewFolder2\styles\eiser_theme\vendors\owl-carousel\owl.carousel.min.js" />
+    <None Include="wwwroot\NewFolder2\styles\linericon\fonts\Linearicons-Free.svg" />
+    <None Include="wwwroot\NewFolder2\styles\linericon\fonts\Linearicons-Free.woff2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\Blog\post - Copy.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
+
+</Project>

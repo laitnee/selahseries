@@ -1,0 +1,164 @@
+﻿
+@{
+    ViewData["Title"] = "Send Message";
+}
+
+@section AddToHead {
+
+    <link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/main_styles.css">
+    <link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/responsive.css">
+
+    <link href="/NewFolder2/contact2/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="/NewFolder2/contact2/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+    <!-- Vendor CSS-->
+    <link href="/NewFolder2/contact2/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="/NewFolder2/contact2/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+    <!-- Main CSS-->
+    <link href="/NewFolder2/contact2/css/main.css" rel="stylesheet" media="all">
+}
+
+@section AddToEnd {
+
+
+    <!-- Jquery JS-->
+    <script src="/NewFolder2/contact2/vendor/jquery/jquery.min.js"></script>
+    <!-- Vendor JS-->
+    <script src="/NewFolder2/contact2/vendor/select2/select2.min.js"></script>
+    <script src="/NewFolder2/contact2/vendor/datepicker/moment.min.js"></script>
+    <script src="/NewFolder2/contact2/vendor/datepicker/daterangepicker.js"></script>
+    <!-- Main JS-->
+    <script src="/NewFolder2/contact2/js/global.js"></script>
+
+}
+
+<div class="site-blocks-cover inner-page-cover" style="background-image: url('/NewFolder2/new/envelope-2898268_1280.jpg'); margin-top: 20px" data-aos="fade" data-stellar-background-ratio="0.5" data-aos="fade">
+    <div class="container">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-md-6 text-block text-center" data-aos="fade-up" data-aos-delay="400">
+                <h2 class="support_head" style="color:#f2ba16; font-weight:300">Send Us A Message</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="featured">
+
+        <div class="card card-2">
+            <div class="card-heading"></div>
+            <div class="card-body">
+                <h4 class="title" style="color:black" ; text-transform:"inherit">Are you in need of counselling/prayer? Contact our support links and we will get in touch with you.</h4>
+                @using (Html.BeginForm(FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="input-group">
+                        <input class="input--style-2" type="text" placeholder="Full name" name="fullname" required="required">
+                    </div>
+                    <div class="row row-space">
+                        <div class="col-2">
+                            <div class="input-group">
+                                <div class="rs-select2 js-select-simple select--no-search">
+                                    <select name="age" required="required">
+                                        <option disabled="disabled" selected="selected">Age</option>
+                                        <option>16-20</option>
+                                        <option>21-25</option>
+                                        <option>26-30</option>
+                                        <option>31-35</option>
+                                        <option>35-46</option>
+                                        <option>46 & above</option>
+                                    </select>
+                                    <div class="select-dropdown"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="input-group">
+                                <div class="rs-select2 js-select-simple select--no-search">
+                                    <select name="gender" required="required">
+                                        <option disabled="disabled" selected="selected">Gender</option>
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                    </select>
+                                    <div class="select-dropdown"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-space">
+                        <div class="col-2">
+                            <div class="input-group">
+                                <input class="input--style-2" type="number" placeholder="Phone Number" name="phone">
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="input-group">
+                                <div class="rs-select2 js-select-simple select--no-search">
+                                    <select name="category" required="required">
+                                        <option disabled="disabled" selected="selected">Message Category</option>
+                                        <option>Prayer</option>
+                                        <option>Counselling</option>
+                                    </select>
+                                    <div class="select-dropdown"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <input class="input--style-2" type="email" placeholder="Email" name="email" required="required">
+                    </div>
+                    <div class="input-group">
+                        <input class="input--style-2" type="text" placeholder="Your address">
+                    </div>
+                    <div class="input-group">
+                        <textarea class="input--style-2" name="message" placeholder="Write us a message" required="required"></textarea>
+                    </div>
+
+                    <div class="p-t-30">
+                        <button class="btn btn--radius btn--green" type="submit">Send</button>
+                    </div>
+                }
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+<style>
+    .col-2 {
+        padding-left: 0px;
+        padding-right: 0px;
+        flex: inherit;
+        max-width: inherit;
+    }
+
+    .featured {
+        position: relative;
+        background: #fff;
+        margin-top: -70px;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 130px;
+    }
+
+    textarea {
+        width: 100%;
+        height: 140px;
+        border: none;
+    }
+
+    .text-block {
+        background-color: rgba(0,0,0,0.5);
+        color: white;
+        padding: 29px;
+        font-size: 40px;
+        border-radius: 29px;
+    }
+</style>

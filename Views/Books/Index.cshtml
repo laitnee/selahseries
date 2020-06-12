@@ -1,0 +1,478 @@
+﻿@model IEnumerable<SelahSeries.Models.Book>
+@using System.Collections;
+@using Newtonsoft.Json;
+@{
+    ViewData["Title"] = "Books";
+ var books = Model.OrderByDescending(x => x.ModifiedAt).Take(20);
+ ArrayList Products = new ArrayList();
+}
+
+@section AddToHead {
+    <link rel="icon" href="img/favicon.png" type="image/png" />
+    <link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/main_styles.css">
+    <link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/responsive.css">
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="/NewFolder2/shop/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/NewFolder2/shop/images/apple-touch-icon.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/NewFolder2/shop/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/NewFolder2/styles/eiser_theme/css/themify-icons.css" />
+    <link rel="stylesheet" href="~/NewFolder2/styles/eiser_theme/vendors/owl-carousel/" />
+    <link rel="stylesheet" href="~/NewFolder2/styles/eiser_theme/vendors/lightbox/simpleLightbox.css" />
+    <link rel="stylesheet" href="~/NewFolder2/styles/eiser_theme/vendors/nice-select/css/nice-select.css" />
+    <link rel="stylesheet" href="~/NewFolder2/styles/eiser_theme/vendors/animate-css/animate.css" />
+    <link rel="stylesheet" href="~/NewFolder2/styles/eiser_theme/vendors/jquery-ui/jquery-ui.css" />
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="/NewFolder2/shop/css/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="/NewFolder2/shop/css/responsive.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/NewFolder2/shop/css/custom.css">
+    <link rel="stylesheet" href="~/NewFolder2/shop/css/cart_responsive.css">
+    <link rel="stylesheet" href="~/NewFolder2/shop/css/cart_style.css">
+    <link rel="stylesheet" href="~/NewFolder2/shop/css/Checkout.css">
+    <link rel="stylesheet" href="~/NewFolder2/styles/linericon/style.css">
+}
+
+@section AddToEnd {
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="~/NewFolder2/shop/js/Checkout.js"></script>
+    <script src="~/NewFolder2/shop/js/bookstore.js"></script>
+
+}
+
+
+
+<!-- Start Top Search -->
+<div class="top-search">
+    <div class="container">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+            <input type="text" class="form-control" placeholder="Search">
+            <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+        </div>
+    </div>
+    <button type="button" class="btn pmd-btn-fab pmd-ripple-effect btn-secondary pmd-btn-raised"><i class="material-icons pmd-sm">add_shopping_cart</i></button>
+</div>
+<!-- End Top Search -->
+<!-- Start All Title Box -->
+<div class="all-title-box" style="margin-top:69px">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</div>
+<!-- End All Title Box -->
+<!-- Start Shop Page  -->
+<div class="shop-box-inner">
+
+    <div class="container">
+
+        <div class="before_shop col-xl-3 col-lg-3 col-sm-12 col-xs-12 sidebar-shop-left">
+            <div class="product-categori">
+                <div class="second search-product">
+                    <form action="#">
+                        <input class="searchh form-control" placeholder="Search here..." type="text">
+                        <button type="submit"> <i class="fa fa-search"></i> </button>
+                    </form>
+                </div>
+                <div class="filter-sidebar-left">
+                    <div class="title-left">
+                        <h4 style="font-weight:400">Categories</h4>
+                    </div>
+                    <div class="list-group list-group-collapse list-group-sm list-group-tree" id="list-group-men" data-children=".sub-men">
+                        @*<div class="list-group-collapse sub-men">
+                                <a class="list-group-item list-group-item-action" href="#sub-men1" data-toggle="collapse" aria-expanded="true" aria-controls="sub-men1">
+                                    Fruits & Drinks <small class="text-muted">(100)</small>
+                                </a>
+                                <div class="collapse show" id="sub-men1" data-parent="#list-group-men">
+                                    <div class="list-group">
+                                        <a href="#" class="list-group-item list-group-item-action active">Fruits 1 <small class="text-muted">(50)</small></a>
+                                        <a href="#" class="list-group-item list-group-item-action">Fruits 2 <small class="text-muted">(10)</small></a>
+                                        <a href="#" class="list-group-item list-group-item-action">Fruits 3 <small class="text-muted">(10)</small></a>
+                                        <a href="#" class="list-group-item list-group-item-action">Fruits 4 <small class="text-muted">(10)</small></a>
+                                        <a href="#" class="list-group-item list-group-item-action">Fruits 5 <small class="text-muted">(20)</small></a>
+                                    </div>
+                                </div>
+                            </div>*@
+                        <a href="#" class="list-group-item list-group-item-action"> Relationship & Marriage</a>
+                        <a href="#" class="list-group-item list-group-item-action"> Sports </a>
+                        <a href="#" class="list-group-item list-group-item-action"> Politics </a>
+                        <a href="#" class="list-group-item list-group-item-action"> Career </a>
+                        <a href="#" class="list-group-item list-group-item-action"> General </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 10px;
+    color: #4177b0;
+    font-size: 16px;"><p style="margin: 0px 20px"><span style="color:#ad001c">**</span> Note: Only residents in Nigeria (Ile-Ife, Ibadan and Ilesha ) can order for hard copy books. <span style="color:#ad001c">**</span></pstyle="></div>
+        <div class="row">
+            <div class="col-xl-9 col-lg-9 col-sm-12 col-xs-12 shop-content-right">
+                <div class="right-product-box">
+                    <div class="product-item-filter row">
+                        <div class="col-12 col-sm-8 text-center text-sm-left">
+                            <div class="toolbar-sorter-right">
+                                <span>All books</span>
+
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-4 text-center text-sm-right view_style">
+                            <ul class="nav nav-tabs ml-auto">
+                                <li>
+                                    <a class="nav-link active" href="#grid-view" data-toggle="tab"> Grid View </a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="#list-view" data-toggle="tab"> List View </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="product-categorie-box">
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
+                                <div class="row">
+                                    @foreach (var item in books)
+                                    {
+                                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                            @if (item.IsHardBook == true)
+                                            {
+
+                                                Products.Add(new ShopBook()
+                                                {
+                                                    Price = item.Price,
+                                                    Tag = item.ImageUrl,
+                                                    Title = item.Title,
+                                                    InCart = 0
+                                                });
+
+                                            }
+                                            <div class="products-single fix">
+                                                <div class="box-img-hover">
+                                                    <div class="type-lb">
+                                                        @if (item.IsHardBook == true)
+                                                        {
+                                                            <p class="sale">Sale</p>
+                                                        }
+                                                    </div>
+                                                    <img class="book_image" src="~/Uploads/@Html.DisplayFor(modelItem => item.ImageUrl)" class="img-fluid" alt="Image">
+                                                    <div class="mask-icon">
+                                                        <ul>
+                                                            <li><button type="button" class="nv-link" style="cursor:pointer" data-toggle="modal" data-target="#@item.BookId">View</button></li>
+                                                            @*<li><a class="nav-link" href="~/books/index#list-view" data-toggle="tab">View</a></li>*@
+                                                        </ul>
+
+                                                        @if (item.IsHardBook == true)
+                                                        {
+                                                            <a class="add-cart cart" style="cursor:pointer">Add to Cart</a>
+                                                        }
+
+                                                    </div>
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="@item.BookId" role="dialog">
+                                                        <div class="modal-dialog modal-lg">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h4 class="modal-title">@item.Title</h4>
+                                                                    <span style="margin-left:15px"><h4 class="modal-title">(Book Description)</h4></span>
+                                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <p>@item.Description</p>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="why-text">
+                                                <h4>@item.Title</h4>
+                                                @if (item.IsHardBook == true)
+                                                {
+                                                    <h5 id="pricee">₦@item.Price</h5>
+                                                }
+                                                <a class="btn hvr-hover download_btn" href="#">Download</a>
+                                            </div>
+                                        </div>
+                                    }
+                                    @{
+                                        var output = @Html.Raw(JsonConvert.SerializeObject(Products));
+                                    }
+                                    <script>
+                                        localStorage.setItem("BooksForSale", JSON.stringify(@output))
+                                    </script>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="list-view">
+                                @foreach (var item in books)
+                                {
+                                    <div class="list-view-box">
+                                        <div class="row">
+                                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                <div class="products-single fix">
+                                                    <div class="box-img-hover">
+                                                        <div class="type-lb">
+                                                            @if (item.IsHardBook == true)
+                                                            {
+                                                                <p class="sale">Sale</p>
+                                                            }
+                                                        </div>
+                                                        <img style="height:363px" src="~/Uploads/@Html.DisplayFor(modelItem => item.ImageUrl)" class="img-fluid" alt="Image">
+                                                        <div class="mask-icon">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-6 col-lg-8 col-xl-8">
+                                                <div class="why-text full-width">
+                                                    <h4>@item.Title</h4>
+                                                    @if (item.IsHardBook == true)
+                                                    {
+                                                        <h5>₦@item.Price</h5>
+                                                    }
+                                                    <p>
+                                                        @item.Description
+                                                    </p>
+                                                    @if (item.IsHardBook == true)
+                                                    {
+                                                        <a class="add-cart cart btn hvr-hover">Add to Cart</a>
+                                                    }
+                                                    <a class="btn hvr-hover" href="#">Free Download</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        @*<div data-products="@Products[0]"></div>*@
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 after_shop col-lg-3 col-sm-12 col-xs-12 sidebar-shop-left">
+                <div class="product-categori">
+                    <div class="second search-product">
+                        <form action="#">
+                            <input class="searchh form-control" placeholder="Search here..." type="text">
+                            <button type="submit"> <i class="fa fa-search"></i> </button>
+                        </form>
+                    </div>
+                    <div class="filter-sidebar-left">
+                        <div class="title-left">
+                            <h4 style="font-weight:400">Categories</h4>
+                        </div>
+                        <div class="list-group list-group-collapse list-group-sm list-group-tree" id="list-group-men" data-children=".sub-men">
+                            @*<div class="list-group-collapse sub-men">
+                                    <a class="list-group-item list-group-item-action" href="#sub-men1" data-toggle="collapse" aria-expanded="true" aria-controls="sub-men1">
+                                        Fruits & Drinks <small class="text-muted">(100)</small>
+                                    </a>
+                                    <div class="collapse show" id="sub-men1" data-parent="#list-group-men">
+                                        <div class="list-group">
+                                            <a href="#" class="list-group-item list-group-item-action active">Fruits 1 <small class="text-muted">(50)</small></a>
+                                            <a href="#" class="list-group-item list-group-item-action">Fruits 2 <small class="text-muted">(10)</small></a>
+                                            <a href="#" class="list-group-item list-group-item-action">Fruits 3 <small class="text-muted">(10)</small></a>
+                                            <a href="#" class="list-group-item list-group-item-action">Fruits 4 <small class="text-muted">(10)</small></a>
+                                            <a href="#" class="list-group-item list-group-item-action">Fruits 5 <small class="text-muted">(20)</small></a>
+                                        </div>
+                                    </div>
+                                </div>*@
+                            <a href="#" class="list-group-item list-group-item-action"> Relationship & Marriage</a>
+                            <a href="#" class="list-group-item list-group-item-action"> Sports </a>
+                            <a href="#" class="list-group-item list-group-item-action"> Politics </a>
+                            <a href="#" class="list-group-item list-group-item-action"> Career </a>
+                            <a href="#" class="list-group-item list-group-item-action"> General </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <button>
+            <a href="~/books/cart" class="float">
+                <i class="fa fa-shopping-cart my-float"></i>
+            </a>
+        </button>
+    </div>
+</div>
+
+
+<!-- End Shop Page -->
+
+<style>
+    .gray_btn:hover {
+        color: black;
+        border: 1px solid black;
+    }
+
+    h2, h4 {
+        color: black;
+        font-family: 'Ubuntu', sans-serif;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Ubuntu', sans-serif;
+    }
+
+    p {
+        color: rgba(0,0,0,0.9);
+        text-align: justify;
+    }
+
+    .download_btn {
+        color: white
+    }
+
+        .download_btn:hover {
+            background-color: #ca102e;
+        }
+
+    a:hover {
+        color: white;
+    }
+
+    .float {
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        bottom: 40px;
+        right: 40px;
+        background-color: #007bff;
+        color: #FFF;
+        border-radius: 50px;
+        text-align: center;
+        box-shadow: 2px 2px 3px #999;
+        z-index: 20;
+    }
+
+    .my-float {
+        margin-top: 22px;
+    }
+
+    .modal-footer button {
+        color: #007bff;
+    }
+
+    form .searchh:focus {
+        background: #f2ba16;
+    }
+
+    .book_image {
+        height: 291px;
+        width: 80%;
+    }
+
+    .products-container {
+        max-width: 650px;
+        justify-content: space-around;
+        margin: 0 auto;
+        margin-top: 50px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+        .products-container ion-icon {
+            font-size: 25px;
+            color: #007bff;
+            margin-left: 10px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+    .product-header {
+        width: 100%;
+        max-width: 650px;
+        display: flex;
+        justify-content: flex-start;
+        border-bottom: 4px solid lightgrey;
+        margin: 0 auto;
+    }
+
+    .product-title {
+        width: 45%;
+    }
+
+    .price {
+        width: 15%;
+        display: flex;
+        align-items: center;
+    }
+
+    .total {
+        width: 10%;
+        display: flex;
+        align-items: center;
+    }
+
+    .quantity {
+        width: 30%;
+        display: flex;
+        align-items: center;
+    }
+
+    .product {
+        width: 45%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 16px 0;
+        border-bottom: 4px solid lightgrey;
+    }
+
+    .products {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+        .products img {
+            width: 75px;
+        }
+
+    .basketTotalContainer {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    .basketTotalTitle {
+        width: 30%;
+    }
+
+    .basketTotal {
+        width: 10%;
+    }
+
+    .before_shop {
+        display: none;
+    }
+    }
+</style>
+
+@*<script>
+    let decrease_btns = document.querySelectorAll('.decrease');
+    let increase_btns = document.querySelectorAll('.increase');
+    console.log(decrease_btns);
+
+    for (let i = 0; i < decrease_btns.length; i++) {
+        decrease_btns[i].addEventListener('click', () => {
+            window.alert("I am clicked");
+            products[i].InCart = parseInt(products[i].InCart - 1);
+            document.querySelector(".quantity span") = products[i].InCart;
+        })
+    }
+
+    for (let i = 0; i < increase_btns.length; i++) {
+        increase_btns[i].addEventListener('click', () => {
+            products[i].InCart = parseInt(products[i].InCart + 1);
+            document.querySelector(".quantity span") = products[i].InCart;
+        })
+    }
+</script>*@
