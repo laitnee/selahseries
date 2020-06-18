@@ -62,6 +62,10 @@ namespace SelahSeries.Controllers
             var dontMissVM = _mapper.Map<List<PostListViewModel>>(dontMiss);
             postHomeVM.DontMiss = dontMissVM;
 
+            var topPosts = _postRepo.GetTopPosts();
+            var topPostsVM = _mapper.Map<List<PostListViewModel>>(topPosts);
+            postHomeVM.TopPosts = topPostsVM;
+
             var books = _bookRepo.GetHomeBooks();
             postHomeVM.Books = books.ToList();
 

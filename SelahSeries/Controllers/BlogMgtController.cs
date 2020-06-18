@@ -206,12 +206,6 @@ namespace SelahSeries.Controllers
                 return View();
             }
         }
-        [HttpGet]
-        public ActionResult SignOut()
-        {
-            var login = HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            TempData["Alert"] = " Logout successful ";
-            return RedirectToAction("Index", "Home");
-        }
+
     }
 }

@@ -6,15 +6,22 @@
     <link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/main_styles.css">
     <link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/responsive.css">
 }
+@section AddToEnd {
+    <script src="~/NewFolder2/plugins/masonry/images_loaded.js"></script>
+    <script src="~/NewFolder2/js/custom.js"></script>
+    <script src="~/NewFolder2/shop/js/bookstore.js"></script>
+}
 <h2 style="text-align:center; color:#ad001c; padding:10px; margin-top:99px"> Search Result </h2>
+
 <div class="container">
     <div class="row ">
         <div class="col-lg-2"> </div>
         <div class=" col-sm-12 col-lg-8">
-            @if (Model.Posts != null)
+            
+            @if (Model.Posts.Any())
             {
-                <div class="section_title">Articles</div>
-                <div class="section_content">
+                <div style="cursor:pointer;margin:10px; padding:10px;" class="section_title" data-toggle="collapse" data-toggler href="#ArticleCollapse">Articles <i class="fa fa-caret-down"></i></div>
+                <div id="ArticleCollapse" class="section_content">
 
 
                     @foreach (var item in Model.Posts)
@@ -43,25 +50,43 @@
 
             }
 
-            @if (Model.Books != null)
+            @if (Model.Books.Any())
             {
-                <div class="section_title">Books</div>
-                <div class="section_content">
+                <div style="cursor:pointer;margin:10px; padding:10px;" data-toggle="collapse" role="button" href="#bookstoreCollapse" class="section_title">Books <i class="fa fa-caret-down"></i></div>
+                <div class="section_content" id="bookstoreCollapse">
 
-
-                    @foreach (var item in Model.Posts)
+                    @foreach (var item in Model.Books)
                     {
-                        <a href="~/blog/post/@Html.DisplayFor(modelItem => item.PostId)">
+                        <a href="~/blog/post/@Html.DisplayFor(modelItem => item.Title)">
                             <!-- Small Card With Image -->
                             <div class="searchItem ">
                                 <div class="row search-item">
                                     <div class="col-md-4 col-lg-4 search-item-image">
-                                        <img style="" src='~/Uploads/@Html.DisplayFor(modelItem => item.TitleImageUrl)' alt="https://unsplash.com/" />
+                                        <img style="" src='~/Uploads/@Html.DisplayFor(modelItem => item.ImageUrl)' alt="https://unsplash.com/" />
                                     </div>
                                     <div class="col-md-8 col-lg-8  search-item-title">
                                         @Html.DisplayFor(modelItem => item.Title)
                                         <br>
-                                        <span> @Html.DisplayFor(modelItem => item.Author) @Html.DisplayFor(modelItem => item.ModifiedAt)
+                                        <span>By @Html.DisplayFor(modelItem => item.Author)</span>
+                                        <div class="thumb-content">
+
+                                            @if (item.IsHardBook == true)
+                                            {
+
+                                                //Products.Add(new ShopBook()
+                                                //{
+                                                //    Price = item.Price,
+                                                //    Tag = item.ImageUrl,
+                                                //    Title = item.Title,
+                                                //    InCart = 0
+                                                //});
+
+                                                <h4 style="color:black">₦@item.Price</h4>
+                                                <a style="color:white" class="add-cart cart btn btn-primary">Add to Cart</a>
+                                            }
+                                            <a href="~/uploads/@item.BookUrl" download class="btn btn-primary">Download</a>
+                                        </div>
+
                                     </div>
 
                                 </div>
@@ -73,6 +98,12 @@
 
                 </div>
 
+            }
+            @if (!(Model.Posts.Any() || Model.Books.Any()))
+            {
+
+
+                <h4 style="text-align:center; color:black;"> No Item matches your search </h4>
 
             }
         </div>

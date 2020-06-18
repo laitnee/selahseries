@@ -53,6 +53,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\NewFolder2\Admin\css\.DS_Store" />
+    <None Include="wwwroot\NewFolder2\Admin\css\bootstrap\.DS_Store" />
+    <None Include="wwwroot\NewFolder2\Admin\js\.DS_Store" />
+    <None Include="wwwroot\NewFolder2\Admin\js\bootstrap.min.js" />
+    <None Include="wwwroot\NewFolder2\Admin\js\jquery.min.js" />
+    <None Include="wwwroot\NewFolder2\Admin\js\main.js" />
+    <None Include="wwwroot\NewFolder2\Admin\js\popper.js" />
     <None Include="wwwroot\NewFolder2\contact2\js\global.js" />
     <None Include="wwwroot\NewFolder2\contact2\vendor\datepicker\daterangepicker.js" />
     <None Include="wwwroot\NewFolder2\contact2\vendor\datepicker\moment.min.js" />
@@ -149,11 +156,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Admin\" />
     <Folder Include="wwwroot\Uploads\" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="Views\Admin\r_AdninLayout.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\Blog\post - Copy.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

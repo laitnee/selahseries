@@ -312,7 +312,7 @@
                             <div class="sidebar_section_content">
 
                                 <div class="sidebar_slider_container">
-                                    <div class="owl-carousel owl-theme sidebar_slider_top">
+                                    
                                         @{
                                             const int POST_PER_SLIDE = 4;
 
@@ -322,7 +322,7 @@
                                                 bool renderRow = index % POST_PER_SLIDE == 0;
                                                 if (renderRow)
                                                 {
-                                                    @*@Html.Raw("<div class='owl-item'>");*@
+                                                    @Html.Raw("<div class='owl - carousel owl - theme sidebar_slider_top'><div class='owl-item'>");
                                                 }
                                                 <div class="side_post">
                                                     <a href="~/blog/post/@Html.DisplayFor(modelItem => item.PostId)">
@@ -337,11 +337,11 @@
                                                 </div>
                                                 if (renderRow)
                                                 {
-                                                    @*@Html.Raw("</div>");*@
+                                                    @Html.Raw("</div></div>");
                                                 }
                                             }
                                         }
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>

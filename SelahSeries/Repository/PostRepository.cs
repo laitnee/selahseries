@@ -72,8 +72,16 @@ namespace SelahSeries.Repository
         {
             return _selahDbContext.Posts
                             .Include(p => p.Category)
+                            .Where(post => post.Published == true && post.CreatedAt >= DateTime.Now.AddDays(-7))
+                            .OrderBy(p => p.postClap.Claps).Take(5);
+        }
+        public IEnumerable<Post> GetTopPosts()
+        {
+            return _selahDbContext.Posts
+                            .Include(p => p.Category)
                             .Where(post => post.Published == true)
-                           .OrderByDescending(x => x.CreatedAt).Take(20);
+                           .OrderByDescending(x => x.CreatedAt).Take(20)
+                           .OrderBy(p => p.postClap.Claps).Take(5);
         }
         public async Task<PaginatedList<Post>> GetPublishedPostsByCategory(PaginationParam pageParam, int categoryId)
         {

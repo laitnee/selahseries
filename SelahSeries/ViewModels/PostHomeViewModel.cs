@@ -10,6 +10,7 @@ namespace SelahSeries.ViewModels
     {
         public Post Post { get; set; }
         public List<PostListViewModel> DontMiss { get; set; }
+        public List<PostListViewModel> TopPosts { get; set; }
         public int TotalPostCount { get; set; }
         public int CurrentPage { get; set; }
         public List<PostListViewModel> LatestArticle { get; set; }

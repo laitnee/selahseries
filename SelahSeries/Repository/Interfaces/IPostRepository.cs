@@ -21,6 +21,7 @@ namespace SelahSeries.Repository
         Task<PaginatedList<Post>> GetPublishedPostsByCategory(PaginationParam pageParam, int categoryId);
         Task<PaginatedList<Post>> GetPublishedPostsByCategory(PaginationParam pageParam, string category);
         IEnumerable<Post> GetPublishedDMPosts();
+        IEnumerable<Post> GetTopPosts();
         Task<List<Post>> GetPublishedPostsByClaps(int limit);
         Task<bool> UpdatePost(Post post);
         Task ClapPost();
