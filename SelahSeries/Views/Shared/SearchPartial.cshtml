@@ -1,0 +1,41 @@
+﻿<div class="search_container ml-auto">
+
+    @if (ViewData["Search"].ToString() == "posts")
+    {
+        <form action="~/search/searchposts" method="get">
+            <input type="search" name="searchText" id="search" class="header_search_input" required="required" placeholder="Type to Search..">
+            <img class="header_search_icon" src="~/NewFolder2/new/search.png" alt="">
+        </form>
+    }
+    else if (ViewData["Search"].ToString() == "books")
+    {
+
+        <form action="~/search/searchbooks" method="get">
+            <input type="search" name="searchText" id="search" class="header_search_input" required="required" placeholder="Type to Search..." />
+            <img class="header_search_icon" src="~/NewFolder2/new/search.png" alt="">
+        </form>
+    }
+    else
+    {
+
+        <form action="~/search/searchall" method="get">
+            <input type="search" name="searchText" id="search" class="header_search_input" required="required" placeholder="Type to Search...">
+            <img class="header_search_icon" src="~/NewFolder2/new/search.png" alt="">
+        </form>
+
+
+
+    }
+</div>
+
+<style>
+    input {
+        box-sizing: border-box;
+        font-size: 13px;
+    }
+
+        input:focus {
+            outline: none;
+        }
+
+</style>

@@ -2877,8 +2877,33 @@
   "RootNamespace": "SelahSeries",
   "Documents": [
     {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/BlogMgt/Index.cshtml",
+      "TargetPath": "SelahSeries\\Views\\BlogMgt\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/Views/Home/Index_BASE_12792.cshtml",
       "TargetPath": "Views\\Home\\Index_BASE_12792.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/Shared/_ValidationScriptsPartial.cshtml",
+      "TargetPath": "SelahSeries\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/Home/Privacy.cshtml",
+      "TargetPath": "SelahSeries\\Views\\Home\\Privacy.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/Blog/post.cshtml",
+      "TargetPath": "SelahSeries\\Views\\Blog\\post.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/Home/Index_BASE_12792.cshtml",
+      "TargetPath": "SelahSeries\\Views\\Home\\Index_BASE_12792.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -2887,8 +2912,23 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/Home/Index_REMOTE_10512.cshtml",
+      "TargetPath": "SelahSeries\\Views\\Home\\Index_REMOTE_10512.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/Views/Shared/Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/Shared/_Layout_REMOTE_2376.cshtml",
+      "TargetPath": "SelahSeries\\Views\\Shared\\_Layout_REMOTE_2376.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/_ViewImports.cshtml",
+      "TargetPath": "SelahSeries\\Views\\_ViewImports.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -2897,13 +2937,28 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/BlogMgt/Details.cshtml",
+      "TargetPath": "SelahSeries\\Views\\BlogMgt\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/Views/Shared/_Layout_REMOTE_2376.cshtml",
       "TargetPath": "Views\\Shared\\_Layout_REMOTE_2376.cshtml",
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/Home/Index.cshtml",
+      "TargetPath": "SelahSeries\\Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/Views/Support/Index.cshtml",
       "TargetPath": "Views\\Support\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/Home/Read_More.cshtml",
+      "TargetPath": "SelahSeries\\Views\\Home\\Read_More.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -2927,6 +2982,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/Home/Index_LOCAL_12792.cshtml",
+      "TargetPath": "SelahSeries\\Views\\Home\\Index_LOCAL_12792.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/Views/_ViewStart.cshtml",
       "TargetPath": "Views\\_ViewStart.cshtml",
       "FileKind": "mvc"
@@ -2937,8 +2997,23 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/Home/Index_LOCAL_10512.cshtml",
+      "TargetPath": "SelahSeries\\Views\\Home\\Index_LOCAL_10512.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/BookMgt/Edit.cshtml",
+      "TargetPath": "SelahSeries\\Views\\BookMgt\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/Views/Books/Cart.cshtml",
       "TargetPath": "Views\\Books\\Cart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/Blog/post - Copy.cshtml",
+      "TargetPath": "SelahSeries\\Views\\Blog\\post - Copy.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -2952,6 +3027,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/Support/Send_Message.cshtml",
+      "TargetPath": "SelahSeries\\Views\\Support\\Send_Message.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/Views/Blog/post.cshtml",
       "TargetPath": "Views\\Blog\\post.cshtml",
       "FileKind": "mvc"
@@ -2959,6 +3039,16 @@
     {
       "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/Views/Home/Index_BACKUP_10512.cshtml",
       "TargetPath": "Views\\Home\\Index_BACKUP_10512.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/Shared/_CookieConsentPartial.cshtml",
+      "TargetPath": "SelahSeries\\Views\\Shared\\_CookieConsentPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/_ViewStart.cshtml",
+      "TargetPath": "SelahSeries\\Views\\_ViewStart.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -2987,8 +3077,38 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/Home/Index_BASE_10512.cshtml",
+      "TargetPath": "SelahSeries\\Views\\Home\\Index_BASE_10512.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/Blog/Comments.cshtml",
+      "TargetPath": "SelahSeries\\Views\\Blog\\Comments.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/Shared/_Layout_BASE_2376.cshtml",
+      "TargetPath": "SelahSeries\\Views\\Shared\\_Layout_BASE_2376.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/Support/Bio.cshtml",
+      "TargetPath": "SelahSeries\\Views\\Support\\Bio.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/Home/Contact.cshtml",
+      "TargetPath": "SelahSeries\\Views\\Home\\Contact.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/Views/Books/Checkout.cshtml",
       "TargetPath": "Views\\Books\\Checkout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/Shared/_Layout_LOCAL_2376.cshtml",
+      "TargetPath": "SelahSeries\\Views\\Shared\\_Layout_LOCAL_2376.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -2997,8 +3117,23 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/Blog/category.cshtml",
+      "TargetPath": "SelahSeries\\Views\\Blog\\category.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/Books/Index.cshtml",
+      "TargetPath": "SelahSeries\\Views\\Books\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/Views/BookMgt/Create.cshtml",
       "TargetPath": "Views\\BookMgt\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/Shared/_Layout_BACKUP_2376.cshtml",
+      "TargetPath": "SelahSeries\\Views\\Shared\\_Layout_BACKUP_2376.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -3012,6 +3147,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/Books/Checkout.cshtml",
+      "TargetPath": "SelahSeries\\Views\\Books\\Checkout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/Views/Shared/_CookieConsentPartial.cshtml",
       "TargetPath": "Views\\Shared\\_CookieConsentPartial.cshtml",
       "FileKind": "mvc"
@@ -3022,8 +3162,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/Shared/Error.cshtml",
+      "TargetPath": "SelahSeries\\Views\\Shared\\Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/Views/Blog/category.cshtml",
       "TargetPath": "Views\\Blog\\category.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/Home/Index_BACKUP_10512.cshtml",
+      "TargetPath": "SelahSeries\\Views\\Home\\Index_BACKUP_10512.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -3037,6 +3187,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/Support/Index.cshtml",
+      "TargetPath": "SelahSeries\\Views\\Support\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/Views/Home/Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
@@ -3047,8 +3202,28 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/Home/Index_REMOTE_12792.cshtml",
+      "TargetPath": "SelahSeries\\Views\\Home\\Index_REMOTE_12792.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/Home/Index1.cshtml",
+      "TargetPath": "SelahSeries\\Views\\Home\\Index1.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/Views/Home/About.cshtml",
       "TargetPath": "Views\\Home\\About.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/BookMgt/Index.cshtml",
+      "TargetPath": "SelahSeries\\Views\\BookMgt\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/BookMgt/Delete.cshtml",
+      "TargetPath": "SelahSeries\\Views\\BookMgt\\Delete.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -3057,13 +3232,43 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/Home/About.cshtml",
+      "TargetPath": "SelahSeries\\Views\\Home\\About.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/BookMgt/Create.cshtml",
+      "TargetPath": "SelahSeries\\Views\\BookMgt\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/Views/Home/Index_BASE_10512.cshtml",
       "TargetPath": "Views\\Home\\Index_BASE_10512.cshtml",
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/Shared/_Layout.cshtml",
+      "TargetPath": "SelahSeries\\Views\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/Books/Cart.cshtml",
+      "TargetPath": "SelahSeries\\Views\\Books\\Cart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/Views/Support/Send_Message.cshtml",
       "TargetPath": "Views\\Support\\Send_Message.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/Shared/SearchPartial.cshtml",
+      "TargetPath": "SelahSeries\\Views\\Shared\\SearchPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/Home/Index_BACKUP_12792.cshtml",
+      "TargetPath": "SelahSeries\\Views\\Home\\Index_BACKUP_12792.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -3077,8 +3282,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/BlogMgt/Edit.cshtml",
+      "TargetPath": "SelahSeries\\Views\\BlogMgt\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/Views/Home/Index_LOCAL_12792.cshtml",
       "TargetPath": "Views\\Home\\Index_LOCAL_12792.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/Shared/AlertViewPartial.cshtml",
+      "TargetPath": "SelahSeries\\Views\\Shared\\AlertViewPartial.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -3099,6 +3314,16 @@
     {
       "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/Views/Shared/SearchResultView.cshtml",
       "TargetPath": "Views\\Shared\\SearchResultView.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/Shared/SearchResultView.cshtml",
+      "TargetPath": "SelahSeries\\Views\\Shared\\SearchResultView.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/SelahSeries/Views/BlogMgt/Create.cshtml",
+      "TargetPath": "SelahSeries\\Views\\BlogMgt\\Create.cshtml",
       "FileKind": "mvc"
     }
   ],

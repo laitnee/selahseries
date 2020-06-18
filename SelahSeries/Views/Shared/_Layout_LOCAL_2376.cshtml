@@ -1,0 +1,287 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"] - SelahSeries</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Demo project">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <environment include="Development">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Oswald:400,700">
+        <link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/bootstrap4/bootstrap.min.css">
+        <link href="~/NewFolder2/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" href="~/NewFolder2/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+        <link rel="stylesheet" type="text/css" href="~/NewFolder2/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+        <link rel="stylesheet" type="text/css" href="~/NewFolder2/plugins/OwlCarousel2-2.2.1/animate.css">
+        <link rel="stylesheet" type="text/css" href="~/NewFolder2/plugins/jquery.mb.YTPlayer-3.1.12/jquery.mb.YTPlayer.css">
+
+        @if (IsSectionDefined("AddToHead"))
+        {
+            @RenderSection("AddToHead", required: false)
+        }
+
+         <link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/aos.css">
+        <link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/style.css">
+        
+
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+              asp-fallback-href="~/NewFolder2/styles/bootstrap4/bootstrap.min.jsstyles/bootstrap4/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/NewFolder2/styles/main_styles.css" asp-append-version="true" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+              asp-fallback-href="~/NewFolder2/styles/bootstrap4/bootstrap.min.jsstyles/bootstrap4/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+    </environment>
+</head>
+<body>
+    <div class="super_container">
+        <div class="site-wrap">
+            @if (ViewData["Add Navigation"] != "false")
+            {
+                <header class="header">
+
+                   
+
+
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="font-family: 'Ubuntu', sans-serif">
+                        <a class="navbar-brand" href="#">SELAH</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ml-auto topnav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="~/Home/Index">Home <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="~/Home/About">About</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Blog
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="~/Blog/Category">Relationship & Marriage</a>
+                                        <a class="dropdown-item" href="~/Blog/Category">Sports</a>
+                                        <a class="dropdown-item" href="~/Blog/Category">Politics</a>
+                                        <a class="dropdown-item" href="~/Blog/Category">Career</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Support/Counselling
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="~/Support/Index">Our Support Links</a>
+                                        <a class="dropdown-item" href="~/Support/Message_Form">Send Message</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Books</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="~/Home/Contact">Contact</a>
+                                </li>
+                            </ul>
+
+                        </div>
+
+
+                    </nav>
+
+                </header>
+             
+
+            }
+
+
+            @RenderBody()
+
+            @if (ViewData["Add Navigation"] != "false")
+            {
+                <!-- Footer -->
+
+                <footer>
+
+
+
+                    <div class="container pt-5 border-bottom">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-6  col-6 mb-3 text-center" style="color:white">
+                               SELAH LOGO
+                            </div>
+                           
+
+                               
+
+                                <div class="col-md-3 col-sm-6 col-6 p-0 mb-3 float-left text-center">
+                                    <h4 class="mb-4 font-weight-bold text-uppercase">Blog</h4>
+                                    <ul class="list-group">
+                                        <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~Blog/Category">Relationship & Marriage</a></li>
+                                        <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~Blog/Category">Career</a></li>
+                                        <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~Blog/Category">Sports</a></li>
+                                        <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~Blog/Categoryc">Politics</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="col-md-3 col-sm-6 col-6 mb-3 p-0 float-left text-center">
+                                    <h4 class="mb-4 font-weight-bold text-uppercase">quick links</h4>
+                                    <ul class="list-group">
+                                        <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~Support/Message_Form">Support/Counselling</a></li>
+                                        @*<li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~Support/Index">Support Links</a></li>*@
+                                        <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~Home/About">About us</a></li>
+                                        <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~Home/Contact">Contact us</a></li>
+                                        <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~Books/Index">Books</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="col-md-3 col-sm-6 col-6 mb-3 p-0 float-left text-center">
+                                    <h4 class="mb-4 font-weight-bold text-uppercase">Connect</h4>
+                                    <ul class="list-group">
+                                    <li class="list-group-item bg-transparent border-0 p-0 mb-2">
+                                        <a href="https://www.linkedin.com/company/naologic"><i class="fa fa-linkedin mr-1"></i> LinkedIn</a>
+                                    </li>
+                                    <li class="list-group-item bg-transparent border-0 p-0 mb-2">
+                                        <a href="https://twitter.com/naologicerp"><i class="fa fa-twitter mr-1"></i> Twitter</a>
+                                    </li>
+                                    <li class="list-group-item bg-transparent border-0 p-0 mb-2">
+                                        <a href="https://github.com/naologic" target="_blank"><i class="fa fa-instagram mr-1"></i> Instagram</a>
+                                    </li>
+
+                                    <li class="list-group-item bg-transparent border-0 p-0 mb-2">
+                                        <a href="https://www.facebook.com/naologic/" target="_blank"><i class="fa fa-facebook mr-1"></i> Facebook</a>
+                                    </li>
+
+                                    </ul>
+                                </div>
+
+                            </div>
+                     
+                        @*<div class="col-md-12">
+                                <div class="py-4 d-flex justify-content-center align-items-center">
+                                    <p style="color:white">Copyright &copy; <script>document.write(new Date().getFullYear());</script></p>
+                                </div>
+                        </div>*@
+                    </div>
+               
+
+                </footer>
+               
+            }
+        </div>
+        <environment include="Development">
+            <script src="~/NewFolder2/js/jquery-3.2.1.min.js"></script>
+            <script src="~/NewFolder2/styles/bootstrap4/popper.js"></script>
+            <script src="~/NewFolder2/styles/bootstrap4/bootstrap.min.js"></script>
+            <script src="~/NewFolder2/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+            <script src="~/NewFolder2/plugins/easing/easing.js"></script>
+            <script src="~/NewFolder2/plugins/masonry/masonry.js"></script>
+            <script src="~/NewFolder2/js/js3/aos.js"></script>
+            <script src="~/NewFolder2/js/js3/main.js"></script>
+            @if (IsSectionDefined("AddToEnd"))
+            {
+                @RenderSection("AddToEnd", required: false)
+            }
+        </environment>
+        <environment exclude="Development">
+            <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                    asp-fallback-src="~/NewFolder2/js/jquery-3.2.1.min.js"
+                    asp-fallback-test="window.jQuery"
+                    crossorigin="anonymous"
+                    integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+            </script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+                    asp-fallback-src="~/NewFolder2/js/styles/bootstrap4/bootstrap.min.js"
+                    asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                    crossorigin="anonymous"
+                    integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd">
+            </script>
+            <script src="~/js/site.min.js" asp-append-version="true"></script>
+        </environment>
+
+        @RenderSection("Scripts", required: false)
+
+    </div>
+</body>
+</html>
+
+<style>
+    .dropdown-menu a{
+        color:black;
+    }
+    .dropdown-menu a:hover{
+        color: cadetblue;
+    }
+
+
+    .topnav a:hover {
+        border-bottom: 3px solid red;
+    }
+    
+    .topnav a:active{
+        color: darkred;
+    }
+
+    .navbar {
+        padding-left: 7%;
+        padding-right: 7%;
+    }
+
+    .header {
+        margin-bottom: 0px;
+    }
+
+    .dropdown-menu a:hover {
+        color: rgba(0, 123, 255,0.6);
+    }
+
+    .navbar-light .navbar-nav .active > .nav-link {
+        color: #ad001c;
+    }
+
+    .header {
+        border-bottom: 1px solid #007bff;
+    }
+
+    .navbar-light .navbar-nav .nav-link {
+        color: rgba(0,0,0,.9);
+    }
+
+    footer h4 {
+        font-family: "Ubuntu", sans-serif;
+        font-size: 1rem;
+        line-height: 1.375;
+        font-weight: 400;
+        color: white;
+    }
+
+    /*h5 {
+        font-size: 1rem;
+        line-height: 1.375;
+        font-family: Rubik,Arial,sans-serif;
+        font-weight: 500;
+        color: white;
+    }*/
+
+    footer a {
+        color: #f2ba16;
+        font-weight: 300;
+        text-decoration: none;
+        background-color: transparent;
+       
+    }
+
+        footer a:hover {
+            color: #ad913f;
+            text-decoration: none;
+        }
+
+    footer {
+        font-family: "Ubuntu", "Work-sans", sans-serif;
+        background: #012035;
+    }
+</style>
+
