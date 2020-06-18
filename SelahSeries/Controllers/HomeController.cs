@@ -35,21 +35,21 @@ namespace SelahSeries.Controllers
             _emailService = emailService;
             hostingEnvironment = environment;
         }
-        
+
         [Route("Home/Index")]
         [HttpGet("{pageIndex}")]
         [Route("/")]
         public async Task<IActionResult> Index(int pageIndex, string category)
         {
-           PostHomeViewModel postHomeVM = new PostHomeViewModel();
-           int page = (pageIndex == 0)? 1 : pageIndex;
-           var pageParam = new PaginationParam
+            PostHomeViewModel postHomeVM = new PostHomeViewModel();
+            int page = (pageIndex == 0) ? 1 : pageIndex;
+            var pageParam = new PaginationParam
             {
                 PageIndex = page,
-                Limit = 20,
+                Limit = 9,
                 SortColoumn = "CreatedAt"
             };
-            var dontMiss =_postRepo.GetPublishedDMPosts();
+            var dontMiss = _postRepo.GetPublishedDMPosts();
             var dontMissVM = _mapper.Map<List<PostListViewModel>>(dontMiss);
             postHomeVM.DontMiss = dontMissVM;
 
@@ -57,11 +57,12 @@ namespace SelahSeries.Controllers
             postHomeVM.Books = books.ToList();
 
             PaginatedList<Post> latestArticles;
-            if (category == "all" || category == null )
+            if (category == "all" || category == null)
             {
-                latestArticles = await _postRepo.GetPublishedPosts(pageParam);          
+                latestArticles = await _postRepo.GetPublishedPosts(pageParam);
             }
-            else {
+            else
+            {
                 latestArticles = await _postRepo.GetPublishedPostsByCategory(pageParam, category);
             }
             postHomeVM.TotalPostCount = latestArticles.TotalCount;
@@ -76,14 +77,14 @@ namespace SelahSeries.Controllers
         public List<PostListViewModel> Map(PaginatedList<Post> section)
         {
             return _mapper.Map<List<PostListViewModel>>(section);
-            
+
         }
 
 
         [Route("/About")]
         public IActionResult About()
         {
-           
+
 
             return View();
         }
@@ -98,7 +99,7 @@ namespace SelahSeries.Controllers
         [Route("/Contact")]
         public IActionResult Contact()
         {
-           
+
             return View();
         }
 
@@ -106,7 +107,7 @@ namespace SelahSeries.Controllers
         [Route("/contact")]
         public async Task<ActionResult> Contact([FromForm] string name, string email, string subject, string message)
         {
-           
+
             try
             {
                 message = "Name: " + name + "\n" + "Email Address: " + email + "\n" + "Message: " + message;
@@ -114,7 +115,8 @@ namespace SelahSeries.Controllers
                 ViewBag.Error = "Unable to send message, try again";
                 return View();
             }
-            catch(Exception) {
+            catch (Exception)
+            {
                 ViewBag.Error = "Unable to send message, try again";
                 return View();
             }
@@ -131,6 +133,6 @@ namespace SelahSeries.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-       
+
     }
 }
