@@ -13,6 +13,9 @@
         "packagesPath": "/home/lois/.nuget/packages/",
         "outputPath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/obj/",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
         "configFilePaths": [
           "/home/lois/.nuget/NuGet/NuGet.Config"
         ],

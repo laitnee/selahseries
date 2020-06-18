@@ -12753,7 +12753,8 @@
     ]
   },
   "packageFolders": {
-    "/home/lois/.nuget/packages/": {}
+    "/home/lois/.nuget/packages/": {},
+    "/usr/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
@@ -12764,6 +12765,9 @@
       "packagesPath": "/home/lois/.nuget/packages/",
       "outputPath": "/home/lois/Desktop/ASP.NET Projects/selahseries/SelahSeries/obj/",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+      ],
       "configFilePaths": [
         "/home/lois/.nuget/NuGet/NuGet.Config"
       ],

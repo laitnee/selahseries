@@ -29,11 +29,12 @@ namespace SelahSeries.Controllers
         }
         // GET: BlogMgt
         [Route("[controller]")]
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(int pageIndex)
         {
+            Post post = new Post();
             var pageParam = new PaginationParam
             {
-                PageIndex = 1,
+                PageIndex = pageIndex,
                 Limit = 20,
                 SortColoumn = "CreatedAt"
             };
@@ -46,6 +47,8 @@ namespace SelahSeries.Controllers
                 ViewBag.Error = TempData["Error"].ToString();
             }
             var posts = await _postRepo.GetPosts(pageParam); 
+            post.TotalPostCount = posts.TotalCount;
+            ViewData["PageIndex"] = pageIndex;
             return View(posts.Source);
         }
 

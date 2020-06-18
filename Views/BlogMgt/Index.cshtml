@@ -3,6 +3,9 @@
 @{
     ViewData["Title"] = "Index";
     ViewData["Add Navigation"] = "false";
+    var pageIndex = Convert.ToInt32(ViewData["PageIndex"]);
+    var previous = pageIndex - 1;
+    var next = pageIndex + 1;
 }
 @section AddToEnd {
     <script src="~/NewFolder2/js/blogmgt.js"></script>
@@ -106,6 +109,33 @@
         }
     </tbody>
 </table>
+
+<div style="margin-top:80px; margin-bottom:80px">
+                        <nav>
+                            <ul id="navDiv0" class="pagination pg-red pagination-lg justify-content-center">
+                                <li class="page-item">
+                                    <a href="~/@previous#blog" class="page-link waves-effect waves-effect" aria-label="Previous">
+                                        <span aria-hidden="true">«</span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                </li>
+                                @* @{
+                                    var numberOfPages = (int)Math.Ceiling((Decimal)Model.Count() / Model. );
+                                    foreach (var item in Enumerable.Range(1, numberOfPages))
+                                    {
+                                        <li class="page-item btnn0 active "><a href="~/@item?category=@category#blog" class="page-link waves-effect waves-effect">@item</a></li>
+                                    }
+                                } *@
+
+                                <li class="page-item btnn0">
+                                    <a href="~/@next#blog" class="page-link waves-effect waves-effect" aria-label="Next">
+                                        <span aria-hidden="true">»</span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
 
 <div style="color: #ffcc00; background-color:black; margin-bottom:0;" class=" text-center">
     <h1>Selah Series</h1>

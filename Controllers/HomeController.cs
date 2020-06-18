@@ -46,7 +46,7 @@ namespace SelahSeries.Controllers
            var pageParam = new PaginationParam
             {
                 PageIndex = page,
-                Limit = 20,
+                Limit = 9,
                 SortColoumn = "CreatedAt"
             };
             var dontMiss =_postRepo.GetPublishedDMPosts();

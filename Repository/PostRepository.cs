@@ -32,6 +32,7 @@ namespace SelahSeries.Repository
 
         public async Task<Post> GetPost(int postId)
         {
+            
             return await _selahDbContext.Posts
                             .Include(p => p.Category)
                             .Include(p => p.Comments)

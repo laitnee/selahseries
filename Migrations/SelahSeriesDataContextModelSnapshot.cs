@@ -174,6 +174,8 @@ namespace SelahSeries.Migrations
                     b.Property<string>("TitleImageUrl")
                         .HasMaxLength(100);
 
+                    b.Property<int>("TotalPostCount");
+
                     b.HasKey("PostId");
 
                     b.HasIndex("CategoryId");
