@@ -160,9 +160,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="Views\Admin\r_AdninLayout.cshtml">
-      <Pack>$(IncludeRazorContentInPack)</Pack>
-    </Content>
     <Content Update="Views\Blog\post - Copy.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

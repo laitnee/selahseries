@@ -3,13 +3,13 @@
 @{
     ViewData["Title"] = "Index";
     ViewData["Add Navigation"] = "false";
+    Layout = "~/views/admin/_AdminLayout.cshtml";
 }
 @section AddToEnd {
     <script src="~/NewFolder2/js/blogmgt.js"></script>
 }
 <div style="color: #ffcc00; background-color:black;" class="jumbotron text-center">
-    <h1>Book Management Page <br /> (List of Books)</h1>
-    <p> Add, Delete, and Edit Books Here...</p>
+    <h3 style="color: #ffcc00; background-color:black;">Book Management Page <br /> List of Books</h3>
 </div>
 
 @await Html.PartialAsync("AlertViewPartial")
@@ -96,9 +96,3 @@
         }
     </tbody>
 </table>
-
-<div style="color: #ffcc00; background-color:black; margin-bottom:0;" class=" text-center">
-    <h1>Selah Series</h1>
-    <p> &copy; 2020</p>
-</div>
-

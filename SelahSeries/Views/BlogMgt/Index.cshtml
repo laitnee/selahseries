@@ -1,18 +1,15 @@
 ﻿@model IEnumerable<SelahSeries.Models.Post>
 
 @{
-    ViewData["Title"] = "Index";
-    ViewData["Add Navigation"] = "false";
     ViewBag.Title = "Blog mgt";
     Layout = "~/views/admin/_AdminLayout.cshtml";
 }
+
 @section AddToEnd {
     <script src="~/NewFolder2/js/blogmgt.js"></script>
 }
 <div style="color: #ffcc00; background-color:black;" class="jumbotron text-center">
-    <h1>Blog Content Management Page <br /> (List of Posts)</h1>
-    <h4> <a class="btn" href="~/blogmgt/signout"> SIGN OUT </a> </h4>
-    <p> Add, Delete, Edit, Archive Blog Posts Here...</p>
+    <h3 style="color: #ffcc00; background-color:black;" >Blog Content Management Page</h3>
 </div>
 
 @await Html.PartialAsync("AlertViewPartial")
@@ -51,66 +48,101 @@
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                <div class="btn-group">
-                    <a class="btn btn-info" asp-action="Edit" asp-route-id="@item.PostId">Edit</a>
-                    
-                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.PostId">Delete</a>
-                </div>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Author)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            @if (item.CategoryId == 1)
-            {
-                <td>Sports</td>
-            }
-            else if (item.CategoryId == 2)
-            {
+            <tr>
                 <td>
-                    Politics
+                    <div class="btn-group">
+                        <a class="btn btn-info" asp-action="Edit" asp-route-id="@item.PostId">Edit</a>
+
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.PostId">Delete</a>
+                    </div>
                 </td>
-            }
-            else if (item.CategoryId == 3)
-            {
-                <td>Relationship and Marriage</td>
-            }
-            else if (item.CategoryId == 4)
-            {
-                <td>Career</td>
-            }
-            else if (item.CategoryId == 5)
-            {
-                <td>General</td>
-            }
-            else
-            {
-                <td>Unknown</td>
-            }
-            <td>
-                @Html.DisplayFor(modelItem => item.TitleImageUrl)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Published)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedAt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ModifiedAt)
-            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                @if (item.CategoryId == 1)
+                {
+                    <td>Sports</td>
+                }
+                else if (item.CategoryId == 2)
+                {
+                    <td>
+                        Politics
+                    </td>
+                }
+                else if (item.CategoryId == 3)
+                {
+                    <td>Relationship and Marriage</td>
+                }
+                else if (item.CategoryId == 4)
+                {
+                    <td>Career</td>
+                }
+                else if (item.CategoryId == 5)
+                {
+                    <td>General</td>
+                }
+                else
+                {
+                    <td>Unknown</td>
+                }
+                <td>
+                    @Html.DisplayFor(modelItem => item.TitleImageUrl)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Published)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedAt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModifiedAt)
+                </td>
 
 
-        </tr>
+            </tr>
         }
     </tbody>
 </table>
+<div style="margin-top:80px; margin-bottom:80px">
+    @if (Model.Any())
+    {
+        <nav>
+            <ul id="navDiv0" class="pagination pg-red pagination-lg justify-content-center">
+                <li class="page-item">
+                    <a href="@(ViewBag.CurrentPage<2? "~/blogmgt?pageIndex=@ViewBag.CurrentPage+1)" : "#")class="page-link waves-effect waves-effect" aria-label="Previous">
+                        <span aria-hidden="true">«</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                @{
+                    var postPerPage = 20;
+                    var numberOfPages = (int)Math.Ceiling((Decimal)ViewBag.PostCount / postPerPage);
+                    foreach (var item in Enumerable.Range(1, numberOfPages))
+                    {
+                        <li class="page-item btnn0 @(ViewBag.CurrentPage == item? "active" : "")   "><a href="~/blogmgt?pageIndex=@item" class="page-link waves-effect waves-effect">@item</a></li>
+                    }
+                }
 
-<div style="color: #ffcc00; background-color:black; margin-bottom:0;" class=" text-center">
-    <h1>Selah Series</h1>
-    <p> &copy; 2020</p>
+                <li  class="page-item btnn0">
+                    <a href="@(ViewBag.CurrentPage >= ViewBag.PostCount? "~/blogmgt?pageIndex=@ViewBag.CurrentPage+1)" : "#" )class="page-link waves-effect waves-effect" aria-label="Next">
+                        <span aria-hidden="true">»</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    }
+    else
+    {
+        <div class="section_panel d-flex flex-row align-items-center">
+            No post in yet in this category
+
+
+        </div>
+    }
+
 </div>
+

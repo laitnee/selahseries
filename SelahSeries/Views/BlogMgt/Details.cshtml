@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Details";
     ViewData["Add Navigation"] = "false";
+    Layout = "~/views/admin/_AdminLayout.cshtml";
 }
 @section AddToHead {
     <link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/post.css">
@@ -19,10 +20,7 @@
         color: rgba(0,0,0,0.5);
     }
 </style>
-<div style="color: #ffcc00; background-color:black;" class="jumbotron text-center">
-    <h1>Blog Content Management Page <br />( Post Detail )</h1>
-    <p> Add, Delete, Edit, Archive Blog Posts Here...</p>
-</div>
+
 
 <div class="container">
 
@@ -70,10 +68,6 @@
                     </div>
 
 
-                    <div style="color: #ffcc00; background-color:black; margin-bottom:0;" class=" text-center">
-                        <h1>Selah Series</h1>
-                        <p> &copy; 2020</p>
-                    </div>
                 </div>
             </div>
         </div>

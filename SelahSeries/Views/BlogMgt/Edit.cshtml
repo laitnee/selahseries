@@ -1,10 +1,9 @@
 ﻿@model SelahSeries.ViewModels.PostCreateViewModel
 
 @{
-    ViewData["Title"] = "Edit";
-    ViewData["Add Navigation"] = "false";
+    ViewBag.Title = "Blog Edit";
+    Layout = "~/views/admin/_AdminLayout.cshtml";
 }
-
 
 @section AddToHead {
     <link rel="stylesheet" type="text/css" href="~/NewFolder2/KothingEditor/build/css/keditor.min.css">
@@ -60,7 +59,10 @@
     <script src="~/NewFolder2/js/blogmgt.js"></script>
 
 }
-<hr />
+
+<div style="color: #ffcc00; background-color:black;" class="jumbotron text-center">
+    <h1 style="color: #ffcc00; background-color:black;">Blog Content Management Page <br /> EDIt Post  </h1>
+</div>
 <div class="row">
     <div class="col-lg-1"></div>
     <div class="col-lg-10">
@@ -147,7 +149,3 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-<div style="color: #ffcc00; background-color:black; margin-bottom:0;" class=" text-center">
-    <h1>Selah Series</h1>
-    <p> &copy; 2020</p>
-</div>
