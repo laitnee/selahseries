@@ -1,12 +1,9 @@
-﻿@model IEnumerable<SelahSeries.Models.Post>
+﻿@model IEnumerable<SelahSeries.Models.Book>
 
 @{
     ViewData["Title"] = "Index";
     ViewData["Add Navigation"] = "false";
     Layout = "~/views/admin/_AdminLayout.cshtml";
-    var pageIndex = Convert.ToInt32(ViewData["PageIndex"]);
-    var previous = pageIndex - 1;
-    var next = pageIndex + 1;
 }
 @section AddToEnd {
     <script src="~/NewFolder2/js/blogmgt.js"></script>
@@ -17,35 +14,31 @@
 
 @await Html.PartialAsync("AlertViewPartial")
 <p>
-    <a class="btn btn-primary btn-lg" asp-action="Create">Create New Blog Post</a>
+    <a class="btn btn-primary btn-lg" asp-action="Create">Add New Book</a>
 </p>
 <table style="width:100%; text-align:center;" class="table table-striped table-responsive">
     <thead>
         <tr>
             <th></th>
             <th>
-                @Html.DisplayNameFor(model => model.Author)
+                @Html.DisplayNameFor(model => model.Title)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Title)
+                @Html.DisplayNameFor(model => model.Author)
             </th>
             <th>
 
                 @Html.DisplayNameFor(model => model.CategoryId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TitleImageUrl)
+                @Html.DisplayNameFor(model => model.ImageUrl)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Published)
+                @Html.DisplayNameFor(model => model.IsHardBook)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CreatedAt)
+                @Html.DisplayNameFor(model => model.Price)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ModifiedAt)
-            </th>
-
         </tr>
     </thead>
     <tbody>
@@ -54,16 +47,15 @@
             <tr>
                 <td>
                     <div class="btn-group">
-                        <a class="btn btn-info" asp-action="Edit" asp-route-id="@item.PostId">Edit</a>
-
-                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.PostId">Delete</a>
+                        <a class="btn btn-info" asp-action="Edit" asp-route-id="@item.BookId">Edit</a>
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.BookId">Delete</a>
                     </div>
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Author)
+                    @Html.DisplayFor(modelItem => item.Title)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Title)
+                    @Html.DisplayFor(modelItem => item.Author)
                 </td>
                 @if (item.CategoryId == 1)
                 {
@@ -92,52 +84,15 @@
                     <td>Unknown</td>
                 }
                 <td>
-                    @Html.DisplayFor(modelItem => item.TitleImageUrl)
+                    @Html.DisplayFor(modelItem => item.ImageUrl)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Published)
+                    @Html.DisplayFor(modelItem => item.IsHardBook)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.CreatedAt)
+                    ₦ @Html.DisplayFor(modelItem => item.Price)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ModifiedAt)
-                </td>
-
-
             </tr>
         }
     </tbody>
 </table>
-
-<div style="margin-top:80px; margin-bottom:80px">
-    <nav>
-        <ul id="navDiv0" class="pagination pg-red pagination-lg justify-content-center">
-            <li class="page-item">
-                <a href="~/@previous#blog" class="page-link waves-effect waves-effect" aria-label="Previous">
-                    <span aria-hidden="true">«</span>
-                    <span class="sr-only">Previous</span>
-                </a>
-            </li>
-            @* @{
-                    var numberOfPages = (int)Math.Ceiling((Decimal)Model.Count() / Model. );
-                    foreach (var item in Enumerable.Range(1, numberOfPages))
-                    {
-                        <li class="page-item btnn0 active "><a href="~/@item?category=@category#blog" class="page-link waves-effect waves-effect">@item</a></li>
-                    }
-                } *@
-
-            <li class="page-item btnn0">
-                <a href="~/@next#blog" class="page-link waves-effect waves-effect" aria-label="Next">
-                    <span aria-hidden="true">»</span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-</div>
-
-<div style="color: #ffcc00; background-color:black; margin-bottom:0;" class=" text-center">
-    <h1>Selah Series</h1>
-    <p> &copy; 2020</p>
-</div>
