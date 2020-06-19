@@ -203,6 +203,9 @@
 	.offer-box-products{
 		margin-bottom: 30px;
 	}
+    .logoo > total-logo >.total > span {
+        font-size: 16px;
+    }
 }
  @media only screen and (min-width: 280px) and (max-width: 599px) {
      .navbar-light .navbar-toggler{

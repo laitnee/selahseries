@@ -71,11 +71,11 @@
                                     <i class="fa fa-caret-down" aria-hidden="true"></i>
                                 </h6>
 
-                                <h4 class="local_delivery" style="color:black">Local Delivery: &nbsp&nbsp  ₦<span>100.00</span></h4>
-                                <select class="shipping_select">
+                                <h4 class="local_delivery" style="color:black">Local Delivery: &nbsp&nbsp  ₦<span>100</span></h4>
+                                <select class="shipping_select" required>
                                     <option value="1">Nigeria</option>
                                 </select>
-                                <select class="shipping_select">
+                                <select class="shipping_select" required>
                                     <option value="0">Select a City</option>
                                     <option value="1">Ile-Ife</option>
                                     <option value="4">Ilesha</option>
@@ -130,7 +130,7 @@
                                             <input type="text"
                                                    class="form-control"
                                                    id="first"
-                                                   name="name" />
+                                                   name="name"  />
                                             <span class="placeholder"
                                                   data-placeholder="First name"></span>
                                         </div>
@@ -138,7 +138,7 @@
                                             <input type="text"
                                                    class="form-control"
                                                    id="last"
-                                                   name="name" />
+                                                   name="name" required="required"/>
                                             <span class="placeholder" data-placeholder="Last name"></span>
                                         </div>
                                         <div class="col-md-6 form-group p_star">
@@ -155,10 +155,10 @@
                                                    id="email"
                                                    name="compemailany" />
                                             <span class="placeholder"
-                                                  data-placeholder="Email Address"></span>
+                                                  data-placeholder="Email Address" ></span>
                                         </div>
                                         <div class="col-md-12 form-group p_star">
-                                            <select class="nice-select country_select">
+                                            <select class="nice-select country_select" required>
                                                 <option value="1" class="option selected">Nigeria</option>
                                                 <option value="2">Nigeria</option>
                                             </select>
@@ -167,20 +167,12 @@
                                             <input type="text"
                                                    class="form-control"
                                                    id="add1"
-                                                   name="add1" />
+                                                   name="add1" required="required"/>
                                             <span class="placeholder"
-                                                  data-placeholder="Address line 01"></span>
+                                                  data-placeholder="Address"></span>
                                         </div>
                                         <div class="col-md-12 form-group p_star">
-                                            <input type="text"
-                                                   class="form-control"
-                                                   id="add2"
-                                                   name="add2" />
-                                            <span class="placeholder"
-                                                  data-placeholder="Address line 02"></span>
-                                        </div>
-                                        <div class="col-md-12 form-group p_star">
-                                            <select class="nice-select city_select">
+                                            <select class="nice-select city_select" required>
                                                 <option value="0">Select Town/City</option>
                                                 <option value="1">Ile-Ife</option>
                                                 <option value="1">Ilesha</option>
@@ -194,8 +186,9 @@
                                                           name="message"
                                                           id="message"
                                                           rows="1"
-                                                          placeholder="Order Notes"></textarea>
+                                                          placeholder="Order Notes" required="required"></textarea>
                                             </div>
+                                         </div>
                                     </form>
                                     @*<a class="main_btn" href="#">Proceed to Payment</a>*@
                                 </div>
@@ -203,14 +196,14 @@
                         </div>
                     </div>
                 </section>
-                <div class="">
+                <div class="logoo">
                     <div class="total-logo">
                         <div class="total" style="border-bottom:none">
                             <span>Total:</span>&nbsp;&nbsp;&nbsp;
                             <span class="payment_amount total-n">₦<span>0</span></span>
                         </div>
                         <div class="logo">
-                            <img style="height:42px" src="~/NewFolder2/new/selah hdr md.png" />
+                            <img src="~/NewFolder2/new/selah hdr md.png" />
                         </div>
                     </div>
                     <!--End TOTAL-LOGO-->
@@ -409,6 +402,10 @@
 
     .basketTotal {
         width: 10%;
+    }
+
+    .logo > img{
+        height: 42px;
     }
     }
 </style>

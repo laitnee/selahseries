@@ -17,7 +17,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace SelahSeries.Controllers
 {
-    
+
     public class BlogMgtController : Controller
     {
         private readonly IMapper _mapper;
@@ -33,13 +33,14 @@ namespace SelahSeries.Controllers
         [Route("[controller]")]
         public async Task<ActionResult> Index([FromQuery]int pageIndex = 1)
         {
+            Post post = new Post();
             var pageParam = new PaginationParam
             {
                 PageIndex = pageIndex,
                 Limit = 20,
                 SortColoumn = "CreatedAt"
             };
-            if(TempData.ContainsKey("Alert"))
+            if (TempData.ContainsKey("Alert"))
             {
                 ViewBag.Alert = TempData["Alert"].ToString();
             }
@@ -70,7 +71,7 @@ namespace SelahSeries.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([FromForm] PostCreateViewModel postVM)
-        { 
+        {
             if (ModelState.IsValid)
             {
                 var uploadedImage = "";
@@ -79,7 +80,7 @@ namespace SelahSeries.Controllers
 
                 try
                 {
-                    
+
                     var post = _mapper.Map<Post>(postVM);
                     post.CreatedAt = DateTime.Now;
                     if (post.CategoryId == 1)
@@ -108,17 +109,19 @@ namespace SelahSeries.Controllers
                         TempData["Alert"] = "Post Created Successfully";
                         return RedirectToAction(nameof(Index));
                     }
-                    
+
                     ViewBag.Error = "Unable to add post, please try again or contact administrator";
                     return View();
                 }
-                catch(Exception ex) {
+                catch (Exception ex)
+                {
                     ViewBag.Error = "Unable to add post, please try again or contact administrator";
-                    return View(); }               
+                    return View();
+                }
             }
             ViewBag.Error = "Please correct the error(s) in Form";
             return View(postVM);
-            
+
         }
 
         private async Task<string> ProcessPhoto(IFormFile postPhoto)
@@ -161,15 +164,17 @@ namespace SelahSeries.Controllers
                 if (postVM.PostPhoto != null) uploadedImage = await ProcessPhoto(postVM.PostPhoto);
                 try
                 {
-                    if(!string.IsNullOrWhiteSpace(uploadedImage)) editPost.TitleImageUrl = uploadedImage;
+                    if (!string.IsNullOrWhiteSpace(uploadedImage)) editPost.TitleImageUrl = uploadedImage;
 
                     await _postRepo.UpdatePost(editPost);
                     TempData["Alert"] = "Post Edited Successfully";
                     return RedirectToAction(nameof(Index));
                 }
-                catch(Exception ex ) {
+                catch (Exception ex)
+                {
                     ViewBag.Error = "Unable to add post, please try again or contact administrator";
-                    return View(); }
+                    return View();
+                }
             }
             ViewBag.Error = "Please correct the error(s) in Form";
             return View();
@@ -178,7 +183,8 @@ namespace SelahSeries.Controllers
         // GET: BlogMgt/Delete/5
         public async Task<IActionResult> Delete(int id)
         {
-            try {
+            try
+            {
 
                 await _postRepo.DeletePost(id);
                 TempData["Alert"] = "Post Deleted Successfully";
@@ -186,7 +192,8 @@ namespace SelahSeries.Controllers
 
 
             }
-            catch {
+            catch
+            {
                 TempData["Error"] = "Error occured: Unable to delete post";
                 return RedirectToAction(nameof(Index));
             }

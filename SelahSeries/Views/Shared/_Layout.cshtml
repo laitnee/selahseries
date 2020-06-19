@@ -42,15 +42,15 @@
     </environment>
 </head>
 <body>
-    
+
 
     <div class="site-wrap">
         @if (ViewData["Add Navigation"] != "false")
         {
-        <header class="header">
-            <div class="row">
-                <div class="col" style="padding:0">
-                    @*<div class="header_content d-flex flex-row align-items-center justify-content-start">*@
+            <header class="header">
+                <div class="row">
+                    <div class="col" style="padding:0">
+                        @*<div class="header_content d-flex flex-row align-items-center justify-content-start">*@
 
                         <nav class="navbar navbar-expand-lg navbar-light bg-light">
                             <a class="navbar-brand" href="/"><img style="height:42px" src="~/NewFolder2/new/selah hdr md.png" /></a>
@@ -58,9 +58,11 @@
                                 <span class="navbar-toggler-icon"></span>
                             </button>
                             <div class="idNav collapse navbar-collapse" id="navbarSupportedContent">
-                                @{ViewData["Search"] = "all";}
-                                @await Html.PartialAsync("SearchPartial")
-                                <ul style="font-family:'Ubuntu', sans-serif" class="navbar-nav ml-auto topnav">
+                                <div class="before_menu">
+                                    @{ViewData["Search"] = "all";}
+                                    @await Html.PartialAsync("SearchPartial")
+                                </div>
+                                <ul style="font-family:Verdana, Geneva, Tahoma, sans-serif, sans-serif; font-size:14px" class="navbar-nav ml-auto topnav">
 
                                     @{ 
                                         var currentRoute = Context.Request.Path;
@@ -82,8 +84,8 @@
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Blog
                                         </a>
-                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="~/?category=relationship_and_marriage#blog">Relationship and Marriage</a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="font-size:13px">
+                                            <a class="dropdown-item" href="~/?category=relationship_and_marriage#blog">Relationship & Marriage</a>
                                             <a class="dropdown-item" href="~/?category=sports#blog">Sports</a>
 
                                             <a class="dropdown-item" href="~/?category=politics#blog">Politics</a>
@@ -95,7 +97,7 @@
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Support/Counselling
                                         </a>
-                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="font-size:13px">
                                             <a class="dropdown-item" href="~/Support/Index">Our Support Links</a>
                                             <a class="dropdown-item" href="~/Support/Send_Message">Send Message</a>
                                         </div>
@@ -111,17 +113,21 @@
                                         <a class="cart nav-link" href="~/books/cart"><i class="fa fa-shopping-cart mr-1"></i><span style="background-color: #ad001c; padding: 2px 3px; color: white; border-radius: 6px">0</span></a>
                                     </li>
                                 </ul>
+                                <div class="after_menu">
+                                    @{ViewData["Search"] = "all";}
+                                    @await Html.PartialAsync("SearchPartial")
+                                </div>
 
                             </div>
 
 
                         </nav>
 
-                    @*</div>*@
+                        @*</div>*@
+                    </div>
                 </div>
-            </div>
 
-        </header>
+            </header>
 
 
         }
@@ -138,15 +144,15 @@
 
 
                 <div class="container pt-5 border-bottom">
-                    <div class="row">
-                        <div class="col-md-3 col-sm-6  col-6 mb-3 text-center" style="color:white">
+                    <div class="row" style="height:193px">
+                        <div class="col-md-3 col-sm-6  col-6  text-center" style="color:white">
                             <img style="width:100%; height:100%; margin-top:-24px" src="~/NewFolder2/new/selah s.png" />
                         </div>
 
 
 
 
-                        <div class="col-md-3 col-sm-6 col-6 p-0 mb-3 float-left text-center">
+                        <div class="col-md-3 col-sm-6 col-6 p-0  float-left text-center">
                             <h4 class="font-weight-bold text-uppercase">Blog</h4>
                             <ul class="list-group">
                                 <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~/?category=relationship_and_marriage#blog">Relationship & Marriage</a></li>
@@ -156,7 +162,7 @@
                             </ul>
                         </div>
 
-                        <div class="col-md-3 col-sm-6 col-6 mb-3 p-0 float-left text-center">
+                        <div class="col-md-3 col-sm-6 col-6  p-0 float-left text-center">
                             <h4 class="font-weight-bold text-uppercase">Quick Links</h4>
                             <ul class="list-group">
                                 <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="~/Support/Send_Message">Support/Counselling</a></li>
@@ -167,21 +173,21 @@
                             </ul>
                         </div>
 
-                        <div class="col-md-3 col-sm-6 col-6 mb-3 p-0 float-left text-center">
+                        <div class="col-md-3 col-sm-6 col-6  p-0 float-left text-center">
                             <h4 class="font-weight-bold text-uppercase">Connect</h4>
                             <ul class="list-group">
                                 <li class="list-group-item bg-transparent border-0 p-0 mb-2">
-                                    <a href="https://www.linkedin.com/company/naologic"><i class="fa fa-linkedin mr-1"></i> LinkedIn</a>
+                                    <a href="https://www.linkedin.com/in/lekan-agunbiade-52b13210/" target="_blank"><i class="fa fa-linkedin mr-1"></i> LinkedIn</a>
                                 </li>
                                 <li class="list-group-item bg-transparent border-0 p-0 mb-2">
-                                    <a href="https://twitter.com/naologicerp"><i class="fa fa-twitter mr-1"></i> Twitter</a>
+                                    <a href="https://twitter.com/lalekan_304?s=09" target="_blank"><i class="fa fa-twitter mr-1"></i> Twitter</a>
                                 </li>
                                 <li class="list-group-item bg-transparent border-0 p-0 mb-2">
-                                    <a href="https://github.com/naologic" target="_blank"><i class="fa fa-instagram mr-1"></i> Instagram</a>
+                                    <a href="https://www.instagram.com/lekanagunbiade/" target="_blank"><i class="fa fa-instagram mr-1"></i> Instagram</a>
                                 </li>
 
                                 <li class="list-group-item bg-transparent border-0 p-0 mb-2">
-                                    <a href="https://www.facebook.com/naologic/" target="_blank"><i class="fa fa-facebook mr-1"></i> Facebook</a>
+                                    <a href="https://web.facebook.com/lekan.agunbiade.7?_rdc=1&_rdr" target="_blank"><i class="fa fa-facebook mr-1"></i> Facebook</a>
                                 </li>
 
                             </ul>
@@ -189,7 +195,9 @@
 
                     </div>
 
-        
+                    <div class="row text-center" style="" >
+                        <div style="margin:auto;color:#c4913a;margin-bottom:40px">email: <a href="~/Contact" style=" text-decoration:underline; color:#c4913a">Connect@selahseries.com</a></div>
+                    </div>
                 </div>
 
 
@@ -232,20 +240,20 @@
 
                     <div class="row" style="margin-top:18px">
                         <div class="col-md-12 col-sm-12 col-12 mb-3 p-0 float-left text-center">
-                            
+
                             <ul>
                                 <li class="d-inline list-group-item bg-transparent border-0 p-0 mb-2">
-                                    <a href="https://www.linkedin.com/company/naologic"><i class="fa fa-linkedin mr-1"></i></a>
+                                    <a href="https://www.linkedin.com/in/lekan-agunbiade-52b13210/ " target="_blank"><i class="fa fa-linkedin mr-1"></i></a>
                                 </li>
                                 <li class="d-inline bg-transparent border-0 p-0 mb-2">
-                                    <a href="https://twitter.com/naologicerp"><i class="fa fa-twitter mr-1"></i></a>
+                                    <a href="https://twitter.com/lalekan_304?s=09" target="_blank"><i class="fa fa-twitter mr-1"></i></a>
                                 </li>
                                 <li class="d-inline list-group-item bg-transparent border-0 p-0 mb-2">
-                                    <a href="https://github.com/naologic" target="_blank"><i class="fa fa-instagram mr-1"></i></a>
+                                    <a href="https://www.instagram.com/lekanagunbiade/" target="_blank"><i class="fa fa-instagram mr-1"></i></a>
                                 </li>
 
                                 <li class="d-inline list-group-item bg-transparent border-0 p-0 mb-2">
-                                    <a href="https://www.facebook.com/naologic/" target="_blank"><i class="fa fa-facebook mr-1"></i></a>
+                                    <a href="https://web.facebook.com/lekan.agunbiade.7?_rdc=1&_rdr" target="_blank"><i class="fa fa-facebook mr-1"></i></a>
                                 </li>
 
                             </ul>
@@ -253,11 +261,13 @@
 
                     </div>
 
+
+
                     @*<div class="col-md-12">
-                            <div class="py-4 d-flex justify-content-center align-items-center">
-                                <p style="color:white">Copyright &copy; <script>document.write(new Date().getFullYear());</script></p>
-                            </div>
-                    </div>*@
+                                <div class="py-4 d-flex justify-content-center align-items-center">
+                                    <p style="color:white">Copyright &copy; <script>document.write(new Date().getFullYear());</script></p>
+                                </div>
+                        </div>*@
                 </div>
 
 
@@ -265,55 +275,56 @@
 
         }
     </div>
-        <environment include="Development">
-            <script src="~/NewFolder2/js/jquery-3.2.1.min.js"></script>
-            <script src="~/NewFolder2/styles/bootstrap4/popper.js"></script>
-            <script src="~/NewFolder2/styles/bootstrap4/bootstrap.min.js"></script>
-            <script src="~/NewFolder2/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-            <script src="~/NewFolder2/plugins/easing/easing.js"></script>
-            <script src="~/NewFolder2/plugins/masonry/masonry.js"></script>
-            <script src="~/NewFolder2/js/js3/aos.js"></script>
-            <script src="~/NewFolder2/js/js3/main.js"></script>
-            @if (IsSectionDefined("AddToEnd"))
-            {
-                @RenderSection("AddToEnd", required: false)
-            }
-        </environment>
-        <environment exclude="Development">
-            <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
-                    asp-fallback-src="~/NewFolder2/js/jquery-3.2.1.min.js"
-                    asp-fallback-test="window.jQuery"
-                    crossorigin="anonymous"
-                    integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
-            </script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
-                    asp-fallback-src="~/NewFolder2/js/styles/bootstrap4/bootstrap.min.js"
-                    asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-                    crossorigin="anonymous"
-                    integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd">
-            </script>
-            <script src="~/js/site.min.js" asp-append-version="true"></script>
-        </environment>
+    <environment include="Development">
+        <script src="~/NewFolder2/js/jquery-3.2.1.min.js"></script>
+        <script src="~/NewFolder2/styles/bootstrap4/popper.js"></script>
+        <script src="~/NewFolder2/styles/bootstrap4/bootstrap.min.js"></script>
+        <script src="~/NewFolder2/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+        <script src="~/NewFolder2/plugins/easing/easing.js"></script>
+        <script src="~/NewFolder2/plugins/masonry/masonry.js"></script>
+        <script src="~/NewFolder2/js/js3/aos.js"></script>
+        <script src="~/NewFolder2/js/js3/main.js"></script>
+        @if (IsSectionDefined("AddToEnd"))
+        {
+            @RenderSection("AddToEnd", required: false)
+        }
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                asp-fallback-src="~/NewFolder2/js/jquery-3.2.1.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+                asp-fallback-src="~/NewFolder2/js/styles/bootstrap4/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
 
-        @RenderSection("Scripts", required: false)
+    @RenderSection("Scripts", required: false)
 
-    
+
 </body>
 </html>
 
 <style>
-    .dropdown-menu a{
-        color:black;
+    .dropdown-menu a {
+        color: black;
     }
-    .dropdown-menu a:hover{
-        color: cadetblue;
-    }
+
+        .dropdown-menu a:hover {
+            color: cadetblue;
+        }
 
     .topnav a:hover {
         border-bottom: 3px solid #ec517f;
     }
-    
-    .topnav a:active{
+
+    .topnav a:active {
         color: darkred;
     }
 
@@ -342,13 +353,14 @@
         color: rgba(0,0,0,.9);
     }
 
-    .footer_block{
-        display:block;
+    .footer_block {
+        display: block;
     }
 
     .footer_small {
         display: none;
     }
+
     footer h4 {
         font-family: "Ubuntu", sans-serif;
         font-size: 1rem;
@@ -358,14 +370,12 @@
         margin-bottom: .5rem;
     }
 
-  
-
     footer a {
         color: #f2ba16;
         font-weight: 300;
         text-decoration: none;
         background-color: transparent;
-       
+                      font-size: 13px;
     }
 
         footer a:hover {
@@ -377,20 +387,30 @@
         font-family: "Ubuntu", "Work-sans", sans-serif;
         background: #012035;
     }
+
     li:not(:last-child).d-inline {
         margin-right: 18px;
     }
-    .searchbox{
+
+    .searchbox {
         display: none;
+    }
+
+    .before_menu{
+        display:none;
+    }
+
+    .after_menu{
+        display:block;
+        margin-left:auto;
     }
 </style>
 @*<script>
-  
-     
-        $(function () {
-            $('nav a[href="/' + location.pathname.split("/")[1] + '/' +  '"]').parents('li').addClass('active');
-           
-        });*@
-        
-    
+
+
+    $(function () {
+        $('nav a[href="/' + location.pathname.split("/")[1] + '/' +  '"]').parents('li').addClass('active');
+
+    });*@
+
 

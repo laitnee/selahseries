@@ -10,13 +10,13 @@ namespace SelahSeries.Models
     {
         public Post()
         {
-            
+
             ModifiedAt = DateTime.Now;
         }
         public int PostId { get; set; }
 
-        
-        
+
+
 
         public int? ParentId { get; set; }
         [StringLength(50)]
@@ -38,5 +38,6 @@ namespace SelahSeries.Models
 
         public PostClap postClap { get; set; }
 
+        public int TotalPostCount { get; set; }
     }
 }
