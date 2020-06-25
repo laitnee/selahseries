@@ -98,8 +98,7 @@ const app = () => {
 
 
     function repeatClapping() {
-        updateNumberOfClaps();
-        postClaps();
+        updateNumberOfClaps();      
         animationTimeline.replay();
         clapIcon.classList.add('checked');
     }
@@ -108,6 +107,7 @@ const app = () => {
         numberOfClaps < 50 ? numberOfClaps++ : null;
         clapCount.innerHTML = "+" + numberOfClaps;
         clapTotalCount.innerHTML = initialNumberOfClaps + numberOfClaps;
+        postClaps();
     }
 
 
@@ -122,23 +122,23 @@ const app = () => {
 
     function clapResponseHandler(res) {
         res = JSON.parse(res);
-        if (initialNumberOfClaps === undefined) res.Claps ? initialNumberOfClaps = res.Claps : initialNumberOfClaps = 0 ; 
-        clapTotalCount.innerHTML = Math.abs(initialNumberOfClaps + (numberOfClaps - clapsSent)) ;
+        if (initialNumberOfClaps === undefined) {
+            initialNumberOfClaps = res.Claps;
+            clapTotalCount.innerHTML = res.Claps;
+        }
     }
 
     let postingClaps;
     const postClaps = () => {
-        console.log("moving");
+       
         clearTimeout(postingClaps);
         let clapsToSend = numberOfClaps - clapsSent;
         postingClaps = setTimeout(
             function () {
-                console.log("about to");
+             
 
                 if (clapsToSend > 0) {
-                    console.log(clapsToSend, " sent");
                     fetchPostClaps(clapsToSend);
-                    console.log(clapsToSend, " sent");
                 }
             },
             1000);
@@ -158,8 +158,7 @@ const app = () => {
         })
             .then(response => response.json())
             .then(clapResponseHandler);
-        //.catch(console.log);
-        console.log(url);
+   
         clapsSent += numberOfClapsToSend;
     };
 

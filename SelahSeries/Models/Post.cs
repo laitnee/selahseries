@@ -38,6 +38,5 @@ namespace SelahSeries.Models
 
         public PostClap postClap { get; set; }
 
-        public int TotalPostCount { get; set; }
     }
 }

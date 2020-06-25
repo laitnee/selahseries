@@ -53,6 +53,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\NewFolder2\Admin\css\.DS_Store" />
+    <None Include="wwwroot\NewFolder2\Admin\css\bootstrap\.DS_Store" />
+    <None Include="wwwroot\NewFolder2\Admin\js\.DS_Store" />
+    <None Include="wwwroot\NewFolder2\Admin\js\bootstrap.min.js" />
+    <None Include="wwwroot\NewFolder2\Admin\js\jquery.min.js" />
+    <None Include="wwwroot\NewFolder2\Admin\js\main.js" />
+    <None Include="wwwroot\NewFolder2\Admin\js\popper.js" />
     <None Include="wwwroot\NewFolder2\contact2\js\global.js" />
     <None Include="wwwroot\NewFolder2\contact2\vendor\datepicker\daterangepicker.js" />
     <None Include="wwwroot\NewFolder2\contact2\vendor\datepicker\moment.min.js" />
@@ -146,6 +153,10 @@
     <None Include="wwwroot\NewFolder2\styles\eiser_theme\vendors\owl-carousel\owl.carousel.min.js" />
     <None Include="wwwroot\NewFolder2\styles\linericon\fonts\Linearicons-Free.svg" />
     <None Include="wwwroot\NewFolder2\styles\linericon\fonts\Linearicons-Free.woff2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Uploads\" />
   </ItemGroup>
 
   <ItemGroup>

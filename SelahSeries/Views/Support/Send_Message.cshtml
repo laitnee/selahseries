@@ -49,7 +49,10 @@
         <div class="card card-2">
             <div class="card-heading"></div>
             <div class="card-body">
+                @await Html.PartialAsync("AlertViewPartial")
+
                 <h4 class="title" style="color:black" ; text-transform:"inherit">Are you in need of counselling/prayer? Contact our support links and we will get in touch with you.</h4>
+
                 @using (Html.BeginForm(FormMethod.Post))
                 {
                     @Html.AntiForgeryToken()

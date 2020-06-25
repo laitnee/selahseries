@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Edit";
     ViewData["Add Navigation"] = "false";
+    Layout = "~/views/admin/_AdminLayout.cshtml";
 }
 
 
@@ -61,6 +62,9 @@
 
 }
 <hr />
+<div style="color: #ffcc00; background-color:black;" class="jumbotron text-center">
+    <h3 style="color: #ffcc00; background-color:black;">Books Management Page <br /> Edit Book</h3>
+</div>
 <div class="row">
     <div class="col-lg-1"></div>
     <div class="col-lg-10">
@@ -87,12 +91,11 @@
                     <span asp-validation-for="Title" class="text-danger"></span>
                 </div>
             </div>
-
             <div class="form-group">
                 <button type="button" class="collapsible">Book Description</button>
                 <div class="content">
                     <span asp-validation-for="Description" class="text-danger"></span>
-                    <textarea asp-for="Description" id="contentEditor" style="width: 100%; height: 200px; display: none;">  </textarea>
+                    <textarea asp-for="Description" class="form-control" style="width: 100%; height: 200px"></textarea>
                 </div>
             </div>
             <div class="form-group">
@@ -104,14 +107,14 @@
                 </div>
 
             </div>
-            @*<div class="form-group">
+            <div class="form-group">
                 <button type="button" class="collapsible"> Upload Book Soft Copy</button>
                 <div class="content">
                     <a data-mockFile style="color:white;" class=" btn btn-primary"> Upload Book </a>
                     <span style="color:blue;" data-fileValue> </span>
                     <input type="file" data-fileSelector style="visibility:hidden" accept=".doc, .docx,.ppt, .pptx,.pdf" asp-for="BookUpload" />
                 </div>
-            </div>*@
+            </div>
             <div class="form-group">
                 <button type="button" class="collapsible">Hard Book Available?</button>
                 <div class="content">
@@ -158,8 +161,4 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-<div style="color: #ffcc00; background-color:black; margin-bottom:0;" class=" text-center">
-    <h1>Selah Series</h1>
-    <p> &copy; 2020</p>
-</div>
 

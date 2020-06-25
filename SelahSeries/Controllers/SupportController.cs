@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SelahSeries.Services;
 
 namespace SelahSeries.Controllers
 {
+    [AllowAnonymous]
     public class SupportController : Controller
     {
         private readonly IEmailService _emailService;
@@ -34,10 +36,10 @@ namespace SelahSeries.Controllers
                 var subject = category;
                 message = "Name: " + fullname + "\n" + "Email Address: " + email + "\n" + "Age: " + age + "\n" + "Gender: " + gender + "\n" +"Location: " + address + "\n" + "Phone Number: " + phone + "\n" + "Message: " + message;
                 await _emailService.SendEmail(subject, message);
-                ViewBag.Error = "Unable to send message, try again";
+                ViewBag.Alert = "Message was sent successfully";
                 return View();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 ViewBag.Error = "Unable to send message, try again";
                 return View();

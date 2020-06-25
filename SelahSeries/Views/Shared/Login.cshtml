@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+}
+!-- Home -->
+@section AddToHead {
+    <link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/contact.css">
+    <link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/contact_responsive.css">
+}
+
+@section AddToEnd {
+    <script src="plugins/parallax-js-master/parallax.min.js"></script>
+}
+
+
+<div class="home">
+    <div class="home_background "></div>
+
+    <div class="home_content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    @await Html.PartialAsync("AlertViewPartial")
+                    <!-- Post Comment -->
+                    <div class="post_comment">
+                        <div class="contact_form_container" style="margin-bottom:40px">
+                            <h3 style="color:black; text-align:center;"> ADMIN LOGIN </h3>
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+                                 <input type="username" name="username" class="contact_input "  style="width:100%;  margin-top:15px" placeholder="Username" required="required">
+                                <input type="password" name="password" class="contact_input"  style="width:100%;  margin-top:15px" placeholder="password " required="required">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <button type="submit" class="contact_button">Login</button>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

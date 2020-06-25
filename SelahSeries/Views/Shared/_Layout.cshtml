@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Demo project">
+    <meta name="google-site-verification" content="O5gmpVX6loi9HEm3mR7ddeC7b0FZglILI2VlXRMTzCo" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @if (IsSectionDefined("AddMetaTags"))
     {
@@ -63,11 +64,20 @@
                                 </div>
                                 <ul style="font-family:Verdana, Geneva, Tahoma, sans-serif, sans-serif; font-size:14px" class="navbar-nav ml-auto topnav">
 
+                                    @{ 
+                                        var currentRoute = Context.Request.Path;
+                                        var homeLinks = new List<string>{ "home/index", "/", "home" };
+                                        var homeLink = homeLinks.Any(x => x.Contains(currentRoute.ToString().ToLower()));
+                                        var aboutLink = currentRoute.ToString().Contains("About", StringComparison.OrdinalIgnoreCase);
+                                        var supportLink = currentRoute.ToString().Contains("Support", StringComparison.OrdinalIgnoreCase);
+                                        var contactLink = currentRoute.ToString().Contains("Contact", StringComparison.OrdinalIgnoreCase);
+                                        var bookLink = currentRoute.ToString().Contains("book", StringComparison.OrdinalIgnoreCase);
 
-                                    <li class="nav-item">
+                                            }
+                                    <li class="nav-item @(homeLink? "active" : "") ">
                                         <a class="nav-link" href="~/Home/Index">Home <span class="sr-only">(current)</span></a>
                                     </li>
-                                    <li class="nav-item">
+                                    <li class="nav-item  @(aboutLink? "active" : "")">
                                         <a class="nav-link" href="~/About">About</a>
                                     </li>
                                     <li class="nav-item dropdown">
@@ -83,7 +93,7 @@
                                             <a class="dropdown-item" href="~/?category=general#blog">General</a>
                                         </div>
                                     </li>
-                                    <li class="nav-item dropdown">
+                                    <li class="nav-item dropdown  @(supportLink? "active" : "")">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Support/Counselling
                                         </a>
@@ -92,11 +102,11 @@
                                             <a class="dropdown-item" href="~/Support/Send_Message">Send Message</a>
                                         </div>
                                     </li>
-                                    <li class="nav-item">
+                                    <li class="nav-item  @(bookLink? "active" : "")">
                                         <a class="nav-link" href="~/Books/Index">Books</a>
                                     </li>
 
-                                    <li class="nav-item">
+                                    <li class="nav-item  @(contactLink? "active" : "")">
                                         <a class="nav-link" href="~/Contact">Contact</a>
                                     </li>
                                     <li class="nav-item">

@@ -12,6 +12,8 @@ using SelahSeries.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using SelahSeries.Repository;
 using SelahSeries.Data;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace SelahSeries.Controllers
 {
@@ -21,7 +23,7 @@ namespace SelahSeries.Controllers
         private readonly IMapper _mapper;
         private readonly IHostingEnvironment hostingEnvironment;
         private readonly IPostRepository _postRepo;
-        public BlogMgtController(IPostRepository postRepo, IMapper mapper, IHostingEnvironment environment, SeedData seedData)
+        public BlogMgtController(IPostRepository postRepo, IMapper mapper, IHostingEnvironment environment)
         {
             _postRepo = postRepo;
             _mapper = mapper;
@@ -29,7 +31,7 @@ namespace SelahSeries.Controllers
         }
         // GET: BlogMgt
         [Route("[controller]")]
-        public async Task<ActionResult> Index(int pageIndex)
+        public async Task<ActionResult> Index([FromQuery]int pageIndex = 1)
         {
             Post post = new Post();
             var pageParam = new PaginationParam
@@ -47,8 +49,8 @@ namespace SelahSeries.Controllers
                 ViewBag.Error = TempData["Error"].ToString();
             }
             var posts = await _postRepo.GetPosts(pageParam);
-            //post.TotalPostCount = posts.TotalCount;
-            ViewData["PageIndex"] = pageIndex;
+            ViewBag.PostCount = posts.TotalCount;
+            ViewBag.CurrentPage = posts.Currentpage;
             return View(posts.Source);
         }
 
@@ -213,5 +215,6 @@ namespace SelahSeries.Controllers
                 return View();
             }
         }
+
     }
 }

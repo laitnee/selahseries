@@ -24,7 +24,7 @@ namespace SelahSeries.Repository
                 postClap.Claps += clapNumber;
                 _selahDbContext.Update(postClap);
                 await _selahDbContext.SaveChangesAsync();
-                return postClap.Claps;
+                return await GetClaps(postId);
             }
 
             postClap = new PostClap
@@ -34,7 +34,7 @@ namespace SelahSeries.Repository
             };
             _selahDbContext.Add(postClap);
             await _selahDbContext.SaveChangesAsync();
-            return clapNumber;
+            return await GetClaps(postId);
         }
 
         public async Task<int> GetClaps(int postId)

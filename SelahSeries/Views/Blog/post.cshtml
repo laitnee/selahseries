@@ -7,7 +7,7 @@
 
     <meta property="og:title" content=@($"{Model.Post.Title}")>
     <meta property="og:description" content=@($"{Model.Post.Category.Title} Talks {Model.Post.Title} By {Model.Post.Author}")>
-    <meta property="og:image" content="http://selahseries.com//uploads/@Model.Post.TitleImageUrl>
+    <meta property="og:image" content="~/uploads/@Model.Post.TitleImageUrl>
     <meta property="og:url" content="@Uri.EscapeDataString(pageURL)">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
@@ -312,7 +312,7 @@
                             <div class="sidebar_section_content">
 
                                 <div class="sidebar_slider_container">
-                                    <div class="owl-carousel owl-theme sidebar_slider_top">
+                                    
                                         @{
                                             const int POST_PER_SLIDE = 4;
 
@@ -322,7 +322,7 @@
                                                 bool renderRow = index % POST_PER_SLIDE == 0;
                                                 if (renderRow)
                                                 {
-                                                    @*@Html.Raw("<div class='owl-item'>");*@
+                                                    @Html.Raw("<div class='owl - carousel owl - theme sidebar_slider_top'><div class='owl-item'>");
                                                 }
                                                 <div class="side_post">
                                                     <a href="~/blog/post/@Html.DisplayFor(modelItem => item.PostId)">
@@ -337,11 +337,11 @@
                                                 </div>
                                                 if (renderRow)
                                                 {
-                                                    @*@Html.Raw("</div>");*@
+                                                    @Html.Raw("</div></div>");
                                                 }
                                             }
                                         }
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
