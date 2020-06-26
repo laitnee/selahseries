@@ -1,0 +1,547 @@
+﻿@model SelahSeries.ViewModels.PostHomeViewModel
+@{
+    ViewData["Title"] = "Index";
+    var category = ViewData["Category"];
+    var latestArticle = Model.LatestArticle.OrderByDescending(x => x.CreatedAt);
+    var pageIndex = Convert.ToInt32(ViewData["PageIndex"]);
+    var previous = pageIndex - 1;
+    var next = pageIndex + 1;
+}
+<link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/category.css">
+<link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/category_responsive.css">
+<link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/main_styles.css">
+<link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/responsive.css">
+}
+
+@section AddToEnd {
+    <script src="~/NewFolder2/plugins/parallax-js-master/parallax.min.js"></script>
+    <script src="~/NewFolder2/js/category.js"></script>
+
+    <script src="~/NewFolder2/plugins/masonry/images_loaded.js"></script>
+    <script src="~/NewFolder2/js/custom.js"></script>
+}
+
+<div class="site-blocks-cover inner-page-cover overlay" style="background-image: url('/NewFolder2/new/two-brown-pencils-on-white-surface-965117 (1).jpg');background-position:center; margin-top:20px" data-aos="fade" data-stellar-background-ratio="0.5" data-aos="fade">
+    <div class="container" id="blog">
+        @*<div class="row align-items-center justify-content-center">
+                <div class="col-md-7 text-center" data-aos="fade-up" data-aos-delay="400">
+                    <h2 class="mb-4" style="color: white ; font-family: 'Work Sans', sans-serif">Listen to your heart...</h2>
+                </div>
+            </div>*@
+    </div>
+</div>
+
+<div class="page_content" >
+    <div class="container">
+
+
+        <div class="row row-lg-eq-height">
+
+            <!-- Main Content -->
+            <div class="col-lg-9">
+                <div class="main_content">
+
+                    <!-- Blog Section - Articles -->
+
+                    <div class="blog_section" >
+                        <div class="section_panel d-flex flex-row align-items-center justify-content-start">
+                            <div class="section_title">Articles</div>
+                            <div class="section_tags ml-auto">
+                                <nav>
+                                    <ul id="navDiv">
+                                        <li class="@(ViewData["Category"]?.ToString() == "all" || ViewData["Category"] == null? "active": "" ) btnn"><a href="~/blog/index/?category=all#blog">All</a></li>
+                                        <li class="@(ViewData["Category"]?.ToString() == "relationship_and_marriage"? "active": "" ) btnn"><a href="~/blog/index/?category=relationship_and_marriage#blog">Relationship & Marriage</a></li>
+                                        <li class="@(ViewData["Category"]?.ToString() == "politics"? "active": "" ) btnn"><a href="~/blog/index/?category=politics#blog">Politics</a></li>
+                                        <li class="@(ViewData["Category"]?.ToString() == "sports"? "active": "" ) btnn"><a href="~/blog/index/?category=sports#blog">Sports Corner</a></li>
+                                        <li class="@(ViewData["Category"]?.ToString() == "career"? "active": "" ) btnn"><a href="~/blog/index/?category=career#blog">Career</a></li>
+                                    </ul>
+                                </nav>
+
+                            </div>
+                            <div class="section_panel_more">
+                                <ul>
+                                    <li>
+                                        <p class="more" style="margin-bottom:0px">more</p>
+                                        <p class="category" style="margin-bottom:0px">category</p>
+                                        <ul>
+                                            <li class="all active"><a href="~/blog/index/?category=all#blog">All</a></li>
+                                            <li class="first"><a href="~/blog/index/?category=relationship_and_marriage#blog">Relationship & Marriage</a></li>
+                                            <li class="second"><a href="~/blog/index/?category=politics#blog">Politics</a></li>
+                                            <li class="third"><a href="~/blog/index/?category=sports#blog">Sports corner</a></li>
+                                            <li class="fourth"><a href="~/blog/index/?category=career#blog">Career</a></li>
+                                            <li class="fifth"><a href="~/blog/index/?category=general#blog">General</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="section_content">
+                            <div class="grid clearfix">
+
+
+                                @foreach (var item in latestArticle)
+                                {
+
+                                    <div class="card card_default card_small_with_image grid-item">
+                                        <img class="card-img-top" src='~/Uploads/@Html.DisplayFor(modelItem => item.TitleImageUrl)' alt="https://unsplash.com/">
+                                        <div class="card-body">
+                                            <div class="card-title card-title-small"><a href="~/blog/post/@Html.DisplayFor(modelItem => item.PostId)">@Html.DisplayFor(modelItem => item.Title)</a></div>
+                                            <small class="post_meta"><a href="#">@Html.DisplayFor(modelItem => item.Author)</a><span>@Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
+                                        </div>
+                                    </div>
+
+
+                                }
+
+                            </div>
+                            s
+                        </div>
+                    </div>
+                    <div style="margin-top:80px; margin-bottom:80px">
+                        @if (Model.LatestArticle.Any())
+                        {
+                            <nav>
+                                <ul id="navDiv0" class="pagination pg-red pagination-lg justify-content-center">
+                                    <li class="page-item">
+                                        <a href="~/blog/index/@previous?category=@category#blog" class="page-link waves-effect waves-effect" aria-label="Previous">
+                                            <span aria-hidden="true">«</span>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                    </li>
+                                    @{
+                                        var postCount = Model.TotalPostCount < 1 ? 1 : Model.TotalPostCount;
+                                        var numberOfPages = (int)Math.Ceiling((Decimal)Model.LatestArticle.Count() / postCount);
+                                        foreach (var item in Enumerable.Range(1, numberOfPages))
+                                        {
+                                            <li class="page-item btnn0 @(Model.CurrentPage == item? "active" : "")   "><a href="~/blog/index/@item?category=@category#blog" class="page-link waves-effect waves-effect">@item</a></li>
+                                        }
+                                    }
+
+                                    <li class="page-item btnn0">
+                                        <a href="~/blog/index/@next?category=@category#blog" class="page-link waves-effect waves-effect" aria-label="Next">
+                                            <span aria-hidden="true">»</span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        }
+                        else
+                        {
+                            <div class="section_panel d-flex flex-row align-items-center">
+                                No posts yet in this category
+
+
+                            </div>
+                        }
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Sidebar -->
+
+            <div class="col-lg-3">
+                <div class="sidebar">
+                    <div class="sidebar_background"></div>
+
+                    <!-- Top Stories -->
+
+                    <div class="sidebar_section">
+                        <div class="sidebar_title_container">
+                            <div class="sidebar_title">Top Stories</div>
+                            <div class="sidebar_slider_nav">
+                                <div class="custom_nav_container sidebar_slider_nav_container">
+                                    <div class="custom_prev custom_prev_top">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                             width="7px" height="12px" viewBox="0 0 7 12" enable-background="new 0 0 7 12" xml:space="preserve">
+                                        <polyline fill="#bebebe" points="0,5.61 5.609,0 7,0 7,1.438 2.438,6 7,10.563 7,12 5.609,12 -0.002,6.39 " />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+											</svg>
+                                    </div>
+                                    <ul id="custom_dots" class="custom_dots custom_dots_vid">
+                                        <li class="custom_dot custom_dot_vid active"><span></span></li>
+                                        <li class="custom_dot custom_dot_vid"><span></span></li>
+                                        <li class="custom_dot custom_dot_vid"><span></span></li>
+                                    </ul>
+                                    <div class="custom_next custom_next_vid">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                             width="7px" height="12px" viewBox="0 0 7 12" enable-background="new 0 0 7 12" xml:space="preserve">
+                                        <polyline fill="#bebebe" points="6.998,6.39 1.389,12 -0.002,12 -0.002,10.562 4.561,6 -0.002,1.438 -0.002,0 1.389,0 7,5.61 " />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+											</svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sidebar_section_content">
+
+                            <!-- Sidebar Slider -->
+                            <div class="sidebar_slider_container">
+                                <div class="owl-carousel owl-theme sidebar_slider_vid">
+
+                                    <!-- Newest Videos Slider Item -->
+                                    <div class="owl-item">
+
+                                        <!-- Newest Videos Post -->
+                                        <div class="side_post">
+                                            <a href="~/blog/post">
+                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
+                                                    <div class="side_post_image"><div><img src="/NewFolder2/images/vid_1.jpg" alt=""></div></div>
+                                                    <div class="side_post_content">
+                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
+                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <!-- Newest Videos Post -->
+                                        <div class="side_post">
+                                            <a href="~/blog/post">
+                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
+                                                    <div class="side_post_image"><div><img src="/NewFolder2/images/vid_2.jpg" alt=""></div></div>
+                                                    <div class="side_post_content">
+                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
+                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <!-- Newest Videos Post -->
+                                        <div class="side_post">
+                                            <a href="~/blog/post">
+                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
+                                                    <div class="side_post_image"><div><img src="/NewFolder2/images/vid_3.jpg" alt=""></div></div>
+                                                    <div class="side_post_content">
+                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
+                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <!-- Newest Videos Post -->
+                                        <div class="side_post">
+                                            <a href="~/blog/post">
+                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
+                                                    <div class="side_post_image"><div><img src="/NewFolder2/images/vid_4.jpg" alt=""></div></div>
+                                                    <div class="side_post_content">
+                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
+                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                    </div>
+
+                                    <!-- Newest Videos Slider Item -->
+                                    <div class="owl-item">
+
+                                        <!-- Newest Videos Post -->
+                                        <div class="side_post">
+                                            <a href="~/blog/post">
+                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
+                                                    <div class="side_post_image"><div><img src="images/vid_1.jpg" alt=""></div></div>
+                                                    <div class="side_post_content">
+                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
+                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <!-- Newest Videos Post -->
+                                        <div class="side_post">
+                                            <a href="~/blog/post">
+                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
+                                                    <div class="side_post_image"><div><img src="images/vid_2.jpg" alt=""></div></div>
+                                                    <div class="side_post_content">
+                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
+                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <!-- Newest Videos Post -->
+                                        <div class="side_post">
+                                            <a href="~/blog/post">
+                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
+                                                    <div class="side_post_image"><div><img src="images/vid_3.jpg" alt=""></div></div>
+                                                    <div class="side_post_content">
+                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
+                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <!-- Newest Videos Post -->
+                                        <div class="side_post">
+                                            <a href="~/blog/post">
+                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
+                                                    <div class="side_post_image"><div><img src="images/vid_4.jpg" alt=""></div></div>
+                                                    <div class="side_post_content">
+                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
+                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                    </div>
+
+                                    <!-- Newest Videos Slider Item -->
+                                    <div class="owl-item">
+
+                                        <!-- Newest Videos Post -->
+                                        <div class="side_post">
+                                            <a href="~/blog/post">
+                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
+                                                    <div class="side_post_image"><div><img src="images/vid_1.jpg" alt=""></div></div>
+                                                    <div class="side_post_content">
+                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
+                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <!-- Newest Videos Post -->
+                                        <div class="side_post">
+                                            <a href="~/blog/post">
+                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
+                                                    <div class="side_post_image"><div><img src="images/vid_2.jpg" alt=""></div></div>
+                                                    <div class="side_post_content">
+                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
+                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <!-- Newest Videos Post -->
+                                        <div class="side_post">
+                                            <a href="~/blog/post">
+                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
+                                                    <div class="side_post_image"><div><img src="images/vid_3.jpg" alt=""></div></div>
+                                                    <div class="side_post_content">
+                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
+                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <!-- Newest Videos Post -->
+                                        <div class="side_post">
+                                            <a href="~/blog/post">
+                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
+                                                    <div class="side_post_image"><div><img src="images/vid_4.jpg" alt=""></div></div>
+                                                    <div class="side_post_content">
+                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
+                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                  
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+    </div>
+
+</div>
+
+<style>
+    .mb-4 {
+        color: #f2ba16;
+        font-size: 0.6em;
+        letter-spacing: 0.03em;
+        font-family: 'Work Sans', sans-serif;
+    }
+
+    .page-link:hover {
+        z-index: 2;
+        color: #fff;
+        background-color: #ad001c;
+        border-color: #ad001c;
+        cursor: pointer;
+    }
+
+    .pagination .active {
+        z-index: 2;
+        color: #fff;
+        background-color: #ad001c;
+        border-color: #ad001c;
+    }
+
+    ul > li {
+        display: block;
+    }
+
+        ul > li .all {
+            display: none;
+        }
+
+        ul > li .first {
+            display: none;
+        }
+
+        ul > li .second {
+            display: none;
+        }
+
+        ul > li .third {
+            display: none;
+        }
+
+        ul > li .fourth {
+            display: none;
+        }
+
+        ul > li .fifth {
+            display: block;
+        }
+
+    .category {
+        display: none;
+    }
+
+    .more {
+        display: block;
+    }
+    .sidebar{
+        padding-top: 0px;
+    }
+    .category{
+        margin-top: 0px;
+    }
+</style>
