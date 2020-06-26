@@ -21,5 +21,9 @@ namespace SelahSeries.ViewModels
         public bool Published { get; set; }
         [Required]
         public int CategoryId { get; set; }
+
+        public string FacebookPostLink { get; set; }
+        public string TwitterPostLink { get; set; }
+        public string LinkedInPostLink { get; set; }
     }
 }

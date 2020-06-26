@@ -27,7 +27,9 @@ namespace SelahSeries.Models
         [StringLength(100)]
         public string TitleImageUrl { get; set; }
         public bool Published { get; set; }
-
+        public string FacebookPostLink { get; set; }
+        public string TwitterPostLink { get; set; }
+        public string LinkedInPostLink { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime ModifiedAt { get; set; }
 

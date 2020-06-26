@@ -1,18 +1,10 @@
 ﻿@section AddToHead {
-    <link rel="icon" href="img/favicon.png" type="image/png" />
     <link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/main_styles.css">
     <link rel="stylesheet" type="text/css" href="~/NewFolder2/styles/responsive.css">
     <!-- Site Icons -->
-    <link rel="shortcut icon" href="/NewFolder2/shop/images/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="/NewFolder2/shop/images/apple-touch-icon.png">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/NewFolder2/shop/css/bootstrap.min.css">
-    <link rel="stylesheet" href="~/NewFolder2/styles/eiser_theme/css/themify-icons.css" />
-    <link rel="stylesheet" href="~/NewFolder2/styles/eiser_theme/vendors/owl-carousel/" />
     <link rel="stylesheet" href="~/NewFolder2/styles/eiser_theme/vendors/lightbox/simpleLightbox.css" />
     <link rel="stylesheet" href="~/NewFolder2/styles/eiser_theme/vendors/nice-select/css/nice-select.css" />
-    <link rel="stylesheet" href="~/NewFolder2/styles/eiser_theme/vendors/animate-css/animate.css" />
-    <link rel="stylesheet" href="~/NewFolder2/styles/eiser_theme/vendors/jquery-ui/jquery-ui.css" />
     <!-- Site CSS -->
     <link rel="stylesheet" href="/NewFolder2/shop/css/style.css">
     <!-- Responsive CSS -->
@@ -30,81 +22,82 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <script src="~/NewFolder2/shop/js/Checkout.js"></script>
     <script src="~/NewFolder2/shop/js/bookstore.js"></script>
+    @*<script>$('#PayCheck').click(makePayment());</script>*@
 }
 
 <!-- Cart Modal -->
 
-                <section class="cart_area" style="margin-top:99px">
-                    <div class=" container">
-                        <div class="">
-                            <h3 style="color:black">View Cart</h3>
-                            <br />
-                            <p style="color:#ad001c">
-                                <h5 style="color:#ad001c">** Note: Only residents in Nigeria (Ile-Ife, Ibadan and Ilesha ) can order for hard copy books. **</h5>
-                            </p>
-                        </div>
-                        <div class="cart_inner" style="margin-bottom: 60px">
-                            <div class="products-container">
-                                <div class="product-header">
-                                    <div class="product-title" style="text-align:center">BOOK</div>
-                                    <div class="price">PRICE</div>
-                                    <div class="quantity d-none d-sm-block d-md-block d-xl-block">QUANTITY</div>
-                                    <div class="quantity d-lg-none d-xl-none d-sm-none" style="text-align:center">QTY</div>
-                                    <div class="total">TOTAL</div>
-                                </div>
-                                <div class="products">
+<section class="cart_area" style="margin-top:99px">
+    <div class=" container">
+        <div class="">
+            <h3 style="color:black">View Cart</h3>
+            <br />
+            <p style="color:#ad001c">
+                <h5 style="color:#ad001c">** Note: Only residents in Nigeria (Ile-Ife, Ibadan and Ilesha ) can order for hard copy books. **</h5>
+            </p>
+        </div>
+        <div class="cart_inner" style="margin-bottom: 60px">
+            <div class="products-container">
+                <div class="product-header">
+                    <div class="product-title" style="text-align:center">BOOK</div>
+                    <div class="price">PRICE</div>
+                    <div class="quantity d-none d-sm-block d-md-block d-xl-block">QUANTITY</div>
+                    <div class="quantity d-lg-none d-xl-none d-sm-none" style="text-align:center">QTY</div>
+                    <div class="total">TOTAL</div>
+                </div>
+                <div class="products">
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                    <div class="container_ship">
-                        <div class="shipping_area">
+    <div class="container_ship">
+        <div class="shipping_area">
 
-                            <h3>Shipping</h3>
+            <h3>Shipping</h3>
 
-                            <div class="shipping_box">
+            <div class="shipping_box">
 
-                                <h6 style="color:#007bff">
-                                    Calculate Shipping
-                                    <i class="fa fa-caret-down" aria-hidden="true"></i>
-                                </h6>
+                <h6 style="color:#007bff">
+                    Calculate Shipping
+                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+                </h6>
 
-                                <h4 class="local_delivery" style="color:black">Local Delivery: &nbsp&nbsp  ₦<span>100</span></h4>
-                                <select class="shipping_select" required>
-                                    <option value="1">Nigeria</option>
-                                </select>
-                                <select class="shipping_select" required>
-                                    <option value="0">Select a City</option>
-                                    <option value="1">Ile-Ife</option>
-                                    <option value="4">Ilesha</option>
-                                    <option value="4">Ibadan</option>
-                                </select>
-
-
+                <h4 class="local_delivery" style="color:black">Local Delivery: &nbsp&nbsp  ₦<span>100</span></h4>
+                @*<select class="shipping_select" required>
+                    <option value="1">Nigeria</option>
+                </select>
+                <select class="shipping_select" required>
+                    <option value="0">Select a City</option>
+                    <option value="1">Ile-Ife</option>
+                    <option value="4">Ilesha</option>
+                    <option value="4">Ibadan</option>
+                </select>*@
 
 
 
 
-                            </div>
 
-                        </div>
 
-                        <div class="total_payment"><h4 style="color: #ad001c; font-weight: 600">Total (plus shipping fee):&nbsp&nbsp   ₦<span>500</span></h4></div>
+            </div>
 
-                        <div class="out_button_area" style="margin-top:64px; margin-bottom:64px">
+        </div>
 
-                            <div class="checkout_btn_inner">
-                                <a class="gray_btn" href="~/Books/Index">Continue Shopping</a>
-                                <button type="button" data-toggle="modal" data-target="#checkout">
-                                    <a class="main_btn" href="#">Proceed to checkout</a>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-           
+        <div class="total_payment"><h4 style="color: #ad001c; font-weight: 600">Total (plus delivery fee):&nbsp&nbsp   ₦<span>500</span></h4></div>
+
+        <div class="out_button_area" style="margin-top:64px; margin-bottom:64px">
+
+            <div class="checkout_btn_inner">
+                <a class="gray_btn" href="~/Books/Index">Continue Shopping</a>
+                <button type="button" data-toggle="modal" data-target="#checkout">
+                    <a class="main_btn" href="#">Proceed to checkout</a>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
 
 
 <!-- Checkout Modal -->
@@ -124,25 +117,19 @@
                                     <h3>Billing Details</h3>
                                     <form class="row contact_form"
                                           action="#"
-                                          method="post"
-                                          novalidate="novalidate">
+                                          id="orderForm"
+                                          method="post">
                                         <div class="col-md-6 form-group p_star">
                                             <input type="text"
                                                    class="form-control"
                                                    id="first"
-                                                   name="name"  />
+                                                   name="name" />
                                             <span class="placeholder"
-                                                  data-placeholder="First name"></span>
+                                                  data-placeholder="Full name"></span>
                                         </div>
+
                                         <div class="col-md-6 form-group p_star">
-                                            <input type="text"
-                                                   class="form-control"
-                                                   id="last"
-                                                   name="name" required="required"/>
-                                            <span class="placeholder" data-placeholder="Last name"></span>
-                                        </div>
-                                        <div class="col-md-6 form-group p_star">
-                                            <input type="text"
+                                            <input type="tel"
                                                    class="form-control"
                                                    id="number"
                                                    name="number" />
@@ -150,33 +137,33 @@
                                                   data-placeholder="Phone number"></span>
                                         </div>
                                         <div class="col-md-6 form-group p_star">
-                                            <input type="text"
+                                            <input type="email"
                                                    class="form-control"
                                                    id="email"
                                                    name="compemailany" />
                                             <span class="placeholder"
-                                                  data-placeholder="Email Address" ></span>
+                                                  data-placeholder="Email Address"></span>
                                         </div>
                                         <div class="col-md-12 form-group p_star">
                                             <select class="nice-select country_select" required>
-                                                <option value="1" class="option selected">Nigeria</option>
-                                                <option value="2">Nigeria</option>
+                                                <option value="Nigeria" class="option selected">Nigeria</option>
+                                                
                                             </select>
                                         </div>
                                         <div class="col-md-12 form-group p_star">
                                             <input type="text"
                                                    class="form-control"
                                                    id="add1"
-                                                   name="add1" required="required"/>
+                                                   name="add1" required="required" />
                                             <span class="placeholder"
                                                   data-placeholder="Address"></span>
                                         </div>
                                         <div class="col-md-12 form-group p_star">
                                             <select class="nice-select city_select" required>
-                                                <option value="0">Select Town/City</option>
-                                                <option value="1">Ile-Ife</option>
-                                                <option value="1">Ilesha</option>
-                                                <option value="1">Ibadan</option>
+                                                <option >Select Town/City</option>
+                                                <option value="Ife">Ile-Ife</option>
+                                                <option value="Ilesha">Ilesha</option>
+                                                <option value="Ibadan">Ibadan</option>
                                             </select>
                                         </div>
 
@@ -186,9 +173,21 @@
                                                           name="message"
                                                           id="message"
                                                           rows="1"
-                                                          placeholder="Order Notes" required="required"></textarea>
+                                                          placeholder="Order Notes"></textarea>
                                             </div>
-                                         </div>
+                                        </div>
+                                        <div class="logoo">
+                                            <div class=" total-logo">
+                                                <div class="col-12 col-sm-6 col-md-5 total" style="border-bottom:none">
+                                                    <span>Total:</span>&nbsp;&nbsp;&nbsp;
+                                                    <span class="payment_amount total-n">₦<span>0</span></span>
+                                                </div>
+                                                <div role="button" id="PayCheck" class="col-12 col-sm-6 col-md-7 logo">
+                                                    <span> CONFIRM PURCHASE </span>
+                                                </div>
+                                            </div>
+
+                                        </div>
                                     </form>
                                     @*<a class="main_btn" href="#">Proceed to Payment</a>*@
                                 </div>
@@ -196,67 +195,18 @@
                         </div>
                     </div>
                 </section>
-                <div class="logoo">
-                    <div class="total-logo">
-                        <div class="total" style="border-bottom:none">
-                            <span>Total:</span>&nbsp;&nbsp;&nbsp;
-                            <span class="payment_amount total-n">₦<span>0</span></span>
-                        </div>
-                        <div class="logo">
-                            <img src="~/NewFolder2/new/selah hdr md.png" />
-                        </div>
-                    </div>
-                    <!--End TOTAL-LOGO-->
-                    <div class="step">
-                        <div class="retry">Retry</div>
-                        <div class="line"></div>
-                        <div class="payment">Payment</div>
-                    </div>
-                    <!--End STEP-->
-                    <div class="cont-forms">
-                        <form class="form" autocomplete="off" novalidate>
-                            <fieldset class="card-number">
-                                <label for="card-num">Credit card number</label>
-                                <div class="flex-wrapper">
-                                    <input class="cc-number" type="num" maxlength="4" />
-                                    <input class="cc-number" type="num" maxlength="4" />
-                                    <input class="cc-number" type="num" maxlength="4" />
-                                    <input class="cc-number" type="num" maxlength="4" />
-                                </div>
-                            </fieldset>
-                            <fieldset class="card-holder">
-                                <label for="card-num">Credit card holder</label>
-                                <input type="text" />
-                            </fieldset>
-                            <fieldset class="card-expiration">
-                                <div class="expiry-ccv">
-                                    <div class="cont expiration-date">
-                                        <label for="card-num">Expiration Date</label>
-                                        <input type="numb" maxlength="2" />
-                                        <input class="last" type="num" maxlength="4" />
-                                    </div>
-                                    <div class="cont ccv">
-                                        <label for="card-ccv">ccv</label>
-                                        <input type="num" maxlength="3" />
-                                    </div>
-                                </div>
-                            </fieldset>
-                            <fieldset class="conf-button">
-                                <div class="flex-wrapper">
-                                    <button class="purchase"><span>Confirm purchase</span></button>
-                                </div>
-                            </fieldset>
-                        </form>
-                    </div><!--End CONT-FORMS-->
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
+
             </div>
         </div>
     </div>
 </div>
+<script src="https://checkout.flutterwave.com/v3.js"></script>
+
 <style>
+    .animated {
+        -webkit-animation-fill-mode: none;
+        animation-fill-mode: none;
+    }
     .gray_btn:hover {
         color: black;
         border: 1px solid black;
@@ -404,7 +354,7 @@
         width: 10%;
     }
 
-    .logo > img{
+    .logo > img {
         height: 42px;
     }
     }

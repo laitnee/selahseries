@@ -19,20 +19,19 @@
     position: relative;
     width: 100%;
     height: 72px;
-    background: #ccc;
-    display: flex;
     border-radius: 5px 5px 0 0;
+    display:flex;
 }
 
     .total-logo .total {
-        width: 50%;
         height: 100%;
+        width:100%;
         background: #b62138;
         padding: 10px 30px;
         box-sizing: border-box;
         border-radius: 5px 0 0 0;
     }
-
+    
         .total-logo .total span {
             text-transform: uppercase;
             font-size: 21px;
@@ -43,17 +42,22 @@
         .total-logo .total .total-n {
            
         }
-
+        .logoo {
+            width: 100%;
+        }
     .total-logo .logo {
-        width: 50%;
         height: 100%;
         background: #012035;
         padding: 20px 30px;
+        color:white;
         box-sizing: border-box;
-        text-align: right;
+        text-align: center;
         border-radius: 0 5px 0 0;
+        cursor: pointer;
     }
-
+        .total-logo .logo:hover {
+            background: #012045;
+        }
 .step {
     position: relative;
     width: 100%;

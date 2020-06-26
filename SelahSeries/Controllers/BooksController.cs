@@ -42,7 +42,11 @@ namespace SelahSeries.Controllers
             //var booksVM = _mapper.Map<List<BookListViewModel>>(books);
             return View(books.Source);
         }
-
+        [Route("Books/Thankyou")]
+        public IActionResult Thankyou(string data = "")
+        {
+            return View();
+        }
         public IActionResult Cart()
         {
             return View();

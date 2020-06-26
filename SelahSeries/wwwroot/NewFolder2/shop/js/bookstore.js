@@ -1,7 +1,7 @@
 ﻿
 let carts = document.querySelectorAll('.add-cart');
 
-
+let cartcostTotal = 0;
 let roducts = [
     {
     Title: "Hello World",
@@ -120,7 +120,7 @@ function displayCart() {
         })
 
         
-
+        cartcostTotal = cartCost;
         productContainer.innerHTML += `
         <div class="basketTotalContainer">
         <h4 class = " basketTotalTitle">
@@ -149,4 +149,39 @@ totalPayment.innerHTML = parseInt(subTotal.innerHTML) + parseInt(localDelivery.i
 paymentAmount.innerHTML = parseInt(totalPayment.innerHTML);
 
 
+document.querySelector("#PayCheck").addEventListener("click", makePayment);
+function makePayment() {
+    let orderForm = document.querySelector("#orderForm").checkValidity();
+    if (!orderForm) { alert("Please ensure all required input are correctly filled."); return; }
+    let customerName = (document.querySelector('form [name=name]').value);
+    let phoneNumber = (document.querySelector('form [name=number]').value);
+    let customerEmail = (document.querySelector('form [name=compemailany]').value);
+    let customerOrderComment = (document.querySelector('form [name=message]').value);
+    let customerAddress = (document.querySelector('form [name=add1]').value);
+    let country = "Nigeria";
+    let city = (document.querySelectorAll('form select')[1].value);
 
+    FlutterwaveCheckout({
+        public_key: "FLWPUBK_TEST-ba6eaeee1275aa07f8f32a00ba2c0d50-X",
+        tx_ref: `${customerName} - ${phoneNumber} - ${Date.now()}`,
+        amount: +cartcostTotal + 100,
+        currency: "NGN",
+        payment_options: "card,bank",
+        redirect_url: "https://selahseries.com/book/thankyou",
+        customer: {
+            email: customerEmail,
+            phonenumber: phoneNumber,
+            name: customerName,
+            country: country,
+            city: city,
+            address: customerAddress,
+            message: customerOrderComment
+
+        },
+        customizations: {
+            title: "Selah Series",
+            description: "Pay for your books using our flutterwave checkout  secure and safe",
+            logo: "https://selahseries.com/NewFolder2/new/selah%20hdr%20md.png",
+        },
+    });
+}

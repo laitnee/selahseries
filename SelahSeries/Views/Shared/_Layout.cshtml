@@ -7,6 +7,10 @@
     <meta name="description" content="Demo project">
     <meta name="google-site-verification" content="O5gmpVX6loi9HEm3mR7ddeC7b0FZglILI2VlXRMTzCo" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="~/sitersc/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/sitersc/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/sitersc/favicon-16x16.png">
+    <link rel="manifest" href="~/sitersc/site.webmanifest">
     @if (IsSectionDefined("AddMetaTags"))
     {
         @RenderSection("AddMetaTags", required: false)
@@ -58,7 +62,7 @@
                                 <span class="navbar-toggler-icon"></span>
                             </button>
                             <div class="idNav collapse navbar-collapse" id="navbarSupportedContent">
-                                <div class="before_menu">
+                                <div style="width:100%;" class="  before_menu d-block d-sm-block d-md-block d-lg-none">
                                     @{ViewData["Search"] = "all";}
                                     @await Html.PartialAsync("SearchPartial")
                                 </div>
@@ -113,7 +117,7 @@
                                         <a class="cart nav-link" href="~/books/cart"><i class="fa fa-shopping-cart mr-1"></i><span style="background-color: #ad001c; padding: 2px 3px; color: white; border-radius: 6px">0</span></a>
                                     </li>
                                 </ul>
-                                <div class="after_menu">
+                                <div class="after_menu d-none d-sm-none d-md-none d-lg-block ">
                                     @{ViewData["Search"] = "all";}
                                     @await Html.PartialAsync("SearchPartial")
                                 </div>

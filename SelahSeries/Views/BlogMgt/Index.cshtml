@@ -20,6 +20,7 @@
     <thead>
         <tr>
             <th></th>
+            <th></th>
             <th>
                 @Html.DisplayNameFor(model => model.Author)
             </th>
@@ -46,9 +47,11 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        
+        @foreach (var (item, index) in Model.Select((v, i) => (v, i)))
         {
             <tr>
+                <td>@(index + 1)</td>
                 <td>
                     <div class="btn-group">
                         <a class="btn btn-info" asp-action="Edit" asp-route-id="@item.PostId">Edit</a>
@@ -111,8 +114,8 @@
     {
         <nav>
             <ul id="navDiv0" class="pagination pg-red pagination-lg justify-content-center">
-                <li class="page-item">
-                    <a href="@(ViewBag.CurrentPage<2? "~/blogmgt?pageIndex=@ViewBag.CurrentPage+1)" : "#")class="page-link waves-effect waves-effect" aria-label="Previous">
+                <li class="page-item @(ViewBag.CurrentPage<2? "disabled" : "")">
+                    <a href="~/blogmgt?pageIndex=@ViewBag.CurrentPage+1)" class="page-link waves-effect waves-effect" aria-label="Previous">
                         <span aria-hidden="true">«</span>
                         <span class="sr-only">Previous</span>
                     </a>
@@ -126,8 +129,8 @@
                     }
                 }
 
-                <li  class="page-item btnn0">
-                    <a href="@(ViewBag.CurrentPage >= ViewBag.PostCount? "~/blogmgt?pageIndex=@ViewBag.CurrentPage+1)" : "#" )class="page-link waves-effect waves-effect" aria-label="Next">
+                <li  class="page-item btnn0  @(ViewBag.CurrentPage+1 > numberOfPages? "disabled" : "")">
+                    <a href= "~/blogmgt?pageIndex=@ViewBag.CurrentPage+1)" class="page-link waves-effect waves-effect" aria-label="Next">
                         <span aria-hidden="true">»</span>
                         <span class="sr-only">Next</span>
                     </a>
