@@ -123,52 +123,56 @@
 
     <div class="row">
         <div class="col-sm-6 col-md-6 col-lg-3">
-            <div class="card2">
+            <a href="~/blog/index/?category=relationship_and_marriage#blog">
+                <div class="card2">
 
-                <img src="/NewFolder2/new/brigitte-tohm-XyGeWTj2E7w-unsplash.jpg" alt="Avatar">
-                <div class="container2">
-                    <h4>Check out our articles on Relationship and Marriage</h4>
-                    @* <p><a href="~/?category=relationship_and_marriage#blog">See here</a></p> *@
+                    <img src="/NewFolder2/new/brigitte-tohm-XyGeWTj2E7w-unsplash.jpg" alt="Avatar">
+                    <div class="container2">
+                        <h4>Check out our articles on Relationship and Marriage</h4>
+                        @* <p><a href="~/?category=relationship_and_marriage#blog">See here</a></p> *@
+                    </div>
                 </div>
-            </div>
-
+            </a>
         </div>
 
         <div class="col-sm-6 col-md-6 col-lg-3">
-            <div class="card2">
-                <img src="/NewFolder2/new/kakudmi-JO19K0HDDXI-unsplash (1).jpg" alt="Avatar">
-                <div class="container2">
-                    <h4>Get entertained with news on Football</h4>
-                    @* <p><a href="~/?category=sports#blog">See here</a></p> *@
+            <a href="~/blog/index/?category=sports#blog">
+                <div class="card2">
+                    <img src="/NewFolder2/new/kakudmi-JO19K0HDDXI-unsplash (1).jpg" alt="Avatar">
+                    <div class="container2">
+                        <h4>Get entertained with news on Football</h4>
+                        @* <p><a href="~/?category=sports#blog">See here</a></p> *@
+                    </div>
                 </div>
-            </div>
-
+            </a>
         </div>
 
 
         <div class="col-sm-6 col-md-6 col-lg-3">
-            <div class="card2">
+            <a href="~/blog/index/?category=career#blog">
+                <div class="card2">
 
-                <img src="/NewFolder2/new/jacalyn-beales-geRpPjIiu8U-unsplash.jpg" alt="Avatar ">
-                <div class="container2">
-                    <h4>Our Career section provides you interesting contents on career</h4>
-                    @* <p><a href="~/?category=career#blog">See here</a></p> *@
+                    <img src="/NewFolder2/new/jacalyn-beales-geRpPjIiu8U-unsplash.jpg" alt="Avatar ">
+                    <div class="container2">
+                        <h4>Our Career section provides you interesting contents on career</h4>
+                        @* <p><a href="~/?category=career#blog">See here</a></p> *@
+                    </div>
                 </div>
-            </div>
-
+            </a>
         </div>
 
 
 
         <div class="col-sm-6 col-md-6 col-lg-3">
-            <div class="card2">
-                <img src="/NewFolder2/new/lucia-48UaeIMNAA4-unsplash (2).jpg" alt="Avatar">
-                <div class="container2">
-                    <h4>A lover of politics? We have related articles for you.</h4>
-                    @* <p><a href="~/?category=politics#blog">See here</a></p> *@
+            <a href="~/blog/index/?category=politics#blog">
+                <div class="card2">
+                    <img src="/NewFolder2/new/lucia-48UaeIMNAA4-unsplash (2).jpg" alt="Avatar">
+                    <div class="container2">
+                        <h4>A lover of politics? We have related articles for you.</h4>
+                        @* <p><a href="~/?category=politics#blog">See here</a></p> *@
+                    </div>
                 </div>
-            </div>
-
+            </a>
         </div>
 
     </div>
@@ -181,7 +185,6 @@
         <div class="has-overlay">
             <img style="width:100%; height:18.06em" src='/NewFolder2/new/brass-black-brown-fountain-pen-163029 (2).jpg' alt="image" />
         </div>
-        <div class="centered h2" style="font-family: 'Ubuntu', sans-serif; color:#f2ba16">Blog</div>
     </div>
 </div>
 
@@ -240,36 +243,7 @@
                     <!-- Blog Section - Latest -->
                     <div class="blog_section">
                         <div class="section_panel d-flex flex-row align-items-center justify-content-start">
-                            <div class="section_title">Articles</div>
-                            <div class="section_tags ml-auto">
-                                <nav>
-                                    <ul id="navDiv">
-                                        <li class="@(ViewData["Category"]?.ToString() == "all" || ViewData["Category"] == null? "active": "" ) btnn"><a href="~/?category=all#blog">All</a></li>
-                                        <li class="@(ViewData["Category"]?.ToString() == "relationship_and_marriage"? "active": "" ) btnn"><a href="~/?category=relationship_and_marriage#blog">Relationship & Marriage</a></li>
-                                        <li class="@(ViewData["Category"]?.ToString() == "politics"? "active": "" ) btnn"><a href="~/?category=politics#blog">Politics</a></li>
-                                        <li class="@(ViewData["Category"]?.ToString() == "sports"? "active": "" ) btnn"><a href="~/?category=sports#blog">Sports</a></li>
-                                        <li class="@(ViewData["Category"]?.ToString() == "career"? "active": "" ) btnn"><a href="~/?category=career#blog">Career</a></li>
-                                    </ul>
-                                </nav>
-
-                            </div>
-                            <div class="section_panel_more">
-                                <ul>
-                                    <li>
-                                        <p class="more" style="margin-bottom:0px">more</p>
-                                        <p class="category" style="margin-bottom:0px">category</p>
-                                        <ul>
-                                            <li class="all active"><a href="~/?category=all#blog">All</a></li>
-                                            <li class="first"><a href="~/?category=relationship_and_marriage#blog">Relationship & Marriage</a></li>
-                                            <li class="second"><a href="~/?category=politics#blog">Politics</a></li>
-                                            <li class="third"><a href="~/?category=sports#blog">Sports corner</a></li>
-                                            <li class="fourth"><a href="~/?category=career#blog">Career</a></li>
-                                            <li class="fifth"><a href="~/?category=general#blog">General</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-
+                            <div class="section_title">Latest Articles</div>
                         </div>
                         <div class="section_content">
                             <div class="grid clearfix">
@@ -293,44 +267,11 @@
 
                         </div>
                     </div>
-                    <div style="margin-top:80px; margin-bottom:80px">
-                        @if (Model.LatestArticle.Any())
-                        {
-                            <nav>
-                                <ul id="navDiv0" class="pagination pg-red pagination-lg justify-content-center">
-                                    <li class="page-item">
-                                        <a href="~/@previous?category=@category#blog" class="page-link waves-effect waves-effect" aria-label="Previous">
-                                            <span aria-hidden="true">«</span>
-                                            <span class="sr-only">Previous</span>
-                                        </a>
-                                    </li>
-                                    @{
-                                        var postCount = Model.TotalPostCount < 1 ? 1 : Model.TotalPostCount;
-                                        var numberOfPages = (int)Math.Ceiling((Decimal)Model.LatestArticle.Count() / postCount);
-                                        foreach (var item in Enumerable.Range(1, numberOfPages))
-                                        {
-                                            <li class="page-item btnn0 @(Model.CurrentPage == item? "active" : "")   "><a href="~/@item?category=@category#blog" class="page-link waves-effect waves-effect">@item</a></li>
-                                        }
-                                    }
 
-                                    <li class="page-item btnn0">
-                                        <a href="~/@next?category=@category#blog" class="page-link waves-effect waves-effect" aria-label="Next">
-                                            <span aria-hidden="true">»</span>
-                                            <span class="sr-only">Next</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        }
-                        else
-                        {
-                            <div class="section_panel d-flex flex-row align-items-center">
-                                No post in yet in this category
-
-
-                            </div>
-                        }
-
+                    <div class="load_more">
+                        <div id="load_more" class="load_more_button text-center trans_200">
+                            <a href="~/Blog/Index">View More</a>
+                        </div>
                     </div>
 
                     <!-- Blog Section - Don't Miss -->
@@ -673,15 +614,3 @@
         display: block;
     }
 </style>
-
-@*<script>
-
-
-        $(function () {
-            $('nav a[href="/' + location.href.split("/")[3] + '"]').addClass('active');
-
-        });
-
-
-
-    </script>*@

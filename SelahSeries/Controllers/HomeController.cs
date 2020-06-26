@@ -48,14 +48,13 @@ namespace SelahSeries.Controllers
         [Route("Home/Index")]
         [HttpGet("{pageIndex}")]
         [Route("/")]
-        public async Task<IActionResult> Index(int pageIndex, string category)
+        public async Task<IActionResult> Index()
         {
             PostHomeViewModel postHomeVM = new PostHomeViewModel();
-            int page = (pageIndex == 0) ? 1 : pageIndex;
             var pageParam = new PaginationParam
             {
-                PageIndex = page,
-                Limit = 9,
+                PageIndex = 1,
+                Limit = 6,
                 SortColoumn = "CreatedAt"
             };
             var dontMiss = _postRepo.GetPublishedDMPosts();
@@ -70,22 +69,13 @@ namespace SelahSeries.Controllers
             postHomeVM.Books = books.ToList();
 
             PaginatedList<Post> latestArticles;
-            if (category == "all" || category == null)
-            {
-                latestArticles = await _postRepo.GetPublishedPosts(pageParam);
-            }
-            else
-            {
-                latestArticles = await _postRepo.GetPublishedPostsByCategory(pageParam, category);
-            }
-            postHomeVM.TotalPostCount = latestArticles.TotalCount;
-            postHomeVM.CurrentPage = latestArticles.Currentpage;
+               
+            latestArticles = await _postRepo.GetPublishedPosts(pageParam);
+            
 
             var latestArticlesVM = _mapper.Map<List<PostListViewModel>>(latestArticles.Source);
             postHomeVM.LatestArticle = latestArticlesVM;
 
-            ViewData["Category"] = category;
-            ViewData["PageIndex"] = page;
             return View(postHomeVM);
         }
 

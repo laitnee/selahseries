@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
+using SelahSeries.Core.Pagination;
 using SelahSeries.Models;
 using SelahSeries.Models.DTOs;
 using SelahSeries.Repository;
@@ -23,19 +25,56 @@ namespace SelahSeries.Controllers
         private readonly IPostRepository _postRepo;
         private readonly IPostClapRepository    _postClapRepo;
         private readonly IConfiguration _configuration;
-        public BlogController(IConfiguration configuration, ICommentRepository commentRepo, IPostRepository postRepo, IPostClapRepository postClapRepo)
+        private readonly IMapper _mapper;
+        public BlogController(IConfiguration configuration, ICommentRepository commentRepo, IPostRepository postRepo, IPostClapRepository postClapRepo, IMapper mapper)
         {
             _configuration = configuration;
             _commentRepo = commentRepo;
             _postRepo = postRepo;
             _postClapRepo = postClapRepo;
+            _mapper = mapper;
         }
         // GET: /<controller>/
-        public IActionResult Category()
+        [Route("Blog/Index")]
+        [HttpGet("{pageIndex}")]
+        public async Task<IActionResult> Index(int pageIndex, string category)
         {
-            return View();
+            PostHomeViewModel postHomeVM = new PostHomeViewModel();
+            int page = (pageIndex == 0) ? 1 : pageIndex;
+            var pageParam = new PaginationParam
+            {
+                PageIndex = page,
+                Limit = 9,
+                SortColoumn = "CreatedAt"
+            };
+            var dontMiss = _postRepo.GetPublishedDMPosts();
+            var dontMissVM = _mapper.Map<List<PostListViewModel>>(dontMiss);
+            postHomeVM.DontMiss = dontMissVM;
+
+            var topPosts = _postRepo.GetTopPosts();
+            var topPostsVM = _mapper.Map<List<PostListViewModel>>(topPosts);
+            postHomeVM.TopPosts = topPostsVM;
+
+            PaginatedList<Post> latestArticles;
+            if (category == "all" || category == null)
+            {
+                latestArticles = await _postRepo.GetPublishedPosts(pageParam);
+            }
+            else
+            {
+                latestArticles = await _postRepo.GetPublishedPostsByCategory(pageParam, category);
+            }
+            postHomeVM.TotalPostCount = latestArticles.TotalCount;
+            postHomeVM.CurrentPage = latestArticles.Currentpage;
+
+            var latestArticlesVM = _mapper.Map<List<PostListViewModel>>(latestArticles.Source);
+            postHomeVM.LatestArticle = latestArticlesVM;
+
+            ViewData["Category"] = category;
+            ViewData["PageIndex"] = page;
+            return View(postHomeVM);
         }
-        
+
         [Route("blog/post/{postId}")]
         public async Task<IActionResult> Post(int postId)
         {
