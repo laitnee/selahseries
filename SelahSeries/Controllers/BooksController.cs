@@ -38,7 +38,11 @@ namespace SelahSeries.Controllers
             var books = _bookRepo.GetBooks(pageParam).Result;
             return View(books.Source);
         }
-
+        [Route("Books/Thankyou")]
+        public IActionResult Thankyou(string data = "")
+        {
+            return View();
+        }
         public IActionResult Cart()
         {
             return View();
