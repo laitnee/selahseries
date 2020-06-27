@@ -57,11 +57,11 @@ namespace SelahSeries.Controllers
                 Limit = 6,
                 SortColoumn = "CreatedAt"
             };
-            var dontMiss = _postRepo.GetPublishedDMPosts();
+            var dontMiss = await _postRepo.GetPublishedDMPosts();
             var dontMissVM = _mapper.Map<List<PostListViewModel>>(dontMiss);
             postHomeVM.DontMiss = dontMissVM;
 
-            var topPosts = _postRepo.GetTopPosts();
+            var topPosts = await _postRepo.GetTopPosts();
             var topPostsVM = _mapper.Map<List<PostListViewModel>>(topPosts);
             postHomeVM.TopPosts = topPostsVM;
 
