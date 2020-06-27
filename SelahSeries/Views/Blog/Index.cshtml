@@ -103,23 +103,23 @@
                         {
                             <nav>
                                 <ul id="navDiv0" class="pagination pg-red pagination-lg justify-content-center">
-                                    <li class="page-item">
-                                        <a href="~/blog/index/@previous?category=@category#blog" class="page-link waves-effect waves-effect" aria-label="Previous">
+                                    <li class="page-item @(ViewBag.CurrentPage<2? "disabled" : "")">
+                                        <a href="~/blogmgt?pageIndex=@ViewBag.CurrentPage+1)" class="page-link waves-effect waves-effect" aria-label="Previous">
                                             <span aria-hidden="true">«</span>
                                             <span class="sr-only">Previous</span>
                                         </a>
                                     </li>
                                     @{
-                                        var postCount = Model.TotalPostCount < 1 ? 1 : Model.TotalPostCount;
-                                        var numberOfPages = (int)Math.Ceiling((Decimal)Model.LatestArticle.Count() / postCount);
+                                        var postPerPage = 20;
+                                        var numberOfPages = (int)Math.Ceiling((Decimal)ViewBag.PostCount / postPerPage);
                                         foreach (var item in Enumerable.Range(1, numberOfPages))
                                         {
-                                            <li class="page-item btnn0 @(Model.CurrentPage == item? "active" : "")   "><a href="~/blog/index/@item?category=@category#blog" class="page-link waves-effect waves-effect">@item</a></li>
+                                            <li class="page-item btnn0 @(ViewBag.CurrentPage == item? "active" : "")   "><a href="~/blogmgt?pageIndex=@item" class="page-link waves-effect waves-effect">@item</a></li>
                                         }
                                     }
 
-                                    <li class="page-item btnn0">
-                                        <a href="~/blog/index/@next?category=@category#blog" class="page-link waves-effect waves-effect" aria-label="Next">
+                                    <li class="page-item btnn0  @(ViewBag.CurrentPage+1 > numberOfPages? "disabled" : "")">
+                                        <a href="~/blogmgt?pageIndex=@ViewBag.CurrentPage+1)" class="page-link waves-effect waves-effect" aria-label="Next">
                                             <span aria-hidden="true">»</span>
                                             <span class="sr-only">Next</span>
                                         </a>
@@ -159,68 +159,6 @@
                                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                              width="7px" height="12px" viewBox="0 0 7 12" enable-background="new 0 0 7 12" xml:space="preserve">
                                         <polyline fill="#bebebe" points="0,5.61 5.609,0 7,0 7,1.438 2.438,6 7,10.563 7,12 5.609,12 -0.002,6.39 " />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 											</svg>
                                     </div>
