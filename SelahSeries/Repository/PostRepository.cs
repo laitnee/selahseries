@@ -68,20 +68,20 @@ namespace SelahSeries.Repository
                             .Where(post => post.Published == true)
                             .ToPaginatedListAsync(pageParam);
         }
-        public IEnumerable<Post> GetPublishedDMPosts()
+        public async Task<List<Post>> GetPublishedDMPosts()
         {
-            return _selahDbContext.Posts
+            return await _selahDbContext.Posts
                             .Include(p => p.Category)
                             .Where(post => post.Published == true && post.CreatedAt >= DateTime.Now.AddDays(-7))
-                            .OrderBy(p => p.postClap.Claps).Take(5);
+                            .OrderBy(p => p.postClap.Claps).Take(5).ToListAsync();
         }
-        public IEnumerable<Post> GetTopPosts()
+        public async Task<List<Post>> GetTopPosts()
         {
-            return _selahDbContext.Posts
+            return await _selahDbContext.Posts
                             .Include(p => p.Category)
                             .Where(post => post.Published == true)
                            .OrderByDescending(x => x.CreatedAt).Take(20)
-                           .OrderBy(p => p.postClap.Claps).Take(5);
+                           .OrderBy(p => p.postClap.Claps).Take(5).ToListAsync();
         }
         public async Task<PaginatedList<Post>> GetPublishedPostsByCategory(PaginationParam pageParam, int categoryId)
         {

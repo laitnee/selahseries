@@ -121,7 +121,7 @@
                     </a>
                 </li>
                 @{
-                    var postPerPage = 20;
+                    var postPerPage = 15;
                     var numberOfPages = (int)Math.Ceiling((Decimal)ViewBag.PostCount / postPerPage);
                     foreach (var item in Enumerable.Range(1, numberOfPages))
                     {

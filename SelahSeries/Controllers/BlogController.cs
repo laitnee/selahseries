@@ -36,7 +36,9 @@ namespace SelahSeries.Controllers
         }
         // GET: /<controller>/
         [Route("Blog/Index")]
-        [HttpGet("{pageIndex}")]
+        [HttpGet("Blog/{pageIndex}")]
+        [Route("Blog")]
+
         public async Task<IActionResult> Index(int pageIndex, string category)
         {
             PostHomeViewModel postHomeVM = new PostHomeViewModel();
@@ -44,14 +46,14 @@ namespace SelahSeries.Controllers
             var pageParam = new PaginationParam
             {
                 PageIndex = page,
-                Limit = 9,
+                Limit = 15,
                 SortColoumn = "CreatedAt"
             };
-            var dontMiss = _postRepo.GetPublishedDMPosts();
+            var dontMiss = await  _postRepo.GetPublishedDMPosts();
             var dontMissVM = _mapper.Map<List<PostListViewModel>>(dontMiss);
             postHomeVM.DontMiss = dontMissVM;
 
-            var topPosts = _postRepo.GetTopPosts();
+            var topPosts = await _postRepo.GetTopPosts();
             var topPostsVM = _mapper.Map<List<PostListViewModel>>(topPosts);
             postHomeVM.TopPosts = topPostsVM;
 

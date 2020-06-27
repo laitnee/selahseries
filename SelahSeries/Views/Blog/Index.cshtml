@@ -21,7 +21,7 @@
     <script src="~/NewFolder2/js/custom.js"></script>
 }
 
-<div class="site-blocks-cover inner-page-cover overlay" style="background-image: url('/NewFolder2/new/two-brown-pencils-on-white-surface-965117 (1).jpg');background-position:center; margin-top:20px" data-aos="fade" data-stellar-background-ratio="0.5" data-aos="fade">
+<div class="site-blocks-cover inner-page-cover overlay" style="background-image: url('/NewFolder2/new/two-brown-pencils-on-white-surface-965117 (1).jpg');background-position:center; margin-top:20px" data-aos="fade" data-stellar-background-ratio="0.5" >
     <div class="container" id="blog">
         @*<div class="row align-items-center justify-content-center">
                 <div class="col-md-7 text-center" data-aos="fade-up" data-aos-delay="400">
@@ -95,7 +95,7 @@
                                 }
 
                             </div>
-                            s
+                            
                         </div>
                     </div>
                     <div style="margin-top:80px; margin-bottom:80px">
@@ -103,23 +103,25 @@
                         {
                             <nav>
                                 <ul id="navDiv0" class="pagination pg-red pagination-lg justify-content-center">
-                                    <li class="page-item @(ViewBag.CurrentPage<2? "disabled" : "")">
-                                        <a href="~/blogmgt?pageIndex=@ViewBag.CurrentPage+1)" class="page-link waves-effect waves-effect" aria-label="Previous">
+                                    <li class="page-item @(Model.CurrentPage<2? "disabled" : "")">
+                                        <a href="~/blog/@Model.CurrentPage-1?category=@category#blog" class="page-link waves-effect waves-effect" aria-label="Previous">
                                             <span aria-hidden="true">«</span>
                                             <span class="sr-only">Previous</span>
                                         </a>
                                     </li>
                                     @{
-                                        var postPerPage = 20;
-                                        var numberOfPages = (int)Math.Ceiling((Decimal)ViewBag.PostCount / postPerPage);
+                                        var postPerPage = 15;
+                                        var numberOfPages = (int)Math.Ceiling((Decimal)Model.TotalPostCount / postPerPage);
                                         foreach (var item in Enumerable.Range(1, numberOfPages))
                                         {
-                                            <li class="page-item btnn0 @(ViewBag.CurrentPage == item? "active" : "")   "><a href="~/blogmgt?pageIndex=@item" class="page-link waves-effect waves-effect">@item</a></li>
+                                            <li class="page-item btnn0 @(Model.CurrentPage == item? "active" : "")"> 
+                                                <a href="~/blog/@item?category=@category#blog" class="page-link waves-effect waves-effect">@item</a>
+                                            </li>
                                         }
                                     }
 
-                                    <li class="page-item btnn0  @(ViewBag.CurrentPage+1 > numberOfPages? "disabled" : "")">
-                                        <a href="~/blogmgt?pageIndex=@ViewBag.CurrentPage+1)" class="page-link waves-effect waves-effect" aria-label="Next">
+                                    <li class="page-item btnn0  @(Model.CurrentPage+1 > numberOfPages? "disabled" : "")">
+                                        <a href="~/blog/@Model.CurrentPage+1?category=@category#blog" class="page-link waves-effect waves-effect" aria-label="Next">
                                             <span aria-hidden="true">»</span>
                                             <span class="sr-only">Next</span>
                                         </a>
@@ -127,11 +129,11 @@
                                 </ul>
                             </nav>
                         }
+
                         else
                         {
                             <div class="section_panel d-flex flex-row align-items-center">
                                 No posts yet in this category
-
 
                             </div>
                         }
@@ -231,174 +233,25 @@
 
                                     <!-- Newest Videos Slider Item -->
                                     <div class="owl-item">
-
-                                        <!-- Newest Videos Post -->
-                                        <div class="side_post">
-                                            <a href="~/blog/post">
-                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
-                                                    <div class="side_post_image"><div><img src="/NewFolder2/images/vid_1.jpg" alt=""></div></div>
-                                                    <div class="side_post_content">
-                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
-                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
+                                        @foreach (var item in Model.TopPosts)
+                                        {
+                                            <div class="side_post">
+                                                <a href="~/blog/post/@Html.DisplayFor(modelItem => item.PostId)">
+                                                    <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
+                                                        <div class="side_post_image"><div><img src="~/Uploads/@Html.DisplayFor(modelItem => item.TitleImageUrl)" alt="@item.Title"></div></div>
+                                                        <div class="side_post_content">
+                                                            <div class="side_post_title">@Html.DisplayFor(modelItem => item.Title)</div>
+                                                            <small class="post_meta">@Html.DisplayFor(modelItem => item.Author)<span>@Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </a>
-                                        </div>
+                                                </a>
+                                            </div>
 
-                                        <!-- Newest Videos Post -->
-                                        <div class="side_post">
-                                            <a href="~/blog/post">
-                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
-                                                    <div class="side_post_image"><div><img src="/NewFolder2/images/vid_2.jpg" alt=""></div></div>
-                                                    <div class="side_post_content">
-                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
-                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
 
-                                        <!-- Newest Videos Post -->
-                                        <div class="side_post">
-                                            <a href="~/blog/post">
-                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
-                                                    <div class="side_post_image"><div><img src="/NewFolder2/images/vid_3.jpg" alt=""></div></div>
-                                                    <div class="side_post_content">
-                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
-                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-
-                                        <!-- Newest Videos Post -->
-                                        <div class="side_post">
-                                            <a href="~/blog/post">
-                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
-                                                    <div class="side_post_image"><div><img src="/NewFolder2/images/vid_4.jpg" alt=""></div></div>
-                                                    <div class="side_post_content">
-                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
-                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
+                                        }
 
                                     </div>
 
-                                    <!-- Newest Videos Slider Item -->
-                                    <div class="owl-item">
-
-                                        <!-- Newest Videos Post -->
-                                        <div class="side_post">
-                                            <a href="~/blog/post">
-                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
-                                                    <div class="side_post_image"><div><img src="images/vid_1.jpg" alt=""></div></div>
-                                                    <div class="side_post_content">
-                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
-                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-
-                                        <!-- Newest Videos Post -->
-                                        <div class="side_post">
-                                            <a href="~/blog/post">
-                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
-                                                    <div class="side_post_image"><div><img src="images/vid_2.jpg" alt=""></div></div>
-                                                    <div class="side_post_content">
-                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
-                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-
-                                        <!-- Newest Videos Post -->
-                                        <div class="side_post">
-                                            <a href="~/blog/post">
-                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
-                                                    <div class="side_post_image"><div><img src="images/vid_3.jpg" alt=""></div></div>
-                                                    <div class="side_post_content">
-                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
-                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-
-                                        <!-- Newest Videos Post -->
-                                        <div class="side_post">
-                                            <a href="~/blog/post">
-                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
-                                                    <div class="side_post_image"><div><img src="images/vid_4.jpg" alt=""></div></div>
-                                                    <div class="side_post_content">
-                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
-                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-
-                                    </div>
-
-                                    <!-- Newest Videos Slider Item -->
-                                    <div class="owl-item">
-
-                                        <!-- Newest Videos Post -->
-                                        <div class="side_post">
-                                            <a href="~/blog/post">
-                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
-                                                    <div class="side_post_image"><div><img src="images/vid_1.jpg" alt=""></div></div>
-                                                    <div class="side_post_content">
-                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
-                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-
-                                        <!-- Newest Videos Post -->
-                                        <div class="side_post">
-                                            <a href="~/blog/post">
-                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
-                                                    <div class="side_post_image"><div><img src="images/vid_2.jpg" alt=""></div></div>
-                                                    <div class="side_post_content">
-                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
-                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-
-                                        <!-- Newest Videos Post -->
-                                        <div class="side_post">
-                                            <a href="~/blog/post">
-                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
-                                                    <div class="side_post_image"><div><img src="images/vid_3.jpg" alt=""></div></div>
-                                                    <div class="side_post_content">
-                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
-                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-
-                                        <!-- Newest Videos Post -->
-                                        <div class="side_post">
-                                            <a href="~/blog/post">
-                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
-                                                    <div class="side_post_image"><div><img src="images/vid_4.jpg" alt=""></div></div>
-                                                    <div class="side_post_content">
-                                                        <div class="side_post_title">How Did van Gogh’s Turbulent Mind</div>
-                                                        <small class="post_meta">Katy Liu<span>Sep 29</span></small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-
-                                    </div>
 
                                 </div>
                             </div>
