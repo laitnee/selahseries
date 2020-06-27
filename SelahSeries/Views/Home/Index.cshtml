@@ -113,6 +113,7 @@
     </a>
 </div>
 
+@*
 <div class="container containe">
 
     <div class="imagee row" style="height:150px; margin-bottom:40px">
@@ -130,7 +131,6 @@
                     <img src="/NewFolder2/new/brigitte-tohm-XyGeWTj2E7w-unsplash.jpg" alt="Avatar">
                     <div class="container2">
                         <h4>Check out our articles on Relationship and Marriage</h4>
-                        @* <p><a href="~/?category=relationship_and_marriage#blog">See here</a></p> *@
                     </div>
                 </div>
             </a>
@@ -141,8 +141,8 @@
                 <div class="card2">
                     <img src="/NewFolder2/new/kakudmi-JO19K0HDDXI-unsplash (1).jpg" alt="Avatar">
                     <div class="container2">
-                        <h4>Get entertained with news on Football</h4>
-                        @* <p><a href="~/?category=sports#blog">See here</a></p> *@
+                        <h4>Get entertained with news on Football</h4
+                        <p><a href="~/?category=sports#blog">See here</a></p> 
                     </div>
                 </div>
             </a>
@@ -156,7 +156,7 @@
                     <img src="/NewFolder2/new/jacalyn-beales-geRpPjIiu8U-unsplash.jpg" alt="Avatar ">
                     <div class="container2">
                         <h4>Our Career section provides you interesting contents on career</h4>
-                        @* <p><a href="~/?category=career#blog">See here</a></p> *@
+                      
                     </div>
                 </div>
             </a>
@@ -170,7 +170,6 @@
                     <img src="/NewFolder2/new/lucia-48UaeIMNAA4-unsplash (2).jpg" alt="Avatar">
                     <div class="container2">
                         <h4>A lover of politics? We have related articles for you.</h4>
-                        @* <p><a href="~/?category=politics#blog">See here</a></p> *@
                     </div>
                 </div>
             </a>
@@ -178,25 +177,12 @@
 
     </div>
 
-</div>
-
-
-<div id="blog">
-    <div class="row" style="background: url('/NewFolder2/new/brass-black-brown-fountain-pen-163029 (2).jpg')">
-        <div class="has-overlay">
-            <img style="width:100%; height:18.06em" src='/NewFolder2/new/brass-black-brown-fountain-pen-163029 (2).jpg' alt="image" />
-        </div>
-    </div>
-</div>
-
-
-
+</div> *@
 
 <!-- Page Content -->
 
 <div class="page_content">
     <div class="container">
-
 
         <div class="row row-lg-eq-height">
 
@@ -301,6 +287,15 @@
                                         <polyline fill="#bebebe" points="0,5.61 5.609,0 7,0 7,1.438 2.438,6 7,10.563 7,12 5.609,12 -0.002,6.39 " />
 
 
+
+
+
+
+
+
+
+
+
 											</svg>
                                     </div>
                                     <ul id="custom_dots" class="custom_dots custom_dots_vid">
@@ -314,6 +309,15 @@
                                         <polyline fill="#bebebe" points="6.998,6.39 1.389,12 -0.002,12 -0.002,10.562 4.561,6 -0.002,1.438 -0.002,0 1.389,0 7,5.61 " />
 
 
+
+
+
+
+
+
+
+
+
 											</svg>
                                     </div>
                                 </div>
@@ -324,21 +328,24 @@
                             <!-- Sidebar Slider -->
                             <div class="sidebar_slider_container">
                                 <div class="owl-carousel owl-theme sidebar_slider_vid">
-
-                                    @foreach (var item in Model.TopPosts)
-                                    {
-
-                                        <div style="max-width:95%;" class="card card_default card_small_with_image grid-item">
-                                            <img class="card-img-top" src='~/Uploads/@Html.DisplayFor(modelItem => item.TitleImageUrl)' alt="https://unsplash.com/">
-                                            <div class="card-body">
-                                                <div class="card-title card-title-small"><a href="~/blog/post/@Html.DisplayFor(modelItem => item.PostId)">@Html.DisplayFor(modelItem => item.Title)</a></div>
-                                                <small class="post_meta"><a href="#">@Html.DisplayFor(modelItem => item.Author)</a><span>@Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
+                                    <div class="owl-item">
+                                        @foreach (var item in Model.TopPosts)
+                                        {
+                                            <div class="side_post">
+                                                <a href="~/blog/post/@Html.DisplayFor(modelItem => item.PostId)">
+                                                    <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
+                                                        <div class="side_post_image"><div><img src="~/Uploads/@Html.DisplayFor(modelItem => item.TitleImageUrl)" alt="@item.Title"></div></div>
+                                                        <div class="side_post_content">
+                                                            <div class="side_post_title">@Html.DisplayFor(modelItem => item.Title)</div>
+                                                            <small class="post_meta">@Html.DisplayFor(modelItem => item.Author)<span>@Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
+                                                        </div>
+                                                    </div>
+                                                </a>
                                             </div>
-                                        </div>
 
 
-                                    }
-
+                                        }
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -370,10 +377,13 @@
 <!-- Books Advertisement-->
 <!--Advert header-->
 <div class="row" id="books">
-    <div class="has-overlay">
-        <img style="width:100%; height:16.06em" src="/NewFolder2/new/florencia-viadana-1J8k0qqUfYY-unsplash (2).jpg" alt="image" />
-    </div>
-    <div class="centered h2" style="font-family: 'Ubuntu', sans-serif; color:#f2ba16">Trending Books By Author</div>
+    <div class="centered h2" style=" font-family: 'Ubuntu', sans-serif;
+        margin-top: 3%;
+        z-index: 2;
+        padding: 10px;
+        background: white;
+        box-shadow: 0px 18px 25px 0px rgba(2,5,6,0.1);
+        color: #f2ba16;">Trending Books By Author</div>
 </div>
 
 <!--Books-->
