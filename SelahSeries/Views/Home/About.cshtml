@@ -217,7 +217,7 @@
                     </div>
                 </div>
                 <div class="col-lg-8">
-                    <div id="myCarousel" class="carousel slide">
+                    <div id="myCarousel" class="carousel slide eurek_slide">
                         <p class="indent" style="text-align:justify; color: black; line-height: 1.7">
                             I met Titilayo at the Chapel of Grace when she was in OAUTHC for her year – long internship
                             program at the Haematology and Blood Transfusion department of the hospital laboratory. At
@@ -414,7 +414,6 @@
     .eurek {
         position: relative;
         margin-top: -97px;
-        background: url("/NewFolder2/new/abstract-antique-backdrop-background-129731.jpg");
         background-position: center;
         background-size: contain;
         margin-bottom: 50px;
@@ -423,7 +422,8 @@
     .bio {
         width: 80%;
         margin-bottom: 83px;
-        background: url('/NewFolder2/new/abstract-antique-backdrop-background-129731.jpg');
+        /*background: url('/NewFolder2/new/abstract-antique-backdrop-background-129731.jpg');*/
+        background-color: antiquewhite;
         background-position: center;
         background-size: cover;
     }
@@ -459,5 +459,11 @@
 
     .row{
         align-items: center;
+    }
+
+    .col-lg-8 div.eurek_slide {
+        overflow-y: scroll;
+        padding: 50px;
+        height: 580px;
     }
 </style>
