@@ -16,7 +16,7 @@ namespace SelahSeries.Repository
         Task SaveChanges();
         Task DeletePost(int postId);
         Task<PaginatedList<Post>> GetPosts(PaginationParam pageParam);
-        Task<PaginatedList<Post>> GetPostsByCategory(PaginationParam pageParam, int categoryId);
+        Task<PaginatedList<Post>> GetPostsByCategory(PaginationParam pageParam, int categoryId); 
         Task<PaginatedList<Post>> GetPublishedPosts(PaginationParam pageParam);
         Task<PaginatedList<Post>> GetPublishedPostsByCategory(PaginationParam pageParam, int categoryId);
         Task<PaginatedList<Post>> GetPublishedPostsByCategory(PaginationParam pageParam, string category);
