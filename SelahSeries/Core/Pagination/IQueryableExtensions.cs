@@ -17,7 +17,7 @@ namespace SelahSeries.Core.Pagination
             if (!string.IsNullOrWhiteSpace(sortColumn))
             {
                 var collection = query
-                    .OrderBy(sortColumn, false)
+                    .OrderBy(sortColumn, true)
                     .Skip((pageIndex - 1) * limit)
                     .Take(limit);
                 return new PaginatedList<T>(collection, totalCount, pageIndex);

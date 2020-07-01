@@ -28,7 +28,7 @@ namespace SelahSeries.Controllers
 
         [HttpPost]
   
-        public async Task<ActionResult> Send_Message([FromForm] string fullname, int age, string gender, long phone, string category, string email, string address, string message)
+        public async Task<ActionResult> Send_Message([FromForm] string fullname, string age, string gender, long phone, string category, string email, string address, string message)
         {
 
             try

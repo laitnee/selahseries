@@ -189,43 +189,6 @@
             <div class="col-lg-9">
                 <div class="main_content">
 
-                    <div class="blog_section" style="margin-bottom:80px">
-                        @if (Model.DontMiss.Any())
-                        {
-                            <div class="section_panel d-flex flex-row align-items-center justify-content-start">
-                                <div class="section_title">Don't Miss</div>
-
-
-                            </div>
-
-                            <div class="section_content">
-                                <div class="grid clearfix">
-
-
-                                    @foreach (var item in Model.DontMiss)
-                                    {
-
-
-                                        <!-- Small Card With Image -->
-                                        <div class="card card_default  card_small_with_image grid-item">
-                                            <img class="card-img-top" src='~/Uploads/@Html.DisplayFor(modelItem => item.TitleImageUrl)' alt="@Html.DisplayFor(modelItem => item.Title)">
-                                            <div class="card-body">
-                                                <div class="card-title card-title-small"><a href="~/blog/post/@Html.DisplayFor(modelItem => item.PostId)">@Html.DisplayFor(modelItem => item.Title)</a></div>
-                                                <small class="post_meta"><a href="#">@Html.DisplayFor(modelItem => item.Author)</a><span>@Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
-                                            </div>
-                                        </div>
-
-
-                                    }
-
-
-                                </div>
-                            </div>
-                        }
-
-                    </div>
-
-
                     <!-- Blog Section - Latest -->
                     <div class="blog_section">
                         <div class="section_panel d-flex flex-row align-items-center justify-content-start">

@@ -6,11 +6,11 @@
     <link rel="stylesheet" href="~/NewFolder2/styles/eiser_theme/vendors/lightbox/simpleLightbox.css" />
     <link rel="stylesheet" href="~/NewFolder2/styles/eiser_theme/vendors/nice-select/css/nice-select.css" />
     <!-- Site CSS -->
-    <link rel="stylesheet" href="/NewFolder2/shop/css/style.css">
+    <link rel="stylesheet" href="~/NewFolder2/shop/css/style.css">
     <!-- Responsive CSS -->
-    <link rel="stylesheet" href="/NewFolder2/shop/css/responsive.css">
+    <link rel="stylesheet" href="~/NewFolder2/shop/css/responsive.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/NewFolder2/shop/css/custom.css">
+    <link rel="stylesheet" href="`~/NewFolder2/shop/css/custom.css">
     <link rel="stylesheet" href="~/NewFolder2/shop/css/cart_responsive.css">
     <link rel="stylesheet" href="~/NewFolder2/shop/css/cart_style.css">
     <link rel="stylesheet" href="~/NewFolder2/shop/css/Checkout.css">
@@ -123,26 +123,23 @@
                                             <input type="text"
                                                    class="form-control"
                                                    id="first"
-                                                   name="name" />
-                                            <span class="placeholder"
-                                                  data-placeholder="Full name"></span>
+                                                   name="name" 
+                                                   placeholder="Full name"/>
                                         </div>
 
                                         <div class="col-md-6 form-group p_star">
                                             <input type="tel"
                                                    class="form-control"
                                                    id="number"
-                                                   name="number" />
-                                            <span class="placeholder"
-                                                  data-placeholder="Phone number"></span>
+                                                   name="number" 
+                                                   placeholder="Phone number"/>
                                         </div>
                                         <div class="col-md-6 form-group p_star">
                                             <input type="email"
                                                    class="form-control"
                                                    id="email"
-                                                   name="compemailany" />
-                                            <span class="placeholder"
-                                                  data-placeholder="Email Address"></span>
+                                                   name="compemailany"
+                                                   placeholder="Email Address">
                                         </div>
                                         <div class="col-md-12 form-group p_star">
                                             <select class="nice-select country_select" required>
@@ -154,9 +151,8 @@
                                             <input type="text"
                                                    class="form-control"
                                                    id="add1"
-                                                   name="add1" required="required" />
-                                            <span class="placeholder"
-                                                  data-placeholder="Address"></span>
+                                                   name="add1" required="required" 
+                                                   placeholder="Address"/>
                                         </div>
                                         <div class="col-md-12 form-group p_star">
                                             <select class="nice-select city_select" required>
@@ -178,11 +174,11 @@
                                         </div>
                                         <div class="logoo">
                                             <div class=" total-logo">
-                                                <div class="col-12 col-sm-6 col-md-5 total" style="border-bottom:none">
+                                                <div class="col-12 col-sm-12 col-md-5 total" style="border-bottom:none">
                                                     <span>Total:</span>&nbsp;&nbsp;&nbsp;
                                                     <span class="payment_amount total-n">₦<span>0</span></span>
                                                 </div>
-                                                <div role="button" id="PayCheck" class="col-12 col-sm-6 col-md-7 logo">
+                                                <div role="button" id="PayCheck" class="col-12 col-sm-12 col-md-7 logo">
                                                     <span> CONFIRM PURCHASE </span>
                                                 </div>
                                             </div>
@@ -203,6 +199,9 @@
 <script src="https://checkout.flutterwave.com/v3.js"></script>
 
 <style>
+    .fa, .far, .fas{
+        font-family: "FontAwesome";
+    }
     .animated {
         -webkit-animation-fill-mode: none;
         animation-fill-mode: none;
