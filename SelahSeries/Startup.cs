@@ -60,18 +60,19 @@ namespace SelahSeries
             
                   options.ClientId = Configuration["Authentication:Google:ClientId"];
                   options.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
-                  
-                  //options.Events = new OAuthEvents
-                  //{
-                  //    OnCreatingTicket = context =>
-                  //    {
-                  //        string domain = context.User.Value<string>("email");
-                  //        if (domain != Configuration["Authentication:Google:LoginEmail"])
-                  //            throw new Exception($"You must sign in with a {Configuration["Authentication:Google:LoginEmail"]} email address");
-                  //        return Task.CompletedTask;
-                  //    }
-                  //};
-              });
+
+                    options.Events = new OAuthEvents
+                    {
+                        OnCreatingTicket = context =>
+                        {
+                            string domain = context.User.Value<string>("email");
+                            string[] allowedEmails = Configuration["Authentication:Google:LoginEmail"].Split(';');
+                            if (allowedEmails.Any(x => x.Equals(domain, StringComparison.OrdinalIgnoreCase)) )
+                                throw new Exception($"You must sign in with a {Configuration["Authentication:Google:LoginEmail"]} email address");
+                            return Task.CompletedTask;
+                        }
+                    };
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
