@@ -1,13 +1,13 @@
 ﻿@model SelahSeries.ViewModels.PostDetailViewModel
 @{
-    ViewData["Title"] = Model.Post.Title ?? "Selah Series";
+     ViewData["Title"] = Model.Post.Title ?? "Selah Series";
     var pageURL = $"{Context.Request.Scheme}://{Context.Request.Host}{Context.Request.Path}{Context.Request.QueryString}";
 }
 @section AddMetaTags{
 
-    <meta property="og:title" content=@($"{Model.Post.Title}")>
-    <meta property="og:description" content=@($"{Model.Post.Category.Title} Talks {Model.Post.Title} By {Model.Post.Author}")>
-    <meta property="og:image" content="~/uploads/@Model.Post.TitleImageUrl>
+    <meta property="og:title" content=("@Model.Post.Title")>
+    <meta property="og:description" content="@Model.Post.Category.Title Talks @Model.Post.Title By @Model.Post.Author")>
+    <meta property="og:image" content="selahseries.com/uploads/@Model.Post.TitleImageUrl">
     <meta property="og:url" content="@Uri.EscapeDataString(pageURL)">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
@@ -41,6 +41,7 @@
         </div>
     </div>
     <!-- Page Content -->
+   
     <div class="page_content">
         <div class="container">
             <div class="row row-lg-eq-height">
@@ -58,17 +59,17 @@
                                 <span>share</span>
                                 <ul class="post_share_list">
                                     <li class="post_share_item">
-                                        <a href="https://facebook.com/sharer/sharer.php"
+                                        <a href="https://facebook.com/sharer/sharer.php?u=@Uri.EscapeDataString(pageURL)&t=@Model.Post.Title"
                                            class="share-popup"
                                            target="_blank"><i class="fa fa-facebook facebook" aria-hidden="true"></i></a>
                                     </li>
                                     <li class="post_share_item">
-                                        <a href="https://twitter.com/share"
+                                        <a href="https://twitter.com/share?url=@Uri.EscapeDataString(pageURL)&via=TWITTER_HANDLE&text=@Model.Post.Title"
                                            class="share-popup"
                                            target="_blank"><i class="fa fa-twitter twitter" aria-hidden="true"></i></a>
                                     </li>
                                     <li class="post_share_item">
-                                        <a href="https://linkedin.com/shareArticle"
+                                        <a href="https://linkedin.com/shareArticle?mini=true&url=@Uri.EscapeDataString(pageURL)&title=@Model.Post.Title"
                                            class="share-popup"
                                            target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
                                     </li>
@@ -151,91 +152,99 @@
                                 </div>
                             </div>
 
-                            <div>
-                                <!-- Post Comment -->
-                                <div class="post_comment">
-                                    <div class="post_comment_title">Post Comment</div>
-                                    @if (!(Model.Post.Comments.Count() > 0))
-                                    {
-                                        <div style="font-family: 'Ubuntu', sans-serif; font-size: 16px; font-weight: 700; color: #007bff; margin-top:20px;"> Be the first to comment on this post </div>
-                                    }
-                                    <div class="row">
-                                        <div class="col-xl-9">
-                                            <div class="post_comment_form_container">
-                                                <form method="post" asp-controller="Blog" asp-action="PostComment">
-                                                    <input type="hidden" value="@Model.Post.PostId" asp-for="Comment.PostId" />
-                                                    <input type="text" asp-for="Comment.Author" class="comment_input comment_input_name" placeholder="Your Name (optional)" />
-                                                    <input type="email" asp-for="Comment.Email" class="comment_input comment_input_email" placeholder="Your Email (optional)" />
-                                                    <textarea asp-for="Comment.Content" class="comment_text" placeholder="Your Comment" required="required"></textarea>
-                                                    <button type="submit" class="comment_button">Post Comment</button>
-                                                </form>
-                                            </div>
+                        <div>
+                            <!-- Post Comment -->
+                            <div class="post_comment">
+                                <div class="post_comment_title">Post Comment</div>
+                                @if (!(Model.Post.Comments.Count() > 0))
+                                {
+                                    <div style="font-family: 'Ubuntu', sans-serif; font-size: 16px; font-weight: 700; color: #007bff; margin-top:20px;"> Be the first to comment on this post </div>
+                                }
+                                <div class="row">
+                                    <div class="col-xl-9">
+                                        <div class="post_comment_form_container">
+                                            <form method="post" asp-controller="Blog" asp-action="PostComment">
+                                                <input type="hidden" value="@Model.Post.PostId" asp-for="Comment.PostId" />
+                                                <input type="text" asp-for="Comment.Author" class="comment_input comment_input_name" placeholder="Your Name (optional)" />
+                                                <input type="email" asp-for="Comment.Email" class="comment_input comment_input_email" placeholder="Your Email (optional)" />
+                                                <textarea asp-for="Comment.Content" class="comment_text" placeholder="Your Comment" required="required"></textarea>
+                                                <button type="submit" class="comment_button">Post Comment</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <div class="social-btn">
+                                    <a href="@Model.Post.FacebookPostLink" target="_blank"><div class="social face"><i class="fa fa-facebook fa-2x"></i><span>Facebook</span></div></a>
+                                    <a href="@Model.Post.TwitterPostLink" target="_blank"><div class="social twi"><i class="fa fa-twitter fa-2x"></i><span>Twitter</span></div></a>
+                                    <a href="@Model.Post.LinkedInPostLink" target="_blank"><div class="social in"><i class="fa fa-linkedin  fa-2x"></i><span>Linked In</span></div></a>
+                                </div>
+                            }
 
-                                <!-- Comments -->
-                                <div class="comments">
-                                    @*@if ((Model.Post.Comments.Count() > 0))
-                {
-                    <div style="text-align:center; margin:5px 5px 40px 5px;" class="comments_title"> Be the first to comment on this post </div>
-                }*@
-                                    @if ((Model.Post.Comments.Count() > 0))
-                                    {
-                                        <div class="comments_title">Comments <span>@Model.Post.Comments.Where(c => c.ParentCommentId == null).Count()</span></div>
+                            <!-- Comments -->
+                            <div class="comments">
+                                @*@if ((Model.Post.Comments.Count() > 0))
+            {
+                <div style="text-align:center; margin:5px 5px 40px 5px;" class="comments_title"> Be the first to comment on this post </div>
+            }*@
+                                @if ((Model.Post.Comments.Count() > 0))
+                                {
+                                    <div class="comments_title">Comments <span>@Model.Post.Comments.Where(c => c.ParentCommentId == null).Count()</span></div>
 
-                                        <div class="row">
-                                            <div class="col-xl-12">
-                                                <div class="comments_container">
-                                                    <ul data-commentList class="comment_list">
-                                                        @foreach (var item in Model.Post.Comments.Where(com => com.ParentCommentId == null))
-                                                        {
-                                                            <li data-omment class="comment">
-                                                                <div class="comment_body">
-                                                                    <div class="comment_panel d-flex flex-row align-items-center justify-content-start">
-                                                                        <small class="post_meta">
-                                                                            <a href="#">@item.Author</a><span>
-                                                                                @item.CreatedAt.ToShortDateString()
-                                                                                at @item.CreatedAt.ToShortTimeString()
-                                                                            </span>
-                                                                        </small>
-                                                                        <button type="button" data-ReplyListener="@item.CommentId" class="reply_button ml-auto">Reply</button>
-                                                                    </div>
-                                                                    <div class="comment_content">
-                                                                        <p>@item.Content </p>
-                                                                    </div>
+                                    <div class="row">
+                                        <div class="col-xl-12">
+                                            <div class="comments_container">
+                                                <ul data-commentList class="comment_list">
+                                                    @foreach (var item in Model.Post.Comments.Where(com => com.ParentCommentId == null))
+                                                    {
+                                                        <li data-omment class="comment">
+                                                            <div class="comment_body">
+                                                                <div class="comment_panel d-flex flex-row align-items-center justify-content-start">
+                                                                    <small class="post_meta">
+                                                                        <a href="#">@item.Author</a><span>
+                                                                            @item.CreatedAt.ToShortDateString()
+                                                                            at @item.CreatedAt.ToShortTimeString()
+                                                                        </span>
+                                                                    </small>
+                                                                    <button type="button" data-ReplyListener="@item.CommentId" class="reply_button ml-auto">Reply</button>
+                                                                </div>
+                                                                <div class="comment_content">
+                                                                    <p>@item.Content </p>
+                                                                </div>
 
-                                                                    @await Html.PartialAsync("Comments", new SelahSeries.ViewModels.CommentVM() { Comments = Model.Post.Comments, ParentId = item.CommentId })
+                                                                @await Html.PartialAsync("Comments", new SelahSeries.ViewModels.CommentVM() { Comments = Model.Post.Comments, ParentId = item.CommentId })
 
-                                                                    <!--Comment Reply Form-->
-                                                                    <template id="CommentBox">
-                                                                        <div replyForm class="row">
-                                                                            <div class="col-xl-10">
-                                                                                <div style="margin-top:5px;" class="comment_reply_form_container" id="comment_reply_form">
-                                                                                    <form method="post" asp-controller="Blog" asp-action="PostComment">
-                                                                                        <input type="hidden" value="@Model.Post.PostId" asp-for="Comment.PostId" />
-                                                                                        <input type="hidden" data-commentParent asp-for="Comment.ParentCommentId" />
-                                                                                        <input type="text" asp-for="Comment.Author" class="comment_input comment_input_name" placeholder="Your Name (Optional)" />
-                                                                                        <input type="email" asp-for="Comment.Email" class="comment_input comment_input_email" placeholder="Your Email (Optional)">
-                                                                                        <textarea asp-for="Comment.Content" class="comment_text" placeholder="Your Comment" required="required"></textarea>
-                                                                                        <button type="submit" class="comment_button">Post Reply</button>
-                                                                                    </form>
-                                                                                </div>
+                                                                <!--Comment Reply Form-->
+                                                                <template id="CommentBox">
+                                                                    <div replyForm class="row">
+                                                                        <div class="col-xl-10">
+                                                                            <div style="margin-top:5px;" class="comment_reply_form_container" id="comment_reply_form">
+                                                                                <form method="post" asp-controller="Blog" asp-action="PostComment">
+                                                                                    <input type="hidden" value="@Model.Post.PostId" asp-for="Comment.PostId" />
+                                                                                    <input type="hidden" data-commentParent asp-for="Comment.ParentCommentId" />
+                                                                                    <input type="text" asp-for="Comment.Author" class="comment_input comment_input_name" placeholder="Your Name (Optional)" />
+                                                                                    <input type="email" asp-for="Comment.Email" class="comment_input comment_input_email" placeholder="Your Email (Optional)">
+                                                                                    <textarea asp-for="Comment.Content" class="comment_text" placeholder="Your Comment" required="required"></textarea>
+                                                                                    <button type="submit" class="comment_button">Post Reply</button>
+                                                                                </form>
                                                                             </div>
                                                                         </div>
-                                                                    </template>
+                                                                    </div>
+                                                                </template>
 
-                                                                </div>
-                                                            </li>
-                                                        }
-                                                    </ul>
-                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    }
+                                                </ul>
                                             </div>
                                         </div>
-                                    }
+                                    </div>
+                                }
 
-                                </div>
                             </div>
+                        </div>
 
                             <!-- Similar Posts After-->
                             <div class="similar_posts after">
@@ -276,7 +285,7 @@
 
                         <div class="sidebar_section">
                             <div class="sidebar_title_container">
-                                <div class="sidebar_title">Top Stories</div>
+                                @*<div class="sidebar_title">Top Stories</div>
                                 <div class="sidebar_slider_nav">
                                     <div class="custom_nav_container sidebar_slider_nav_container">
                                         <div class="custom_prev custom_prev_top">
@@ -307,22 +316,23 @@
 											</svg>
                                         </div>
                                     </div>
-                                </div>
+                                </div>*@
                             </div>
                             <div class="sidebar_section_content">
 
-                                <div class="sidebar_slider_container">
-                                    
+                                @*<div class="sidebar_slider_container">
+                                    <div class='owl - carousel owl - theme sidebar_slider_top'>
                                         @{
                                             const int POST_PER_SLIDE = 4;
 
                                             foreach (var (item, index) in Model.TopStories.Select((v, i) => (v, i)))
                                             {
                                                 if (Model.Post.PostId == item.PostId) { continue; }
-                                                bool renderRow = index % POST_PER_SLIDE == 0;
+                                                bool renderRow = index == 0 ? true : index + 1 % POST_PER_SLIDE == 0;
+
                                                 if (renderRow)
                                                 {
-                                                    @Html.Raw("<div class='owl - carousel owl - theme sidebar_slider_top'><div class='owl-item'>");
+                                                    @Html.Raw("<div class='owl-item'>");
                                                 }
                                                 <div class="side_post">
                                                     <a href="~/blog/post/@Html.DisplayFor(modelItem => item.PostId)">
@@ -337,12 +347,12 @@
                                                 </div>
                                                 if (renderRow)
                                                 {
-                                                    @Html.Raw("</div></div>");
+                                                    @Html.Raw("</div>");
                                                 }
                                             }
                                         }
-                                    
-                                </div>
+                                    </div>
+                                    </div>*@
                             </div>
                         </div>
 
@@ -368,6 +378,102 @@
 </div>
 
 <style>
+
+    div.social-btn {
+        display: block;
+        width: 665px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+        div.social-btn a {
+            text-decoration: none;
+        }
+
+        div.social-btn div {
+            width: 92px;
+            display: inline-block;
+            float: left;
+            height: 92px;
+            line-height: 120px;
+            color: #fff;
+            margin-right: 3px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+            font-size: 20px;
+            text-shadow: 0px 0px 5px #000;
+            -moz-transition: all 0.3s ease-out;
+            -o-transition: all 0.3s ease-out;
+            -webkit-transition: all 0.3s ease-out;
+            transition: all 0.3s ease-out;
+            margin-bottom: 50px;
+        }
+
+        div.social-btn a:last-child div {
+            margin-right: 0;
+        }
+
+        div.social-btn div:hover, div.social-btn div:active {
+            height: 100px;
+            padding-top: 15px;
+        }
+
+    i {
+        -moz-transition: all 0.4s ease-out;
+        -webkit-transition: all 0.4s ease-out;
+        -o-transition: all 0.4s ease-out;
+        transition: all 0.4s ease-out;
+    }
+
+    div.face span, div.twi span, div.in span, div.pin span, div.git span {
+        position: absolute;
+        left: 0;
+        font-family: 'Raleway', sans-serif;
+        font-weight: 400;
+        width: 100px;
+        padding: 0px 15px;
+        opacity: 0;
+        -moz-transition: all 0.6s ease-in;
+        -o-transition: all 0.6s ease-in;
+        -webkit-transition: all 0.6s ease-in;
+        transition: all 0.6s ease-in;
+        line-height: 110px;
+        font-size: 20px;
+    }
+
+    div.social-btn div:hover i {
+        opacity: 0;
+    }
+
+    div.social-btn div:hover span {
+        opacity: 1;
+    }
+
+    div.face {
+        background: #3A5795;
+        -moz-box-shadow: 0px 4px 0px #1e469d;
+        -webkit-box-shadow: 0px 4px 0px #1e469d;
+        box-shadow: 0px 4px 0px #3e6d8d;
+        position: relative;
+    }
+
+    div.twi {
+        background: #5EA9DD;
+        -moz-box-shadow: 0px 4px 0px #186ba4;
+        -webkit-box-shadow: 0px 4px 0px #186ba4;
+        box-shadow: 0px 4px 0px #2b95df;
+        position: relative;
+    }
+
+    div.in {
+        background: #0177B5;
+        -moz-box-shadow: 0px 4px 0px #035e8e;
+        -webkit-box-shadow: 0px 4px 0px #035e8e;
+        box-shadow: 0px 4px 0px #035e8e;
+        position: relative;
+    }
+
     .after {
         display: none;
     }

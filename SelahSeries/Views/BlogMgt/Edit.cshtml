@@ -1,4 +1,4 @@
-﻿@model SelahSeries.ViewModels.PostCreateViewModel
+﻿ @model SelahSeries.ViewModels.PostCreateViewModel
 
 @{
     ViewBag.Title = "Blog Edit";
@@ -119,7 +119,28 @@
                 </div>
 
             </div>
+            <div class="form-group">
+                <button type="button" class="collapsible">Social Media Links</button>
+                <div class="content">
+                    <div style="padding:5px; margin:5px;">
 
+                        <input asp-for="FacebookPostLink" placeholder="Facebook post link" class="form-control" />
+                        <span asp-validation-for="FacebookPostLink" class="text-danger"></span>
+                    </div>
+                    <div style="padding:5px; margin:5px;">
+                        <input asp-for="TwitterPostLink" placeholder="Twitter post link" class="form-control" />
+                        <span asp-validation-for="TwitterPostLink" class="text-danger"></span>
+
+                    </div>
+                    <div style="padding:5px; margin:5px;">
+                        <input asp-for="LinkedInPostLink" placeholder="LinkedIn post link" class="form-control" />
+                        <span asp-validation-for="LinkedInPostLink" class="text-danger"></span>
+
+                    </div>
+                </div>
+
+
+            </div>
             <div class="form-group">
                 <button type="button" class="collapsible"> Select Category</button>
                 <div class="content">
