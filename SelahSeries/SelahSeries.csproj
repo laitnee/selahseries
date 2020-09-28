@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
@@ -53,6 +53,46 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\EMI\css\breadcrumb.css.map" />
+    <None Include="wwwroot\EMI\css\style.css.map" />
+    <None Include="wwwroot\EMI\css\_blog.css.map" />
+    <None Include="wwwroot\EMI\css\_button.css.map" />
+    <None Include="wwwroot\EMI\css\_contact.css.map" />
+    <None Include="wwwroot\EMI\css\_elements.css.map" />
+    <None Include="wwwroot\EMI\css\_event.css.map" />
+    <None Include="wwwroot\EMI\css\_feature.css.map" />
+    <None Include="wwwroot\EMI\css\_footer.css.map" />
+    <None Include="wwwroot\EMI\css\_gallery.css.map" />
+    <None Include="wwwroot\EMI\css\_instagram.css.map" />
+    <None Include="wwwroot\EMI\css\_service.css.map" />
+    <None Include="wwwroot\EMI\css\_testimonials.css.map" />
+    <None Include="wwwroot\EMI\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\EMI\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\EMI\img\elements\_DS_Store" />
+    <None Include="wwwroot\EMI\js\bootstrap.min.js" />
+    <None Include="wwwroot\EMI\js\contact.js" />
+    <None Include="wwwroot\EMI\js\custom.js" />
+    <None Include="wwwroot\EMI\js\gmaps.min.js" />
+    <None Include="wwwroot\EMI\js\jquery-3.2.1.min.js" />
+    <None Include="wwwroot\EMI\js\jquery.ajaxchimp.min.js" />
+    <None Include="wwwroot\EMI\js\jquery.form.js" />
+    <None Include="wwwroot\EMI\js\jquery.validate.min.js" />
+    <None Include="wwwroot\EMI\js\mail-script.js" />
+    <None Include="wwwroot\EMI\js\popper.js" />
+    <None Include="wwwroot\EMI\js\stellar.js" />
+    <None Include="wwwroot\EMI\js\theme.js" />
+    <None Include="wwwroot\EMI\vendors\animate-css\wow.min.js" />
+    <None Include="wwwroot\EMI\vendors\bootstrap-datepicker\bootstrap-datetimepicker.min.js" />
+    <None Include="wwwroot\EMI\vendors\bootstrap-datepicker\bootstrap-select.js" />
+    <None Include="wwwroot\EMI\vendors\flipclock\timer.js" />
+    <None Include="wwwroot\EMI\vendors\isotope\imagesloaded.pkgd.min.js" />
+    <None Include="wwwroot\EMI\vendors\isotope\isotope-min.js" />
+    <None Include="wwwroot\EMI\vendors\lightbox\simpleLightbox.min.js" />
+    <None Include="wwwroot\EMI\vendors\linericon\fonts\Linearicons-Free.svg" />
+    <None Include="wwwroot\EMI\vendors\linericon\fonts\Linearicons-Free.woff2" />
+    <None Include="wwwroot\EMI\vendors\nice-select\js\jquery.nice-select.js" />
+    <None Include="wwwroot\EMI\vendors\nice-select\js\jquery.nice-select.min.js" />
+    <None Include="wwwroot\EMI\vendors\owl-carousel\owl.carousel.min.js" />
     <None Include="wwwroot\NewFolder2\Admin\css\.DS_Store" />
     <None Include="wwwroot\NewFolder2\Admin\css\bootstrap\.DS_Store" />
     <None Include="wwwroot\NewFolder2\Admin\js\.DS_Store" />

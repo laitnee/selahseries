@@ -16,6 +16,9 @@ namespace SelahSeries.Core
             services.AddTransient<ICommentRepository, CommentRepository>();
             services.AddTransient<IOrderRepository, OrderRepository>();
             services.AddTransient<IPostRepository, PostRepository>();
+            services.AddTransient<IEventRepository, EMI_EventsRepository>();
+            services.AddTransient<ITestimonyRepository, TestimonyRepository>();
+            services.AddTransient<IGalleryRepository, GalleryRepository>();
             services.AddTransient<IPostClapRepository, PostClapRepository>();
             services.AddTransient<IBookRepository, BookRepository>();
             services.AddTransient<IEmailService, EmailService>();

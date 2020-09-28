@@ -25,6 +25,8 @@ namespace SelahSeries.Data
         public DbSet<HardBook> HardBooks { get; set; }
         public DbSet<Book> Books { get; set; }
         public DbSet<PostClap> PostClaps { get; set; }
-
+        public DbSet<Event> Events { get; set; }
+        public DbSet<Testimonial> Testimonials { get; set; }
+        public DbSet<Picture> Pictures { get; set; }
     }
 }

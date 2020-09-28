@@ -1,0 +1,57 @@
+﻿@model IEnumerable<SelahSeries.Models.Event>
+@{
+    ViewData["Title"] = "Events";
+    Layout = "~/Views/EMI/_EMILayout.cshtml";
+    var events = Model.OrderByDescending(x => x.CreatedAt);
+}
+
+<!--================Home Banner Area =================-->
+<section class="banner_area">
+    <div class="banner_inner d-flex align-items-center">
+        <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
+        <div class="container">
+            <div class="banner_content text-center">
+                <h2>Upcoming Events</h2>
+                <div class="page_link">
+                    <a href="~/emeraldlight/index">Home</a>
+                    <a href="~/emeraldlight/events">Events</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Home Banner Area =================-->
+<!--================Event Main Area =================-->
+<section class="event_main_area p_120">
+    <div class="container">
+        <div class="row event_main_inner">
+            @foreach (var item in events)
+            {
+                <div class="col-lg-6">
+                    <div class="event_item">
+                        <div class="media">
+                            <div class="d-flex">
+                                <img src="~/Uploads/@Html.DisplayFor(modelItem => item.ImgUrl)" width ="263" height="220"alt="">
+                            </div>
+                            <div class="media-body">
+                                <a>@Html.DisplayFor(modelItem => item.Time)</a>
+                                <a href="~/emeraldlight/event/@item.EventId"><h4>@Html.DisplayFor(modelItem => item.Title)</h4></a>
+                                <p class="line-clamp">@Html.DisplayFor(modelItem => item.Description)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<!--================End Event Main Area =================-->
+
+<style>
+    .line-clamp {
+        display: -webkit-box;
+        -webkit-line-clamp: 7;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+</style>
