@@ -1,0 +1,117 @@
+﻿@model IEnumerable<SelahSeries.Models.Testimonial>
+@{
+    ViewData["Title"] = "About";
+    Layout = "~/Views/EMI/_EMILayout.cshtml";
+    var testimony = Model.OrderByDescending(x => x.CreatedAt);
+}
+
+<!--================Home Banner Area =================-->
+<section class="banner_area">
+    <div class="banner_inner d-flex align-items-center">
+        <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
+        <div class="container">
+            <div class="banner_content text-center">
+                <h2>About Us</h2>
+                <div class="page_link">
+                    <a href="~/emeraldlight/index">Home</a>
+                    <a href="~/emeraldlight/about">About Us</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Home Banner Area =================-->
+<!--================Welcome Area =================-->
+<section class="welcome_area p_120">
+    <div class="container">
+        <div class="row welcome_inner">
+            <div class="col-lg-6">
+                <div class="welcome_text">
+                    <h4>Welcome to Emerald Light Initiative</h4>
+                    <p>
+                        Many teen girls and youths, through youthful exuberance or circumstances beyond their controls landed in the motherhood, totally unprepared. Most parents, being disappointed and deeply hurt by their tenagers' acts take some stances that are detrimental to the future of these teens and the unborn children. The society shame and shun them. They cannot move freely talk less of going back to school or attend ante-natal appointments because of the toxic attitudes of the society to them. They become stranded, depressed and vulnerable. With no where to turn, some commit suicide while some are thrown to the boys who impregnated them or to his family.
+                    </p>
+                    <div class="bg-light clearfix" margin-right="60px">
+                        <a cursor ="pointer" href="~/emeraldlight/about/readmore"><button type="button" cursor="pointer" class="btn btn-danger float-right">Read More</button></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="welcome_img">
+                    <img class="img-fluid" src="~/EMI/img/pexels-luis-quintero-1436618.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Welcome Area =================-->
+<!--================Feature Area =================-->
+<section class="feature_area p_120">
+    <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
+    <div class="container">
+        <div class="white_title">
+            <h2>Our Key Features</h2>
+            <p>We are the Emerald Light Initiative! We lighten the path for women and teenagers who have been abused and molested.</p>
+        </div>
+        <div class="row feature_inner">
+            <div class="col-lg-4">
+                <div class="feature_item">
+                    <i class="lnr lnr-diamond"></i>
+                    <h4>Sponsorship</h4>
+                    <p>We give financial support to women who are in need of immediate resources such as food and academic materials </p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="feature_item">
+                    <i class="lnr lnr-coffee-cup"></i>
+                    <h4>Projects &amp; Events</h4>
+                    <p>With our projects aimed towards a community of women, we are able to sentisize and support those who have had distressing pasts</p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="feature_item">
+                    <i class="lnr lnr-wheelchair"></i>
+                    <h4>Become a Volunteer</h4>
+                    <p>We have made opporunity available for more women to be a part of this life-changing initiative</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Feature Area =================-->
+<!--================Testimonials Area =================-->
+<section class="testimonials_area p_120">
+    <div class="container">
+        <div class="row testimonials_inner">
+            <div class="col-lg-4">
+                <div class="testi_left_text">
+                    <h4>Testimonials</h4>
+                    <p>Read Testimonials of women who have been impacted through this platform.</p>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="testi_slider owl-carousel">
+
+                    @foreach (var item in testimony)
+                    {
+                        <div class="item">
+                            <div class="testi_item">
+                                <img src="~/Uploads/@Html.DisplayFor(modelItem => item.ImgUrl)" width="80" height="80" border-radius="50%" alt="">
+                                <p>@Html.DisplayFor(modelItem => item.Description)</p>
+                                <h4>@Html.DisplayFor(modelItem => item.Name)</h4>
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Testimonials Area =================-->
+<style>
+    button{
+        cursor:pointer;
+    }
+</style>

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<SelahSeries.Models.Picture>
+@{
+    ViewData["Title"] = "Gallery";
+    Layout = "~/Views/EMI/_EMILayout.cshtml";
+    var pictures = Model.OrderByDescending(x => x.CreatedAt);
+}
+
+<!--================Home Banner Area =================-->
+<section class="banner_area">
+    <div class="banner_inner d-flex align-items-center">
+        <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
+        <div class="container">
+            <div class="banner_content text-center">
+                <h2>Image Gallery</h2>
+                <div class="page_link">
+                    <a href="~/emeraldlight">Home</a>
+                    <a href="~/emeraldlight/gallery">Gallery</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Home Banner Area =================-->
+<!--================Gallery Area =================-->
+<section class="gallery_area p_120">
+    <div class="container">
+        <div class="row gallery_inner imageGallery1">
+            @foreach(var item in pictures)
+            {
+            <div class="col-md-4 col-sm-6 gallery_item">
+                <div class="gallery_img">
+                    <img src="~/Uploads/@Html.DisplayFor(modelItem => item.ImgUrl)" alt="">
+                    <div class="hover">
+                        <a class="light" href="~/Uploads/@Html.DisplayFor(modelItem => item.ImgUrl)"><i class="fa fa-expand"></i></a>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+        <div class="load_btn">
+            <a class="main_btn" href="#">Load More Images</a>
+        </div>
+    </div>
+</section>
+<!--================End Gallery Area =================-->
