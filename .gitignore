@@ -261,3 +261,5 @@ __pycache__/
 *.pyc
 
 *appsettings.json
+*appsettings.Development.json
+*appsettings.json~payment gateway and social medialinks
