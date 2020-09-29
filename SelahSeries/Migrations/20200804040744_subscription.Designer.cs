@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SelahSeries.Data;
 
 namespace SelahSeries.Migrations
 {
     [DbContext(typeof(SelahSeriesDataContext))]
-    partial class SelahSeriesDataContextModelSnapshot : ModelSnapshot
+    [Migration("20200804040744_subscription")]
+    partial class subscription
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -102,21 +104,23 @@ namespace SelahSeries.Migrations
                     b.ToTable("Comments");
                 });
 
-            modelBuilder.Entity("SelahSeries.Models.EmailSubscription", b =>
+            modelBuilder.Entity("SelahSeries.Models.EmailSubcription", b =>
                 {
-                    b.Property<int>("EmailSubscriptionId")
+                    b.Property<int>("SubscriptionId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<bool>("ConfirmEmail");
 
-                    b.Property<string>("ConfirmationCode");
+                    b.Property<string>("ConfirmationCode")
+                        .HasMaxLength(50);
 
-                    b.Property<string>("SubscriberEmail");
+                    b.Property<string>("SubscriberEmail")
+                        .HasMaxLength(50);
 
-                    b.HasKey("EmailSubscriptionId");
+                    b.HasKey("SubscriptionId");
 
-                    b.ToTable("EmailSubscriptions");
+                    b.ToTable("EmailSubcriptions");
                 });
 
             modelBuilder.Entity("SelahSeries.Models.HardBook", b =>
@@ -139,27 +143,6 @@ namespace SelahSeries.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("HardBooks");
-                });
-
-            modelBuilder.Entity("SelahSeries.Models.Notification", b =>
-                {
-                    b.Property<int>("NotificationId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedAt");
-
-                    b.Property<string>("Description");
-
-                    b.Property<string>("Link");
-
-                    b.Property<bool>("Read");
-
-                    b.Property<string>("Title");
-
-                    b.HasKey("NotificationId");
-
-                    b.ToTable("Notifications");
                 });
 
             modelBuilder.Entity("SelahSeries.Models.Order", b =>

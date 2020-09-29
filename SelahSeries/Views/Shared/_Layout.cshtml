@@ -198,8 +198,20 @@
 
                     </div>
 
-                    <div class="row text-center" style="" >
-                        <div style="margin:auto;color:#c4913a;margin-bottom:40px">email: <a href="~/Contact" style=" text-decoration:underline; color:#c4913a">Connect@selahseries.com</a></div>
+                    <div class="row text-center" style="">
+                        <div class="col-12">
+                            <form method="post" asp-controller="Home" asp-action="SuscribeToPost">
+                                @Html.AntiForgeryToken()
+                                <div class="input-group mb-3">
+                                    <input style="height:auto; background-color:aliceblue; color:black;" type="text" class="form-control" placeholder="Enter your Email Address" name="email" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary" style="cursor:pointer;" type="submit">Subcribe to SelahSeries</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                            <div class="col-12" style="margin:auto;color:#c4913a;margin-bottom:40px">email: <a href="~/Contact" style=" text-decoration:underline; color:#c4913a">Connect@selahseries.com</a></div>
                     </div>
                 </div>
 
@@ -240,7 +252,21 @@
                             </ul>
                         </div>
                     </div>
+                    <div class="row text-center" style="">
+                        <div class="col-12">
+                            <form method="post" asp-controller="Home" asp-action="SuscribeToPost">
+                                @Html.AntiForgeryToken()
+                                <div class="input-group mb-3">
+                                    <input style="height:auto; background-color:aliceblue; color:black;" type="text" class="form-control" placeholder="Enter your Email Address" name="email" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary" style="cursor:pointer;" type="submit">Subcribe to SelahSeries</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
 
+                        <div class="col-12" style="margin:auto;color:#c4913a;margin-bottom:40px">email: <a href="~/Contact" style=" text-decoration:underline; color:#c4913a">Connect@selahseries.com</a></div>
+                    </div>
                     <div class="row" style="margin-top:18px">
                         <div class="col-md-12 col-sm-12 col-12 mb-3 p-0 float-left text-center">
 
@@ -267,10 +293,10 @@
 
 
                     @*<div class="col-md-12">
-                                <div class="py-4 d-flex justify-content-center align-items-center">
-                                    <p style="color:white">Copyright &copy; <script>document.write(new Date().getFullYear());</script></p>
-                                </div>
-                        </div>*@
+                <div class="py-4 d-flex justify-content-center align-items-center">
+                    <p style="color:white">Copyright &copy; <script>document.write(new Date().getFullYear());</script></p>
+                </div>
+        </div>*@
                 </div>
 
 

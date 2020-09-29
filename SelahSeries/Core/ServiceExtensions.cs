@@ -18,7 +18,11 @@ namespace SelahSeries.Core
             services.AddTransient<IPostRepository, PostRepository>();
             services.AddTransient<IPostClapRepository, PostClapRepository>();
             services.AddTransient<IBookRepository, BookRepository>();
-            services.AddTransient<IEmailService, EmailService>();
+            services.AddSingleton<IEmailService, EmailService>();
+            services.AddTransient<INotificationRepository, NotificationRepository>();
+            services.AddLogging();
+            services.AddHostedService<QueuedHostedService>();
+            services.AddSingleton<IBackgroundTaskQueue, BackgroundTaskQueue>();
             return services;
         }
         public static IServiceCollection AddSeedData(this IServiceCollection services)

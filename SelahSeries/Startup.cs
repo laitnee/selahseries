@@ -67,7 +67,7 @@ namespace SelahSeries
                         {
                             string domain = context.User.Value<string>("email");
                             string[] allowedEmails = Configuration["Authentication:Google:LoginEmail"].Split(';');
-                            if (allowedEmails.Any(x => x.Equals(domain, StringComparison.OrdinalIgnoreCase)) )
+                            if (!allowedEmails.Any(x => x.Equals(domain, StringComparison.OrdinalIgnoreCase)) )
                                 throw new Exception($"You must sign in with a {Configuration["Authentication:Google:LoginEmail"]} email address");
                             return Task.CompletedTask;
                         }

@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewData["Title"] = "Unsubscribe";
+}
+
+<h2 style="padding:15px; margin:15px; color:black;">Unsubscribe from Selah Series Email Update</h2>
+
+<div class="row text-center" style="">
+    <div class="col-12">
+        <form method="post" asp-controller="Home" asp-action="UnSubscribeFromPost">
+            @Html.AntiForgeryToken()
+            <div class="input-group mb-3">
+                <input style="height:auto; background-color:aliceblue; color:black;" type="text" class="form-control" placeholder="Enter your Email Address" name="email" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" style="cursor:pointer;" type="submit">Unsubscribe From SelahSeries</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

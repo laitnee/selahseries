@@ -26,5 +26,9 @@ namespace SelahSeries.Repository
         Task<bool> UpdatePost(Post post);
         Task ClapPost();
         Task<List<Post>> SearchPost(string searchText);
+        Task<List<EmailSubscription>> GetPostSuscribers();
+        Task AddPostSuscribers(EmailSubscription emailSuscriber);
+        Task UnSuscriberPost(string emailSuscriber);
+
     }
 }

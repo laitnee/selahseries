@@ -13,7 +13,7 @@ namespace SelahSeries.Core.Pagination
             Currentpage = currPage;
             try
             {
-                Source = source.ToList();
+                Source = source.ToList<T>();
             }
             catch(Exception ex)
             {
