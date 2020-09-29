@@ -1,0 +1,129 @@
+﻿@model SelahSeries.ViewModels.EventCreateViewModel
+@{
+    ViewBag.Title = "Edit Event";
+    Layout = "~/views/admin/_AdminLayout.cshtml";
+}
+
+@section AddToHead {
+    <style>
+        .collapsible {
+            background-color: #777;
+            color: white;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+        }
+
+            .active, .collapsible:hover {
+                background-color: rgba(3, 73, 165, 0.7);
+            }
+
+            .collapsible:after {
+                content: '\002B';
+                color: white;
+                font-weight: bold;
+                float: right;
+                margin-left: 5px;
+            }
+
+        .active:after {
+            content: "\2212";
+        }
+
+        .content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            background-color: rgba(242, 242, 242, 1);
+        }
+
+            .content input {
+                border: none;
+                outline: none;
+                border-bottom: solid #D91438 2px;
+            }
+
+                .content input active {
+                    border-bottom: solid #D91438 3px;
+                }
+    </style>
+}
+@section AddToEnd {
+    <script src="~/NewFolder2/js/blogmgt.js"></script>
+
+}
+
+<div style="color: #ffcc00; background-color:black;" class="jumbotron text-center">
+    <h1 style="color: #ffcc00; background-color:black;">Event Management Page <br /> Edit Event  </h1>
+</div>
+<div class="row">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10">
+        @await Html.PartialAsync("AlertViewPartial")
+        @using (Html.BeginForm("EventEdit", "EMIMgt", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="EventId" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="CreatedAt" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ImgUrl" />
+            <div class="form-group">
+                <button type="button" class="collapsible">Enter Event Name</button>
+                <div class="content">
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+
+
+            </div>
+            <div class="form-group">
+                <button type="button" class="collapsible">Enter Event Location</button>
+                <div class="content">
+                    <input asp-for="Location" class="form-control" />
+                    <span asp-validation-for="Location" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="button" class="collapsible">Enter State / Country </button>
+                <div class="content">
+                    <input asp-for="Country" class="form-control" />
+                    <span asp-validation-for="Country" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button type="button" class="collapsible">Event Description</button>
+                <div class="content">
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                    <textarea asp-for="Description" style="width: 100%; height: 200px"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="button" class="collapsible"> Upload Image for Event</button>
+                <div class="content">
+                    <a data-mockFile style="color:white;" class=" btn btn-primary"> Select Image </a>
+                    <span style="color:blue;" data-fileValue> </span>
+                    <input type="file" asp-for="EventPhoto" data-fileSelector style="visibility:hidden" accept="image/*" />
+                </div>
+
+            </div>
+            <div style="text-align: center;" class="form-group">
+                <input type="submit" value="Save Changes" class="btn btn-danger btn-lg" />
+            </div>
+        }
+    </div>
+    <div class="col-lg-1"></div>
+</div>
+
+<div>
+    <a asp-action="EventIndex">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

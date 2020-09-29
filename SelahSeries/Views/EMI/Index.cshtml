@@ -1,0 +1,209 @@
+﻿@model SelahSeries.ViewModels.EMIHomeViewModel
+@using System.Collections;
+@using Newtonsoft.Json;
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/views/EMI/_EMILayout.cshtml";
+    var events = Model.Events;
+    var testimonies = Model.Testimonies;
+
+}
+
+<!--================Home Banner Area =================-->
+<section class="home_banner_area">
+    <div class="banner_inner d-flex align-items-center">
+        <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
+        <div class="container">
+
+            <div class="banner_content text-center">
+                <h5>We need your Help to serve the people</h5>
+                <h3>Help for victims of rape and abuse.</h3>
+                <p>The society has rejected women who have had unappealing encounters due to negligence  <br /> or circumstances beyond their control. We shine the light to give them hope again.</p>
+                <a class="main_btn" href="#">Volunteer Now</a>
+                <a class="white_btn" href="~/emeraldlight/events">View Activity</a>
+            </div>
+        </div>
+    </div>
+    <div class="donation_area">
+        <div class="container">
+            <div class="row donation_inner">
+                <div class="col-lg-4">
+                    <div class="dontation_item yellow">
+                        <div class="media">
+                            <div class="media-body">
+                                <p>If there be any truer measure of a man than by what he does, it must be by what he gives.</p>
+                                <br/>
+                                <p><i>- Robert South</i></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="dontation_item pink">
+                        <div class="media">
+                            <div class="media-body">
+                                <p>The best way to find yourself is to lose yourself in the service of others.</p>
+                                <br />
+                                <p><i>- Mahatma Gandhi</i></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="dontation_item green">
+                        <div class="media">
+                            <div class="media-body">
+                                <p>To be successful is to be helpful, caring and constructive, to make everything and everyone you touch better.</p>
+                                <br />
+                                <p><i>- Norman Vincent Peale</i></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Home Banner Area =================-->
+<!--================Welcome Area =================-->
+<section class="welcome_area welcome2">
+    <div class="container">
+        <div class="row welcome_inner">
+            <div class="col-lg-6">
+                <div class="welcome_text">
+                    <h4>Emerald Light Initiative</h4>
+                    <p>
+                        In the world that we are in, women are very significant. Yeah, both genders are.  However, women are more prone to falling victim of various forms of abuse which 
+                        pose a detrimental effect on their life, future and total well being. We at Emerald Light Initiative have risen to be a voice for the females - women,
+                        youths and teenagers. Also, we are taking support and due help to those who have been wounded.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="welcome_img">
+                    <img class="img-fluid" src="~/EMI/img/pexels-luis-quintero-1436618.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Welcome Area =================-->
+<!--================Feature Area =================-->
+<section class="feature_area feature2">
+    <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
+    <div class="container">
+        <div class="white_title">
+            <h2>Our Key Features</h2>
+            <p>We are the Emerald Light Initiative! We lighten the path for women and teenagers who have been abused and molested.</p>
+        </div>
+        <div class="row feature_inner">
+            <div class="col-lg-4">
+                <div class="feature_item">
+                    <i class="lnr lnr-diamond"></i>
+                    <h4>Sponsorship</h4>
+                    <p>We give financial support to women who are in need of immediate resources such as food and academic materials </p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="feature_item">
+                    <i class="lnr lnr-coffee-cup"></i>
+                    <h4>Projects &amp; Events</h4>
+                    <p>With our projects aimed towards a community of women, we are able to sentisize and support those who have had distressing pasts</p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="feature_item">
+                    <i class="lnr lnr-wheelchair"></i>
+                    <h4>Become a Volunteer</h4>
+                    <p>We have made opporunity available for more women to be a part of this life-changing initiative</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Feature Area =================-->
+<!--================Event Area =================-->
+<section class="event_area p_120">
+    <div class="container">
+        <div class="main_title">
+            <h2>Upcoming Events</h2>
+            <p>Emerald Light Initiative <br /> Keep in touch with our events and projects</p>
+        </div>
+        <div class="event_slider owl-carousel">
+            @foreach (var item in events)
+            {
+                <div class="item">
+                    <div class="event_item">
+                        <div class="media">
+                            <div class="d-flex event-image" >
+                                <img  src="~/Uploads/@Html.DisplayFor(modelItem => item.ImgUrl)" alt="">
+                            </div>
+                            <div class="media-body">
+                                <a>@Html.DisplayFor(modelItem => item.Time)</a>
+                                <a a href="~/emeraldlight/event/@Html.DisplayFor(modelItem => item.EventId)"><h4>@Html.DisplayFor(modelItem => item.Title)</h4></a>
+                                <p class="line-clamp">@Html.DisplayFor(modelItem => item.Description)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<!--================End Event Area =================-->
+<!--================Testimonials Area =================-->
+<section class="testimonials_area p_120">
+    <div class="container">
+        <div class="row testimonials_inner">
+            <div class="col-lg-4">
+                <div class="testi_left_text">
+                    <h4>Testimonials</h4>
+                    <p>Read Testimonials of women who have been impacted through this platform.</p>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="testi_slider owl-carousel">
+
+                    @foreach (var item in testimonies)
+                    {
+                        <div class="item">
+                            <div class="testi_item">
+                                <img src="~/Uploads/@Html.DisplayFor(modelItem => item.ImgUrl)" width="80" height="80" border-radius="50%" alt="">
+                                <p>@Html.DisplayFor(modelItem => item.Description)</p>
+                                <h4>@Html.DisplayFor(modelItem => item.Name)</h4>
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Testimonials Area =================-->
+<style>
+    .img-fluid {
+        max-width: 75%;
+    }
+
+    .welcome2 {
+        padding-top: 120px;
+        padding-bottom: 120px
+    }
+
+    .feature2 {
+        padding-top: 120px;
+        padding-bottom: 120px
+    }
+
+    .line-clamp {
+        display: -webkit-box;
+        -webkit-line-clamp: 7;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .event-image {
+        width : 50%;
+    }
+</style>

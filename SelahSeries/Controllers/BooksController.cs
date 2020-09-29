@@ -11,8 +11,6 @@ using SelahSeries.Models.DTOs;
 using SelahSeries.Repository.Interfaces;
 using SelahSeries.ViewModels;
 
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace SelahSeries.Controllers
 {
     [AllowAnonymous]
@@ -38,8 +36,6 @@ namespace SelahSeries.Controllers
                 SortColoumn = "CreatedAt"
             };
             var books = _bookRepo.GetBooks(pageParam).Result;
-            //BookListViewModel bookVM = new BookListViewModel();
-            //var booksVM = _mapper.Map<List<BookListViewModel>>(books);
             return View(books.Source);
         }
         [Route("Books/Thankyou")]

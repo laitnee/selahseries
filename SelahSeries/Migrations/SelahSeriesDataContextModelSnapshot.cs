@@ -102,6 +102,31 @@ namespace SelahSeries.Migrations
                     b.ToTable("Comments");
                 });
 
+            modelBuilder.Entity("SelahSeries.Models.Event", b =>
+                {
+                    b.Property<int>("EventId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Country");
+
+                    b.Property<DateTime>("CreatedAt");
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("ImgUrl");
+
+                    b.Property<string>("Location");
+
+                    b.Property<string>("Time");
+
+                    b.Property<string>("Title");
+
+                    b.HasKey("EventId");
+
+                    b.ToTable("Events");
+                });
+
             modelBuilder.Entity("SelahSeries.Models.EmailSubscription", b =>
                 {
                     b.Property<int>("EmailSubscriptionId")
@@ -185,6 +210,23 @@ namespace SelahSeries.Migrations
                     b.ToTable("Orders");
                 });
 
+            modelBuilder.Entity("SelahSeries.Models.Picture", b =>
+                {
+                    b.Property<int>("PictureId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedAt");
+
+                    b.Property<string>("ImgUrl");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("PictureId");
+
+                    b.ToTable("Pictures");
+                });
+
             modelBuilder.Entity("SelahSeries.Models.Post", b =>
                 {
                     b.Property<int>("PostId")
@@ -258,6 +300,25 @@ namespace SelahSeries.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("SoftBooks");
+                });
+
+            modelBuilder.Entity("SelahSeries.Models.Testimony", b =>
+                {
+                    b.Property<int>("TestimonyId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedAt");
+
+                    b.Property<string>("ImgUrl");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Testimonial");
+
+                    b.HasKey("TestimonyId");
+
+                    b.ToTable("Testimonies");
                 });
 
             modelBuilder.Entity("SelahSeries.Models.Book", b =>
