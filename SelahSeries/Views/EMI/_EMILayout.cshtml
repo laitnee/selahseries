@@ -33,7 +33,7 @@
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container">
                     <!-- Brand and toggle get grouped for better mobile display -->
-                    <a class="navbar-brand logo_h" href="index.html"><img src="" alt="">Title.....</a>
+                    <a class="navbar-brand logo_h" href="index.html"><img height="85" src="~/EMI/img/logo.jpg" alt=""></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -44,20 +44,21 @@
                         <ul class="nav navbar-nav menu_nav ml-auto">
                             @{
                                 var currentRoute = Context.Request.Path;
-                                var homeLinks = new List<string> { "home/index", "/", "home" };
-                                var homeLink = homeLinks.Any(x => x.Contains(currentRoute.ToString().ToLower()));
+                                var emeraldLinks = new List<string> { "emeraldlight/index", "emeraldlight", "index" };
+                                var homeLink = emeraldLinks.Any(x => x.Contains(currentRoute.ToString().ToLower()));
                                 var aboutLink = currentRoute.ToString().Contains("About", StringComparison.OrdinalIgnoreCase);
-                                var supportLink = currentRoute.ToString().Contains("Support", StringComparison.OrdinalIgnoreCase);
+                                var eventLink = currentRoute.ToString().Contains("Events", StringComparison.OrdinalIgnoreCase);
+                                var galleryLink = currentRoute.ToString().Contains("Gallery", StringComparison.OrdinalIgnoreCase);
                                 var contactLink = currentRoute.ToString().Contains("Contact", StringComparison.OrdinalIgnoreCase);
-                                var bookLink = currentRoute.ToString().Contains("book", StringComparison.OrdinalIgnoreCase);
+                                var volunteerLink = currentRoute.ToString().Contains("Volunteer", StringComparison.OrdinalIgnoreCase);
 
                             }
-                            <li class="nav-item active"><a class="nav-link" href="~/emeraldlight/index">Home</a></li>
-                            <li class="nav-item"><a class="nav-link" href="~/emeraldlight/about">About</a></li>
-                            <li class="nav-item"><a class="nav-link" href="~/emeraldlight/events">Events</a></li>
-                            <li class="nav-item"><a class="nav-link" href="~/emeraldlight/gallery">Gallery</a></li>
-                            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Volunteer</a></li>
+                            <li class="nav-item @(homeLink? "active" : "") "><a class="nav-link" href="~/emeraldlight/index">Home</a></li>
+                            <li class="nav-item @(aboutLink? "active" : "") "><a class="nav-link" href="~/emeraldlight/about">About</a></li>
+                            <li class="nav-item @(eventLink? "active" : "") "><a class="nav-link" href="~/emeraldlight/events">Events</a></li>
+                            <li class="nav-item @(galleryLink? "active" : "") "><a class="nav-link" href="~/emeraldlight/gallery">Gallery</a></li>
+                            <li class="nav-item @(contactLink? "active" : "") "><a class="nav-link" href="~/emeraldlight/contact-us">Contact</a></li>
+                            <li class="nav-item @(volunteerLink? "active" : "") "><a class="nav-link" href="~/emeraldlight/volunteer">Volunteer</a></li>
                         </ul>
                     </div>
                 </div>
@@ -75,7 +76,7 @@
                 <div class="col-lg-3  col-md-6 col-sm-6">
                     <div class="single-footer-widget">
                         <h6 class="footer_title">About Initiative</h6>
-                        <p color="#777">The world has become so self centered that people are blind to the needs of others around them. Join us to brighten up the face and lives of women including teenagers who have been victims of societal rejection. </p>
+                        <p color="#777">We are a group targeted at giving hope to women who have been lessened by the shame and rejection the society throws at them. We lit the faces of those that have been abused and molested. </p>
                         
                     </div>
                 </div>
@@ -87,6 +88,7 @@
                                 <ul class="list">
                                     <li><a href="~/emeraldlight/index">Home</a></li>
                                     <li><a href="~/emeraldlight/gallery">Gallery</a></li>
+                                    <li><a href="~/emeraldlight/contact-us">Contact</a></li>
                                     <li><a href="~/emeraldlight/volunteer">Volunteer</a></li>
                                     <li><a href="~/emeraldlight/events">Events</a></li>
                                 </ul>
@@ -97,7 +99,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="single-footer-widget">
                         <h6 class="footer_title">Newsletter</h6>
-                        <p>For business professionals caught between high OEM price and mediocre print and graphic output, </p>
+                        <p>Subscribe to receive update on our events and projects.</p>
                         <div id="mc_embed_signup">
                             <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscribe_form relative">
                                 <div class="input-group d-flex flex-row">
