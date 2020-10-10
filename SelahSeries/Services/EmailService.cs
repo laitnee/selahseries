@@ -32,7 +32,7 @@ namespace SelahSeries.Services
                     client.Credentials = credential;
                     client.Host = _configuration["Email:Host"];
                     client.Port = int.Parse(_configuration["Email:Port"]);
-                    client.EnableSsl = true;
+                    client.EnableSsl = false;
                     
                    using (var emailMessage = new MailMessage())
                     {
@@ -73,7 +73,7 @@ namespace SelahSeries.Services
                 client.Credentials = credential;
                 client.Host = _configuration["Email:Host"];
                 client.Port = int.Parse(_configuration["Email:Port"]);
-                client.EnableSsl = true;
+                client.EnableSsl = false;
 
                 using (var emailMessage = new MailMessage())
                 {
