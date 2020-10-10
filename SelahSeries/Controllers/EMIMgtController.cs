@@ -18,17 +18,19 @@ namespace SelahSeries.Controllers
     {
         private readonly IMapper _mapper;
         private readonly IHostingEnvironment hostingEnvironment;
+        private readonly IVolunteerRepository volRepo;
         private readonly IEventRepository _eventRepo;
         private readonly ITestimonyRepository _testimonyRepo;
         private readonly IGalleryRepository _galleryRepo;
 
-        public EMIMgtController(IEventRepository eventRepo, ITestimonyRepository testimonyRepo, IGalleryRepository galleryRepo, IMapper mapper, IHostingEnvironment environment)
+        public EMIMgtController(IEventRepository eventRepo, ITestimonyRepository testimonyRepo, IGalleryRepository galleryRepo, IMapper mapper, IHostingEnvironment environment, IVolunteerRepository volRepo)
         {
             _eventRepo = eventRepo;
             _testimonyRepo = testimonyRepo;
             _galleryRepo = galleryRepo;
             _mapper = mapper;
             hostingEnvironment = environment;
+            this.volRepo = volRepo;
         }
 
 
@@ -251,7 +253,7 @@ namespace SelahSeries.Controllers
                         return RedirectToAction(nameof(TestimonyIndex));
                     }
 
-                    ViewBag.Error = "Unable to add testimonial, please try again or contact administrator";
+                    ViewBag.Error = "Unable to edit testimonial, please try again or contact administrator";
                     return View();
                 }
                 catch (Exception ex)
@@ -478,6 +480,82 @@ namespace SelahSeries.Controllers
             catch
             {
                 return View();
+            }
+        }
+
+        #endregion
+
+        #region Volunteer
+
+        [Route("/emimgt/volunteers")]
+        public ActionResult VolunteerIndex()
+        {
+            var pageParam = new PaginationParam
+            {
+                PageIndex = 1,
+                Limit = 20,
+                SortColoumn = "CreatedAt"
+            };
+            if (TempData.ContainsKey("Alert"))
+            {
+                ViewBag.Alert = TempData["Alert"].ToString();
+            }
+            if (TempData.ContainsKey("Error"))
+            {
+                ViewBag.Error = TempData["Error"].ToString();
+            }
+            var volunteers = volRepo.GetVolunteers();
+            return View(volunteers);
+        }
+
+        [HttpGet]
+        [Route("/emimgt/volunteer/edit")]
+        public async Task<ActionResult> VolunteerEdit(int id)
+        {
+
+            var volunteer = await volRepo.GetVolunteer(id);
+            return View(volunteer);
+        }
+
+        [HttpPost]
+        [Route("/emimgt/volunteer/edit")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> VolunteerEdit([FromForm] Volunteer volunteer)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    await volRepo.UpdateVolunteer(volunteer);
+                    TempData["Alert"] = "Volunteer Edited Successfully";
+                    return RedirectToAction(nameof(VolunteerIndex));
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.Error = "Unable to edit volunteer, please try again or contact administrator";
+                    return View();
+                }
+            }
+            ViewBag.Error = "Please correct the error(s) in Form";
+            return View();
+        }
+
+
+        [HttpGet]
+        [Route("/emimgt/volunteer/remove")]
+        public async Task<IActionResult> VolunteerDelete(int id)
+        {
+            try
+            {
+                var volunteer = volRepo.GetVolunteer(id);
+                await volRepo.DeleteVolunteerAsync(volunteer.Result);
+                TempData["Alert"] = "Volunteer Removed Successfully";
+                return RedirectToAction(nameof(VolunteerIndex));
+            }
+            catch
+            {
+                TempData["Error"] = "Error occured: Unable to delete volunteer";
+                return RedirectToAction(nameof(VolunteerIndex));
             }
         }
 

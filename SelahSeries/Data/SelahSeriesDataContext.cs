@@ -28,5 +28,6 @@ namespace SelahSeries.Data
         public DbSet<Event> Events { get; set; }
         public DbSet<Testimonial> Testimonials { get; set; }
         public DbSet<Picture> Pictures { get; set; }
+        public DbSet<Volunteer> Volunteers { get; set; }
     }
 }

@@ -791,7 +791,7 @@ button:focus {
 }
 
 .welcome_inner .welcome_img img {
-  margin-top: 25px;
+  margin-top: 50px;
 }
 
 .welcome_text h4 {
@@ -1104,24 +1104,15 @@ button:focus {
   background: rgba(255, 255, 255, 0.5);
 }
 
-.causes_item .causes_img .c_parcent span {
+/*.causes_item .causes_img .c_parcent span {
   width: 70%;
   height: 3px;
   background: #ea2c58;
   position: absolute;
   left: 0px;
   bottom: 0px;
-}
+}*/
 
-.causes_item .causes_img .c_parcent span:before {
-  content: "75%";
-  position: absolute;
-  right: -10px;
-  bottom: 0px;
-  background: #ea2c58;
-  color: #fff;
-  padding: 0px 5px;
-}
 
 .causes_item .causes_text {
   padding: 30px 35px 40px 30px;
@@ -1146,6 +1137,10 @@ button:focus {
   color: #777777;
   font-weight: 300;
   margin-bottom: 0px;
+}
+
+.causes_item .causes_bottom {
+    margin-bottom: 30px;
 }
 
 .causes_item .causes_bottom a {

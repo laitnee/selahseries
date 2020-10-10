@@ -8,5 +8,6 @@ namespace SelahSeries.Services
     public interface IEmailService
     {
         Task SendEmail(string subject, string message);
+        Task SendEmailTo(string subject, string message, string toEmail);
     }
 }
