@@ -29,7 +29,7 @@
                 <div class="welcome_text">
                     <h4>Welcome to Emerald Light Initiative</h4>
                     <p>
-                        Many teen girls and youths, through youthful exuberance or circumstances beyond their controls landed in the motherhood, totally unprepared. Most parents, being disappointed and deeply hurt by their tenagers' acts take some stances that are detrimental to the future of these teens and the unborn children. The society shame and shun them. They cannot move freely talk less of going back to school or attend ante-natal appointments because of the toxic attitudes of the society to them. They become stranded, depressed and vulnerable. With no where to turn, some commit suicide while some are thrown to the boys who impregnated them or to his family.
+                        Many teen girls, through youthful exuberance or circumstances beyond their controls landed in the motherhood, much unprepared. Most parents, being disappointed and deeply hurt by their teenagers’' acts take some stances that are detrimental to the future of these teens and their unborn children. The society shame and shun them. They cannot move freely talk less of going back to school or attend antenatal appointments because of the toxic attitudes of the society to them. They become stranded, depressed and vulnerable. With nowhere to turn, some commit suicide while some are thrown to the boys who impregnated them or to his family.
                     </p>
                     <div class="bg-light clearfix" margin-right="60px">
                         <a cursor ="pointer" href="~/emeraldlight/about/readmore"><button type="button" cursor="pointer" class="btn btn-danger float-right">Read More</button></a>
@@ -79,6 +79,8 @@
     </div>
 </section>
 <!--================End Feature Area =================-->
+@if (testimony.Any())
+{
 <!--================Testimonials Area =================-->
 <section class="testimonials_area p_120">
     <div class="container">
@@ -110,6 +112,7 @@
     </div>
 </section>
 <!--================End Testimonials Area =================-->
+}
 <style>
     button{
         cursor:pointer;

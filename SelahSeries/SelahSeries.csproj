@@ -53,6 +53,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\EMI\contact\js\global.js" />
+    <None Include="wwwroot\EMI\contact\vendor\datepicker\daterangepicker.js" />
+    <None Include="wwwroot\EMI\contact\vendor\datepicker\moment.min.js" />
+    <None Include="wwwroot\EMI\contact\vendor\font-awesome-4.7\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\EMI\contact\vendor\font-awesome-4.7\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\EMI\contact\vendor\jquery\jquery.js" />
+    <None Include="wwwroot\EMI\contact\vendor\jquery\jquery.min.js" />
+    <None Include="wwwroot\EMI\contact\vendor\mdi-font\fonts\Material-Design-Iconic-Font.svg" />
+    <None Include="wwwroot\EMI\contact\vendor\mdi-font\fonts\Material-Design-Iconic-Font.woff2" />
+    <None Include="wwwroot\EMI\contact\vendor\select2\select2.min.js" />
     <None Include="wwwroot\EMI\css\breadcrumb.css.map" />
     <None Include="wwwroot\EMI\css\style.css.map" />
     <None Include="wwwroot\EMI\css\_blog.css.map" />

@@ -1,7 +1,6 @@
 ﻿
-
 @{
-    ViewData["Title"] = "Volunteer";
+    ViewData["Title"] = "Contact-Us";
     Layout = "~/Views/EMI/_EMILayout.cshtml";
 }
 
@@ -31,7 +30,7 @@
                 @*<h2>Contact Us</h2>*@
                 <div class="page_link">
                     <a href="~/emeraldlight/index">Home</a>
-                    <a href="~/emeraldlight/volunteer">Volunteer</a>
+                    <a href="~/emeraldlight/contact-us">Contact Us</a>
                 </div>
             </div>
         </div>
@@ -39,14 +38,13 @@
 </section>
 <!--================End Home Banner Area =================-->
 
-<div class="container">
-    <div class="featured">
+<div class = "container">
+<div class="featured">
         <div class="card card-2">
-            <div class="card-heading-2"></div>
+            <div class="card-heading-3"></div>
             <div class="card-body">
                 @await Html.PartialAsync("AlertViewPartial")
-
-                <h2 class="title">Join us at Emerald Light Initiative</h2>
+                <h2 class="title">Send Us a Message</h2>
 
                 @using (Html.BeginForm(FormMethod.Post))
                 {
@@ -84,16 +82,66 @@
                         <input class="input--style-2" type="text" placeholder="Your address" name="address">
                     </div>
                     <div class="input-group">
-                        <textarea class="input--style-2" name="message" placeholder="Why do you want to join?" required></textarea>
+                        <input class="input--style-2" type="text" placeholder="Subject" name="subject">
+                    </div>
+                    <div class="input-group">
+                        <textarea class="input--style-2" name="message" placeholder="Your Message" required></textarea>
                     </div>
 
                     <div class="p-t-30">
-                        <button class="btn btn--radius btn-danger" type="submit">Submit</button>
+                        <button class="btn btn--radius btn-danger" type="submit">Send</button>
                     </div>
                 }
+                @*<form method="POST">
+            <div class="input-group">
+                <input class="input--style-2" type="text" placeholder="Your full name" name="name">
+            </div>
+            <div class="row row-space">
+                <div class="col-2">
+                    <div class="input-group">
+                        <input class="input--style-2 js-datepicker" type="text" placeholder="Birthdate" name="birthday">
+                        <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="input-group">
+                        <div class="rs-select2 js-select-simple select--no-search">
+                            <select name="gender">
+                                <option disabled="disabled" selected="selected">Gender</option>
+                                <option>Male</option>
+                                <option>Female</option>
+                                <option>Other</option>
+                            </select>
+                            <div class="select-dropdown"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="rs-select2 js-select-simple select--no-search">
+                    <select name="class">
+                        <option disabled="disabled" selected="selected">Class</option>
+                        <option>Class 1</option>
+                        <option>Class 2</option>
+                        <option>Class 3</option>
+                    </select>
+                    <div class="select-dropdown"></div>
+                </div>
+            </div>
+            <div class="row row-space">
+                <div class="col-2">
+                    <div class="input-group">
+                        <input class="input--style-2" type="text" placeholder="Registration Code" name="res_code">
+                    </div>
+                </div>
+            </div>
+            <div class="p-t-30">
+                <button class="btn btn--radius btn-outline-danger" type="submit">Search</button>
+            </div>
+        </form>*@
             </div>
         </div>
-    </div>
+</div>
 </div>
 
 
@@ -115,7 +163,7 @@
         margin-left: auto;
         margin-right: auto;
         margin-bottom: 130px;
-        z-index: 2;
+        z-index:2;
     }
 
     textarea {
@@ -131,8 +179,7 @@
         font-size: 40px;
         border-radius: 29px;
     }
-
-    .nice-select {
+    .nice-select{
         border: none;
     }
 </style>

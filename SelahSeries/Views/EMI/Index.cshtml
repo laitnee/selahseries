@@ -16,11 +16,13 @@
         <div class="container">
 
             <div class="banner_content text-center">
-                <h5>We need your Help to serve the people</h5>
-                <h3>Help for victims of rape and abuse.</h3>
-                <p>The society has rejected women who have had unappealing encounters due to negligence  <br /> or circumstances beyond their control. We shine the light to give them hope again.</p>
-                <a class="main_btn" href="#">Volunteer Now</a>
-                <a class="white_btn" href="~/emeraldlight/events">View Activity</a>
+                <h5>The Emerald Light Initiative : &nbsp&nbsp&nbsp    A Selah Series Project</h5>
+
+                <h3>We shine the Light to give you Hope Again!</h3>
+                <p>A lot of females have fallen victims of societal rejection due to early unwanted pregnancies and hurtful<br /> relatonships. Some go into the web of depression and are never able to get back up until they have an encounter with Light.</p>
+
+                <a class="main_btn" href="~/emeraldlight/contact-us">Contact Us</a>
+                <a class="white_btn" href="~/emeraldlight/events">View Activities</a>
             </div>
         </div>
     </div>
@@ -31,9 +33,11 @@
                     <div class="dontation_item yellow">
                         <div class="media">
                             <div class="media-body">
-                                <p>If there be any truer measure of a man than by what he does, it must be by what he gives.</p>
-                                <br/>
-                                <p><i>- Robert South</i></p>
+                                <p>
+                                    Life's challenges are not supposed to paralyze you, they're supposed to help you discover who you are.
+                                </p>
+                                <br />
+                                <p><i>- Bernice Johnson Reagon</i></p>
                             </div>
                         </div>
                     </div>
@@ -42,9 +46,9 @@
                     <div class="dontation_item pink">
                         <div class="media">
                             <div class="media-body">
-                                <p>The best way to find yourself is to lose yourself in the service of others.</p>
+                                <p>You can be changed by what happens to you, but refuse to be reduced by it.</p>
                                 <br />
-                                <p><i>- Mahatma Gandhi</i></p>
+                                <p><i>- Maya Angelou</i></p>
                             </div>
                         </div>
                     </div>
@@ -53,9 +57,11 @@
                     <div class="dontation_item green">
                         <div class="media">
                             <div class="media-body">
-                                <p>To be successful is to be helpful, caring and constructive, to make everything and everyone you touch better.</p>
+                                <p>
+                                    She was powerful, not because she wasn't scared but she went on so strongly despite the fear.
+                                </p>
                                 <br />
-                                <p><i>- Norman Vincent Peale</i></p>
+                                <p><i>- Atticus</i></p>
                             </div>
                         </div>
                     </div>
@@ -73,9 +79,10 @@
                 <div class="welcome_text">
                     <h4>Emerald Light Initiative</h4>
                     <p>
-                        In the world that we are in, women are very significant. Yeah, both genders are.  However, women are more prone to falling victim of various forms of abuse which 
+                        Women are a very significant part of the society. Yeah, both genders are.  However, women are more prone to falling victim of various forms of abuse which
                         pose a detrimental effect on their life, future and total well being. We at Emerald Light Initiative have risen to be a voice for the females - women,
-                        youths and teenagers. Also, we are taking support and due help to those who have been wounded.
+                        youths and teenagers. We provide support and counselling to those who are still nested in their unappealing past experiences. We also organize projects and events to sentisize females
+                        and render financial support. This is a family of love, of light and of grace! You are welcome to be a part of us. Do reach out also if you are in need of online counselling.
                     </p>
                 </div>
             </div>
@@ -88,6 +95,55 @@
     </div>
 </section>
 <!--================End Welcome Area =================-->
+<!--================Causes Area =================-->
+@*<section class="causes_area mission2">
+    <div class="container">
+        <div class="main_title">
+            <h2>Our Mission and Vision</h2>
+        </div>
+        <div class="row">
+            <div class="causes_item col-lg-6">
+                <div class="causes_img">
+                    <img class="img-fluid" src="img/blog/causes/causes-1.jpg" alt="">
+                    <div class="c_parcent">
+                        <span></span>
+                    </div>
+                </div>
+                <div class="causes_bottom">
+                    <a>MISSION</a>
+                </div>
+                <br/>
+                <div class="causes_text">
+                    <h4>Did not find your Package</h4>
+                    <p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace that’s why it’s crucial.</p>
+                    <p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace that’s why it’s crucial.</p>
+
+                </div>
+
+            </div>
+            <div class="causes_item col-lg-6">
+                <div class="causes_img">
+            <img class="img-fluid" src="img/blog/causes/causes-2.jpg" alt="">
+            <div class="c_parcent">
+                <span></span>
+            </div>
+        </div>
+
+                <div class="causes_bottom">
+                    <a>VISION</a>
+                </div>
+                <br/>
+                <div class="causes_text">
+                    <h4>Did not find your Package</h4>
+                    <p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace that’s why it’s crucial.</p>
+                    <p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace that’s why it’s crucial.</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>*@
+<!--================End Causes Area =================-->
 <!--================Feature Area =================-->
 <section class="feature_area feature2">
     <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
@@ -123,6 +179,8 @@
 </section>
 <!--================End Feature Area =================-->
 <!--================Event Area =================-->
+@if (events.Any())
+{
 <section class="event_area p_120">
     <div class="container">
         <div class="main_title">
@@ -135,8 +193,8 @@
                 <div class="item">
                     <div class="event_item">
                         <div class="media">
-                            <div class="d-flex event-image" >
-                                <img  src="~/Uploads/@Html.DisplayFor(modelItem => item.ImgUrl)" alt="">
+                            <div class="d-flex event-image">
+                                <img src="~/Uploads/@Html.DisplayFor(modelItem => item.ImgUrl)" alt="">
                             </div>
                             <div class="media-body">
                                 <a>@Html.DisplayFor(modelItem => item.Time)</a>
@@ -150,8 +208,11 @@
         </div>
     </div>
 </section>
+}
 <!--================End Event Area =================-->
 <!--================Testimonials Area =================-->
+@if (testimonies.Any())
+{
 <section class="testimonials_area p_120">
     <div class="container">
         <div class="row testimonials_inner">
@@ -181,6 +242,7 @@
         </div>
     </div>
 </section>
+}
 <!--================End Testimonials Area =================-->
 <style>
     .img-fluid {
@@ -188,13 +250,20 @@
     }
 
     .welcome2 {
-        padding-top: 120px;
+        padding-top: 133px;
+        /*padding-bottom: 65px*/
         padding-bottom: 120px
     }
 
     .feature2 {
+        /*padding-top: 120px;*/
         padding-top: 120px;
         padding-bottom: 120px
+    }
+
+    .mission2 {
+        padding-top: 65px;
+        padding-bottom: 180px
     }
 
     .line-clamp {
@@ -203,7 +272,8 @@
         -webkit-box-orient: vertical;
         overflow: hidden;
     }
+
     .event-image {
-        width : 50%;
+        width: 50%;
     }
 </style>
