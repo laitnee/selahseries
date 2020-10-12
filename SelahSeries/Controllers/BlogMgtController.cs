@@ -14,6 +14,8 @@ using SelahSeries.Repository;
 using SelahSeries.Data;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using SelahSeries.Services;
+using System.Text.RegularExpressions;
 
 namespace SelahSeries.Controllers
 {
@@ -23,11 +25,16 @@ namespace SelahSeries.Controllers
         private readonly IMapper _mapper;
         private readonly IHostingEnvironment hostingEnvironment;
         private readonly IPostRepository _postRepo;
-        public BlogMgtController(IPostRepository postRepo, IMapper mapper, IHostingEnvironment environment)
+        private readonly IEmailService _emailService;
+        public IBackgroundTaskQueue _queue;
+        public BlogMgtController(IPostRepository postRepo, IMapper mapper, IHostingEnvironment environment, 
+            IEmailService emailService, IBackgroundTaskQueue queue )
         {
             _postRepo = postRepo;
             _mapper = mapper;
             hostingEnvironment = environment;
+            _emailService = emailService;
+            _queue = queue;
         }
         // GET: BlogMgt
         [Route("[controller]")]
@@ -107,6 +114,7 @@ namespace SelahSeries.Controllers
                     if (await _postRepo.AddPost(post))
                     {
                         TempData["Alert"] = "Post Created Successfully";
+                        if(post.Published) await SendEmailToSuscribers(post);
                         return RedirectToAction(nameof(Index));
                     }
 
@@ -114,12 +122,14 @@ namespace SelahSeries.Controllers
                     return View();
                 }
                 catch (Exception ex)
-                {
+                { 
                     ViewBag.Error = "Unable to add post, please try again or contact administrator";
                     return View();
                 }
             }
             ViewBag.Error = "Please correct the error(s) in Form";
+
+
             return View(postVM);
 
         }
@@ -141,6 +151,34 @@ namespace SelahSeries.Controllers
                 + "_"
                 + Guid.NewGuid().ToString().Substring(0, 4)
                 + Path.GetExtension(fileName);
+        }
+
+        private async Task SendEmailToSuscribers(Post post)
+        {
+            var userImagePath = Path.Combine(hostingEnvironment.WebRootPath, "uploads", post.TitleImageUrl);
+
+            List<EmailSubscription> emailSubscribers = await _postRepo.GetPostSuscribers();
+
+            string message = ProcessMessage(post.Content);
+            //post.Content.Length > 300 ? post.Content.Substring(0, 300) : post.Content.Substring(0, post.Content.Length);
+
+            var subscribersList = emailSubscribers.Select(x => x.SubscriberEmail).ToList();
+            _queue.QueueBackgroundWorkItem(async token => { 
+                await Task.Run(() => _emailService.SendSubscriptionMail(subscribersList, post.Title, message, post.PostId, userImagePath));
+            });
+            
+        }
+
+        private string ProcessMessage(string content)
+        {
+            var matches = Regex.Matches(content, "(?<=>)([^<]+)(?=<)");
+            var parsedContent = string.Join(" ", matches).Replace('\\', ' ');
+            if(parsedContent.Length > 300){
+                var subContent = parsedContent.Substring(0, 300).Trim();
+                parsedContent = subContent.Substring(0, subContent.LastIndexOf(" "));
+            }
+
+            return parsedContent;
         }
 
         // GET: BlogMgt/Edit/5

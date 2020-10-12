@@ -30,10 +30,13 @@
     //    Books_Slide2.Add(Model.Books[i]);
     //}
 }
+@section AddMetaTags {
 
     <meta property="og:title" content="Selah Series">
     <meta property="og:description" content="A blog on relationship and marriage, career, sport and politis">
-    <meta property="og:image" content="~/NewFolder2/new/selah s.png">
+    <meta property="og:image" content="www.selahseries.com/NewFolder2/new/selah s.png">
+    <meta property="og:image:secure_url" content="www.selahseries.com/NewFolder2/new/selah s.png">
+
     <meta property="og:url" content="selahseries.com">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
@@ -113,70 +116,70 @@
 </div>
 
 @*
-<div class="container containe">
+    <div class="container containe">
 
-    <div class="imagee row" style="height:150px; margin-bottom:40px">
-        <div class=" col-sm-12  col-12 text-center">
-            <img style="height:150px" src="~/NewFolder2/new/middl selah.png" alt="image" />
+        <div class="imagee row" style="height:150px; margin-bottom:40px">
+            <div class=" col-sm-12  col-12 text-center">
+                <img style="height:150px" src="~/NewFolder2/new/middl selah.png" alt="image" />
 
+            </div>
         </div>
-    </div>
 
-    <div class="row">
-        <div class="col-sm-6 col-md-6 col-lg-3">
-            <a href="~/blog/index/?category=relationship_and_marriage#blog">
-                <div class="card2">
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-3">
+                <a href="~/blog/index/?category=relationship_and_marriage#blog">
+                    <div class="card2">
 
-                    <img src="/NewFolder2/new/brigitte-tohm-XyGeWTj2E7w-unsplash.jpg" alt="Avatar">
-                    <div class="container2">
-                        <h4>Check out our articles on Relationship and Marriage</h4>
+                        <img src="/NewFolder2/new/brigitte-tohm-XyGeWTj2E7w-unsplash.jpg" alt="Avatar">
+                        <div class="container2">
+                            <h4>Check out our articles on Relationship and Marriage</h4>
+                        </div>
                     </div>
-                </div>
-            </a>
-        </div>
+                </a>
+            </div>
 
-        <div class="col-sm-6 col-md-6 col-lg-3">
-            <a href="~/blog/index/?category=sports#blog">
-                <div class="card2">
-                    <img src="/NewFolder2/new/kakudmi-JO19K0HDDXI-unsplash (1).jpg" alt="Avatar">
-                    <div class="container2">
-                        <h4>Get entertained with news on Football</h4
-                        <p><a href="~/?category=sports#blog">See here</a></p> 
+            <div class="col-sm-6 col-md-6 col-lg-3">
+                <a href="~/blog/index/?category=sports#blog">
+                    <div class="card2">
+                        <img src="/NewFolder2/new/kakudmi-JO19K0HDDXI-unsplash (1).jpg" alt="Avatar">
+                        <div class="container2">
+                            <h4>Get entertained with news on Football</h4
+                            <p><a href="~/?category=sports#blog">See here</a></p>
+                        </div>
                     </div>
-                </div>
-            </a>
-        </div>
+                </a>
+            </div>
 
 
-        <div class="col-sm-6 col-md-6 col-lg-3">
-            <a href="~/blog/index/?category=career#blog">
-                <div class="card2">
+            <div class="col-sm-6 col-md-6 col-lg-3">
+                <a href="~/blog/index/?category=career#blog">
+                    <div class="card2">
 
-                    <img src="/NewFolder2/new/jacalyn-beales-geRpPjIiu8U-unsplash.jpg" alt="Avatar ">
-                    <div class="container2">
-                        <h4>Our Career section provides you interesting contents on career</h4>
-                      
+                        <img src="/NewFolder2/new/jacalyn-beales-geRpPjIiu8U-unsplash.jpg" alt="Avatar ">
+                        <div class="container2">
+                            <h4>Our Career section provides you interesting contents on career</h4>
+
+                        </div>
                     </div>
-                </div>
-            </a>
-        </div>
+                </a>
+            </div>
 
 
 
-        <div class="col-sm-6 col-md-6 col-lg-3">
-            <a href="~/blog/index/?category=politics#blog">
-                <div class="card2">
-                    <img src="/NewFolder2/new/lucia-48UaeIMNAA4-unsplash (2).jpg" alt="Avatar">
-                    <div class="container2">
-                        <h4>A lover of politics? We have related articles for you.</h4>
+            <div class="col-sm-6 col-md-6 col-lg-3">
+                <a href="~/blog/index/?category=politics#blog">
+                    <div class="card2">
+                        <img src="/NewFolder2/new/lucia-48UaeIMNAA4-unsplash (2).jpg" alt="Avatar">
+                        <div class="container2">
+                            <h4>A lover of politics? We have related articles for you.</h4>
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
+            </div>
+
         </div>
 
-    </div>
-
-</div> *@
+    </div> *@
 
 <!-- Page Content -->
 
@@ -201,13 +204,13 @@
                                 @foreach (var item in latestArticle)
                                 {
 
-                                    <div class="card card_default card_small_with_image grid-item">
-                                        <img class="card-img-top" src='~/Uploads/@Html.DisplayFor(modelItem => item.TitleImageUrl)' alt="https://unsplash.com/">
-                                        <div class="card-body">
-                                            <div class="card-title card-title-small"><a href="~/blog/post/@Html.DisplayFor(modelItem => item.PostId)">@Html.DisplayFor(modelItem => item.Title)</a></div>
-                                            <small class="post_meta"><a href="#">@Html.DisplayFor(modelItem => item.Author)</a><span>@Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
-                                        </div>
+                                <div class="card card_default card_small_with_image grid-item">
+                                    <img class="card-img-top" src='~/Uploads/@Html.DisplayFor(modelItem => item.TitleImageUrl)' alt="https://unsplash.com/">
+                                    <div class="card-body">
+                                        <div class="card-title card-title-small"><a href="~/blog/post/@Html.DisplayFor(modelItem => item.PostId)">@Html.DisplayFor(modelItem => item.Title)</a></div>
+                                        <small class="post_meta"><a href="#">@Html.DisplayFor(modelItem => item.Author)</a><span>@Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
                                     </div>
+                                </div>
 
 
                                 }
@@ -258,6 +261,18 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 											</svg>
                                     </div>
                                     <ul id="custom_dots" class="custom_dots custom_dots_vid">
@@ -269,6 +284,18 @@
                                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                              width="7px" height="12px" viewBox="0 0 7 12" enable-background="new 0 0 7 12" xml:space="preserve">
                                         <polyline fill="#bebebe" points="6.998,6.39 1.389,12 -0.002,12 -0.002,10.562 4.561,6 -0.002,1.438 -0.002,0 1.389,0 7,5.61 " />
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -293,17 +320,17 @@
                                     <div class="owl-item">
                                         @foreach (var item in Model.TopPosts)
                                         {
-                                            <div class="side_post">
-                                                <a href="~/blog/post/@Html.DisplayFor(modelItem => item.PostId)">
-                                                    <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
-                                                        <div class="side_post_image"><div><img src="~/Uploads/@Html.DisplayFor(modelItem => item.TitleImageUrl)" alt="@item.Title"></div></div>
-                                                        <div class="side_post_content">
-                                                            <div class="side_post_title">@Html.DisplayFor(modelItem => item.Title)</div>
-                                                            <small class="post_meta">@Html.DisplayFor(modelItem => item.Author)<span>@Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
-                                                        </div>
+                                        <div class="side_post">
+                                            <a href="~/blog/post/@Html.DisplayFor(modelItem => item.PostId)">
+                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
+                                                    <div class="side_post_image"><div><img src="~/Uploads/@Html.DisplayFor(modelItem => item.TitleImageUrl)" alt="@item.Title"></div></div>
+                                                    <div class="side_post_content">
+                                                        <div class="side_post_title">@Html.DisplayFor(modelItem => item.Title)</div>
+                                                        <small class="post_meta">@Html.DisplayFor(modelItem => item.Author)<span>@Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
                                                     </div>
-                                                </a>
-                                            </div>
+                                                </div>
+                                            </a>
+                                        </div>
 
 
                                         }
@@ -368,14 +395,14 @@
                             <div class="row">
                                 @foreach (var item in Books_Slide1)
                                 {
-                                    <div class="col-sm-6">
-                                        <div class="thumb-wrapper">
-                                            <div class="img-box">
-                                                <img src="~/Uploads/@Html.DisplayFor(modelItem => item.ImageUrl)" class="img-responsive img-fluid" alt="">
-                                            </div>
-                                            <div class="thumb-content">
-                                                <h5 style="color:black">@item.Title</h5>
-                                                @if (item.IsHardBook == true)
+                                <div class="col-sm-6">
+                                    <div class="thumb-wrapper">
+                                        <div class="img-box">
+                                            <img src="~/Uploads/@Html.DisplayFor(modelItem => item.ImageUrl)" class="img-responsive img-fluid" alt="">
+                                        </div>
+                                        <div class="thumb-content">
+                                            <h5 style="color:black">@item.Title</h5>
+                                            @if (item.IsHardBook == true)
                                                 {
 
                                                     Products.Add(new ShopBook()
@@ -387,13 +414,13 @@
                                                     });
 
 
-                                                    <p class="item-price">₦@item.Price</p>
-                                                    <a class="add-cart cart btn btn-primary">Add to Cart</a>
+                                            <p class="item-price">₦@item.Price</p>
+                                            <a class="add-cart cart btn btn-primary">Add to Cart</a>
                                                 }
-                                                <a href="~/uploads/@item.BookUrl" download class="btn btn-primary">Download</a>
-                                            </div>
+                                            <a href="~/uploads/@item.BookUrl" download class="btn btn-primary">Download</a>
                                         </div>
                                     </div>
+                                </div>
                                 }
 
                             </div>

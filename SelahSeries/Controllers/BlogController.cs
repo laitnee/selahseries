@@ -11,6 +11,7 @@ using SelahSeries.Core.Pagination;
 using SelahSeries.Models;
 using SelahSeries.Models.DTOs;
 using SelahSeries.Repository;
+using SelahSeries.Repository.Interfaces;
 using SelahSeries.Services;
 using SelahSeries.ViewModels;
 
@@ -24,14 +25,18 @@ namespace SelahSeries.Controllers
         private readonly ICommentRepository _commentRepo;
         private readonly IPostRepository _postRepo;
         private readonly IPostClapRepository    _postClapRepo;
+        private readonly INotificationRepository _notifRepo;
+
         private readonly IConfiguration _configuration;
         private readonly IMapper _mapper;
-        public BlogController(IConfiguration configuration, ICommentRepository commentRepo, IPostRepository postRepo, IPostClapRepository postClapRepo, IMapper mapper)
+        
+        public BlogController(IConfiguration configuration, ICommentRepository commentRepo, IPostRepository postRepo, IPostClapRepository postClapRepo, INotificationRepository notifRepo, IMapper mapper)
         {
             _configuration = configuration;
             _commentRepo = commentRepo;
             _postRepo = postRepo;
             _postClapRepo = postClapRepo;
+            _notifRepo = notifRepo;
             _mapper = mapper;
         }
         // GET: /<controller>/
@@ -116,8 +121,20 @@ namespace SelahSeries.Controllers
                     if (string.IsNullOrWhiteSpace(comment.Author)) comment.Author = "Anonymous";
                     comment.CreatedAt = DateTime.UtcNow;
                     await _commentRepo.AddComment(comment);
+
+                    Notification notification = new Notification
+                    {
+                        Title = $"{comment.Author} { (comment.ParentCommentId != null ? "Replied to a comment on a post" : "commented on a post")}",
+                        Link = $"{comment.PostId}",
+                        Description = "",
+                        CreatedAt = DateTime.Now,
+                        Read = false
+                    };
+                    await _notifRepo.AddNotification(notification);
+
+
                 }
-                catch { return View(); }
+                catch { return RedirectToAction("Post", "Blog", new { postId = comment.PostId }); }
                 
             }
             return RedirectToAction("Post", "Blog", new { postId = comment.PostId });

@@ -196,7 +196,7 @@ namespace SelahSeries.Controllers
                 message = "Name: " + name + "\n" + "Email Address: " + email + "\n" + "Message: " + message;
                 await _emailService.SendEmail(subject, message);
                 ViewBag.Alert = "Message was sent successfully";
-                return View();
+                return View("~/Views/Shared/ThankYou.cshtml");
             }
             catch (Exception)
             {
@@ -204,8 +204,59 @@ namespace SelahSeries.Controllers
                 return View();
             }
         }
+        [HttpPost]
+        [Route("/suscription/suscribe")]
+        public async Task<ActionResult> SuscribeToPost([FromForm] string email)
+        {
 
-        public IActionResult Privacy()
+            try
+            {
+                await _postRepo.AddPostSuscribers(new EmailSubscription
+                {
+                    SubscriberEmail = email,
+                    ConfirmEmail = false,
+                    ConfirmationCode = Guid.NewGuid().ToString()
+                }) ;
+                ViewBag.Message = "staying with us. You will not be notified of any new post on the website";
+                return View("~/Views/Shared/ThankYou.cshtml");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = "Subscription failed, try again Please do make sure the mail has not been registered before";
+                return View();
+            }
+        }
+        [HttpPost]
+        [Route("/subscription/unsubscribe")]
+        public async Task<ActionResult> UnSubscribeFromPost([FromForm] string email)
+        {
+            try { 
+                await _postRepo.UnSuscriberPost(email);
+
+                ViewBag.Message = "For been a part of the family. We hope to see you back soon";
+                return View("~/Views/Shared/ThankYou.cshtml");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = "unsubscribe failed, try again if you still get mail from us";
+                return View();
+            }
+        }
+        [HttpGet]
+        [Route("/subscription/unsubscribe")]
+        public IActionResult UnSubscribeFromPost()
+        {
+            try
+            {
+                return View("~/Views/Shared/unsubscribeview.cshtml");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = "Subscription failed, try again Please do make sure the mail has not been registered before";
+                return View();
+            }
+        }
+            public IActionResult Privacy()
         {
             return View();
         }

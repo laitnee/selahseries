@@ -127,6 +127,23 @@ namespace SelahSeries.Migrations
                     b.ToTable("Events");
                 });
 
+            modelBuilder.Entity("SelahSeries.Models.EmailSubscription", b =>
+                {
+                    b.Property<int>("EmailSubscriptionId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("ConfirmEmail");
+
+                    b.Property<string>("ConfirmationCode");
+
+                    b.Property<string>("SubscriberEmail");
+
+                    b.HasKey("EmailSubscriptionId");
+
+                    b.ToTable("EmailSubscriptions");
+                });
+
             modelBuilder.Entity("SelahSeries.Models.HardBook", b =>
                 {
                     b.Property<int>("HardBookId")
@@ -147,6 +164,27 @@ namespace SelahSeries.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("HardBooks");
+                });
+
+            modelBuilder.Entity("SelahSeries.Models.Notification", b =>
+                {
+                    b.Property<int>("NotificationId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedAt");
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("Link");
+
+                    b.Property<bool>("Read");
+
+                    b.Property<string>("Title");
+
+                    b.HasKey("NotificationId");
+
+                    b.ToTable("Notifications");
                 });
 
             modelBuilder.Entity("SelahSeries.Models.Order", b =>

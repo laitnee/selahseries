@@ -1,6 +1,77 @@
-﻿
+﻿@model IEnumerable<SelahSeries.Models.Notification>
+
 @{
-    Layout = "~/views/admin/_AdminLayout.cshtml";
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
 }
 
-<h1>Selah Series Blog Notifications</h1>
+<h2>Notifications </h2>
+
+@foreach (var item in Model)
+{
+<div class="alert @(item.Read ? " alert-dark" : " alert-info")" role="alert">
+    @if (item.Read == false)
+    {<span class="btn btn-outline-secondary" onclick="markNotificationAsRead( event, @item.NotificationId)" style="margin-right:3px;"> Mark As Read </span> }
+    @(item.Title) <a href="~/blog/post/@(item.Link)" class="alert-link">Go to Post</a>
+
+</div>
+}
+<div style="margin-top:80px; margin-bottom:80px">
+    @if (Model.Any())
+    {
+        <nav>
+            <ul id="navDiv0" class="pagination pg-red pagination-lg justify-content-center">
+                <li class="page-item @(ViewBag.CurrentPage<2? "disabled" : "")">
+                    <a href="~/admin?pageIndex=@ViewBag.CurrentPage+1)" class="page-link waves-effect waves-effect" aria-label="Previous">
+                        <span aria-hidden="true">«</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                @{
+                    var postPerPage = 15;
+                    var numberOfPages = (int)Math.Ceiling((Decimal)ViewBag.NotificationCount / postPerPage);
+                    foreach (var item in Enumerable.Range(1, numberOfPages))
+                    {
+                        <li class="page-item btnn0 @(ViewBag.CurrentPage == item? "active" : "")   "><a href="~/admin?pageIndex=@item" class="page-link waves-effect waves-effect">@item</a></li>
+                    }
+                }
+
+                <li class="page-item btnn0  @(ViewBag.CurrentPage+1 > numberOfPages? "disabled" : "")">
+                    <a href="~/admin?pageIndex=@ViewBag.CurrentPage+1)" class="page-link waves-effect waves-effect" aria-label="Next">
+                        <span aria-hidden="true">»</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    }
+    else
+    {
+        <div class="section_panel d-flex flex-row align-items-center">
+            No Notification
+
+
+        </div>
+    }
+
+</div>
+
+<script>
+    async function markNotificationAsRead(ev, id) {
+        const messageHeaders = new Headers({
+            'Content-Type': 'application/json'
+        });
+        console.log(id);
+        fetch("/admin/MarkAsRead", {
+            method: 'POST',
+            body: +id,
+            headers: messageHeaders
+        }).then(response => {
+
+            ev.srcElement.parentNode.classList.add('alert-dark');
+            ev.srcElement.parentNode.classList.remove('alert-info');
+            ev.srcElement.parentNode.removeChild(ev.srcElement);
+        }).catch();
+
+    }
+</script>
