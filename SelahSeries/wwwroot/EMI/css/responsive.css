@@ -203,7 +203,17 @@
 		margin-bottom: 50px;
 	}
 }
+
+@media(max-width : 768px){
+	div.text_welcome {
+		margin-top: 0px;
+	}
+}
+
 @media (max-width:767px){
+	input.phone{
+		margin-left: 15px;
+	}
 	/* Blog Page Area css
 	============================================================================================ */
     .blog_banner .banner_inner .blog_b_text h2 {
@@ -248,6 +258,9 @@
 	============================================================================================ */
 }
 @media (max-width:575px){
+	img.event_pic{
+		margin-left: 0px;
+	}
 	.top_menu {
 		display: none;
 	}
@@ -360,6 +373,10 @@
 	/* End Main Menu Area css
 	============================================================================================ */
 	
+	div.featured{
+		width: 100%;
+	}
+
 	/* Home Banner Area css
 	============================================================================================ */
     .home_banner_area .banner_inner .banner_content {

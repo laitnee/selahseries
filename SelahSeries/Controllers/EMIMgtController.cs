@@ -293,12 +293,12 @@ namespace SelahSeries.Controllers
 
 
                     await _testimonyRepo.UpdateTestimony(editTestimony);
-                    TempData["Alert"] = "Testimony Edited Successfully";
+                    TempData["Alert"] = "Testimonial Edited Successfully";
                     return RedirectToAction(nameof(TestimonyIndex));
                 }
                 catch (Exception ex)
                 {
-                    ViewBag.Error = "Unable to add testimony, please try again or contact administrator";
+                    ViewBag.Error = "Unable to add testimonial, please try again or contact administrator";
                     return View();
                 }
             }
@@ -315,12 +315,12 @@ namespace SelahSeries.Controllers
             {
                 var testimony = _testimonyRepo.GetTestimony(id);
                 await _testimonyRepo.DeleteTestimonyAsync(testimony.Result);
-                TempData["Alert"] = "Testimony Deleted Successfully";
+                TempData["Alert"] = "Testimonial Deleted Successfully";
                 return RedirectToAction(nameof(TestimonyIndex));
             }
             catch
             {
-                TempData["Error"] = "Error occured: Unable to delete testimony";
+                TempData["Error"] = "Error occured: Unable to delete testimonial";
                 return RedirectToAction(nameof(TestimonyIndex));
             }
         }

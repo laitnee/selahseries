@@ -19,7 +19,7 @@
                 <h5>The Emerald Light Initiative : &nbsp&nbsp&nbsp    A Selah Series Project</h5>
 
                 <h3>We shine the Light to give you Hope Again!</h3>
-                <p>A lot of females have fallen victims of societal rejection due to early unwanted pregnancies and hurtful<br /> relatonships. Some go into the web of depression and are never able to get back up until they have an encounter with Light.</p>
+                <p>A lot of teenagers and young girls have fallen victims of societal rejection due to early unwanted pregnancies and hurtful<br /> relatonships. Some lose hope and are never able to get back up until they have an encounter with Light.</p>
 
                 <a class="main_btn" href="~/emeraldlight/contact-us">Contact Us</a>
                 <a class="white_btn" href="~/emeraldlight/events">View Activities</a>
@@ -75,12 +75,12 @@
 <section class="welcome_area welcome2">
     <div class="container">
         <div class="row welcome_inner">
-            <div class="col-lg-6">
+            <div class="col-lg-6 text_welcome">
                 <div class="welcome_text">
                     <h4>Emerald Light Initiative</h4>
                     <p>
-                        Women are a very significant part of the society. Yeah, both genders are.  However, women are more prone to falling victim of various forms of abuse which
-                        pose a detrimental effect on their life, future and total well being. We at Emerald Light Initiative have risen to be a voice for the females - women,
+                        Girls are a very significant part of the society. Yeah, both genders are.  However, girls are more prone to falling victim of various forms of abuse which
+                        pose a detrimental effect on their life, future and total well being. We at Emerald Light Initiative have risen to be a voice for the females - 
                         youths and teenagers. We provide support and counselling to those who are still nested in their unappealing past experiences. We also organize projects and events to sentisize females
                         and render financial support. This is a family of love, of light and of grace! You are welcome to be a part of us. Do reach out also if you are in need of online counselling.
                     </p>
@@ -88,90 +88,42 @@
             </div>
             <div class="col-lg-6">
                 <div class="welcome_img">
-                    <img class="img-fluid" src="~/EMI/img/pexels-luis-quintero-1436618.jpg" alt="">
+                    <img class="img-fluid" width="max-content" height="340" src="~/EMI/img/pexels-nicholas-githiri-1027931.jpg" alt="">
                 </div>
             </div>
         </div>
     </div>
 </section>
 <!--================End Welcome Area =================-->
-<!--================Causes Area =================-->
-@*<section class="causes_area mission2">
-    <div class="container">
-        <div class="main_title">
-            <h2>Our Mission and Vision</h2>
-        </div>
-        <div class="row">
-            <div class="causes_item col-lg-6">
-                <div class="causes_img">
-                    <img class="img-fluid" src="img/blog/causes/causes-1.jpg" alt="">
-                    <div class="c_parcent">
-                        <span></span>
-                    </div>
-                </div>
-                <div class="causes_bottom">
-                    <a>MISSION</a>
-                </div>
-                <br/>
-                <div class="causes_text">
-                    <h4>Did not find your Package</h4>
-                    <p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace that’s why it’s crucial.</p>
-                    <p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace that’s why it’s crucial.</p>
 
-                </div>
-
-            </div>
-            <div class="causes_item col-lg-6">
-                <div class="causes_img">
-            <img class="img-fluid" src="img/blog/causes/causes-2.jpg" alt="">
-            <div class="c_parcent">
-                <span></span>
-            </div>
-        </div>
-
-                <div class="causes_bottom">
-                    <a>VISION</a>
-                </div>
-                <br/>
-                <div class="causes_text">
-                    <h4>Did not find your Package</h4>
-                    <p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace that’s why it’s crucial.</p>
-                    <p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace that’s why it’s crucial.</p>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</section>*@
-<!--================End Causes Area =================-->
 <!--================Feature Area =================-->
 <section class="feature_area feature2">
     <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
     <div class="container">
         <div class="white_title">
             <h2>Our Key Features</h2>
-            <p>We are the Emerald Light Initiative! We lighten the path for women and teenagers who have been abused and molested.</p>
+            <p>We are the Emerald Light Initiative! We advocate for and support pregnant teenagers &amp; teen mothers</p>
         </div>
         <div class="row feature_inner">
             <div class="col-lg-4">
                 <div class="feature_item">
                     <i class="lnr lnr-diamond"></i>
                     <h4>Sponsorship</h4>
-                    <p>We give financial support to women who are in need of immediate resources such as food and academic materials </p>
+                    <p>We give educational, mental and financial empowerment for teens and young girls who are pregnant or presently nursing their babies </p>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="feature_item">
                     <i class="lnr lnr-coffee-cup"></i>
                     <h4>Projects &amp; Events</h4>
-                    <p>With our projects aimed towards a community of women, we are able to sentisize and support those who have had distressing pasts</p>
+                    <p>With our projects aimed towards teenagers and young girls, we are able to sentisize and support those who have had distressing pasts</p>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="feature_item">
                     <i class="lnr lnr-wheelchair"></i>
                     <h4>Become a Volunteer</h4>
-                    <p>We have made opporunity available for more women to be a part of this life-changing initiative</p>
+                    <p>We have made opportunity available for more people to be a part of this life-changing initiative. You can <a href="~/emeraldlight/volunteer">volunteer now</a></p>
                 </div>
             </div>
         </div>
@@ -208,6 +160,11 @@
         </div>
     </div>
 </section>
+}
+
+@if (!events.Any())
+{
+    <h2 class="no_event">Stay in touch and subscribe to get notifications on our upcoming Events!</h2>
 }
 <!--================End Event Area =================-->
 <!--================Testimonials Area =================-->
@@ -275,5 +232,14 @@
 
     .event-image {
         width: 50%;
+    }
+
+    .text_welcome{
+        margin-top:44px;
+    }
+    .no_event {
+        margin-top: 100px;
+        margin-bottom: 100px;
+        text-align: center;
     }
 </style>

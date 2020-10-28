@@ -22,29 +22,48 @@
 </section>
 <!--================End Home Banner Area =================-->
 <!--================Event Main Area =================-->
-<section class="event_main_area p_120">
-    <div class="container">
-        <div class="row event_main_inner">
-            @foreach (var item in events)
-            {
-                <div class="col-lg-6">
-                    <div class="event_item">
-                        <div class="media">
-                            <div class="d-flex">
-                                <img src="~/Uploads/@Html.DisplayFor(modelItem => item.ImgUrl)" width ="263" height="220"alt="">
-                            </div>
-                            <div class="media-body">
-                                <a>@Html.DisplayFor(modelItem => item.Time)</a>
-                                <a href="~/emeraldlight/event/@item.EventId"><h4>@Html.DisplayFor(modelItem => item.Title)</h4></a>
-                                <p class="line-clamp">@Html.DisplayFor(modelItem => item.Description)</p>
+@if (events.Any())
+{
+    <section class="event_main_area p_120">
+        <div class="container">
+            <div class="row event_main_inner">
+                @foreach (var item in events)
+                {
+                    <div class="col-lg-6">
+                        <div class="event_item">
+                            <div class="media">
+                                <div class="d-flex">
+                                    <img src="~/Uploads/@Html.DisplayFor(modelItem => item.ImgUrl)" width="263" height="220" alt="">
+                                </div>
+                                <div class="media-body">
+                                    <a>@Html.DisplayFor(modelItem => item.Time)</a>
+                                    <a href="~/emeraldlight/event/@item.EventId"><h4>@Html.DisplayFor(modelItem => item.Title)</h4></a>
+                                    <p class="line-clamp">@Html.DisplayFor(modelItem => item.Description)</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            }
+                }
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+}
+
+@if (!events.Any())
+{
+    <section class="event_main_area p_120">
+        <div class="container">
+            <div class="row event_main_inner">
+                <div class="col-lg-6">
+                    <img class="img-fluid event_pic" src="~/EMI/img/pexels-godisable-jacob-718978 (1).jpg" alt="" />
+                </div>
+                <div class="col-lg-6">
+                    <h2>No Event has been added</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+ }
 <!--================End Event Main Area =================-->
 
 <style>
@@ -53,5 +72,9 @@
         -webkit-line-clamp: 7;
         -webkit-box-orient: vertical;
         overflow: hidden;
+    }
+    .event_pic{
+        height: 391px;
+        margin-left: 100px;
     }
 </style>
