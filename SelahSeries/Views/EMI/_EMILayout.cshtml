@@ -35,7 +35,7 @@
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container">
                     <!-- Brand and toggle get grouped for better mobile display -->
-                    <a class="navbar-brand logo_h" href="index.html"><img height="85" src="~/EMI/img/emerald tst.png" alt=""></a>
+                    <a class="navbar-brand logo_h" href="index.html"><img height="85" src="~/EMI/img/emerald_tst.png" alt=""></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -78,7 +78,7 @@
                 <div class="col-lg-3  col-md-6 col-sm-6">
                     <div class="single-footer-widget">
                         <h6 class="footer_title">About Initiative</h6>
-                        <p color="#777">We are a group targeted at giving hope to teenagers and young girls who have been lessened by the shame and rejection the society throws at them. We lit the faces of those that have been abused and molested. </p>
+                        <p color="#777">We are a group targeted at giving hope to pregnant and nursing young girls who have been lessened by the shame and rejection the society throws at them. We lit their faces through our all round support. </p>
                         
                     </div>
                 </div>
@@ -107,12 +107,13 @@
                         <h6 class="footer_title">Subscribe to Newsletter</h6>
                         <p>Subscribe to receive updates on our events &amp; projects and also notifications from Selah Series blog.</p>
                         <div id="mc_embed_signup">
-                            <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscribe_form relative">
+                            <form method="post" asp-controller="Home" asp-action="SuscribeToPost" class="subscribe_form relative">
+                                @Html.AntiForgeryToken()
                                 <div class="input-group d-flex flex-row">
-                                    <input name="EMAIL" placeholder="Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address '" required="" type="email">
-                                    <button class="btn sub-btn"><span class="lnr lnr-location"></span></button>
+                                    <input name="EMAIL" placeholder="Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address '" required="" type="email" name="email" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                    <button type="submit" class="btn sub-btn"><span class="lnr lnr-location"></span></button>
                                 </div>
-                                <div class="mt-10 info"></div>
+                                @await Html.PartialAsync("AlertViewPartial")
                             </form>
                         </div>
                     </div>
@@ -159,7 +160,7 @@
     <script src="~/EMI/vendors/isotope/imagesloaded.pkgd.min.js"></script>
     <script src="~/EMI/vendors/isotope/isotope-min.js"></script>
     <script src="~/EMI/vendors/owl-carousel/owl.carousel.min.js"></script>
-    <script src="~/EMI/js/jquery.ajaxchimp.min.js"></script>
+    @*<script src="~/EMI/js/jquery.ajaxchimp.min.js"></script>*@
     <script src="~/EMI/js/mail-script.js"></script>
     <script src="~/EMI/js/theme.js"></script>
     @if (IsSectionDefined("AddToEnd"))

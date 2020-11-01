@@ -258,6 +258,9 @@
 	============================================================================================ */
 }
 @media (max-width:575px){
+	.banner_content .selah_project{
+		display: none;
+	}
 	img.event_pic{
 		margin-left: 0px;
 	}

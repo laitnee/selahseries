@@ -1616,7 +1616,7 @@ section {
     width: 100%;
     height: 100%;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-position: center center;
 }
 
@@ -1664,7 +1664,7 @@ section {
 .advertising_2 {
     width: 100%;
     height: 140px;
-    margin-top: 80px;
+    margin-top: 35px;
 }
 
 .advertising_2_content {

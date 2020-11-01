@@ -57,6 +57,15 @@ namespace SelahSeries.Controllers
                 Limit = 6,
                 SortColoumn = "CreatedAt"
             };
+            
+            if (TempData.ContainsKey("Alert"))
+            {
+                ViewBag.Alert = TempData["Alert"].ToString();
+            }
+            if (TempData.ContainsKey("Error"))
+            {
+                ViewBag.Error = TempData["Error"].ToString();
+            }
 
             var topPosts = await _postRepo.GetTopPosts();
             var topPostsVM = _mapper.Map<List<PostListViewModel>>(topPosts);
@@ -216,9 +225,9 @@ namespace SelahSeries.Controllers
                     SubscriberEmail = email,
                     ConfirmEmail = false,
                     ConfirmationCode = Guid.NewGuid().ToString()
-                }) ;
-                ViewBag.Message = "staying with us. You will not be notified of any new post on the website";
-                return View("~/Views/Shared/ThankYou.cshtml");
+                });
+                TempData["Alert"] = "Subscription Successfully";
+                return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
             {
