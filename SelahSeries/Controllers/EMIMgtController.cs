@@ -4,7 +4,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SelahSeries.Models;
 using SelahSeries.Models.DTOs;
+using SelahSeries.Repository;
 using SelahSeries.Repository.Interfaces;
+using SelahSeries.Services;
 using SelahSeries.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -22,8 +24,13 @@ namespace SelahSeries.Controllers
         private readonly IEventRepository _eventRepo;
         private readonly ITestimonyRepository _testimonyRepo;
         private readonly IGalleryRepository _galleryRepo;
+        private readonly ISubscriptionRepository _subRepo;
+        private readonly IEmailService _emailService;
+        public IBackgroundTaskQueue _queue;
 
-        public EMIMgtController(IEventRepository eventRepo, ITestimonyRepository testimonyRepo, IGalleryRepository galleryRepo, IMapper mapper, IHostingEnvironment environment, IVolunteerRepository volRepo)
+        public EMIMgtController(IEventRepository eventRepo, ITestimonyRepository testimonyRepo, IGalleryRepository galleryRepo, 
+            IMapper mapper, IHostingEnvironment environment, IVolunteerRepository volRepo,
+            IBackgroundTaskQueue queue, ISubscriptionRepository subscriptionRepo, IEmailService emailService )
         {
             _eventRepo = eventRepo;
             _testimonyRepo = testimonyRepo;
@@ -31,6 +38,9 @@ namespace SelahSeries.Controllers
             _mapper = mapper;
             hostingEnvironment = environment;
             this.volRepo = volRepo;
+            _emailService = emailService;
+            _queue = queue;
+            _subRepo = subscriptionRepo;
         }
 
 
@@ -84,6 +94,7 @@ namespace SelahSeries.Controllers
                     if (await _eventRepo.AddEvent(e_event))
                     {
                         TempData["Alert"] = "Event Created Successfully";
+                        await SendEventEmailToSuscribers(e_event);
                         return RedirectToAction(nameof(EventIndex));
                     }
 
@@ -119,6 +130,23 @@ namespace SelahSeries.Controllers
                 + Guid.NewGuid().ToString().Substring(0, 4)
                 + Path.GetExtension(fileName);
         }
+
+        private async Task SendEventEmailToSuscribers(Event eventObj)
+        {
+            var userImagePath = Path.Combine(hostingEnvironment.WebRootPath, "uploads", eventObj.ImgUrl);
+
+            List<EmailSubscription> emailSubscribers = await _subRepo.GetPostSuscribers();
+
+            string message = $"We would be glad to have you in our new Emerald Light Initiative event \n <b> Title: </b> {eventObj.Title} \n  <b>Description:</b> {eventObj.Description} \n Time: {eventObj.Time} \n Event Location {eventObj.Location}";
+
+            var subscribersList = emailSubscribers.Select(x => x.SubscriberEmail).ToList();
+            _queue.QueueBackgroundWorkItem(async token =>
+            {
+                await Task.Run(() => _emailService.SendSubscriptionMail(subscribersList, eventObj.Title, message, eventObj.EventId, userImagePath, "eventemail"));
+            });
+
+        }
+
 
 
         [HttpGet]

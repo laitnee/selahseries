@@ -67,16 +67,16 @@
                                 </div>
                                 <ul style="font-family:Verdana, Geneva, Tahoma, sans-serif, sans-serif; font-size:14px" class="navbar-nav ml-auto topnav">
 
-                                    @{ 
+                                    @{
                                         var currentRoute = Context.Request.Path;
-                                        var homeLinks = new List<string>{ "home/index", "/", "home" };
+                                        var homeLinks = new List<string> { "home/index", "/", "home" };
                                         var homeLink = homeLinks.Any(x => x.Contains(currentRoute.ToString().ToLower()));
                                         var aboutLink = currentRoute.ToString().Contains("About", StringComparison.OrdinalIgnoreCase);
                                         var supportLink = currentRoute.ToString().Contains("Support", StringComparison.OrdinalIgnoreCase);
                                         var contactLink = currentRoute.ToString().Contains("Contact", StringComparison.OrdinalIgnoreCase);
                                         var bookLink = currentRoute.ToString().Contains("book", StringComparison.OrdinalIgnoreCase);
 
-                                            }
+                                    }
                                     <li class="nav-item @(homeLink? "active" : "") ">
                                         <a class="nav-link" href="~/Home/Index">Home <span class="sr-only">(current)</span></a>
                                     </li>
@@ -205,13 +205,13 @@
                                 <div class="input-group mb-3">
                                     <input style="height:auto; background-color:aliceblue; color:black;" type="text" class="form-control" placeholder="Enter your Email Address" name="email" aria-label="Recipient's username" aria-describedby="basic-addon2">
                                     <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary" style="cursor:pointer;" type="submit">Subcribe to SelahSeries</button>
+                                        <button class="btn btn-outline-secondary" style="cursor:pointer;" type="submit">Subscribe to SelahSeries</button>
                                     </div>
                                 </div>
                             </form>
                         </div>
 
-                            <div class="col-12" style="margin:auto;color:#c4913a;margin-bottom:40px">email: <a href="~/Contact" style=" text-decoration:underline; color:#c4913a">Connect@selahseries.com</a></div>
+                        <div class="col-12" style="margin:auto;color:#c4913a;margin-bottom:40px">email: <a href="~/Contact" style=" text-decoration:underline; color:#c4913a">Connect@selahseries.com</a></div>
                     </div>
                 </div>
 
@@ -293,10 +293,10 @@
 
 
                     @*<div class="col-md-12">
-                <div class="py-4 d-flex justify-content-center align-items-center">
-                    <p style="color:white">Copyright &copy; <script>document.write(new Date().getFullYear());</script></p>
-                </div>
-        </div>*@
+                            <div class="py-4 d-flex justify-content-center align-items-center">
+                                <p style="color:white">Copyright &copy; <script>document.write(new Date().getFullYear());</script></p>
+                            </div>
+                    </div>*@
                 </div>
 
 

@@ -51,11 +51,13 @@ namespace SelahSeries.Services
         
         }
         
-        public void SendSubscriptionMail(List<String> emailSubscribers, string title, string message, int postId, string imagePath)
+        public void SendSubscriptionMail(List<String> emailSubscribers, string title, string message, int linkId, string imagePath, string mailType)
         {
             var client = SetupClient();
-            
-            var mailMessage = SetupMailMessage(title,message,imagePath,postId);
+
+            MailMessage mailMessage = new MailMessage();
+            if( mailType.ToLower() == "postmail") mailMessage = SetupMailMessage(title,message,imagePath,linkId);
+            if (mailType.ToLower() == "eventmail") mailMessage = SetupEventMailMessage(title, message, imagePath, linkId);
             
             var senderEmail = _configuration["Email:Email"];
             mailMessage.From = new MailAddress(senderEmail, "Selah Series");
@@ -130,6 +132,37 @@ namespace SelahSeries.Services
 
                 return mailMessage;
             }
+        private MailMessage SetupEventMailMessage(string title, string message, string imagePath, int postId)
+        {
+            var mailMessage = new MailMessage();
+
+            mailMessage.Subject = $"RSVP for our new Emerald Light Event: {title}";
+
+            Stream fs = File.Open(imagePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+            LinkedResource res = new LinkedResource(fs, new ContentType("image/bmp"));
+
+            res.ContentId = Guid.NewGuid().ToString();
+            string htmlBody = $@"<html>
+                      <body>
+                      <h3> {title} </h3>
+                        <div>
+                           <img src='cid:{res.ContentId}' alt='{title}' width='400' height='300'/>
+                            <p> {message} <a href='https://www.selahseries.com/emeraldlight/events/{postId}' style='text-decoration:none;'> read more... </a></p>
+                            
+                       </div>
+                     
+                            <a href='https://www.selahseries.com/subscription/unsubscribe/'> Unsubscribe </a>                        
+                        </body>
+                      </html>
+                     ";
+
+            AlternateView alternateView = AlternateView.CreateAlternateViewFromString(htmlBody, null, MediaTypeNames.Text.Html);
+            alternateView.LinkedResources.Add(res);
+            mailMessage.AlternateViews.Add(alternateView);
+            mailMessage.IsBodyHtml = true;
+
+            return mailMessage;
+        }
 
         public async Task SendEmailTo(string subject, string message, string toEmail)
         {

@@ -33,14 +33,17 @@ namespace SelahSeries.Controllers
         private readonly IBookRepository _bookRepo;
 
         private readonly IConfiguration _configuration;
+        private readonly ISubscriptionRepository _subRepo;
 
-        public HomeController(IBookRepository bookRepo, IPostRepository postRepo, IMapper mapper, IHostingEnvironment environment, IEmailService emailService, IConfiguration configuration)
+        public HomeController(IBookRepository bookRepo, IPostRepository postRepo, IMapper mapper,
+            IHostingEnvironment environment, IEmailService emailService, IConfiguration configuration, ISubscriptionRepository subRepo)
         {
             _postRepo = postRepo;
             _bookRepo = bookRepo;
             _mapper = mapper;
             _emailService = emailService;
             _configuration = configuration;
+            _subRepo = subRepo;
 
             hostingEnvironment = environment;
         }
@@ -220,19 +223,19 @@ namespace SelahSeries.Controllers
 
             try
             {
-                await _postRepo.AddPostSuscribers(new EmailSubscription
+                await _subRepo.AddPostSuscribers(new EmailSubscription
                 {
                     SubscriberEmail = email,
                     ConfirmEmail = false,
                     ConfirmationCode = Guid.NewGuid().ToString()
                 });
-                TempData["Alert"] = "Subscription Successfully";
+                TempData["Alert"] = "Subscription Successfully, thank you for subscribing.";
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
             {
-                ViewBag.Error = "Subscription failed, try again Please do make sure the mail has not been registered before";
-                return View();
+                TempData["Alert"] = "Error Subscribing, you already subscribed to Selah Series.";
+                return RedirectToAction(nameof(Index));
             }
         }
         [HttpPost]
@@ -240,7 +243,7 @@ namespace SelahSeries.Controllers
         public async Task<ActionResult> UnSubscribeFromPost([FromForm] string email)
         {
             try { 
-                await _postRepo.UnSuscriberPost(email);
+                await _subRepo.UnSuscriberPost(email);
 
                 ViewBag.Message = "For been a part of the family. We hope to see you back soon";
                 return View("~/Views/Shared/ThankYou.cshtml");

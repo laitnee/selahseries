@@ -18,11 +18,12 @@ namespace SelahSeries.Controllers
     {
         private readonly IPostRepository _postRepo;
         private readonly INotificationRepository _notificationRepo;
-
-        public AdminController(IPostRepository postRepo, INotificationRepository notificationRepository)
+        private readonly ISubscriptionRepository _subRepo;
+        public AdminController(IPostRepository postRepo, INotificationRepository notificationRepository, ISubscriptionRepository subRepo)
         {
             _postRepo = postRepo;
             _notificationRepo = notificationRepository;
+            _subRepo = subRepo;
 
         }
         [Route("[controller]")]
@@ -45,9 +46,10 @@ namespace SelahSeries.Controllers
         [HttpGet]
         public async Task<IActionResult> Subscribers()
         {
-            var subscribers = await _postRepo.GetPostSuscribers();
+            var subscribers = await _subRepo.GetPostSuscribers();
             return View(subscribers);
         }
+
 
         [HttpGet]
         public ActionResult SignOut()

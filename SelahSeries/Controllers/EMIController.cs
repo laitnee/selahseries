@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using SelahSeries.Core.Pagination;
 using SelahSeries.Models;
 using SelahSeries.Models.DTOs;
+using SelahSeries.Repository;
 using SelahSeries.Repository.Interfaces;
 using SelahSeries.Services;
 using SelahSeries.ViewModels;
@@ -23,8 +24,11 @@ namespace SelahSeries.Controllers
         private readonly IMapper mapper;
         private readonly IEmailService emailService;
         private readonly IVolunteerRepository volRepo;
+        private readonly ISubscriptionRepository _subRepo;
 
-        public EMIController(IEventRepository eventRepo, ITestimonyRepository testimonyRepo, IGalleryRepository galleryRepo, IMapper mapper, IEmailService emailService, IVolunteerRepository volRepo)
+
+        public EMIController(IEventRepository eventRepo, ITestimonyRepository testimonyRepo, IGalleryRepository galleryRepo, IMapper mapper, 
+            IEmailService emailService, IVolunteerRepository volRepo, ISubscriptionRepository subRepo)
         {
             this.eventRepo = eventRepo;
             this.testimonyRepo = testimonyRepo;
@@ -32,6 +36,7 @@ namespace SelahSeries.Controllers
             this.mapper = mapper;
             this.emailService = emailService;
             this.volRepo = volRepo;
+            _subRepo = subRepo;
         }
 
         [Route("/emeraldlight")]
@@ -45,6 +50,16 @@ namespace SelahSeries.Controllers
                 Limit = 6,
                 SortColoumn = "CreatedAt"
             };
+
+            if (TempData.ContainsKey("Alert"))
+            {
+                ViewBag.Alert = TempData["Alert"].ToString();
+            }
+            if (TempData.ContainsKey("Error"))
+            {
+                ViewBag.Error = TempData["Error"].ToString();
+            }
+
             var events = eventRepo.GetEvents();
             var eventsVM = mapper.Map<List<EventListViewModel>>(events);
             emiHomeVM.Events = eventsVM;
@@ -168,5 +183,58 @@ namespace SelahSeries.Controllers
             var testimonies = testimonyRepo.GetTestimonies();
             return View(testimonies);
         }
+
+        [HttpPost]
+        public async Task<ActionResult> SuscribeToPost([FromForm] string email)
+        {
+
+            try
+            {
+                await _subRepo.AddPostSuscribers(new EmailSubscription
+                {
+                    SubscriberEmail = email,
+                    ConfirmEmail = false,
+                    ConfirmationCode = Guid.NewGuid().ToString()
+                });
+                TempData["Alert"] = "Subscription Successfully, thank you.";
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                TempData["Alert"] = "Error Subscribing, you already subscribed to Emerald Light.";
+                return RedirectToAction(nameof(Index));
+            }
+        }
+        //[HttpPost]
+        //[Route("/subscription/unsubscribe")]
+        //public async Task<ActionResult> UnSubscribeFromPost([FromForm] string email)
+        //{
+        //    try
+        //    {
+        //        await _subRepo.UnSuscriberPost(email);
+
+        //        ViewBag.Message = "For been a part of the family. We hope to see you back soon";
+        //        return View("~/Views/Shared/ThankYou.cshtml");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ViewBag.Error = "unsubscribe failed, try again if you still get mail from us";
+        //        return View();
+        //    }
+        //}
+        //[HttpGet]
+        //[Route("/subscription/unsubscribe")]
+        //public IActionResult UnSubscribeFromPost()
+        //{
+        //    try
+        //    {
+        //        return View("~/Views/Shared/unsubscribeview.cshtml");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ViewBag.Error = "Subscription failed, try again Please do make sure the mail has not been registered before";
+        //        return View();
+        //    }
+        //}
     }
 }

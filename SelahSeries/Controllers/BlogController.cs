@@ -26,11 +26,12 @@ namespace SelahSeries.Controllers
         private readonly IPostRepository _postRepo;
         private readonly IPostClapRepository    _postClapRepo;
         private readonly INotificationRepository _notifRepo;
+        private readonly IEmailService _emailService;
 
         private readonly IConfiguration _configuration;
         private readonly IMapper _mapper;
         
-        public BlogController(IConfiguration configuration, ICommentRepository commentRepo, IPostRepository postRepo, IPostClapRepository postClapRepo, INotificationRepository notifRepo, IMapper mapper)
+        public BlogController(IConfiguration configuration, ICommentRepository commentRepo, IEmailService email, IPostRepository postRepo, IPostClapRepository postClapRepo, INotificationRepository notifRepo, IMapper mapper)
         {
             _configuration = configuration;
             _commentRepo = commentRepo;
@@ -38,6 +39,7 @@ namespace SelahSeries.Controllers
             _postClapRepo = postClapRepo;
             _notifRepo = notifRepo;
             _mapper = mapper;
+            _emailService = email;
         }
         // GET: /<controller>/
         [Route("Blog/Index")]
@@ -131,6 +133,9 @@ namespace SelahSeries.Controllers
                         Read = false
                     };
                     await _notifRepo.AddNotification(notification);
+                    var subject = "COMMENT NOTIFICATION";
+                    var message = $"{notification.Title} \n Link: www.selahseries.com/admin";
+                    await _emailService.SendEmail(subject, message);
 
 
                 }

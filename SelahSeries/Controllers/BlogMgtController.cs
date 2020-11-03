@@ -26,15 +26,18 @@ namespace SelahSeries.Controllers
         private readonly IHostingEnvironment hostingEnvironment;
         private readonly IPostRepository _postRepo;
         private readonly IEmailService _emailService;
+        private readonly ISubscriptionRepository _subRepo;
         public IBackgroundTaskQueue _queue;
+
         public BlogMgtController(IPostRepository postRepo, IMapper mapper, IHostingEnvironment environment, 
-            IEmailService emailService, IBackgroundTaskQueue queue )
+            IEmailService emailService, IBackgroundTaskQueue queue, ISubscriptionRepository subscriptionRepo )
         {
             _postRepo = postRepo;
             _mapper = mapper;
             hostingEnvironment = environment;
             _emailService = emailService;
             _queue = queue;
+            _subRepo = subscriptionRepo;
         }
         // GET: BlogMgt
         [Route("[controller]")]
@@ -157,14 +160,14 @@ namespace SelahSeries.Controllers
         {
             var userImagePath = Path.Combine(hostingEnvironment.WebRootPath, "uploads", post.TitleImageUrl);
 
-            List<EmailSubscription> emailSubscribers = await _postRepo.GetPostSuscribers();
+            List<EmailSubscription> emailSubscribers = await _subRepo.GetPostSuscribers();
 
             string message = ProcessMessage(post.Content);
             //post.Content.Length > 300 ? post.Content.Substring(0, 300) : post.Content.Substring(0, post.Content.Length);
 
             var subscribersList = emailSubscribers.Select(x => x.SubscriberEmail).ToList();
             _queue.QueueBackgroundWorkItem(async token => { 
-                await Task.Run(() => _emailService.SendSubscriptionMail(subscribersList, post.Title, message, post.PostId, userImagePath));
+                await Task.Run(() => _emailService.SendSubscriptionMail(subscribersList, post.Title, message, post.PostId, userImagePath, "postemail"));
             });
             
         }

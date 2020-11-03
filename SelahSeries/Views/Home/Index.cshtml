@@ -182,6 +182,7 @@
     </div> *@
 
 <!-- Page Content -->
+@await Html.PartialAsync("AlertViewPartial")        
 
 <div class="page_content">
     <div class="container">
@@ -204,13 +205,13 @@
                                 @foreach (var item in latestArticle)
                                 {
 
-                                <div class="card card_default card_small_with_image grid-item">
-                                    <img class="card-img-top" src='~/Uploads/@Html.DisplayFor(modelItem => item.TitleImageUrl)' alt="https://unsplash.com/">
-                                    <div class="card-body">
-                                        <div class="card-title card-title-small"><a href="~/blog/post/@Html.DisplayFor(modelItem => item.PostId)">@Html.DisplayFor(modelItem => item.Title)</a></div>
-                                        <small class="post_meta"><a href="#">@Html.DisplayFor(modelItem => item.Author)</a><span>@Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
+                                    <div class="card card_default card_small_with_image grid-item">
+                                        <img class="card-img-top" src='~/Uploads/@Html.DisplayFor(modelItem => item.TitleImageUrl)' alt="https://unsplash.com/">
+                                        <div class="card-body">
+                                            <div class="card-title card-title-small"><a href="~/blog/post/@Html.DisplayFor(modelItem => item.PostId)">@Html.DisplayFor(modelItem => item.Title)</a></div>
+                                            <small class="post_meta"><a href="#">@Html.DisplayFor(modelItem => item.Author)</a><span>@Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
+                                        </div>
                                     </div>
-                                </div>
 
 
                                 }
@@ -238,128 +239,100 @@
             <div class="col-lg-3">
                 <div class="sidebar">
                     <div class="sidebar_background"></div>
+                    <div>
+                        <div style="text-align: center;">
+                            <p style="padding-top: 1em; color: #AD001C;"><b> Subscribe to get update of our life impacting posts here at Selah Series </b></p>
+                            <p>
+                                <form method="post" asp-controller="Home" asp-action="SuscribeToPost">
+                                    @Html.AntiForgeryToken()
+                            <p> <input style="height:auto; background-color:aliceblue; color:black;" type="text" class="form-control" placeholder="Email Address" name="email" aria-label="Recipient's username" aria-describedby="basic-addon2"></p>
+                            <p> <button class="btn btn-outline-primary" style="cursor:pointer; " type="submit">Subscribe</button> </p>
 
-                    <!-- Top Stories -->
-
-                    <div class="sidebar_section">
-                        <div class="sidebar_title_container">
-                            <div class="sidebar_title">Top Stories</div>
-                            <div class="sidebar_slider_nav">
-                                <div class="custom_nav_container sidebar_slider_nav_container">
-                                    <div class="custom_prev custom_prev_top">
-                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                             width="7px" height="12px" viewBox="0 0 7 12" enable-background="new 0 0 7 12" xml:space="preserve">
-                                        <polyline fill="#bebebe" points="0,5.61 5.609,0 7,0 7,1.438 2.438,6 7,10.563 7,12 5.609,12 -0.002,6.39 " />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-											</svg>
-                                    </div>
-                                    <ul id="custom_dots" class="custom_dots custom_dots_vid">
-                                        <li class="custom_dot custom_dot_vid active"><span></span></li>
-                                        <li class="custom_dot custom_dot_vid"><span></span></li>
-                                        <li class="custom_dot custom_dot_vid"><span></span></li>
-                                    </ul>
-                                    <div class="custom_next custom_next_vid">
-                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                             width="7px" height="12px" viewBox="0 0 7 12" enable-background="new 0 0 7 12" xml:space="preserve">
-                                        <polyline fill="#bebebe" points="6.998,6.39 1.389,12 -0.002,12 -0.002,10.562 4.561,6 -0.002,1.438 -0.002,0 1.389,0 7,5.61 " />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-											</svg>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="sidebar_section_content">
-
-                            <!-- Sidebar Slider -->
-                            <div class="sidebar_slider_container">
-                                <div class="owl-carousel owl-theme sidebar_slider_vid">
-                                    <div class="owl-item">
-                                        @foreach (var item in Model.TopPosts)
-                                        {
-                                        <div class="side_post">
-                                            <a href="~/blog/post/@Html.DisplayFor(modelItem => item.PostId)">
-                                                <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
-                                                    <div class="side_post_image"><div><img src="~/Uploads/@Html.DisplayFor(modelItem => item.TitleImageUrl)" alt="@item.Title"></div></div>
-                                                    <div class="side_post_content">
-                                                        <div class="side_post_title">@Html.DisplayFor(modelItem => item.Title)</div>
-                                                        <small class="post_meta">@Html.DisplayFor(modelItem => item.Author)<span>@Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-
-
-                                        }
-                                    </div>
-                                </div>
-                            </div>
+                            </form>
+                            </p>
                         </div>
                     </div>
+    <!-- Top Stories -->
 
-                    <!--Projects-->
+                        <div class="sidebar_section">
+                            <div class="sidebar_title_container">
+                                <div class="sidebar_title">Top Stories</div>
+                                <div class="sidebar_slider_nav">
+                                    <div class="custom_nav_container sidebar_slider_nav_container">
+                                        <div class="custom_prev custom_prev_top">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                 width="7px" height="12px" viewBox="0 0 7 12" enable-background="new 0 0 7 12" xml:space="preserve">
+                                            <polyline fill="#bebebe" points="0,5.61 5.609,0 7,0 7,1.438 2.438,6 7,10.563 7,12 5.609,12 -0.002,6.39 " />
 
-                    <div class="sidebar_section">
-                        <div class="sidebar_title_container">
-                            <div class="sidebar_title">Projects</div>
-                            <div class="advertising_2">
-                                <div class="advertising_background" style="background-image:url(/EMI/img/emerald_tst.png)"></div>
-                                @*<div class="advertising_2_content d-flex flex-column align-items-center justify-content-center"</div>*@
+											</svg>
+                                        </div>
+                                        <ul id="custom_dots" class="custom_dots custom_dots_vid">
+                                            <li class="custom_dot custom_dot_vid active"><span></span></li>
+                                            <li class="custom_dot custom_dot_vid"><span></span></li>
+                                            <li class="custom_dot custom_dot_vid"><span></span></li>
+                                        </ul>
+                                        <div class="custom_next custom_next_vid">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                 width="7px" height="12px" viewBox="0 0 7 12" enable-background="new 0 0 7 12" xml:space="preserve">
+                                            <polyline fill="#bebebe" points="6.998,6.39 1.389,12 -0.002,12 -0.002,10.562 4.561,6 -0.002,1.438 -0.002,0 1.389,0 7,5.61 " />
+
+
+
+
+
+											</svg>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <br />
-                            <div>
-                                <p text-align="justify">The Emerald Light Project is targeted at advocating for and supporting pregnant teenagers & teen mothers</p>
+                            <div class="sidebar_section_content">
 
-                                <p>Click <a href="~/emeraldlight">here</a> to go to Emerald Light.</p>
+                                <!-- Sidebar Slider -->
+                                <div class="sidebar_slider_container">
+                                    <div class="owl-carousel owl-theme sidebar_slider_vid">
+                                        <div class="owl-item">
+                                            @foreach (var item in Model.TopPosts)
+                                            {
+                                                <div class="side_post">
+                                                    <a href="~/blog/post/@Html.DisplayFor(modelItem => item.PostId)">
+                                                        <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
+                                                            <div class="side_post_image"><div><img src="~/Uploads/@Html.DisplayFor(modelItem => item.TitleImageUrl)" alt="@item.Title"></div></div>
+                                                            <div class="side_post_content">
+                                                                <div class="side_post_title">@Html.DisplayFor(modelItem => item.Title)</div>
+                                                                <small class="post_meta">@Html.DisplayFor(modelItem => item.Author)<span>@Html.DisplayFor(modelItem => item.ModifiedAt)</span></small>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+
+
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Projects-->
+
+                        <div class="sidebar_section">
+                            <div class="sidebar_title_container">
+                                <div class="sidebar_title">Projects</div>
+                                <div class="advertising_2">
+                                    <div class="advertising_background" style="background-image:url(/EMI/img/emerald_tst.png)"></div>
+                                    @*<div class="advertising_2_content d-flex flex-column align-items-center justify-content-center"</div>*@
+                                </div>
                                 <br />
+                                <div>
+                                    <p text-align="justify">The Emerald Light Project is targeted at advocating for and supporting pregnant teenagers & teen mothers</p>
+
+                                    <p>Click <a href="~/emeraldlight">here</a> to go to Emerald Light.</p>
+                                    <br />
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
 </div>
@@ -397,14 +370,14 @@
                             <div class="row">
                                 @foreach (var item in Books_Slide1)
                                 {
-                                <div class="col-sm-6">
-                                    <div class="thumb-wrapper">
-                                        <div class="img-box">
-                                            <img src="~/Uploads/@Html.DisplayFor(modelItem => item.ImageUrl)" class="img-responsive img-fluid" alt="">
-                                        </div>
-                                        <div class="thumb-content">
-                                            <h5 style="color:black">@item.Title</h5>
-                                            @if (item.IsHardBook == true)
+                                    <div class="col-sm-6">
+                                        <div class="thumb-wrapper">
+                                            <div class="img-box">
+                                                <img src="~/Uploads/@Html.DisplayFor(modelItem => item.ImageUrl)" class="img-responsive img-fluid" alt="">
+                                            </div>
+                                            <div class="thumb-content">
+                                                <h5 style="color:black">@item.Title</h5>
+                                                @if (item.IsHardBook == true)
                                                 {
 
                                                     Products.Add(new ShopBook()
@@ -416,13 +389,13 @@
                                                     });
 
 
-                                            <p class="item-price">₦@item.Price</p>
-                                            <a class="add-cart cart btn btn-primary">Add to Cart</a>
+                                                    <p class="item-price">₦@item.Price</p>
+                                                    <a class="add-cart cart btn btn-primary">Add to Cart</a>
                                                 }
-                                            <a href="~/uploads/@item.BookUrl" download class="btn btn-primary">Download</a>
+                                                <a href="~/uploads/@item.BookUrl" download class="btn btn-primary">Download</a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
                                 }
 
                             </div>

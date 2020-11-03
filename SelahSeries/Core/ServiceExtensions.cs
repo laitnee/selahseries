@@ -24,6 +24,7 @@ namespace SelahSeries.Core
             services.AddTransient<IBookRepository, BookRepository>();
             services.AddSingleton<IEmailService, EmailService>();
             services.AddTransient<INotificationRepository, NotificationRepository>();
+            services.AddTransient<ISubscriptionRepository, SubscriptionRepository>();
             services.AddLogging();
             services.AddHostedService<QueuedHostedService>();
             services.AddSingleton<IBackgroundTaskQueue, BackgroundTaskQueue>();

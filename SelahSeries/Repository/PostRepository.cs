@@ -89,22 +89,7 @@ namespace SelahSeries.Repository
                                     .Where(post => (post.CategoryId == categoryId || post.ParentId == categoryId) && post.Published == true)
                                     .ToPaginatedListAsync(pageParam);
         }
-        public async Task<List<EmailSubscription>> GetPostSuscribers()
-        {
-            return await _selahDbContext.EmailSubscriptions.ToListAsync();
-        }
-        public async Task AddPostSuscribers(EmailSubscription emailSuscriber)
-        {
-            await _selahDbContext.AddAsync(emailSuscriber);
-            await _selahDbContext.SaveChangesAsync();
-        }
-        public async Task UnSuscriberPost(string email)
-        {
-            var subscription = await _selahDbContext.EmailSubscriptions.Where(sub => sub.SubscriberEmail == email).FirstOrDefaultAsync();
-            if (subscription == null) return; 
-            _selahDbContext.EmailSubscriptions.Remove(subscription);
-            await SaveChanges();
-        }
+
         public async Task<PaginatedList<Post>> GetPublishedPostsByCategory(PaginationParam pageParam, string category)
         {
             int _categoryId = 0;

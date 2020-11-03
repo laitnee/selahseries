@@ -26,6 +26,7 @@
             </div>
         </div>
     </div>
+
     <div class="donation_area">
         <div class="container">
             <div class="row donation_inner">
@@ -79,10 +80,10 @@
                 <div class="welcome_text">
                     <h4>Emerald Light Initiative</h4>
                     <p>
-                        Young girls caught in the act through early unwanted pregnancies are targets of our wrath. Society responds to them, often, in ways that are not healthy to their mental, 
-                        emotional and spiritual well-being. This poses detrimental effects on the lives, future and total well-being of these girls as well as their children. We at 
-                        Emerald Light Initiative have risen to be a voice for these young beauties. We provide advocacy, support and counselling to them. 
-                        We also spread awareness about the effects of society stigmatization on these young girls. This is a family of love, of light and of grace! 
+                        Young girls caught in the act through early unwanted pregnancies are targets of our wrath. Society responds to them, often, in ways that are not healthy to their mental,
+                        emotional and spiritual well-being. This poses detrimental effects on the lives, future and total well-being of these girls as well as their children. We at
+                        Emerald Light Initiative have risen to be a voice for these young beauties. We provide advocacy, support and counselling to them.
+                        We also spread awareness about the effects of society stigmatization on these young girls. This is a family of love, of light and of grace!
                         You are welcome to be a part of us. Do reach out also if you are in need of online counselling.
                     </p>
                 </div>
@@ -96,7 +97,6 @@
     </div>
 </section>
 <!--================End Welcome Area =================-->
-
 <!--================Feature Area =================-->
 <section class="feature_area feature2">
     <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
@@ -134,33 +134,33 @@
 <!--================Event Area =================-->
 @if (events.Any())
 {
-<section class="event_area p_120">
-    <div class="container">
-        <div class="main_title">
-            <h2>Upcoming Events</h2>
-            <p>Emerald Light Initiative <br /> Keep in touch with our events and projects</p>
-        </div>
-        <div class="event_slider owl-carousel">
-            @foreach (var item in events)
-            {
-                <div class="item">
-                    <div class="event_item">
-                        <div class="media">
-                            <div class="d-flex event-image">
-                                <img src="~/Uploads/@Html.DisplayFor(modelItem => item.ImgUrl)" alt="">
-                            </div>
-                            <div class="media-body">
-                                <a>@Html.DisplayFor(modelItem => item.Time)</a>
-                                <a a href="~/emeraldlight/event/@Html.DisplayFor(modelItem => item.EventId)"><h4>@Html.DisplayFor(modelItem => item.Title)</h4></a>
-                                <p class="line-clamp">@Html.DisplayFor(modelItem => item.Description)</p>
+    <section class="event_area p_120">
+        <div class="container">
+            <div class="main_title">
+                <h2>Upcoming Events</h2>
+                <p>Emerald Light Initiative <br /> Keep in touch with our events and projects</p>
+            </div>
+            <div class="event_slider owl-carousel">
+                @foreach (var item in events)
+                {
+                    <div class="item">
+                        <div class="event_item">
+                            <div class="media">
+                                <div class="d-flex event-image">
+                                    <img src="~/Uploads/@Html.DisplayFor(modelItem => item.ImgUrl)" alt="">
+                                </div>
+                                <div class="media-body">
+                                    <a>@Html.DisplayFor(modelItem => item.Time)</a>
+                                    <a a href="~/emeraldlight/event/@Html.DisplayFor(modelItem => item.EventId)"><h4>@Html.DisplayFor(modelItem => item.Title)</h4></a>
+                                    <p class="line-clamp">@Html.DisplayFor(modelItem => item.Description)</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            }
+                }
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 }
 
 @if (!events.Any())
@@ -171,35 +171,35 @@
 <!--================Testimonials Area =================-->
 @if (testimonies.Any())
 {
-<section class="testimonials_area p_120">
-    <div class="container">
-        <div class="row testimonials_inner">
-            <div class="col-lg-4">
-                <div class="testi_left_text">
-                    <h4>Testimonials</h4>
-                    <p>Read Testimonials of women who have been impacted through this platform.</p>
+    <section class="testimonials_area p_120">
+        <div class="container">
+            <div class="row testimonials_inner">
+                <div class="col-lg-4">
+                    <div class="testi_left_text">
+                        <h4>Testimonials</h4>
+                        <p>Read Testimonials of women who have been impacted through this platform.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-8">
-                <div class="testi_slider owl-carousel">
+                <div class="col-lg-8">
+                    <div class="testi_slider owl-carousel">
 
-                    @foreach (var item in testimonies)
-                    {
-                        <div class="item">
-                            <div class="testi_item">
-                                <img src="~/Uploads/@Html.DisplayFor(modelItem => item.ImgUrl)" width="80" height="80" border-radius="50%" alt="">
-                                <p>@Html.DisplayFor(modelItem => item.Description)</p>
-                                <h4>@Html.DisplayFor(modelItem => item.Name)</h4>
+                        @foreach (var item in testimonies)
+                        {
+                            <div class="item">
+                                <div class="testi_item">
+                                    <img src="~/Uploads/@Html.DisplayFor(modelItem => item.ImgUrl)" width="80" height="80" border-radius="50%" alt="">
+                                    <p>@Html.DisplayFor(modelItem => item.Description)</p>
+                                    <h4>@Html.DisplayFor(modelItem => item.Name)</h4>
+                                </div>
                             </div>
-                        </div>
-                    }
+                        }
 
 
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 }
 <!--================End Testimonials Area =================-->
 <style>
@@ -235,9 +235,10 @@
         width: 50%;
     }
 
-    .text_welcome{
-        margin-top:44px;
+    .text_welcome {
+        margin-top: 44px;
     }
+
     .no_event {
         margin-top: 100px;
         margin-bottom: 100px;
