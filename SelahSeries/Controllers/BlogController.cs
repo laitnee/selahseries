@@ -145,6 +145,17 @@ namespace SelahSeries.Controllers
             return RedirectToAction("Post", "Blog", new { postId = comment.PostId });
         }
 
+        [HttpPost]
+        public async Task<IActionResult> DeleteComment(int postId, int commentId)
+        {
+            try
+            {
+                await _commentRepo.DeleteComment(commentId);
+            }catch{}
+            return RedirectToAction("Post", "Blog", new { postId = postId });
+
+        }
+
         [Route("clap")]
         [HttpPost]
         public async Task<JsonResult> AddClaps([FromBody]PostClapVM postClapVM)

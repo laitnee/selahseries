@@ -212,6 +212,14 @@
                                                                 </span>
                                                             </small>
                                                             <button type="button" data-ReplyListener="@item.CommentId" class="reply_button ml-auto">Reply</button>
+                                                            @if (User.Identity.IsAuthenticated)
+                                                            {
+                                                        <form method="post" asp-controller="Blog" asp-action="DeleteComment">
+                                                            <input type="hidden" value="@Model.Post.PostId" name="postId" />
+                                                            <input type="hidden" value="@item.CommentId" name="commentId" />
+                                                            <button type="submit" class="reply_button ml-auto">Delete</button>
+                                                        </form>
+                                                            }
                                                         </div>
                                                         <div class="comment_content">
                                                             <p>@item.Content </p>

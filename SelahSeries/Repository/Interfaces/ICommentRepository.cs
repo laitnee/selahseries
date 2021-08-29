@@ -12,5 +12,6 @@ namespace SelahSeries.Repository
         //Task<Comment> GetCommentAsync(int commentId);
         Task<List<Comment>> GetSubComments(int postId, int commentId);
         Task<List<Comment>> GetComments(int postId);
+        Task DeleteComment(int commentId);
     }
 }

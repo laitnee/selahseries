@@ -35,6 +35,14 @@ namespace SelahSeries.Repository
                                     .Where(com => com.PostId == postId)
                                     .ToListAsync();
         }
+        public async Task DeleteComment(int commentId)
+        {
+            var comment = await _selahDbContext.Comments.Where(com => com.CommentId == commentId).FirstOrDefaultAsync();
+            if (comment == null) throw new Exception("comment not found");
+            comment.Content = "This comment was removed.";
+            _selahDbContext.Comments.Remove(comment);
+            await _selahDbContext.SaveChangesAsync();
+        }
         public async Task<List<Comment>> GetSubComments(int postId, int commentId)
         {
             //return await _selahDbContext.Comments

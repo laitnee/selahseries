@@ -38,7 +38,7 @@ namespace SelahSeries
                  c.UseSqlServer(Configuration.GetConnectionString("SelahSeriesDB")));
             services.AddAutoMapper(typeof(Startup));
             services.AddCustomServices();
-
+            
             services.Configure<CookieTempDataProviderOptions>(options => {
                 options.Cookie.IsEssential = true;
             });
